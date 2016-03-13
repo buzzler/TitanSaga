@@ -4,21 +4,18 @@ using TileLib;
 
 public class TileManager : MonoBehaviour {
 	public	TextAsset		asset;
+	private	Transform		_container;
 	private	TileConfig		_config;
 
 	void Awake() {
 		GameObject.DontDestroyOnLoad(gameObject);
+		_container = new GameObject("Map").transform;
 		_config = TileConfig.LoadFromText(asset.text);
 	}
 
 	void Start() {
 		LoadMap("tutorial_1");
-	}
-
-	public	TileConfig config {
-		get {
-			return _config;
-		}
+		Application.LoadLevelAdditiveAsync("DebugConsole");
 	}
 
 	public	void LoadMap(string id) {
@@ -29,19 +26,25 @@ public class TileManager : MonoBehaviour {
 	}
 
 	public	void LoadMap(TileMap map) {
+		_container.name = string.Format("Map ({0})", map.id);
 		var terrains = map.terrains;
 		var total = terrains.Length;
 		for (int i = 0 ; i < total ; i++) {
 			var terrain = terrains[i];
 			var items = terrain.GetTileItem();
-			for (int j = 0 ; j < items.Count ; j++) {
-				TileItem item = items[j];
-				var go = new GameObject(item.asset, typeof(SpriteRenderer));
-				go.GetComponent<SpriteRenderer>().sprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>(item.assetPath);
-				go.transform.Translate(GetCoord(terrain.xf, terrain.yf, terrain.zf));
-
+			var count = items.Count;
+			for (int j = 0 ; j < count ; j++) {
+				AddTileItem(items[j], terrain.xf, terrain.yf, terrain.zf);
 			}
 		}
+	}
+
+	public	void AddTileItem(TileItem item, float x, float y, float z) {
+		var go = new GameObject(item.asset, typeof(SpriteRenderer));
+		go.GetComponent<SpriteRenderer>().sprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>(item.assetPath);
+		var tr = go.transform;
+		tr.Translate(GetCoord(x, y, z));
+		tr.SetParent(_container);
 	}
 
 	public	Vector3 GetCoord(float x, float y, float z) {
