@@ -51,20 +51,9 @@ namespace TileLib {
 		[XmlElement("Tutorial")]
 		public	TileTutorial tutorial;
 
-		public	static TileConfig LoadFromText(string text) {
-			var serializer = new XmlSerializer(typeof(TileConfig));
-			var config = serializer.Deserialize(new StringReader(text)) as TileConfig;
-			config.library.Hashing();
-			config.tutorial.Hashing(config.library);
-			return config;
-		}
-
-		public	static string SaveToText(TileConfig config) {
-			var serializer = new XmlSerializer(typeof(TileConfig));
-			using (StringWriter writer = new StringWriter()) {
-				serializer.Serialize(writer, config);
-				return writer.ToString();
-			}
+		public	void Hashing() {
+			library.Hashing();
+			tutorial.Hashing(library);
 		}
 	}
 

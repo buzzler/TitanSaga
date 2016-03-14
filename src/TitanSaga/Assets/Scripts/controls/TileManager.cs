@@ -7,15 +7,18 @@ public class TileManager : MonoBehaviour {
 	private	Transform		_container;
 	private	TileConfig		_config;
 
+	public	Transform	container	{get{return _container;}}
+	public	TileConfig	config		{get{return _config;}}
+
 	void Awake() {
 		GameObject.DontDestroyOnLoad(gameObject);
 		_container = new GameObject("Map").transform;
-		_config = TileConfig.LoadFromText(asset.text);
+		_config = TitanUtility.LoadFromText<TileConfig>(asset.text);
+		_config.Hashing();
 	}
 
 	void Start() {
 		LoadMap("tutorial_1");
-		Application.LoadLevelAdditiveAsync("DebugConsole");
 	}
 
 	public	void LoadMap(string id) {
