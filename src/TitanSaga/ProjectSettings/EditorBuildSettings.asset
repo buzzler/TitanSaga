@@ -8,4 +8,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/test.unity
   - enabled: 1
-    path: Assets/Bundles/Scenes/DebugConsole.unity
+    path: Assets/Bundles/Scenes/MapEditor/DebugConsole.unity

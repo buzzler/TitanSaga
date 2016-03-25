@@ -53,13 +53,15 @@ namespace TileLib {
 
 		public	void Hashing() {
 			library.Hashing();
-			tutorial.Hashing(library);
+			tutorial.Hashing();
 		}
 	}
 
 	public class TileLibrary {
 		[XmlAttribute("path")]
 		public	string			path;
+		[XmlAttribute("default")]
+		public	string			unit;
 		[XmlElement("Category")]
 		public	TileCategory[]	categories;
 		[XmlElement("Simple")]
@@ -128,6 +130,12 @@ namespace TileLib {
 				return _dictionaryItem[id];
 			} else {
 				return null;
+			}
+		}
+
+		public	TileItem unitItem {
+			get {
+				return FindItem(unit) as TileItem;
 			}
 		}
 	}
@@ -365,11 +373,11 @@ namespace TileLib {
 			_dictionaryMap = new Dictionary<string, TileMap>();
 		}
 
-		public	void Hashing(TileLibrary library) {
+		public	void Hashing() {
 			_dictionaryMap.Clear();
 			for (int i = maps.Length-1 ; i >= 0 ; i--) {
 				TileMap map = maps[i];
-				map.Hashing(library);
+				map.Hashing();
 				_dictionaryMap.Add(map.id, map);
 			}
 		}
@@ -396,7 +404,29 @@ namespace TileLib {
 		public	int depth;
 		private List<List<List<TileTerrain>>> _tlist;
 
-		public	void Hashing(TileLibrary library) {
+		public	TileMap() {
+			this.id = string.Empty;
+			this.terrains = new TileTerrain[0];
+			this.width = 1;
+			this.height = 1;
+			this.depth = 1;
+		}
+
+		public	TileMap Clone() {
+			var c = new TileMap();
+			c.id = this.id;
+			c.width = this.width;
+			c.height = this.height;
+			c.depth = this.depth;
+
+			var len = this.terrains.Length;
+			c.terrains = new TileTerrain[len];
+			System.Array.Copy(this.terrains, c.terrains, len);
+
+			return c;
+		}
+
+		public	void Hashing() {
 			var wlist = new List<List<List<TileTerrain>>>(width);
 			for (int i = 0 ; i < width ; i++) {
 				var hlist = new List<List<TileTerrain>>(height);
@@ -415,8 +445,12 @@ namespace TileLib {
 				var terrain = terrains[i];
 				_tlist[terrain.x][terrain.y][terrain.z] = terrain;
 				terrain.map = this;
-				terrain.library = library;
 			}
+		}
+
+		public	void AddTerrain(TileTerrain terrain) {
+			_tlist[terrain.x][terrain.y][terrain.z] = terrain;
+			terrain.map = this;
 		}
 
 		public	TileTerrain GetTerrain(int x, int y, int z) {
@@ -440,12 +474,23 @@ namespace TileLib {
 		[XmlAttribute("face")]
 		public	TileFace	face;
 		public	TileMap		map;
-		public	TileLibrary library;
 
-		public	TileBase tilebase {
-			get {
-				return library.FindItem(item);
-			}
+		public	TileTerrain() {
+			this.item = string.Empty;
+			this.xf = 0f;
+			this.yf = 0f;
+			this.zf = 0f;
+			this.face = TileFace.Up;
+			this.map = null;
+		}
+
+		public	TileTerrain(string item, float x, float y, float z) {
+			this.item = item;
+			this.xf = x;
+			this.yf = y;
+			this.zf = z;
+			this.face = TileFace.Up;
+			this.map = null;
 		}
 
 		public	int x {
@@ -514,8 +559,8 @@ namespace TileLib {
 			}
 		}
 
-		public	List<TileItem> GetTileItem() {
-			TileBase tb = tilebase;
+		public	List<TileItem> GetTileItem(TileLibrary library) {
+			TileBase tb = library.FindItem(item);
 
 			List<TileItem> list = new List<TileItem>(8);
 			switch(tb.type) {
@@ -523,20 +568,20 @@ namespace TileLib {
 				list.Add(tb as TileItem);
 				break;
 			case TileType.Simple:
-				GetTileItemForSimple(tb as TileSimple, list);
+				GetTileItemForSimple(library, tb as TileSimple, list);
 				break;
 			case TileType.Complex:
-				GetTileItemForComplex(tb as TileComplex, list);
+				GetTileItemForComplex(library, tb as TileComplex, list);
 				break;
 			case TileType.Direction:
-				GetTileItemForDirection(tb as TileDirection, list);
+				GetTileItemForDirection(library, tb as TileDirection, list);
 				break;
 			}
 
 			return list;
 		}
 
-		private	void GetTileItemForSimple(TileSimple simple, List<TileItem> list) {
+		private	void GetTileItemForSimple(TileLibrary library, TileSimple simple, List<TileItem> list) {
 			var up = u;
 			var down = d;
 			var left = l;
@@ -544,79 +589,79 @@ namespace TileLib {
 			uint result = 0;
 			string tbid = simple.id;
 
-			if (up != null && tbid == up.tilebase.id) {
+			if (up != null && tbid == library.FindItem(up.item).id) {
 				result |= TileConst.U;
 			}
-			if (down != null && tbid == down.tilebase.id) {
+			if (down != null && tbid == library.FindItem(down.item).id) {
 				result |= TileConst.D;
 			}
-			if (left != null && tbid == left.tilebase.id) {
+			if (left != null && tbid == library.FindItem(left.item).id) {
 				result |= TileConst.L;
 			}
-			if (right != null && tbid == right.tilebase.id) {
+			if (right != null && tbid == library.FindItem(right.item).id) {
 				result |= TileConst.R;
 			}
 
 			switch (result) {
 			case TileConst.U:
-				GetAllTileItem(simple.up, list);				break;
+				GetAllTileItem(library, simple.up, list);				break;
 			case TileConst.D:
-				GetAllTileItem(simple.down, list);				break;
+				GetAllTileItem(library, simple.down, list);				break;
 			case TileConst.L:
-				GetAllTileItem(simple.left, list);				break;
+				GetAllTileItem(library, simple.left, list);				break;
 			case TileConst.R:
-				GetAllTileItem(simple.right, list);				break;
+				GetAllTileItem(library, simple.right, list);			break;
 			case TileConst.U_D:
-				GetAllTileItem(simple.updown, list);			break;
+				GetAllTileItem(library, simple.updown, list);			break;
 			case TileConst.U_L:
-				GetAllTileItem(simple.upleft, list);			break;
+				GetAllTileItem(library, simple.upleft, list);			break;
 			case TileConst.U_R:
-				GetAllTileItem(simple.upright, list);			break;
+				GetAllTileItem(library, simple.upright, list);			break;
 			case TileConst.D_L:
-				GetAllTileItem(simple.downleft, list);			break;
+				GetAllTileItem(library, simple.downleft, list);			break;
 			case TileConst.D_R:
-				GetAllTileItem(simple.downright, list);			break;
+				GetAllTileItem(library, simple.downright, list);		break;
 			case TileConst.L_R:
-				GetAllTileItem(simple.leftright, list);			break;
+				GetAllTileItem(library, simple.leftright, list);		break;
 			case TileConst.U_D_L:
-				GetAllTileItem(simple.updownleft, list);		break;
+				GetAllTileItem(library, simple.updownleft, list);		break;
 			case TileConst.U_D_R:
-				GetAllTileItem(simple.updownright, list);		break;
+				GetAllTileItem(library, simple.updownright, list);		break;
 			case TileConst.U_L_R:
-				GetAllTileItem(simple.upleftright, list);		break;
+				GetAllTileItem(library, simple.upleftright, list);		break;
 			case TileConst.D_L_R:
-				GetAllTileItem(simple.downleftright, list);		break;
+				GetAllTileItem(library, simple.downleftright, list);	break;
 			case TileConst.U_D_L_R:
-				GetAllTileItem(simple.updownleftright, list);	break;
+				GetAllTileItem(library, simple.updownleftright, list);	break;
 			default:
-				GetAllTileItem(simple.none, list);				break;
+				GetAllTileItem(library, simple.none, list);				break;
 			}
 		}
 
-		private	void GetTileItemForComplex(TileComplex complex, List<TileItem> list) {
-			GetAllTileItem(complex.none, list);
+		private	void GetTileItemForComplex(TileLibrary library, TileComplex complex, List<TileItem> list) {
+			GetAllTileItem(library, complex.none, list);
 		}
 
-		private	void GetTileItemForDirection(TileDirection direction, List<TileItem> list) {
+		private	void GetTileItemForDirection(TileLibrary library, TileDirection direction, List<TileItem> list) {
 			switch (face) {
 			case TileFace.Up:
-				GetAllTileItem(direction.up, list);		break;
+				GetAllTileItem(library, direction.up, list);	break;
 			case TileFace.Down:
-				GetAllTileItem(direction.down, list);	break;
+				GetAllTileItem(library, direction.down, list);	break;
 			case TileFace.Left:
-				GetAllTileItem(direction.left, list);	break;
+				GetAllTileItem(library, direction.left, list);	break;
 			case TileFace.Right:
-				GetAllTileItem(direction.right, list);	break;
+				GetAllTileItem(library, direction.right, list);	break;
 			}
 		}
 
-		private	void GetAllTileItem(TileItemLink link, List<TileItem> list) {
+		private	void GetAllTileItem(TileLibrary library, TileItemLink link, List<TileItem> list) {
 			if (!string.IsNullOrEmpty(link.item)) {
 				list.Add(library.FindItem(link.item) as TileItem);
 			}
 			int total = link.children != null ? link.children.Length : 0;
 			for (int i = 0 ; i < total ; i++) {
-				GetAllTileItem(link.children[i], list);
+				GetAllTileItem(library, link.children[i], list);
 			}
 		}
 	}

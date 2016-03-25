@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-	<Library path="Assets/Bundles/Tiles">
+	<Library path="Assets/Bundles/Tiles" default="i_snow_1">
 		<Category name="c_brick">
 			<Item id="i_brick_1" asset="ISO_Tile_Brick_Brick_01.png" cube="true" pivotX="0" pivotY="0" />
 			<Item id="i_brick_2" asset="ISO_Tile_Brick_Brick_02.png" cube="true" pivotX="0" pivotY="0" />
