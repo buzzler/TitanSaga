@@ -1,106 +1,139 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using TileLib;
 
 public class TileManager : MonoBehaviour {
 	public	TextAsset		asset;
-	private	Transform		_container;
+	private	Transform		_containerMap;
+	private	Transform		_containerGrid;
 	private	TileConfig		_config;
 	private	TileMap			_map;
 	private TileMap			_grid;
-	public	Transform	container	{get{return _container;}}
+	public	Transform	container	{get{return _containerMap;}}
 	public	TileConfig	config		{get{return _config;}}
 
 	void Awake() {
-		GameObject.DontDestroyOnLoad(gameObject);
-		_container = new GameObject("Map").transform;
-		_config = TitanUtility.LoadFromText<TileConfig>(asset.text);
-		_map = new TileMap();
-		_grid = new TileMap();
-		_config.Hashing();
+		GameObject.DontDestroyOnLoad (gameObject);
+		_containerMap = new GameObject ("Map").transform;
+		_containerGrid = new GameObject ("Grid").transform;
+		_config = TitanUtility.LoadFromText<TileConfig> (asset.text);
+		_map = new TileMap ();
+		_grid = new TileMap ();
+
+		_containerMap.gameObject.SetActive (false);
+		_containerGrid.gameObject.SetActive (false);
+		_containerGrid.transform.localPosition = new Vector3(0f, -0.25f, 499f);
+		_config.Hashing ();
 	}
 
 	void Start() {
-		LoadMap(config.tutorial.FindItem("tutorial_1"));
+		LoadMap (config.tutorial.FindItem ("tutorial_1"));
+	}
+
+	public	void Grid(bool show) {
+		_containerGrid.gameObject.SetActive (show);
 	}
 
 	public	Vector3 GetTopCoord() {
-		return GetCoord(0, 0, 0);
+		return GetCoord (0, 0, 0);
 	}
 
 	public	Vector3 GetBottomCoord() {
-		return GetCoord(_map.width-1, 0, _map.depth-1);
+		return GetCoord (_map.width - 1, 0, _map.depth - 1);
 	}
 
 	public	Vector3 GetLeftCoord() {
-		return GetCoord(0, 0, _map.depth-1);
+		return GetCoord (0, 0, _map.depth - 1);
 	}
 
 	public	Vector3 GetRightCoord() {
-		return GetCoord(_map.width-1, 0, 0);
+		return GetCoord (_map.width - 1, 0, 0);
 	}
 
 	public	void ClearMap() {
-		for (int i = _container.childCount-1 ; i>=0 ; i--) {
-			DestroyImmediate(_container.GetChild(0));
+		_containerMap.gameObject.SetActive (false);
+		_containerGrid.gameObject.SetActive (false);
+
+		for (int i = _containerMap.childCount - 1; i >= 0; i--) {
+			DestroyImmediate (_containerMap.GetChild (0));
 		}
-		_map = new TileMap();
+		_map = new TileMap ();
+
+		for (int i = _containerGrid.childCount - 1; i >= 0; i--) {
+			DestroyImmediate (_containerGrid.GetChild (0));
+		}
+		_grid = new TileMap ();
 	}
 
 	public	void LoadMap(TileMap map) {
-		_map = map.Clone();
-		_map.Hashing();
+		_map = map.Clone ();
+		_map.Hashing ();
 
-		_container.name = string.Format("Map ({0})", _map.id);
 		var terrains = _map.terrains;
 		var total = terrains.Length;
-		for (int i = 0 ; i < total ; i++) {
-			RenderTerrain(terrains[i]);
+		for (int i = 0; i < total; i++) {
+			RenderTerrain (terrains [i], _containerMap);
 		}
 
-		_grid = new TileMap();
+		_grid = new TileMap ();
 		_grid.width = _map.width;
 		_grid.height = _map.height;
 		_grid.depth = _map.depth;
-		for (int i = _map.width-1 ; i>=0 ; i--) {
-			for (int j = _map.depth-1 ; j>=0 ;j--) {
-				var t = new TileTerrain(config.library.unit, i, 0, j);
-				_grid.AddTerrain(t);
+		_grid.Hashing ();
+		List<TileTerrain> list = new List<TileTerrain> ();
+		// floor
+		for (int i = _map.width - 1; i >= 0; i--) {
+			for (int j = _map.depth - 1; j >= 0; j--) {
+				var t = new TileTerrain (config.library.unit, i, 0, j);
+				list.Add (t);
+				_grid.AddTerrain (t);
 			}
 		}
-		for (int i = _map.width-1 ; i>=0 ; i--) {
-			for (int j = _map.height-1 ; j>=0 ;j--) {
-				var t = new TileTerrain(config.library.unit, i, j, 0);
-				_grid.AddTerrain(t);
+		// right
+		for (int i = _map.width - 1; i > 0; i--) {
+			for (int j = _map.height - 1; j >= 0; j--) {
+				var t = new TileTerrain (config.library.unit, i, j, 0);
+				list.Add (t);
+				_grid.AddTerrain (t);
 			}
 		}
-		for (int i = _map.height-1 ; i>=0 ; i--) {
-			for (int j = _map.depth-1 ; j>=0 ;j--) {
-				var t = new TileTerrain(config.library.unit, 0, i, j);
-				_grid.AddTerrain(t);
+		// left
+		for (int i = _map.height - 1; i > 0; i--) {
+			for (int j = _map.depth - 1; j > 0; j--) {
+				var t = new TileTerrain (config.library.unit, 0, i, j);
+				list.Add (t);
+				_grid.AddTerrain (t);
 			}
 		}
+		_grid.terrains = list.ToArray ();
+		total = list.Count;
+		for (int i = 0; i < total; i++) {
+			RenderTerrain (list [i], _containerGrid);
+		}
+
+		_containerMap.gameObject.SetActive (true);
 	}
 
 	public	void AddTerrain(TileTerrain terrain) {
-		_map.AddTerrain(terrain);
-		RenderTerrain(terrain);
+		_map.AddTerrain (terrain);
+		RenderTerrain (terrain, _containerGrid);
 	}
 
-	private	void RenderTerrain(TileTerrain terrain) {
-		var items = terrain.GetTileItem(_config.library);
+	private	void RenderTerrain(TileTerrain terrain, Transform container) {
+		var items = terrain.GetTileItem (_config.library);
 		var count = items.Count;
-		for (int j = 0 ; j < count ; j++) {
-			RenderTileItem(items[j], terrain.xf, terrain.yf, terrain.zf);
+		for (int j = 0; j < count; j++) {
+			RenderTileItem (container, items [j], terrain.xf, terrain.yf, terrain.zf);
 		}
 	}
 
-	private	void RenderTileItem(TileItem item, float x, float y, float z) {
-		var go = new GameObject(item.asset, typeof(SpriteRenderer));
-		go.GetComponent<SpriteRenderer>().sprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>(item.assetPath);
+	private	void RenderTileItem(Transform container, TileItem item, float x, float y, float z) {
+		var go = new GameObject (item.asset, typeof(SpriteRenderer));
+		go.GetComponent<SpriteRenderer> ().sprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite> (item.assetPath);
 		var tr = go.transform;
-		tr.Translate(GetCoord(x, y, z));
-		tr.SetParent(_container);
+		tr.SetParent (container);
+		tr.localPosition = GetCoord (x, y, z);
 	}
 
 	private	Vector3 GetCoord(float x, float y, float z) {
