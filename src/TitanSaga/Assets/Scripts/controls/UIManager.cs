@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour {
 	public	TextAsset	asset;
 	private	UILibrary	_config;
 	private	UIState		_opened;
+	private	object[]	_data;
 
 	public	UILibrary	config	{get{return _config;}}
 
@@ -18,6 +19,24 @@ public class UIManager : MonoBehaviour {
 	void Start() {
 		var startState = _config.FindState(_config.startState);
 		OpenState(startState);
+	}
+
+	public	void OpenState(string stateId, params object[] data) {
+		KeepData (data);
+		var state = _config.FindState (stateId);
+		if (state != null) {
+			OpenState (state);
+		}
+	}
+
+	public	object[] GetKeptData() {
+		var d = _data;
+		_data = null;
+		return d;
+	}
+
+	private	void KeepData(params object[] data) {
+		_data = data;
 	}
 
 	private	void OpenState(UIState state) {

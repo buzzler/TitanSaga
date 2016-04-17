@@ -2,4 +2,5 @@
 <Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" start="debugconsole">
 	<Event id="error" />
 	<State id="debugconsole" scene="DebugConsole"/>
+	<State id="addnewtile" scene="AddNewTile"/>
 </Config>

@@ -32,6 +32,10 @@ public class DebugConsole : MonoBehaviour {
 		_library = Observer.Instance.tileManager.config.library;
 	}
 
+	void OnEnable() {
+		Observer.Instance.tileManager.Grid (false);
+	}
+
 	void OnDestroy() {
 		btnCategory.onClick.RemoveAllListeners();
 		btnSimple.onClick.RemoveAllListeners();
@@ -42,7 +46,7 @@ public class DebugConsole : MonoBehaviour {
 	}
 
 	private	void OnClickItem(TileBase tilebase) {
-		Debug.Log(tilebase);
+		Observer.Instance.uiManager.OpenState ("addnewtile", tilebase);
 	}
 
 	private	void OnClickCategory() {

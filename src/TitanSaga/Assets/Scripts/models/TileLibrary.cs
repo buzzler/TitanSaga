@@ -449,8 +449,19 @@ namespace TileLib {
 		}
 
 		public	void AddTerrain(TileTerrain terrain) {
-			_tlist[terrain.x][terrain.y][terrain.z] = terrain;
-			terrain.map = this;
+			if (_tlist [terrain.x] [terrain.y] [terrain.z] == null) {
+				_tlist [terrain.x] [terrain.y] [terrain.z] = terrain;
+				terrain.map = this;
+			} else {
+				Debug.LogWarningFormat ("Conflict x:{0}, y:{1}, z:{2}", terrain.x, terrain.y, terrain.z);
+			}
+		}
+
+		public	void RemoveTerrain(TileTerrain terrain) {
+			if (_tlist [terrain.x] [terrain.y] [terrain.z] == terrain) {
+				_tlist [terrain.x] [terrain.y] [terrain.z] = null;
+				terrain.map = null;
+			}
 		}
 
 		public	TileTerrain GetTerrain(int x, int y, int z) {
@@ -477,20 +488,26 @@ namespace TileLib {
 
 		public	TileTerrain() {
 			this.item = string.Empty;
-			this.xf = 0f;
-			this.yf = 0f;
-			this.zf = 0f;
 			this.face = TileFace.Up;
 			this.map = null;
+			SetPosition (0f, 0f, 0f);
 		}
 
 		public	TileTerrain(string item, float x, float y, float z) {
 			this.item = item;
+			this.face = TileFace.Up;
+			this.map = null;
+			SetPosition (x, y, z);
+		}
+
+		public	void SetPosition(float x, float y, float z) {
 			this.xf = x;
 			this.yf = y;
 			this.zf = z;
-			this.face = TileFace.Up;
-			this.map = null;
+		}
+
+		public	void SetPosition(Vector3 position) {
+			SetPosition (position.x, position.y, position.z);
 		}
 
 		public	int x {
@@ -513,49 +530,81 @@ namespace TileLib {
 
 		public	TileTerrain u {
 			get {
-				return map.GetTerrain(x, y, z - 1);
+				if (map != null) {
+					return map.GetTerrain (x, y, z - 1);
+				} else {
+					return null;
+				}
 			}
 		}
 
 		public	TileTerrain d {
 			get {
-				return map.GetTerrain(x, y, z + 1);
+				if (map != null) {
+					return map.GetTerrain (x, y, z + 1);
+				} else {
+					return null;
+				}
 			}
 		}
 
 		public	TileTerrain l {
 			get {
-				return map.GetTerrain(x - 1, y, z);
+				if (map != null) {
+					return map.GetTerrain (x - 1, y, z);
+				} else {
+					return null;
+				}
 			}
 		}
 
 		public	TileTerrain r {
 			get {
-				return map.GetTerrain(x + 1, y, z);
+				if (map != null) {
+					return map.GetTerrain (x + 1, y, z);
+				} else {
+					return null;
+				}
 			}
 		}
 
 		public	TileTerrain ul {
 			get {
-				return map.GetTerrain(x - 1, y, z - 1);
+				if (map != null) {
+					return map.GetTerrain (x - 1, y, z - 1);
+				} else {
+					return null;
+				}
 			}
 		}
 
 		public	TileTerrain ur {
 			get {
-				return map.GetTerrain(x + 1, y, z - 1);
+				if (map != null) {
+					return map.GetTerrain (x + 1, y, z - 1);
+				} else {
+					return null;
+				}
 			}
 		}
 
 		public	TileTerrain dl {
 			get {
-				return map.GetTerrain(x - 1, y, z + 1);
+				if (map != null) {
+					return map.GetTerrain (x - 1, y, z + 1);
+				} else {
+					return null;
+				}
 			}
 		}
 
 		public	TileTerrain dr {
 			get {
-				return map.GetTerrain(x + 1, y, z + 1);
+				if (map != null) {
+					return map.GetTerrain (x + 1, y, z + 1);
+				} else {
+					return null;
+				}
 			}
 		}
 
