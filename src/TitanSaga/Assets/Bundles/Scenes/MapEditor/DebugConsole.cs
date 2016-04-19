@@ -4,45 +4,41 @@ using System.Collections;
 using TileLib;
 
 public class DebugConsole : MonoBehaviour {
-
 	public	HorizontalLayoutor	scrollView;
 	public	RectTransform		scrollPrefab;
 	public	Button				btnCategory;
 	public	Button				btnSimple;
 	public	Button				btnComplex;
 	public	Button				btnDirection;
+	public	Button				btnClear;
+	public	Button				btnLoad;
 	public	Button				btnSave;
 	public	Button				btnClose;
 
 	private	TileLibrary			_library;
 
-	void Awake () {
-		if (btnCategory == null || btnSave == null || btnClose == null) {
-			throw new MissingComponentException();
-		}
-		btnCategory.onClick.AddListener(OnClickCategory);
-		btnSimple.onClick.AddListener(OnClickSimple);
-		btnComplex.onClick.AddListener(OnClickComplex);
-		btnDirection.onClick.AddListener(OnClickDirection);
-		btnSave.onClick.AddListener(OnClickSave);
-		btnClose.onClick.AddListener(OnClickClose);
-	}
-
-	void Start() {
+	void OnEnable () {
+		btnCategory.onClick.AddListener (OnClickCategory);
+		btnSimple.onClick.AddListener (OnClickSimple);
+		btnComplex.onClick.AddListener (OnClickComplex);
+		btnDirection.onClick.AddListener (OnClickDirection);
+		btnClear.onClick.AddListener (OnClickClear);
+		btnLoad.onClick.AddListener (OnClickLoad);
+		btnSave.onClick.AddListener (OnClickSave);
+		btnClose.onClick.AddListener (OnClickClose);
 		_library = Observer.Instance.tileManager.config.library;
 	}
 
-	void OnEnable() {
-		Observer.Instance.tileManager.Grid (false);
-	}
-
-	void OnDestroy() {
-		btnCategory.onClick.RemoveAllListeners();
-		btnSimple.onClick.RemoveAllListeners();
-		btnComplex.onClick.RemoveAllListeners();
-		btnDirection.onClick.RemoveAllListeners();
-		btnSave.onClick.RemoveAllListeners();
-		btnClose.onClick.RemoveAllListeners();
+	void OnDisable() {
+		btnCategory.onClick.RemoveAllListeners ();
+		btnSimple.onClick.RemoveAllListeners ();
+		btnComplex.onClick.RemoveAllListeners ();
+		btnDirection.onClick.RemoveAllListeners ();
+		btnClear.onClick.RemoveAllListeners ();
+		btnLoad.onClick.RemoveAllListeners ();
+		btnSave.onClick.RemoveAllListeners ();
+		btnClose.onClick.RemoveAllListeners ();
+		_library = null;
 	}
 
 	private	void OnClickItem(TileBase tilebase) {
@@ -93,12 +89,40 @@ public class DebugConsole : MonoBehaviour {
 		scrollView.Align();
 	}
 
+	private	void OnClickClear() {
+		#if UNITY_EDITOR
+		if (UnityEditor.EditorUtility.DisplayDialog("clear map info", "really?", "OK", "Cancel")) {
+			Observer.Instance.tileManager.ClearMap();
+		}
+		#endif
+	}
+
+	private	void OnClickLoad() {
+		#if UNITY_EDITOR
+		var path = UnityEditor.EditorUtility.OpenFilePanel("load map info", Application.dataPath, "xml");
+		if (!string.IsNullOrEmpty(path)) {
+			var xml = System.IO.File.ReadAllText(path);
+			Observer.Instance.tileManager.LoadMap(TitanUtility.LoadFromText<TileMap>(xml));
+		}
+		#endif
+	}
+
 	private	void OnClickSave() {
-		
+		#if UNITY_EDITOR
+		var path = UnityEditor.EditorUtility.SaveFilePanel("save map info", Application.dataPath, "map", "xml");
+		if (!string.IsNullOrEmpty(path)) {
+			System.IO.File.WriteAllText(path, Observer.Instance.tileManager.mapXml);
+			UnityEditor.EditorUtility.RevealInFinder(path);
+		}
+		#endif
 	}
 
 	private	void OnClickClose() {
-		Observer.Instance.uiManager.CloseAllState();
+		#if UNITY_EDITOR
+		if (UnityEditor.EditorUtility.DisplayDialog("exit map editor", "really?", "OK", "Cancel")) {
+			Observer.Instance.uiManager.CloseAllState();
+		}
+		#endif
 	}
 
 	private	void AddContent(TileItem item, TileBase tilebase) {

@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class Panning : MonoBehaviour {
-	public float speed = 0.1F;
+	public	float speed = 0.1F;
+	public	Rect bound;
 
 	private	float mult = 0.01f;
 	private Vector3 dest = Vector3.zero;
@@ -28,9 +29,11 @@ public class Panning : MonoBehaviour {
 				prev = Input.mousePosition;
 			}
 			var cp = Input.mousePosition;
+			bound = Observer.Instance.tileManager.bound;
+
 			dest += (prev - cp) * mult;
-			dest.x = Mathf.Clamp(dest.x, -3f, 3f);
-			dest.y = Mathf.Clamp(dest.y, -3f, 3f);
+			dest.x = Mathf.Clamp(dest.x, bound.xMin, bound.xMax);
+			dest.y = Mathf.Clamp(dest.y, bound.yMin, bound.yMax);
 			prev = cp;
 		} else {
 			prev = Vector3.zero;

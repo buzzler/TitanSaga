@@ -186,9 +186,9 @@ namespace TileLib {
 		[XmlAttribute("cube")]
 		public	bool	cube;
 		[XmlAttribute("pivotX")]
-		public	int		pivotX;
+		public	float	pivotX;
 		[XmlAttribute("pivotY")]
-		public	int		pivotY;
+		public	float	pivotY;
 
 		public	TileItem() {
 			type = TileType.Item;
@@ -439,33 +439,43 @@ namespace TileLib {
 					}
 				}
 			}
+
 			_tlist = wlist;
 
 			for (int i = terrains.Length-1 ; i >= 0 ; i--) {
 				var terrain = terrains[i];
 				_tlist[terrain.x][terrain.y][terrain.z] = terrain;
-				terrain.map = this;
+				terrain.SetMap (this);
 			}
 		}
 
-		public	void AddTerrain(TileTerrain terrain) {
+		public	bool AddTerrain(TileTerrain terrain) {
 			if (_tlist [terrain.x] [terrain.y] [terrain.z] == null) {
 				_tlist [terrain.x] [terrain.y] [terrain.z] = terrain;
-				terrain.map = this;
+				terrain.SetMap (this);
+				// TODO : add terrain from terrains array Generic
+				System.Array.Resize<TileTerrain> (ref terrains, terrains.Length + 1);
+				terrains [terrains.Length - 1] = terrain;
+				return true;
 			} else {
 				Debug.LogWarningFormat ("Conflict x:{0}, y:{1}, z:{2}", terrain.x, terrain.y, terrain.z);
+				return false;
 			}
 		}
 
 		public	void RemoveTerrain(TileTerrain terrain) {
 			if (_tlist [terrain.x] [terrain.y] [terrain.z] == terrain) {
 				_tlist [terrain.x] [terrain.y] [terrain.z] = null;
-				terrain.map = null;
+				terrain.SetMap (null);
+				// TODO : remove terrain from terrains array Generic
+				terrains = System.Array.FindAll<TileTerrain>(terrains, (TileTerrain a)=>{
+					return a != terrain;
+				});
 			}
 		}
 
 		public	TileTerrain GetTerrain(int x, int y, int z) {
-			if (x < 0 || x >= width || y < 0 || y > height || z < 0 || z > depth) {
+			if (x < 0 || x >= width || y < 0 || y >= height || z < 0 || z >= depth) {
 				return null;
 			} else {
 				return _tlist[x][y][z];
@@ -484,20 +494,28 @@ namespace TileLib {
 		public	float		zf;
 		[XmlAttribute("face")]
 		public	TileFace	face;
-		public	TileMap		map;
+		private	TileMap		_map;
 
 		public	TileTerrain() {
 			this.item = string.Empty;
 			this.face = TileFace.Up;
-			this.map = null;
+			this._map = null;
 			SetPosition (0f, 0f, 0f);
 		}
 
 		public	TileTerrain(string item, float x, float y, float z) {
 			this.item = item;
 			this.face = TileFace.Up;
-			this.map = null;
+			this._map = null;
 			SetPosition (x, y, z);
+		}
+
+		public	void SetMap(TileMap map) {
+			_map = map;
+		}
+
+		public	TileMap GetMap() {
+			return _map;
 		}
 
 		public	void SetPosition(float x, float y, float z) {
@@ -530,8 +548,8 @@ namespace TileLib {
 
 		public	TileTerrain u {
 			get {
-				if (map != null) {
-					return map.GetTerrain (x, y, z - 1);
+				if (_map != null) {
+					return _map.GetTerrain (x, y, z - 1);
 				} else {
 					return null;
 				}
@@ -540,8 +558,8 @@ namespace TileLib {
 
 		public	TileTerrain d {
 			get {
-				if (map != null) {
-					return map.GetTerrain (x, y, z + 1);
+				if (_map != null) {
+					return _map.GetTerrain (x, y, z + 1);
 				} else {
 					return null;
 				}
@@ -550,8 +568,8 @@ namespace TileLib {
 
 		public	TileTerrain l {
 			get {
-				if (map != null) {
-					return map.GetTerrain (x - 1, y, z);
+				if (_map != null) {
+					return _map.GetTerrain (x - 1, y, z);
 				} else {
 					return null;
 				}
@@ -560,8 +578,8 @@ namespace TileLib {
 
 		public	TileTerrain r {
 			get {
-				if (map != null) {
-					return map.GetTerrain (x + 1, y, z);
+				if (_map != null) {
+					return _map.GetTerrain (x + 1, y, z);
 				} else {
 					return null;
 				}
@@ -570,8 +588,8 @@ namespace TileLib {
 
 		public	TileTerrain ul {
 			get {
-				if (map != null) {
-					return map.GetTerrain (x - 1, y, z - 1);
+				if (_map != null) {
+					return _map.GetTerrain (x - 1, y, z - 1);
 				} else {
 					return null;
 				}
@@ -580,8 +598,8 @@ namespace TileLib {
 
 		public	TileTerrain ur {
 			get {
-				if (map != null) {
-					return map.GetTerrain (x + 1, y, z - 1);
+				if (_map != null) {
+					return _map.GetTerrain (x + 1, y, z - 1);
 				} else {
 					return null;
 				}
@@ -590,8 +608,8 @@ namespace TileLib {
 
 		public	TileTerrain dl {
 			get {
-				if (map != null) {
-					return map.GetTerrain (x - 1, y, z + 1);
+				if (_map != null) {
+					return _map.GetTerrain (x - 1, y, z + 1);
 				} else {
 					return null;
 				}
@@ -600,8 +618,8 @@ namespace TileLib {
 
 		public	TileTerrain dr {
 			get {
-				if (map != null) {
-					return map.GetTerrain (x + 1, y, z + 1);
+				if (_map != null) {
+					return _map.GetTerrain (x + 1, y, z + 1);
 				} else {
 					return null;
 				}

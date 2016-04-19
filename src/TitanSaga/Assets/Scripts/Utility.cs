@@ -5,6 +5,20 @@ using System.IO;
 
 public class TitanUtility
 {
+	public static T[] ConcatArrays<T>(params T[][] list) {
+		int sum = 0;
+		for (int x = list.Length - 1; x >= 0; x--) {
+			sum += list [x].Length;
+		}
+		var result = new T[sum];
+		int offset = 0;
+		for (int x = 0; x < sum; x++) {
+			list [x].CopyTo (result, offset);
+			offset += list [x].Length;
+		}
+		return result;
+	}
+
 	public	static T LoadFromText<T>(string text) {
 		var serializer = new XmlSerializer(typeof(T));
 		var config = (T)serializer.Deserialize(new StringReader(text));
