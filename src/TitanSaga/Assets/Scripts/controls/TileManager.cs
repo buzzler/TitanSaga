@@ -117,10 +117,12 @@ public class TileManager : MonoBehaviour {
 			for (int i = 0; i < count; i++) {
 				var tr = list [i];
 				if (updateCoord) {
-					tr.localPosition = GetPixelCoord (terrain.xf, terrain.yf, terrain.zf);;
+					tr.localPosition = GetPixelCoord (terrain.xf, terrain.yf, terrain.zf);
 				}
 				if (updateSprite) {
-					tr.GetComponent<SpriteRenderer> ().sprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite> (items [i].assetPath);
+					var item = items [i];
+					tr.Translate (-item.pivotX,-item.pivotY, 0);
+					tr.GetComponent<SpriteRenderer> ().sprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite> (item.assetPath);
 				}
 			}
 		}
