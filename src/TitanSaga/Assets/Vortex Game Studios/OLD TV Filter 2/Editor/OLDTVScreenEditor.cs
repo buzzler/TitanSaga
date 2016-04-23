@@ -16,8 +16,6 @@ public class OLDTVScreenEditor : Editor {
     private bool _foldNoise = true;
     private bool _foldStatic = true;
 
-    private SerializedProperty _material;
-
     private SerializedProperty _screenSaturation;
 
     private SerializedProperty _chromaticAberrationPattern;
@@ -40,7 +38,6 @@ public class OLDTVScreenEditor : Editor {
             _logo = ( Texture2D )AssetDatabase.LoadAssetAtPath( "Assets/Vortex Game Studios/OLD TV Filter 2/Gizmos/logo_screen.png", typeof( Texture2D ) );
         }
 
-        _material = serializedObject.FindProperty( "tvMaterialScreen" );
         _screenSaturation = serializedObject.FindProperty( "screenSaturation" );
 
         _chromaticAberrationPattern = serializedObject.FindProperty( "chromaticAberrationPattern" );
