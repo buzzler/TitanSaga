@@ -326,8 +326,6 @@ namespace TileLib
 
 	public class TileLibrary
 	{
-		[XmlAttribute ("path")]
-		public	string path;
 		[XmlAttribute ("default")]
 		public	string unit;
 		[XmlElement ("Category")]
@@ -417,6 +415,8 @@ namespace TileLib
 	{
 		[XmlAttribute ("name")]
 		public	string name;
+		[XmlAttribute ("path")]
+		public	string path;
 		[XmlElement ("Item")]
 		public	TileItem[] items;
 		private	Dictionary<string, TileItem>	_dictionary;
@@ -433,6 +433,7 @@ namespace TileLib
 			_dictionary.Clear ();
 			for (int i = items.Length - 1; i >= 0; i--) {
 				TileItem item = items [i];
+				item.category = this;
 				_dictionary.Add (item.id, item);
 			}
 		}
@@ -460,22 +461,34 @@ namespace TileLib
 	public	class TileItem : TileBase
 	{
 		[XmlAttribute ("asset")]
-		public	string	asset;
-		[XmlAttribute ("cube")]
-		public	bool	cube;
+		public	string			asset;
 		[XmlAttribute ("pivotX")]
-		public	float	pivotX;
+		public	float			pivotX;
 		[XmlAttribute ("pivotY")]
-		public	float	pivotY;
+		public	float			pivotY;
+		private	string			_assetPath;
+		private	TileCategory	_category;
 
 		public	TileItem ()
 		{
 			type = TileType.Item;
 		}
 
+		public	TileCategory category {
+			get {
+				return _category;
+			}
+			set {
+				_category = value;
+				if (value != null) {
+					_assetPath = Path.Combine (value.path, asset);
+				}
+			}
+		}
+
 		public	string assetPath {
 			get {
-				return Path.Combine (library.path, asset);
+				return _assetPath;
 			}
 		}
 	}

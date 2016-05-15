@@ -122,7 +122,7 @@ public class TileManager : MonoBehaviour {
 				if (updateSprite) {
 					var item = items [i];
 					tr.Translate (-item.pivotX,-item.pivotY, 0);
-					tr.GetComponent<SpriteRenderer> ().sprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite> (item.assetPath);
+					tr.GetComponent<SpriteRenderer> ().sprite = LoadSprite (item.assetPath);
 				}
 			}
 		}
@@ -141,12 +141,20 @@ public class TileManager : MonoBehaviour {
 
 	private	Transform RenderTileItem(Transform container, TileItem item, Vector3 position) {
 		var go = new GameObject (item.asset, typeof(SpriteRenderer));
-		go.GetComponent<SpriteRenderer> ().sprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite> (item.assetPath);
+		go.GetComponent<SpriteRenderer> ().sprite = LoadSprite (item.assetPath);
 		var tr = go.transform;
 		tr.SetParent (container);
 		tr.localPosition = position;
 		tr.Translate (-item.pivotX,-item.pivotY, 0);
 		return tr;
+	}
+
+	private	Sprite LoadSprite(string assetPath) {
+		var sprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite> (assetPath);
+		if (sprite == null) {
+			Debug.LogWarningFormat ("can't find resource at {0}", assetPath);
+		}
+		return sprite;
 	}
 
 	public	Vector3 GetPixelCoord(float x, float y, float z) {
