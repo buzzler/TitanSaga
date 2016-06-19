@@ -2,42 +2,42 @@
 <Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<Library default="i_snow_1">
 		<Category name="c_flag" path="Assets/Bundles/Tiles/Unit">
-			<Item id="i_flag_b1" asset="ISO_Prob_Flag_b_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_b2" asset="ISO_Prob_Flag_b_02.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_b3" asset="ISO_Prob_Flag_b_03.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_b4" asset="ISO_Prob_Flag_b_04.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_b5" asset="ISO_Prob_Flag_b_05.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_b6" asset="ISO_Prob_Flag_b_06.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_g1" asset="ISO_Prob_Flag_g_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_g2" asset="ISO_Prob_Flag_g_02.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_g3" asset="ISO_Prob_Flag_g_03.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_g4" asset="ISO_Prob_Flag_g_04.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_g5" asset="ISO_Prob_Flag_g_05.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_g6" asset="ISO_Prob_Flag_g_06.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_k1" asset="ISO_Prob_Flag_k_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_k2" asset="ISO_Prob_Flag_k_02.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_k3" asset="ISO_Prob_Flag_k_03.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_k4" asset="ISO_Prob_Flag_k_04.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_k5" asset="ISO_Prob_Flag_k_05.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_k6" asset="ISO_Prob_Flag_k_06.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_p1" asset="ISO_Prob_Flag_p_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_p2" asset="ISO_Prob_Flag_p_02.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_p3" asset="ISO_Prob_Flag_p_03.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_p4" asset="ISO_Prob_Flag_p_04.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_p5" asset="ISO_Prob_Flag_p_05.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_p6" asset="ISO_Prob_Flag_p_06.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_r1" asset="ISO_Prob_Flag_r_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_r2" asset="ISO_Prob_Flag_r_02.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_r3" asset="ISO_Prob_Flag_r_03.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_r4" asset="ISO_Prob_Flag_r_04.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_r5" asset="ISO_Prob_Flag_r_05.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_r6" asset="ISO_Prob_Flag_r_06.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_y1" asset="ISO_Prob_Flag_y_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_y2" asset="ISO_Prob_Flag_y_02.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_y3" asset="ISO_Prob_Flag_y_03.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_y4" asset="ISO_Prob_Flag_y_04.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_y5" asset="ISO_Prob_Flag_y_05.png" pivotX="0" pivotY="0" />
-			<Item id="i_flag_y6" asset="ISO_Prob_Flag_y_06.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_b_1" asset="ISO_Prob_Flag_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_b_2" asset="ISO_Prob_Flag_b_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_b_3" asset="ISO_Prob_Flag_b_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_b_4" asset="ISO_Prob_Flag_b_04.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_b_5" asset="ISO_Prob_Flag_b_05.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_b_6" asset="ISO_Prob_Flag_b_06.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_g_1" asset="ISO_Prob_Flag_g_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_g_2" asset="ISO_Prob_Flag_g_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_g_3" asset="ISO_Prob_Flag_g_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_g_4" asset="ISO_Prob_Flag_g_04.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_g_5" asset="ISO_Prob_Flag_g_05.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_g_6" asset="ISO_Prob_Flag_g_06.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_k_1" asset="ISO_Prob_Flag_k_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_k_2" asset="ISO_Prob_Flag_k_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_k_3" asset="ISO_Prob_Flag_k_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_k_4" asset="ISO_Prob_Flag_k_04.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_k_5" asset="ISO_Prob_Flag_k_05.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_k_6" asset="ISO_Prob_Flag_k_06.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_p_1" asset="ISO_Prob_Flag_p_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_p_2" asset="ISO_Prob_Flag_p_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_p_3" asset="ISO_Prob_Flag_p_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_p_4" asset="ISO_Prob_Flag_p_04.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_p_5" asset="ISO_Prob_Flag_p_05.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_p_6" asset="ISO_Prob_Flag_p_06.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_r_1" asset="ISO_Prob_Flag_r_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_r_2" asset="ISO_Prob_Flag_r_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_r_3" asset="ISO_Prob_Flag_r_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_r_4" asset="ISO_Prob_Flag_r_04.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_r_5" asset="ISO_Prob_Flag_r_05.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_r_6" asset="ISO_Prob_Flag_r_06.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_y_1" asset="ISO_Prob_Flag_y_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_y_2" asset="ISO_Prob_Flag_y_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_y_3" asset="ISO_Prob_Flag_y_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_y_4" asset="ISO_Prob_Flag_y_04.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_y_5" asset="ISO_Prob_Flag_y_05.png" pivotX="0" pivotY="0" />
+			<Item id="i_flag_y_6" asset="ISO_Prob_Flag_y_06.png" pivotX="0" pivotY="0" />
 		</Category>
 		<Category name="c_brick" path="Assets/Bundles/Tiles/Terrain">
 			<Item id="i_brick_1" asset="ISO_Tile_Brick_Brick_01.png" pivotX="0" pivotY="0" />
@@ -204,6 +204,268 @@
 			<Item id="i_wood_3" asset="ISO_Tile_Wood_03.png" pivotX="0" pivotY="0" />
 			<Item id="i_wood_4" asset="ISO_Tile_Wood_04.png" pivotX="0" pivotY="0" />
 		</Category>
+		<Category name="c_unit" path="Assets/Bundles/Tiles/Unit">
+			<Item id="i_piece_a" asset="ISO_Prob_Pieces_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_piece_b" asset="ISO_Prob_Pieces_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_piece_c" asset="ISO_Prob_Pieces_c_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_piece_d" asset="ISO_Prob_Pieces_d_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_piece_e" asset="ISO_Prob_Pieces_e_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bankgold_a" asset="ISO_Unit_Bankgold_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bankgold_b" asset="ISO_Unit_Bankgold_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bankgold_c" asset="ISO_Unit_Bankgold_c_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bankgold_d" asset="ISO_Unit_Bankgold_d_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bankgold_e" asset="ISO_Unit_Bankgold_e_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bankperidot_a" asset="ISO_Unit_Bankperidot_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bankperidot_b" asset="ISO_Unit_Bankperidot_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bankperidot_c" asset="ISO_Unit_Bankperidot_c_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bankperidot_d" asset="ISO_Unit_Bankperidot_d_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bankperidot_e" asset="ISO_Unit_Bankperidot_e_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bootcamp_a" asset="ISO_Unit_Bootcamp_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bootcamp_b" asset="ISO_Unit_Bootcamp_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bootcamp_c" asset="ISO_Unit_Bootcamp_c_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bootcamp_d" asset="ISO_Unit_Bootcamp_d_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bootcamp_e" asset="ISO_Unit_Bootcamp_e_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_cannon_a" asset="ISO_Unit_Cannon_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_cannon_b" asset="ISO_Unit_Cannon_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_cannon_c" asset="ISO_Unit_Cannon_c_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_cannon_d" asset="ISO_Unit_Cannon_d_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_cannon_e" asset="ISO_Unit_Cannon_e_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_castle_a" asset="ISO_Unit_Castle_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_castle_b" asset="ISO_Unit_Castle_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_castle_c" asset="ISO_Unit_Castle_c_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_castle_d" asset="ISO_Unit_Castle_d_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_castle_e" asset="ISO_Unit_Castle_e_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_dungeon_a" asset="ISO_Unit_Dungeon_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_dungeon_b" asset="ISO_Unit_Dungeon_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_dungeon_c" asset="ISO_Unit_Dungeon_c_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_dungeon_d" asset="ISO_Unit_Dungeon_d_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_dungeon_e" asset="ISO_Unit_Dungeon_e_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_engineer_a" asset="ISO_Unit_Engineer_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_engineer_b" asset="ISO_Unit_Engineer_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_engineer_c" asset="ISO_Unit_Engineer_c_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_engineer_d" asset="ISO_Unit_Engineer_d_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_engineer_e" asset="ISO_Unit_Engineer_e_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_house_a" asset="ISO_Unit_House_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_house_b" asset="ISO_Unit_House_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_house_c" asset="ISO_Unit_House_c_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_house_d" asset="ISO_Unit_House_d_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_house_e" asset="ISO_Unit_House_e_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_magicalter_a" asset="ISO_Unit_Magicalter_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_magicalter_b" asset="ISO_Unit_Magicalter_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_magicalter_c" asset="ISO_Unit_Magicalter_c_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_magicalter_d" asset="ISO_Unit_Magicalter_d_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_magicalter_e" asset="ISO_Unit_Magicalter_e_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_magiclab_a" asset="ISO_Unit_Magiclab_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_magiclab_b" asset="ISO_Unit_Magiclab_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_magiclab_c" asset="ISO_Unit_Magiclab_c_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_magiclab_d" asset="ISO_Unit_Magiclab_d_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_magiclab_e" asset="ISO_Unit_Magiclab_e_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_magictower_a" asset="ISO_Unit_Magictower_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_magictower_b" asset="ISO_Unit_Magictower_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_magictower_c" asset="ISO_Unit_Magictower_c_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_magictower_d" asset="ISO_Unit_Magictower_d_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_magictower_e" asset="ISO_Unit_Magictower_e_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_minegold_a" asset="ISO_Unit_Minegold_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_minegold_b" asset="ISO_Unit_Minegold_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_minegold_c" asset="ISO_Unit_Minegold_c_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_minegold_d" asset="ISO_Unit_Minegold_d_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_minegold_e" asset="ISO_Unit_Minegold_e_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_mineperidot_a" asset="ISO_Unit_Mineperidot_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_mineperidot_b" asset="ISO_Unit_Mineperidot_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_mineperidot_c" asset="ISO_Unit_Mineperidot_c_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_mineperidot_d" asset="ISO_Unit_Mineperidot_d_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_mineperidot_e" asset="ISO_Unit_Mineperidot_e_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_pentagon_a" asset="ISO_Unit_Pentagon_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_pentagon_b" asset="ISO_Unit_Pentagon_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_pentagon_c" asset="ISO_Unit_Pentagon_c_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_pentagon_d" asset="ISO_Unit_Pentagon_d_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_pentagon_e" asset="ISO_Unit_Pentagon_e_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_a_1" asset="ISO_Unit_Wall_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_a_2" asset="ISO_Unit_Wall_a_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_a_3" asset="ISO_Unit_Wall_a_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_a_4" asset="ISO_Unit_Wall_a_04.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_b_1" asset="ISO_Unit_Wall_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_b_2" asset="ISO_Unit_Wall_b_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_b_3" asset="ISO_Unit_Wall_b_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_b_4" asset="ISO_Unit_Wall_b_04.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_c_1" asset="ISO_Unit_Wall_c_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_c_2" asset="ISO_Unit_Wall_c_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_c_3" asset="ISO_Unit_Wall_c_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_c_4" asset="ISO_Unit_Wall_c_04.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_d_1" asset="ISO_Unit_Wall_d_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_d_2" asset="ISO_Unit_Wall_d_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_d_3" asset="ISO_Unit_Wall_d_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_d_4" asset="ISO_Unit_Wall_d_04.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_e_1" asset="ISO_Unit_Wall_e_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_e_2" asset="ISO_Unit_Wall_e_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_e_3" asset="ISO_Unit_Wall_e_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_wall_e_4" asset="ISO_Unit_Wall_e_04.png" pivotX="0" pivotY="0" />
+		</Category>
+		<Building id="t_piece_a">
+			<Basic item="i_piece_a">
+				<Child item="i_flag_b_1" x="0" y="60" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_piece_a">
+				<Child item="i_flag_b_1" x="0" y="60" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_piece_a">
+				<Child item="i_flag_g_1" x="0" y="60" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_piece_a">
+				<Child item="i_flag_k_1" x="0" y="60" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_piece_a">
+				<Child item="i_flag_p_1" x="0" y="60" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_piece_a">
+				<Child item="i_flag_r_1" x="0" y="60" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_piece_a">
+				<Child item="i_flag_y_1" x="0" y="60" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_bankgold_a">
+			<Basic item="i_bankgold_a">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+		</Building>
+		<Building id="t_bankperidot_a">
+			<Basic item="i_bankperidot_a">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+		</Building>
+		<Building id="t_bootcamp_a">
+			<Basic item="i_bootcamp_a">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+		</Building>
+		<Building id="t_cannon_a">
+			<Basic item="i_cannon_a" />
+		</Building>
+		<Building id="t_castle_a">
+			<Basic item="i_castle_a">
+				<Child item="i_flag_b_1" x="0" y="147" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+		</Building>
+		<Building id="t_dungeon_a">
+			<Basic item="i_dungeon_a" />
+		</Building>
+		<Building id="t_engineer_a">
+			<Basic item="i_engineer_a" />
+		</Building>
+		<Building id="t_house_a">
+			<Basic item="i_house_a" />
+		</Building>
+		<Building id="t_magicalter_a">
+			<Basic item="i_magicalter_a" />
+		</Building>
+		<Building id="t_magiclab_a">
+			<Basic item="i_magiclab_a" />
+		</Building>
+		<Building id="t_magictower_a">
+			<Basic item="i_magictower_a" />
+		</Building>
+		<Building id="t_minegold_a">
+			<Basic item="i_minegold_a" />
+		</Building>
+		<Building id="t_mineperidot_a">
+			<Basic item="i_mineperidot_a" />
+		</Building>
+		<Building id="t_pentagon_a">
+			<Basic item="i_pentagon_a">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+		</Building>
+		<Simple id="t_wall_a">
+			<None item="i_wall_a_1"/>
+			<U item="i_wall_a_3"/>
+			<D item="i_wall_a_1"/>
+			<L item="i_wall_a_2"/>
+			<R item="i_wall_a_1"/>
+			<UD item="i_wall_a_3"/>
+			<UL item="i_wall_a_4"/>
+			<UR item="i_wall_a_3"/>
+			<DL item="i_wall_a_2"/>
+			<DR item="i_wall_a_1"/>
+			<LR item="i_wall_a_2"/>
+			<UDL item="i_wall_a_4"/>
+			<UDR item="i_wall_a_3"/>
+			<ULR item="i_wall_a_4"/>
+			<DLR item="i_wall_a_2"/>
+			<UDLR item="i_wall_a_4"/>
+		</Simple>
+		<Simple id="t_wall_b">
+			<None item="i_wall_b_1"/>
+			<U item="i_wall_b_3"/>
+			<D item="i_wall_b_1"/>
+			<L item="i_wall_b_2"/>
+			<R item="i_wall_b_1"/>
+			<UD item="i_wall_b_3"/>
+			<UL item="i_wall_b_4"/>
+			<UR item="i_wall_b_3"/>
+			<DL item="i_wall_b_2"/>
+			<DR item="i_wall_b_1"/>
+			<LR item="i_wall_b_2"/>
+			<UDL item="i_wall_b_4"/>
+			<UDR item="i_wall_b_3"/>
+			<ULR item="i_wall_b_4"/>
+			<DLR item="i_wall_b_2"/>
+			<UDLR item="i_wall_b_4"/>
+		</Simple>
+		<Simple id="t_wall_c">
+			<None item="i_wall_c_1"/>
+			<U item="i_wall_c_3"/>
+			<D item="i_wall_c_1"/>
+			<L item="i_wall_c_2"/>
+			<R item="i_wall_c_1"/>
+			<UD item="i_wall_c_3"/>
+			<UL item="i_wall_c_4"/>
+			<UR item="i_wall_c_3"/>
+			<DL item="i_wall_c_2"/>
+			<DR item="i_wall_c_1"/>
+			<LR item="i_wall_c_2"/>
+			<UDL item="i_wall_c_4"/>
+			<UDR item="i_wall_c_3"/>
+			<ULR item="i_wall_c_4"/>
+			<DLR item="i_wall_c_2"/>
+			<UDLR item="i_wall_c_4"/>
+		</Simple>
+		<Simple id="t_wall_d">
+			<None item="i_wall_d_1"/>
+			<U item="i_wall_d_3"/>
+			<D item="i_wall_d_1"/>
+			<L item="i_wall_d_2"/>
+			<R item="i_wall_d_1"/>
+			<UD item="i_wall_d_3"/>
+			<UL item="i_wall_d_4"/>
+			<UR item="i_wall_d_3"/>
+			<DL item="i_wall_d_2"/>
+			<DR item="i_wall_d_1"/>
+			<LR item="i_wall_d_2"/>
+			<UDL item="i_wall_d_4"/>
+			<UDR item="i_wall_d_3"/>
+			<ULR item="i_wall_d_4"/>
+			<DLR item="i_wall_d_2"/>
+			<UDLR item="i_wall_d_4"/>
+		</Simple>
+		<Simple id="t_wall_e">
+			<None item="i_wall_e_1"/>
+			<U item="i_wall_e_3"/>
+			<D item="i_wall_e_1"/>
+			<L item="i_wall_e_2"/>
+			<R item="i_wall_e_1"/>
+			<UD item="i_wall_e_3"/>
+			<UL item="i_wall_e_4"/>
+			<UR item="i_wall_e_3"/>
+			<DL item="i_wall_e_2"/>
+			<DR item="i_wall_e_1"/>
+			<LR item="i_wall_e_2"/>
+			<UDL item="i_wall_e_4"/>
+			<UDR item="i_wall_e_3"/>
+			<ULR item="i_wall_e_4"/>
+			<DLR item="i_wall_e_2"/>
+			<UDLR item="i_wall_e_4"/>
+		</Simple>
 		<Simple id="t_grasspath">
 			<None item="i_grass_18"/>
 			<U item="i_grass_15"/>
@@ -289,6 +551,7 @@
 			<L item="i_stair_8"/>
 			<R item="i_stair_6"/>
 		</Direction>
+		<Normal id="t_dirt_5" item="i_dirt_5"/>
 	</Library>
 	<Tutorial>
 		<Map id="tutorial_1" width="20" height="3" depth="20">
@@ -592,106 +855,106 @@
 			<Terrain item="t_water" x="16" y="0" z="18"/>
 			<Terrain item="t_water" x="17" y="0" z="18"/>
 			<Terrain item="t_water" x="18" y="0" z="18"/>
-			<Terrain item="i_dirt_5" x="5" y="0" z="5"/>
-			<Terrain item="i_dirt_5" x="6" y="0" z="5"/>
-			<Terrain item="i_dirt_5" x="7" y="0" z="5"/>
-			<Terrain item="i_dirt_5" x="8" y="0" z="5"/>
-			<Terrain item="i_dirt_5" x="9" y="0" z="5"/>
-			<Terrain item="i_dirt_5" x="10" y="0" z="5"/>
-			<Terrain item="i_dirt_5" x="11" y="0" z="5"/>
-			<Terrain item="i_dirt_5" x="12" y="0" z="5"/>
-			<Terrain item="i_dirt_5" x="13" y="0" z="5"/>
-			<Terrain item="i_dirt_5" x="14" y="0" z="5"/>
-			<Terrain item="i_dirt_5" x="5" y="0" z="6"/>
-			<Terrain item="i_dirt_5" x="6" y="0" z="6"/>
-			<Terrain item="i_dirt_5" x="7" y="0" z="6"/>
-			<Terrain item="i_dirt_5" x="8" y="0" z="6"/>
-			<Terrain item="i_dirt_5" x="9" y="0" z="6"/>
-			<Terrain item="i_dirt_5" x="10" y="0" z="6"/>
-			<Terrain item="i_dirt_5" x="11" y="0" z="6"/>
-			<Terrain item="i_dirt_5" x="12" y="0" z="6"/>
-			<Terrain item="i_dirt_5" x="13" y="0" z="6"/>
-			<Terrain item="i_dirt_5" x="14" y="0" z="6"/>
-			<Terrain item="i_dirt_5" x="5" y="0" z="7"/>
-			<Terrain item="i_dirt_5" x="6" y="0" z="7"/>
-			<Terrain item="i_dirt_5" x="7" y="0" z="7"/>
-			<Terrain item="i_dirt_5" x="8" y="0" z="7"/>
-			<Terrain item="i_dirt_5" x="9" y="0" z="7"/>
-			<Terrain item="i_dirt_5" x="10" y="0" z="7"/>
-			<Terrain item="i_dirt_5" x="11" y="0" z="7"/>
-			<Terrain item="i_dirt_5" x="12" y="0" z="7"/>
-			<Terrain item="i_dirt_5" x="13" y="0" z="7"/>
-			<Terrain item="i_dirt_5" x="14" y="0" z="7"/>
-			<Terrain item="i_dirt_5" x="5" y="0" z="8"/>
-			<Terrain item="i_dirt_5" x="6" y="0" z="8"/>
-			<Terrain item="i_dirt_5" x="7" y="0" z="8"/>
-			<Terrain item="i_dirt_5" x="8" y="0" z="8"/>
-			<Terrain item="i_dirt_5" x="9" y="0" z="8"/>
-			<Terrain item="i_dirt_5" x="10" y="0" z="8"/>
-			<Terrain item="i_dirt_5" x="11" y="0" z="8"/>
-			<Terrain item="i_dirt_5" x="12" y="0" z="8"/>
-			<Terrain item="i_dirt_5" x="13" y="0" z="8"/>
-			<Terrain item="i_dirt_5" x="14" y="0" z="8"/>
-			<Terrain item="i_dirt_5" x="5" y="0" z="9"/>
-			<Terrain item="i_dirt_5" x="6" y="0" z="9"/>
-			<Terrain item="i_dirt_5" x="7" y="0" z="9"/>
-			<Terrain item="i_dirt_5" x="8" y="0" z="9"/>
-			<Terrain item="i_dirt_5" x="9" y="0" z="9"/>
-			<Terrain item="i_dirt_5" x="10" y="0" z="9"/>
-			<Terrain item="i_dirt_5" x="11" y="0" z="9"/>
-			<Terrain item="i_dirt_5" x="12" y="0" z="9"/>
-			<Terrain item="i_dirt_5" x="13" y="0" z="9"/>
-			<Terrain item="i_dirt_5" x="14" y="0" z="9"/>
-			<Terrain item="i_dirt_5" x="5" y="0" z="10"/>
-			<Terrain item="i_dirt_5" x="6" y="0" z="10"/>
-			<Terrain item="i_dirt_5" x="7" y="0" z="10"/>
-			<Terrain item="i_dirt_5" x="8" y="0" z="10"/>
-			<Terrain item="i_dirt_5" x="9" y="0" z="10"/>
-			<Terrain item="i_dirt_5" x="10" y="0" z="10"/>
-			<Terrain item="i_dirt_5" x="11" y="0" z="10"/>
-			<Terrain item="i_dirt_5" x="12" y="0" z="10"/>
-			<Terrain item="i_dirt_5" x="13" y="0" z="10"/>
-			<Terrain item="i_dirt_5" x="14" y="0" z="10"/>
-			<Terrain item="i_dirt_5" x="5" y="0" z="11"/>
-			<Terrain item="i_dirt_5" x="6" y="0" z="11"/>
-			<Terrain item="i_dirt_5" x="7" y="0" z="11"/>
-			<Terrain item="i_dirt_5" x="8" y="0" z="11"/>
-			<Terrain item="i_dirt_5" x="9" y="0" z="11"/>
-			<Terrain item="i_dirt_5" x="10" y="0" z="11"/>
-			<Terrain item="i_dirt_5" x="11" y="0" z="11"/>
-			<Terrain item="i_dirt_5" x="12" y="0" z="11"/>
-			<Terrain item="i_dirt_5" x="13" y="0" z="11"/>
-			<Terrain item="i_dirt_5" x="14" y="0" z="11"/>
-			<Terrain item="i_dirt_5" x="5" y="0" z="12"/>
-			<Terrain item="i_dirt_5" x="6" y="0" z="12"/>
-			<Terrain item="i_dirt_5" x="7" y="0" z="12"/>
-			<Terrain item="i_dirt_5" x="8" y="0" z="12"/>
-			<Terrain item="i_dirt_5" x="9" y="0" z="12"/>
-			<Terrain item="i_dirt_5" x="10" y="0" z="12"/>
-			<Terrain item="i_dirt_5" x="11" y="0" z="12"/>
-			<Terrain item="i_dirt_5" x="12" y="0" z="12"/>
-			<Terrain item="i_dirt_5" x="13" y="0" z="12"/>
-			<Terrain item="i_dirt_5" x="14" y="0" z="12"/>
-			<Terrain item="i_dirt_5" x="5" y="0" z="13"/>
-			<Terrain item="i_dirt_5" x="6" y="0" z="13"/>
-			<Terrain item="i_dirt_5" x="7" y="0" z="13"/>
-			<Terrain item="i_dirt_5" x="8" y="0" z="13"/>
-			<Terrain item="i_dirt_5" x="9" y="0" z="13"/>
-			<Terrain item="i_dirt_5" x="10" y="0" z="13"/>
-			<Terrain item="i_dirt_5" x="11" y="0" z="13"/>
-			<Terrain item="i_dirt_5" x="12" y="0" z="13"/>
-			<Terrain item="i_dirt_5" x="13" y="0" z="13"/>
-			<Terrain item="i_dirt_5" x="14" y="0" z="13"/>
-			<Terrain item="i_dirt_5" x="5" y="0" z="14"/>
-			<Terrain item="i_dirt_5" x="6" y="0" z="14"/>
-			<Terrain item="i_dirt_5" x="7" y="0" z="14"/>
-			<Terrain item="i_dirt_5" x="8" y="0" z="14"/>
-			<Terrain item="i_dirt_5" x="9" y="0" z="14"/>
-			<Terrain item="i_dirt_5" x="10" y="0" z="14"/>
-			<Terrain item="i_dirt_5" x="11" y="0" z="14"/>
-			<Terrain item="i_dirt_5" x="12" y="0" z="14"/>
-			<Terrain item="i_dirt_5" x="13" y="0" z="14"/>
-			<Terrain item="i_dirt_5" x="14" y="0" z="14"/>
+			<Terrain item="t_dirt_5" x="5" y="0" z="5"/>
+			<Terrain item="t_dirt_5" x="6" y="0" z="5"/>
+			<Terrain item="t_dirt_5" x="7" y="0" z="5"/>
+			<Terrain item="t_dirt_5" x="8" y="0" z="5"/>
+			<Terrain item="t_dirt_5" x="9" y="0" z="5"/>
+			<Terrain item="t_dirt_5" x="10" y="0" z="5"/>
+			<Terrain item="t_dirt_5" x="11" y="0" z="5"/>
+			<Terrain item="t_dirt_5" x="12" y="0" z="5"/>
+			<Terrain item="t_dirt_5" x="13" y="0" z="5"/>
+			<Terrain item="t_dirt_5" x="14" y="0" z="5"/>
+			<Terrain item="t_dirt_5" x="5" y="0" z="6"/>
+			<Terrain item="t_dirt_5" x="6" y="0" z="6"/>
+			<Terrain item="t_dirt_5" x="7" y="0" z="6"/>
+			<Terrain item="t_dirt_5" x="8" y="0" z="6"/>
+			<Terrain item="t_dirt_5" x="9" y="0" z="6"/>
+			<Terrain item="t_dirt_5" x="10" y="0" z="6"/>
+			<Terrain item="t_dirt_5" x="11" y="0" z="6"/>
+			<Terrain item="t_dirt_5" x="12" y="0" z="6"/>
+			<Terrain item="t_dirt_5" x="13" y="0" z="6"/>
+			<Terrain item="t_dirt_5" x="14" y="0" z="6"/>
+			<Terrain item="t_dirt_5" x="5" y="0" z="7"/>
+			<Terrain item="t_dirt_5" x="6" y="0" z="7"/>
+			<Terrain item="t_dirt_5" x="7" y="0" z="7"/>
+			<Terrain item="t_dirt_5" x="8" y="0" z="7"/>
+			<Terrain item="t_dirt_5" x="9" y="0" z="7"/>
+			<Terrain item="t_dirt_5" x="10" y="0" z="7"/>
+			<Terrain item="t_dirt_5" x="11" y="0" z="7"/>
+			<Terrain item="t_dirt_5" x="12" y="0" z="7"/>
+			<Terrain item="t_dirt_5" x="13" y="0" z="7"/>
+			<Terrain item="t_dirt_5" x="14" y="0" z="7"/>
+			<Terrain item="t_dirt_5" x="5" y="0" z="8"/>
+			<Terrain item="t_dirt_5" x="6" y="0" z="8"/>
+			<Terrain item="t_dirt_5" x="7" y="0" z="8"/>
+			<Terrain item="t_dirt_5" x="8" y="0" z="8"/>
+			<Terrain item="t_dirt_5" x="9" y="0" z="8"/>
+			<Terrain item="t_dirt_5" x="10" y="0" z="8"/>
+			<Terrain item="t_dirt_5" x="11" y="0" z="8"/>
+			<Terrain item="t_dirt_5" x="12" y="0" z="8"/>
+			<Terrain item="t_dirt_5" x="13" y="0" z="8"/>
+			<Terrain item="t_dirt_5" x="14" y="0" z="8"/>
+			<Terrain item="t_dirt_5" x="5" y="0" z="9"/>
+			<Terrain item="t_dirt_5" x="6" y="0" z="9"/>
+			<Terrain item="t_dirt_5" x="7" y="0" z="9"/>
+			<Terrain item="t_dirt_5" x="8" y="0" z="9"/>
+			<Terrain item="t_dirt_5" x="9" y="0" z="9"/>
+			<Terrain item="t_dirt_5" x="10" y="0" z="9"/>
+			<Terrain item="t_dirt_5" x="11" y="0" z="9"/>
+			<Terrain item="t_dirt_5" x="12" y="0" z="9"/>
+			<Terrain item="t_dirt_5" x="13" y="0" z="9"/>
+			<Terrain item="t_dirt_5" x="14" y="0" z="9"/>
+			<Terrain item="t_dirt_5" x="5" y="0" z="10"/>
+			<Terrain item="t_dirt_5" x="6" y="0" z="10"/>
+			<Terrain item="t_dirt_5" x="7" y="0" z="10"/>
+			<Terrain item="t_dirt_5" x="8" y="0" z="10"/>
+			<Terrain item="t_dirt_5" x="9" y="0" z="10"/>
+			<Terrain item="t_dirt_5" x="10" y="0" z="10"/>
+			<Terrain item="t_dirt_5" x="11" y="0" z="10"/>
+			<Terrain item="t_dirt_5" x="12" y="0" z="10"/>
+			<Terrain item="t_dirt_5" x="13" y="0" z="10"/>
+			<Terrain item="t_dirt_5" x="14" y="0" z="10"/>
+			<Terrain item="t_dirt_5" x="5" y="0" z="11"/>
+			<Terrain item="t_dirt_5" x="6" y="0" z="11"/>
+			<Terrain item="t_dirt_5" x="7" y="0" z="11"/>
+			<Terrain item="t_dirt_5" x="8" y="0" z="11"/>
+			<Terrain item="t_dirt_5" x="9" y="0" z="11"/>
+			<Terrain item="t_dirt_5" x="10" y="0" z="11"/>
+			<Terrain item="t_dirt_5" x="11" y="0" z="11"/>
+			<Terrain item="t_dirt_5" x="12" y="0" z="11"/>
+			<Terrain item="t_dirt_5" x="13" y="0" z="11"/>
+			<Terrain item="t_dirt_5" x="14" y="0" z="11"/>
+			<Terrain item="t_dirt_5" x="5" y="0" z="12"/>
+			<Terrain item="t_dirt_5" x="6" y="0" z="12"/>
+			<Terrain item="t_dirt_5" x="7" y="0" z="12"/>
+			<Terrain item="t_dirt_5" x="8" y="0" z="12"/>
+			<Terrain item="t_dirt_5" x="9" y="0" z="12"/>
+			<Terrain item="t_dirt_5" x="10" y="0" z="12"/>
+			<Terrain item="t_dirt_5" x="11" y="0" z="12"/>
+			<Terrain item="t_dirt_5" x="12" y="0" z="12"/>
+			<Terrain item="t_dirt_5" x="13" y="0" z="12"/>
+			<Terrain item="t_dirt_5" x="14" y="0" z="12"/>
+			<Terrain item="t_dirt_5" x="5" y="0" z="13"/>
+			<Terrain item="t_dirt_5" x="6" y="0" z="13"/>
+			<Terrain item="t_dirt_5" x="7" y="0" z="13"/>
+			<Terrain item="t_dirt_5" x="8" y="0" z="13"/>
+			<Terrain item="t_dirt_5" x="9" y="0" z="13"/>
+			<Terrain item="t_dirt_5" x="10" y="0" z="13"/>
+			<Terrain item="t_dirt_5" x="11" y="0" z="13"/>
+			<Terrain item="t_dirt_5" x="12" y="0" z="13"/>
+			<Terrain item="t_dirt_5" x="13" y="0" z="13"/>
+			<Terrain item="t_dirt_5" x="14" y="0" z="13"/>
+			<Terrain item="t_dirt_5" x="5" y="0" z="14"/>
+			<Terrain item="t_dirt_5" x="6" y="0" z="14"/>
+			<Terrain item="t_dirt_5" x="7" y="0" z="14"/>
+			<Terrain item="t_dirt_5" x="8" y="0" z="14"/>
+			<Terrain item="t_dirt_5" x="9" y="0" z="14"/>
+			<Terrain item="t_dirt_5" x="10" y="0" z="14"/>
+			<Terrain item="t_dirt_5" x="11" y="0" z="14"/>
+			<Terrain item="t_dirt_5" x="12" y="0" z="14"/>
+			<Terrain item="t_dirt_5" x="13" y="0" z="14"/>
+			<Terrain item="t_dirt_5" x="14" y="0" z="14"/>
 		</Map>
 	</Tutorial>
 </Config>

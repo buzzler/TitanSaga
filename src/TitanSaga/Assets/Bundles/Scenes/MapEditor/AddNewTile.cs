@@ -13,7 +13,7 @@ public class AddNewTile : MonoBehaviour {
 
 	private	Observer	_observer;
 	private	TileBase	_base;
-	private	TileTerrain _terrain;
+	private	TileObject	_object;
 	private	float		_height;
 	private	TileFace	_face;
 
@@ -32,23 +32,23 @@ public class AddNewTile : MonoBehaviour {
 			_height = 0;
 			_face = TileFace.Up;
 		}
-		if (_terrain == null) {
-			GenerateTerrain ();
+		if (_object == null) {
+			GenerateTile ();
 		}
 	}
 
 	void Update() {
-		if (_terrain != null) {
+		if (_object != null) {
 			var pos = _observer.cameraManager.GetCurrentTilePosition ();
 			pos.y = _height;
-			_terrain.SetPosition (pos);
-			_observer.tileManager.UpdateTerrain (_terrain);
+			_object.SetPosition (pos);
+			_observer.tileManager.UpdateTileObject (_object);
 		}
 	}
 
 	void OnDisable() {
-		if (_terrain != null) {
-			_observer.tileManager.RemoveTerrain (_terrain);
+		if (_object != null) {
+			_observer.tileManager.RemoveTileObject (_object);
 		}
 
 		btnUp.onClick.RemoveListener (OnClickUp);
@@ -59,7 +59,7 @@ public class AddNewTile : MonoBehaviour {
 		btnLocate.onClick.RemoveListener (OnClickLocate);
 		_observer = null;
 		_base = null;
-		_terrain = null;
+		_object = null;
 	}
 
 	private	void OnClickUp() {
@@ -81,8 +81,8 @@ public class AddNewTile : MonoBehaviour {
 		case TileFace.Left:
 			_face = TileFace.Up;	break;
 		}
-		_terrain.face = _face;
-		_observer.tileManager.UpdateTerrain (_terrain, true, true);
+		_object.face = _face;
+		_observer.tileManager.UpdateTileObject (_object, true, true);
 	}
 
 	private	void OnClickCCW() {
@@ -96,8 +96,8 @@ public class AddNewTile : MonoBehaviour {
 		case TileFace.Right:
 			_face = TileFace.Up;	break;
 		}
-		_terrain.face = _face;
-		_observer.tileManager.UpdateTerrain (_terrain, true, true);
+		_object.face = _face;
+		_observer.tileManager.UpdateTileObject (_object, true, true);
 	}
 
 	private	void OnClickCancel() {
@@ -105,17 +105,38 @@ public class AddNewTile : MonoBehaviour {
 	}
 
 	private	void OnClickLocate() {
-		if (_terrain != null) {
-			if (_observer.tileManager.ConfirmTerrain (_terrain)) {
-				GenerateTerrain ();
+		if (_object != null) {
+			if (_observer.tileManager.ConfirmTileObject (_object)) {
+				GenerateTile ();
 			}
 		}
 	}
 
-	private	void GenerateTerrain() {
+	private	void GenerateTile() {
 		var pos = _observer.cameraManager.GetCurrentTilePosition ();
-		_terrain = new TileTerrain (_base.id, pos.x, pos.y, pos.z);
-		_terrain.face = _face;
-		_observer.tileManager.AddTerrain (_terrain);
+
+		switch (_base.type) {
+		case TileType.Building:
+			GenerateUnit (pos);
+			break;
+		case TileType.Complex:
+		case TileType.Direction:
+		case TileType.Item:
+		case TileType.Simple:
+			GenerateTerrain (pos);
+			break;
+		}
+	}
+
+	private	void GenerateUnit(Vector3 posistion) {
+		_object = new TileUnit (_base.id, posistion.x, posistion.y, posistion.z);
+		_object.face = _face;
+		_observer.tileManager.AddTileObject (_object);
+	}
+
+	private	void GenerateTerrain(Vector3 posistion) {
+		_object = new TileTerrain (_base.id, posistion.x, posistion.y, posistion.z);
+		_object.face = _face;
+		_observer.tileManager.AddTileObject (_object);
 	}
 }

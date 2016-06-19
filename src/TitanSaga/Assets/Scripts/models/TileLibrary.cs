@@ -298,7 +298,9 @@ namespace TileLib
 		Item,
 		Simple,
 		Complex,
-		Direction
+		Direction,
+		Building,
+		Normal
 	}
 
 	public	enum TileFace
@@ -309,13 +311,23 @@ namespace TileLib
 		Right = 90
 	}
 
+	public	enum TileColor {
+		Basic,
+		Blue,
+		Green,
+		Black,
+		Purple,
+		Red,
+		Yellow
+	}
+
 	[XmlRoot ("Config")]
 	public	class TileConfig
 	{
 		[XmlElement ("Library")]
-		public	TileLibrary	library;
+		public	TileLibrary		library;
 		[XmlElement ("Tutorial")]
-		public	TileTutorial tutorial;
+		public	TileTutorial	tutorial;
 
 		public	void Hashing ()
 		{
@@ -336,9 +348,13 @@ namespace TileLib
 		public	TileComplex[]	complexs;
 		[XmlElement ("Direction")]
 		public	TileDirection[]	directions;
+		[XmlElement ("Building")]
+		public	TileBuilding[]	buildings;
+		[XmlElement ("Normal")]
+		public	TileNormal[]	normals;
 
 		private	Dictionary<string, TileCategory>	_dictionaryCategory;
-		private	Dictionary<string, TileBase> _dictionaryItem;
+		private	Dictionary<string, TileBase>		_dictionaryItem;
 
 		public	TileLibrary ()
 		{
@@ -346,6 +362,8 @@ namespace TileLib
 			simples = new TileSimple[0];
 			complexs = new TileComplex[0];
 			directions = new TileDirection[0];
+			buildings = new TileBuilding[0];
+			normals = new TileNormal[0];
 			_dictionaryCategory	= new Dictionary<string, TileCategory> ();
 			_dictionaryItem = new Dictionary<string, TileBase> ();
 		}
@@ -382,6 +400,18 @@ namespace TileLib
 				TileDirection direction = directions [i];
 				direction.library = this;
 				_dictionaryItem.Add (direction.id, direction);
+			}
+
+			for (int i = buildings.Length - 1; i >= 0; i--) {
+				TileBuilding building = buildings [i];
+				building.library = this;
+				_dictionaryItem.Add (building.id, building);
+			}
+
+			for (int i = normals.Length - 1; i >= 0; i--) {
+				TileNormal normal = normals [i];
+				normal.library = this;
+				_dictionaryItem.Add (normal.id, normal);
 			}
 		}
 
@@ -490,6 +520,48 @@ namespace TileLib
 			get {
 				return _assetPath;
 			}
+		}
+	}
+
+	public	class TileNormal : TileBase {
+		private	TileItemLink _link;
+
+		[XmlAttribute("item")]
+		public	string item;
+
+		public	TileItemLink link {
+			get {
+				if (_link == null) {
+					_link = new TileItemLink ();
+					_link.item = item;
+				}
+				return _link;
+			}
+		}
+
+		public	TileNormal() {
+			type = TileType.Normal;
+		}
+	}
+
+	public	class TileBuilding : TileBase {
+		[XmlElement ("Basic")]
+		public	TileItemLink	basic;
+		[XmlElement ("Blue")]
+		public	TileItemLink	blue;
+		[XmlElement ("Green")]
+		public	TileItemLink	green;
+		[XmlElement ("Black")]
+		public	TileItemLink	black;
+		[XmlElement ("Purple")]
+		public	TileItemLink	purple;
+		[XmlElement ("Red")]
+		public	TileItemLink	red;
+		[XmlElement ("Yellow")]
+		public	TileItemLink	yellow;
+
+		public	TileBuilding() {
+			type = TileType.Building;
 		}
 	}
 
@@ -658,8 +730,31 @@ namespace TileLib
 	{
 		[XmlAttribute ("item")]
 		public	string item;
+		[XmlAttribute ("x")]
+		public	float x;
+		[XmlAttribute ("y")]
+		public	float y;
+		[XmlAttribute ("seq")]
+		public	string sequence;
+		[XmlAttribute ("fps")]
+		public	float fps;
 		[XmlElement ("Child")]
 		public	TileItemLink[]	children;
+
+		public	TileItemLink ()
+		{
+			this.item = string.Empty;
+			this.x = 0;
+			this.y = 0;
+			this.children = new TileItemLink[0];
+		}
+			
+		public	string[] GetSequence() {
+			if (!string.IsNullOrEmpty (sequence)) {
+				return sequence.Split ("|"[0]);
+			}
+			return null;
+		}
 	}
 
 	public	class TileTutorial
@@ -700,18 +795,21 @@ namespace TileLib
 		public	string	id;
 		[XmlElement ("Terrain")]
 		public	TileTerrain[]	terrains;
+		[XmlElement ("Unit")]
+		public	TileUnit[]	units;
 		[XmlAttribute ("width")]
 		public	int width;
 		[XmlAttribute ("height")]
 		public	int height;
 		[XmlAttribute ("depth")]
 		public	int depth;
-		private List<List<List<TileTerrain>>> _tlist;
+		private List<List<List<TileObject>>> _tlist;
 
 		public	TileMap ()
 		{
 			this.id = string.Empty;
 			this.terrains = new TileTerrain[0];
+			this.units = new TileUnit[0];
 			this.width = 1;
 			this.height = 1;
 			this.depth = 1;
@@ -729,17 +827,21 @@ namespace TileLib
 			c.terrains = new TileTerrain[len];
 			System.Array.Copy (this.terrains, c.terrains, len);
 
+			len = this.units.Length;
+			c.units = new TileUnit[len];
+			System.Array.Copy (this.units, c.units, len);
+
 			return c;
 		}
 
 		public	void Hashing ()
 		{
-			var wlist = new List<List<List<TileTerrain>>> (width);
+			var wlist = new List<List<List<TileObject>>> (width);
 			for (int i = 0; i < width; i++) {
-				var hlist = new List<List<TileTerrain>> (height);
+				var hlist = new List<List<TileObject>> (height);
 				wlist.Add (hlist);
 				for (int j = 0; j < height; j++) {
-					var dlist = new List<TileTerrain> (depth);
+					var dlist = new List<TileObject> (depth);
 					hlist.Add (dlist);
 					for (int k = 0; k < depth; k++) {
 						dlist.Add (null);
@@ -749,19 +851,29 @@ namespace TileLib
 
 			_tlist = wlist;
 
+			if (terrains == null) {
+				terrains = new TileTerrain[0];
+			}
+			if (units == null) {
+				units = new TileUnit[0];
+			}
+
 			for (int i = terrains.Length - 1; i >= 0; i--) {
 				var terrain = terrains [i];
 				_tlist [terrain.x] [terrain.y] [terrain.z] = terrain;
 				terrain.SetMap (this);
+			}
+			for (int i = units.Length - 1; i >= 0; i--) {
+				var unit = units [i];
+				_tlist [unit.x] [unit.y] [unit.z] = unit;
 			}
 		}
 
 		public	bool AddTerrain (TileTerrain terrain)
 		{
 			if (_tlist [terrain.x] [terrain.y] [terrain.z] == null) {
-				_tlist [terrain.x] [terrain.y] [terrain.z] = terrain;
+				_tlist [terrain.x] [terrain.y] [terrain.z] = terrain as TileObject;
 				terrain.SetMap (this);
-				// TODO : add terrain from terrains array Generic
 				System.Array.Resize<TileTerrain> (ref terrains, terrains.Length + 1);
 				terrains [terrains.Length - 1] = terrain;
 				return true;
@@ -771,19 +883,41 @@ namespace TileLib
 			}
 		}
 
+		public	bool AddUnit (TileUnit unit)
+		{
+			if (_tlist [unit.x] [unit.y] [unit.z] == null) {
+				_tlist [unit.x] [unit.y] [unit.z] = unit as TileObject;
+				System.Array.Resize<TileUnit> (ref units, units.Length + 1);
+				units [units.Length - 1] = unit;
+				return true;
+			} else {
+				Debug.LogWarningFormat ("Conflict x:{0}, y:{1}, z:{2}", unit.x, unit.y, unit.z);
+				return false;
+			}
+		}
+
 		public	void RemoveTerrain (TileTerrain terrain)
 		{
 			if (_tlist [terrain.x] [terrain.y] [terrain.z] == terrain) {
 				_tlist [terrain.x] [terrain.y] [terrain.z] = null;
 				terrain.SetMap (null);
-				// TODO : remove terrain from terrains array Generic
 				terrains = System.Array.FindAll<TileTerrain> (terrains, (TileTerrain a) => {
 					return a != terrain;
 				});
 			}
 		}
 
-		public	TileTerrain GetTerrain (int x, int y, int z)
+		public	void RemoveUnit (TileUnit unit)
+		{
+			if (_tlist [unit.x] [unit.y] [unit.z] == unit) {
+				_tlist [unit.x] [unit.y] [unit.z] = null;
+				units = System.Array.FindAll<TileUnit> (units, (TileUnit a) => {
+					return a != unit;
+				});
+			}
+		}
+
+		public	TileObject GetTileObject (int x, int y, int z)
 		{
 			if (x < 0 || x >= width || y < 0 || y >= height || z < 0 || z >= depth) {
 				return null;
@@ -793,8 +927,7 @@ namespace TileLib
 		}
 	}
 
-	public	class TileTerrain
-	{
+	public	class TileObject {
 		[XmlAttribute ("item")]
 		public	string item;
 		[XmlAttribute ("x")]
@@ -805,32 +938,19 @@ namespace TileLib
 		public	float zf;
 		[XmlAttribute ("face")]
 		public	TileFace	face;
-		private	TileMap _map;
 
-		public	TileTerrain ()
+		public	TileObject ()
 		{
 			this.item = string.Empty;
 			this.face = TileFace.Up;
-			this._map = null;
 			SetPosition (0f, 0f, 0f);
 		}
 
-		public	TileTerrain (string item, float x, float y, float z)
+		public	TileObject (string item, float x, float y, float z)
 		{
 			this.item = item;
 			this.face = TileFace.Up;
-			this._map = null;
 			SetPosition (x, y, z);
-		}
-
-		public	void SetMap (TileMap map)
-		{
-			_map = map;
-		}
-
-		public	TileMap GetMap ()
-		{
-			return _map;
 		}
 
 		public	void SetPosition (float x, float y, float z)
@@ -863,10 +983,100 @@ namespace TileLib
 			}
 		}
 
+		protected	void GetAllTileItem (TileItemLink link, List<TileItemLink> list)
+		{
+			if (!string.IsNullOrEmpty (link.item)) {
+				list.Add (link);
+			}
+			int total = link.children != null ? link.children.Length : 0;
+			for (int i = 0; i < total; i++) {
+				GetAllTileItem (link.children [i], list);
+			}
+		}
+	}
+
+	public	interface ITileObject {
+		List<TileItemLink> GetTileItemLink (TileLibrary library);
+	}
+
+	public	class TileUnit : TileObject, ITileObject {
+		[XmlAttribute ("color")]
+		public	TileColor	color;
+
+		public	TileUnit () : base () {
+		}
+
+		public	TileUnit (string item, float x, float y, float z) : base (item, x, y, z) {
+			this.color = TileColor.Basic;
+		}
+
+		public List<TileItemLink> GetTileItemLink (TileLibrary library) {
+			TileBase tb = library.FindItem (item);
+
+			List<TileItemLink> list = new List<TileItemLink> (8);
+			switch (tb.type) {
+			case TileType.Normal:
+				list.Add ((tb as TileNormal).link);
+				break;
+			case TileType.Building:
+				GetTileItemForBuilding (tb as TileBuilding, list);
+				break;
+			}
+
+			return list;
+		}
+
+		private	void GetTileItemForBuilding (TileBuilding building, List<TileItemLink> list) {
+			switch (color) {
+			case TileColor.Basic:
+				GetAllTileItem (building.basic, list);
+				break;
+			case TileColor.Blue:
+				GetAllTileItem (building.blue, list);
+				break;
+			case TileColor.Green:
+				GetAllTileItem (building.green, list);
+				break;
+			case TileColor.Black:
+				GetAllTileItem (building.black, list);
+				break;
+			case TileColor.Purple:
+				GetAllTileItem (building.purple, list);
+				break;
+			case TileColor.Red:
+				GetAllTileItem (building.red, list);
+				break;
+			case TileColor.Yellow:
+				GetAllTileItem (building.yellow, list);
+				break;
+			}
+		}
+	}
+
+	public	class TileTerrain : TileObject, ITileObject
+	{
+		private	TileMap _map;
+
+		public	TileTerrain () : base () {
+			this._map = null;
+		}
+
+		public	TileTerrain (string item, float x, float y, float z) : base (item, x, y, z) {
+			this._map = null;
+		}
+
+		public	void SetMap (TileMap map) {
+			_map = map;
+		}
+
+		public	TileMap GetMap () {
+			return _map;
+		}
+
 		public	TileTerrain u {
 			get {
 				if (_map != null) {
-					return _map.GetTerrain (x, y, z - 1);
+					return _map.GetTileObject (x, y, z - 1) as TileTerrain;
 				} else {
 					return null;
 				}
@@ -876,7 +1086,7 @@ namespace TileLib
 		public	TileTerrain d {
 			get {
 				if (_map != null) {
-					return _map.GetTerrain (x, y, z + 1);
+					return _map.GetTileObject (x, y, z + 1) as TileTerrain;
 				} else {
 					return null;
 				}
@@ -886,7 +1096,7 @@ namespace TileLib
 		public	TileTerrain l {
 			get {
 				if (_map != null) {
-					return _map.GetTerrain (x - 1, y, z);
+					return _map.GetTileObject (x - 1, y, z) as TileTerrain;
 				} else {
 					return null;
 				}
@@ -896,7 +1106,7 @@ namespace TileLib
 		public	TileTerrain r {
 			get {
 				if (_map != null) {
-					return _map.GetTerrain (x + 1, y, z);
+					return _map.GetTileObject (x + 1, y, z) as TileTerrain;
 				} else {
 					return null;
 				}
@@ -906,7 +1116,7 @@ namespace TileLib
 		public	TileTerrain ul {
 			get {
 				if (_map != null) {
-					return _map.GetTerrain (x - 1, y, z - 1);
+					return _map.GetTileObject (x - 1, y, z - 1) as TileTerrain;
 				} else {
 					return null;
 				}
@@ -916,7 +1126,7 @@ namespace TileLib
 		public	TileTerrain ur {
 			get {
 				if (_map != null) {
-					return _map.GetTerrain (x + 1, y, z - 1);
+					return _map.GetTileObject (x + 1, y, z - 1) as TileTerrain;
 				} else {
 					return null;
 				}
@@ -926,7 +1136,7 @@ namespace TileLib
 		public	TileTerrain dl {
 			get {
 				if (_map != null) {
-					return _map.GetTerrain (x - 1, y, z + 1);
+					return _map.GetTileObject (x - 1, y, z + 1) as TileTerrain;
 				} else {
 					return null;
 				}
@@ -936,21 +1146,21 @@ namespace TileLib
 		public	TileTerrain dr {
 			get {
 				if (_map != null) {
-					return _map.GetTerrain (x + 1, y, z + 1);
+					return _map.GetTileObject (x + 1, y, z + 1) as TileTerrain;
 				} else {
 					return null;
 				}
 			}
 		}
 
-		public	List<TileItem> GetTileItem (TileLibrary library)
+		public List<TileItemLink> GetTileItemLink (TileLibrary library)
 		{
 			TileBase tb = library.FindItem (item);
 
-			List<TileItem> list = new List<TileItem> (8);
+			List<TileItemLink> list = new List<TileItemLink> (8);
 			switch (tb.type) {
-			case TileType.Item:
-				list.Add (tb as TileItem);
+			case TileType.Normal:
+				list.Add ((tb as TileNormal).link);
 				break;
 			case TileType.Simple:
 				GetTileItemForSimple (library, tb as TileSimple, list);
@@ -966,7 +1176,7 @@ namespace TileLib
 			return list;
 		}
 
-		private	void GetTileItemForSimple (TileLibrary library, TileSimple simple, List<TileItem> list)
+		private	void GetTileItemForSimple (TileLibrary library, TileSimple simple, List<TileItemLink> list)
 		{
 			var up = u;
 			var down = d;
@@ -990,57 +1200,57 @@ namespace TileLib
 
 			switch (result) {
 			case TileSimpleConst.U:
-				GetAllTileItem (library, simple.up, list);
+				GetAllTileItem (simple.up, list);
 				break;
 			case TileSimpleConst.D:
-				GetAllTileItem (library, simple.down, list);
+				GetAllTileItem (simple.down, list);
 				break;
 			case TileSimpleConst.L:
-				GetAllTileItem (library, simple.left, list);
+				GetAllTileItem (simple.left, list);
 				break;
 			case TileSimpleConst.R:
-				GetAllTileItem (library, simple.right, list);
+				GetAllTileItem (simple.right, list);
 				break;
 			case TileSimpleConst.U_D:
-				GetAllTileItem (library, simple.updown, list);
+				GetAllTileItem (simple.updown, list);
 				break;
 			case TileSimpleConst.U_L:
-				GetAllTileItem (library, simple.upleft, list);
+				GetAllTileItem (simple.upleft, list);
 				break;
 			case TileSimpleConst.U_R:
-				GetAllTileItem (library, simple.upright, list);
+				GetAllTileItem (simple.upright, list);
 				break;
 			case TileSimpleConst.D_L:
-				GetAllTileItem (library, simple.downleft, list);
+				GetAllTileItem (simple.downleft, list);
 				break;
 			case TileSimpleConst.D_R:
-				GetAllTileItem (library, simple.downright, list);
+				GetAllTileItem (simple.downright, list);
 				break;
 			case TileSimpleConst.L_R:
-				GetAllTileItem (library, simple.leftright, list);
+				GetAllTileItem (simple.leftright, list);
 				break;
 			case TileSimpleConst.U_D_L:
-				GetAllTileItem (library, simple.updownleft, list);
+				GetAllTileItem (simple.updownleft, list);
 				break;
 			case TileSimpleConst.U_D_R:
-				GetAllTileItem (library, simple.updownright, list);
+				GetAllTileItem (simple.updownright, list);
 				break;
 			case TileSimpleConst.U_L_R:
-				GetAllTileItem (library, simple.upleftright, list);
+				GetAllTileItem (simple.upleftright, list);
 				break;
 			case TileSimpleConst.D_L_R:
-				GetAllTileItem (library, simple.downleftright, list);
+				GetAllTileItem (simple.downleftright, list);
 				break;
 			case TileSimpleConst.U_D_L_R:
-				GetAllTileItem (library, simple.updownleftright, list);
+				GetAllTileItem (simple.updownleftright, list);
 				break;
 			default:
-				GetAllTileItem (library, simple.none, list);
+				GetAllTileItem (simple.none, list);
 				break;
 			}
 		}
 
-		private	void GetTileItemForComplex (TileLibrary library, TileComplex complex, List<TileItem> list)
+		private	void GetTileItemForComplex (TileLibrary library, TileComplex complex, List<TileItemLink> list)
 		{
 			var up = u;
 			var down = d;
@@ -1080,133 +1290,133 @@ namespace TileLib
 
 			switch (result) {
 			case TileComplexConst.NONE:
-				GetAllTileItem (library, complex.none, list);
+				GetAllTileItem (complex.none, list);
 				return;
 			case TileComplexConst.UL:
-				GetAllTileItem (library, complex.up_1c, list);
+				GetAllTileItem (complex.up_1c, list);
 				return;
 			case TileComplexConst.DR:
-				GetAllTileItem (library, complex.down_1c, list);
+				GetAllTileItem (complex.down_1c, list);
 				return;
 			case TileComplexConst.DL:
-				GetAllTileItem (library, complex.left_1c, list);
+				GetAllTileItem (complex.left_1c, list);
 				return;
 			case TileComplexConst.UR:
-				GetAllTileItem (library, complex.right_1c, list);
+				GetAllTileItem (complex.right_1c, list);
 				return;
 			case TileComplexConst.U:
 			case TileComplexConst.U_UL:
 			case TileComplexConst.U_UR:
 			case TileComplexConst.U_UL_UR:	
-				GetAllTileItem (library, complex.up_1s, list);
+				GetAllTileItem (complex.up_1s, list);
 				return;
 			case TileComplexConst.D:
 			case TileComplexConst.D_DL:
 			case TileComplexConst.D_DR:
 			case TileComplexConst.D_DL_DR:
-				GetAllTileItem (library, complex.down_1s, list);
+				GetAllTileItem (complex.down_1s, list);
 				return;
 			case TileComplexConst.L:
 			case TileComplexConst.L_UL:
 			case TileComplexConst.L_DL:
 			case TileComplexConst.L_UL_DL:
-				GetAllTileItem (library, complex.left_1s, list);
+				GetAllTileItem (complex.left_1s, list);
 				return;
 			case TileComplexConst.R:
 			case TileComplexConst.R_UR:
 			case TileComplexConst.R_DR:
 			case TileComplexConst.R_UR_DR:
-				GetAllTileItem (library, complex.right_1s, list);
+				GetAllTileItem (complex.right_1s, list);
 				return;
 			case TileComplexConst.U_DL:
 			case TileComplexConst.U_DL_UL:
 			case TileComplexConst.U_DL_UR:
 			case TileComplexConst.U_DL_UL_UR:
-				GetAllTileItem (library, complex.leftup_1c1s, list);
+				GetAllTileItem (complex.leftup_1c1s, list);
 				return;
 			case TileComplexConst.U_DR:
 			case TileComplexConst.U_DR_UL:
 			case TileComplexConst.U_DR_UR:
 			case TileComplexConst.U_DR_UL_UR:
-				GetAllTileItem (library, complex.downup_1c1s, list);
+				GetAllTileItem (complex.downup_1c1s, list);
 				return;
 			case TileComplexConst.D_UR:
 			case TileComplexConst.D_UR_DL:
 			case TileComplexConst.D_UR_DR:
 			case TileComplexConst.D_UR_DL_DR:
-				GetAllTileItem (library, complex.rightdown_1c1s, list);
+				GetAllTileItem (complex.rightdown_1c1s, list);
 				return;
 			case TileComplexConst.D_UL:
 			case TileComplexConst.D_UL_DL:
 			case TileComplexConst.D_UL_DR:
 			case TileComplexConst.D_UL_DL_DR:
-				GetAllTileItem (library, complex.updown_1c1s, list);
+				GetAllTileItem (complex.updown_1c1s, list);
 				return;
 			case TileComplexConst.L_UR:
 			case TileComplexConst.L_UR_UL:
 			case TileComplexConst.L_UR_DL:
 			case TileComplexConst.L_UR_UL_DL:
-				GetAllTileItem (library, complex.rightleft_1c1s, list);
+				GetAllTileItem (complex.rightleft_1c1s, list);
 				return;
 			case TileComplexConst.L_DR:
 			case TileComplexConst.L_DR_UL:
 			case TileComplexConst.L_DR_DL:
 			case TileComplexConst.L_DR_UL_DL:
-				GetAllTileItem (library, complex.downleft_1c1s, list);
+				GetAllTileItem (complex.downleft_1c1s, list);
 				return;
 			case TileComplexConst.R_DL:
 			case TileComplexConst.R_DL_UR:
 			case TileComplexConst.R_DL_DR:
 			case TileComplexConst.R_DL_UR_DR:
-				GetAllTileItem (library, complex.leftright_1c1s, list);
+				GetAllTileItem (complex.leftright_1c1s, list);
 				return;
 			case TileComplexConst.R_UL:
 			case TileComplexConst.R_UL_UR:
 			case TileComplexConst.R_UL_DR:
 			case TileComplexConst.R_UL_UR_DR:
-				GetAllTileItem (library, complex.upright_1c1s, list);
+				GetAllTileItem (complex.upright_1c1s, list);
 				return;
 			case TileComplexConst.U_DL_DR:
 			case TileComplexConst.U_DL_DR_UL:
 			case TileComplexConst.U_DL_DR_UR:
 			case TileComplexConst.U_DL_DR_UL_UR:
-				GetAllTileItem (library, complex.downleftup_2c1s, list);
+				GetAllTileItem (complex.downleftup_2c1s, list);
 				return;
 			case TileComplexConst.D_UL_UR:
 			case TileComplexConst.D_UL_UR_DL:
 			case TileComplexConst.D_UL_UR_DR:
 			case TileComplexConst.D_UL_UR_DL_DR:
-				GetAllTileItem (library, complex.uprightdown_2c1s, list);
+				GetAllTileItem (complex.uprightdown_2c1s, list);
 				return;
 			case TileComplexConst.L_UR_DR:
 			case TileComplexConst.L_UR_DR_UL:
 			case TileComplexConst.L_UR_DR_DL:
 			case TileComplexConst.L_UR_DR_UL_DL:
-				GetAllTileItem (library, complex.downrightleft_2c1s, list);
+				GetAllTileItem (complex.downrightleft_2c1s, list);
 				return;
 			case TileComplexConst.R_UL_DL:
 			case TileComplexConst.R_UL_DL_UR:
 			case TileComplexConst.R_UL_DL_DR:
 			case TileComplexConst.R_UL_DL_UR_DR:
-				GetAllTileItem (library, complex.upleftright_2c1s, list);
+				GetAllTileItem (complex.upleftright_2c1s, list);
 				return;
 			case TileComplexConst.DL_DR:
-				GetAllTileItem (library, complex.downleft_2c, list);
+				GetAllTileItem (complex.downleft_2c, list);
 				return;
 			case TileComplexConst.UL_UR:
-				GetAllTileItem (library, complex.upright_2c, list);
+				GetAllTileItem (complex.upright_2c, list);
 				return;
 			case TileComplexConst.UL_DR:
-				GetAllTileItem (library, complex.updown_2c, list);
+				GetAllTileItem (complex.updown_2c, list);
 				return;
 			case TileComplexConst.DL_UR:
-				GetAllTileItem (library, complex.leftright_2c, list);
+				GetAllTileItem (complex.leftright_2c, list);
 				return;
 			case TileComplexConst.UL_DL:
-				GetAllTileItem (library, complex.upleft_2c, list);
+				GetAllTileItem (complex.upleft_2c, list);
 				return;
 			case TileComplexConst.UR_DR:
-				GetAllTileItem (library, complex.downright_2c, list);
+				GetAllTileItem (complex.downright_2c, list);
 				return;
 			case TileComplexConst.U_R:
 			case TileComplexConst.U_R_UL:
@@ -1216,7 +1426,7 @@ namespace TileLib
 			case TileComplexConst.U_R_UL_DR:
 			case TileComplexConst.U_R_UR_DR:
 			case TileComplexConst.U_R_UL_UR_DR:
-				GetAllTileItem (library, complex.upright_2s, list);
+				GetAllTileItem (complex.upright_2s, list);
 				return;
 			case TileComplexConst.D_R:
 			case TileComplexConst.D_R_DL:
@@ -1226,7 +1436,7 @@ namespace TileLib
 			case TileComplexConst.D_R_DL_DR:
 			case TileComplexConst.D_R_UR_DR:
 			case TileComplexConst.D_R_DL_UR_DR:
-				GetAllTileItem (library, complex.downright_2s, list);
+				GetAllTileItem (complex.downright_2s, list);
 				return;
 			case TileComplexConst.D_L:
 			case TileComplexConst.D_L_DL:
@@ -1236,7 +1446,7 @@ namespace TileLib
 			case TileComplexConst.D_L_DL_DR:
 			case TileComplexConst.D_L_UL_DR:
 			case TileComplexConst.D_L_DL_UL_DR:
-				GetAllTileItem (library, complex.downleft_2s, list);
+				GetAllTileItem (complex.downleft_2s, list);
 				return;
 			case TileComplexConst.U_L:
 			case TileComplexConst.U_L_DL:
@@ -1246,7 +1456,7 @@ namespace TileLib
 			case TileComplexConst.U_L_DL_UR:
 			case TileComplexConst.U_L_UL_UR:
 			case TileComplexConst.U_L_DL_UL_UR:
-				GetAllTileItem (library, complex.upleft_2s, list);
+				GetAllTileItem (complex.upleft_2s, list);
 				return;
 			case TileComplexConst.U_D:
 			case TileComplexConst.U_D_UL:
@@ -1264,7 +1474,7 @@ namespace TileLib
 			case TileComplexConst.U_D_UL_DL_DR:
 			case TileComplexConst.U_D_UR_DL_DR:
 			case TileComplexConst.U_D_UL_UR_DL_DR:
-				GetAllTileItem (library, complex.updown_2s, list);
+				GetAllTileItem (complex.updown_2s, list);
 				return;
 			case TileComplexConst.L|TileComplexConst.R:
 			case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL:
@@ -1282,7 +1492,7 @@ namespace TileLib
 			case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.DR:
 			case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
 			case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
-				GetAllTileItem (library, complex.leftright_2s, list);
+				GetAllTileItem (complex.leftright_2s, list);
 				return;
 			case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL:
 			case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR:
@@ -1292,7 +1502,7 @@ namespace TileLib
 			case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DR:
 			case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.DR:
 			case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
-				GetAllTileItem (library, complex.updownright_1c2s, list);
+				GetAllTileItem (complex.updownright_1c2s, list);
 				return;
 			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR:
 			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR|TileComplexConst.UL:
@@ -1302,7 +1512,7 @@ namespace TileLib
 			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR|TileComplexConst.UL|TileComplexConst.DR:
 			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
 			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR|TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.DR:
-				GetAllTileItem (library, complex.rightdownleft_1c2s, list);
+				GetAllTileItem (complex.rightdownleft_1c2s, list);
 				return;
 			case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR:
 			case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR|TileComplexConst.UL:
@@ -1312,7 +1522,7 @@ namespace TileLib
 			case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR|TileComplexConst.UL|TileComplexConst.UR:
 			case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR|TileComplexConst.DL|TileComplexConst.UR:
 			case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR|TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.UR:
-				GetAllTileItem (library, complex.downupleft_1c2s, list);
+				GetAllTileItem (complex.downupleft_1c2s, list);
 				return;
 			case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL:
 			case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.UL:
@@ -1322,19 +1532,19 @@ namespace TileLib
 			case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.UL|TileComplexConst.UR:
 			case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.DR|TileComplexConst.UR:
 			case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.UL|TileComplexConst.DR|TileComplexConst.UR:
-				GetAllTileItem (library, complex.leftupright_1c2s, list);
+				GetAllTileItem (complex.leftupright_1c2s, list);
 				return;
 			case TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
-				GetAllTileItem (library, complex.downleftright_3c, list);
+				GetAllTileItem (complex.downleftright_3c, list);
 				return;
 			case TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DR:
-				GetAllTileItem (library, complex.updownright_3c, list);
+				GetAllTileItem (complex.updownright_3c, list);
 				return;
 			case TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.DR:
-				GetAllTileItem (library, complex.updownleft_3c, list);
+				GetAllTileItem (complex.updownleft_3c, list);
 				return;
 			case TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL:
-				GetAllTileItem (library, complex.upleftright_3c, list);
+				GetAllTileItem (complex.upleftright_3c, list);
 				return;
 			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R:
 			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL:
@@ -1352,7 +1562,7 @@ namespace TileLib
 			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.DR:
 			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
 			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
-				GetAllTileItem (library, complex.downleftright_3s, list);
+				GetAllTileItem (complex.downleftright_3s, list);
 				return;
 			case TileComplexConst.U|TileComplexConst.L|TileComplexConst.R:
 			case TileComplexConst.U|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL:
@@ -1370,7 +1580,7 @@ namespace TileLib
 			case TileComplexConst.U|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.DR:
 			case TileComplexConst.U|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
 			case TileComplexConst.U|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
-				GetAllTileItem (library, complex.upleftright_3s, list);
+				GetAllTileItem (complex.upleftright_3s, list);
 				return;
 			case TileComplexConst.U|TileComplexConst.D|TileComplexConst.R:
 			case TileComplexConst.U|TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL:
@@ -1388,7 +1598,7 @@ namespace TileLib
 			case TileComplexConst.U|TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.DR:
 			case TileComplexConst.U|TileComplexConst.D|TileComplexConst.R|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
 			case TileComplexConst.U|TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
-				GetAllTileItem (library, complex.updownright_3s, list);
+				GetAllTileItem (complex.updownright_3s, list);
 				return;
 			case TileComplexConst.U|TileComplexConst.D|TileComplexConst.L:
 			case TileComplexConst.U|TileComplexConst.D|TileComplexConst.L|TileComplexConst.UL:
@@ -1406,10 +1616,10 @@ namespace TileLib
 			case TileComplexConst.U|TileComplexConst.D|TileComplexConst.L|TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.DR:
 			case TileComplexConst.U|TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
 			case TileComplexConst.U|TileComplexConst.D|TileComplexConst.L|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
-				GetAllTileItem (library, complex.updownleft_3s, list);
+				GetAllTileItem (complex.updownleft_3s, list);
 				return;
 			case TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
-				GetAllTileItem (library, complex.updownleftright_4c, list);
+				GetAllTileItem (complex.updownleftright_4c, list);
 				return;
 			case TileComplexConst.U|TileComplexConst.D|TileComplexConst.L|TileComplexConst.R:
 			case TileComplexConst.U|TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL:
@@ -1427,38 +1637,27 @@ namespace TileLib
 			case TileComplexConst.U|TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.DR:
 			case TileComplexConst.U|TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
 			case TileComplexConst.U|TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
-				GetAllTileItem (library, complex.updownleftright_4s, list);
+				GetAllTileItem (complex.updownleftright_4s, list);
 				return;
 			}
-			GetAllTileItem (library, complex.none, list);
+			GetAllTileItem (complex.none, list);
 		}
 
-		private	void GetTileItemForDirection (TileLibrary library, TileDirection direction, List<TileItem> list)
+		private	void GetTileItemForDirection (TileLibrary library, TileDirection direction, List<TileItemLink> list)
 		{
 			switch (face) {
 			case TileFace.Up:
-				GetAllTileItem (library, direction.up, list);
+				GetAllTileItem (direction.up, list);
 				break;
 			case TileFace.Down:
-				GetAllTileItem (library, direction.down, list);
+				GetAllTileItem (direction.down, list);
 				break;
 			case TileFace.Left:
-				GetAllTileItem (library, direction.left, list);
+				GetAllTileItem (direction.left, list);
 				break;
 			case TileFace.Right:
-				GetAllTileItem (library, direction.right, list);
+				GetAllTileItem (direction.right, list);
 				break;
-			}
-		}
-
-		private	void GetAllTileItem (TileLibrary library, TileItemLink link, List<TileItem> list)
-		{
-			if (!string.IsNullOrEmpty (link.item)) {
-				list.Add (library.FindItem (link.item) as TileItem);
-			}
-			int total = link.children != null ? link.children.Length : 0;
-			for (int i = 0; i < total; i++) {
-				GetAllTileItem (library, link.children [i], list);
 			}
 		}
 	}

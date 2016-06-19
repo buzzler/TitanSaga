@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using TileLib;
 
 public class TileManager : MonoBehaviour {
-	public	TextAsset									asset;
-	private	Dictionary<TileTerrain, List<Transform>>	_table;
-	private	Transform									_containerMap;
-	private	TileConfig									_config;
-	private	TileMap										_map;
-	private	Rect										_rect;
+	public	TextAsset								asset;
+	private	Dictionary<TileObject, TileItemGroup>	_table;
+	private	Transform								_containerMap;
+	private	TileConfig								_config;
+	private	TileMap									_map;
+	private	Rect									_rect;
 
 	public	Transform	container	{ get { return _containerMap; } }
 	public	TileConfig	config		{ get { return _config; } }
@@ -22,7 +22,7 @@ public class TileManager : MonoBehaviour {
 
 	void Awake() {
 		GameObject.DontDestroyOnLoad (gameObject);
-		_table = new Dictionary<TileTerrain, List<Transform>> ();
+		_table = new Dictionary<TileObject, TileItemGroup> ();
 		_containerMap = new GameObject ("Map").transform;
 		_config = TitanUtility.LoadFromText<TileConfig> (asset.text);
 		_config.Hashing ();
@@ -54,7 +54,10 @@ public class TileManager : MonoBehaviour {
 		_containerMap.gameObject.SetActive (false);
 
 		for (int i = _containerMap.childCount - 1; i >= 0; i--) {
-			DestroyImmediate (_containerMap.GetChild (0).gameObject);
+			var t = _containerMap.GetChild (0);
+			if (t != null && t.gameObject != null) {
+				DestroyImmediate (t.gameObject);
+			}
 		}
 		_map = new TileMap ();
 		_rect = new Rect ();
@@ -69,23 +72,42 @@ public class TileManager : MonoBehaviour {
 		var terrains = _map.terrains;
 		var total = terrains.Length;
 		for (int i = 0; i < total; i++) {
-			RenderTerrain (terrains [i], _containerMap);
+			AddTileObject (terrains [i]);
+		}
+		var units = _map.units;
+		total = units.Length;
+		for (int i = 0; i < total; i++) {
+			AddTileObject (units [i]);
 		}
 		_containerMap.gameObject.SetActive (true);
 	}
 
-	public	void AddTerrain(TileTerrain terrain) {
-		RenderTerrain (terrain, _containerMap);
+	public	void AddTileObject(TileObject tile) {
+		var coord = GetPixelCoord (tile.xf, tile.yf, tile.zf);
+		var group = new GameObject (tile.item).AddComponent<TileItemGroup> ();
+		group.SetTileObject (_config.library, tile as ITileObject, _containerMap);
+		group.UpdateSprite (coord);
+
+		if (!_table.ContainsKey (tile)) {
+			_table.Add (tile, group);
+		}
 	}
 
-	public	bool ConfirmTerrain(TileTerrain terrain) {
-		if (_map.AddTerrain (terrain)) {
+	public	bool ConfirmTileObject(TileObject tile) {
+		bool added = false;
+		if (tile is TileTerrain) {
+			added = _map.AddTerrain (tile as TileTerrain);
+		} else if (tile is TileUnit) {
+			added = _map.AddUnit (tile as TileUnit);
+		}
+
+		if (added) {
 			for (int _x = -1 ; _x <= 1 ; _x++) {
 				for (int _y = -1 ; _y <= 1 ; _y++) {
 					for (int _z = -1 ; _z <= 1 ; _z++) {
-						var _terrain = _map.GetTerrain (terrain.x + _x, terrain.y + _y, terrain.z + _z);
-						if (_terrain != null) {
-							UpdateTerrain (_terrain, true, true);
+						var obj = _map.GetTileObject (tile.x + _x, tile.y + _y, tile.z + _z);
+						if (obj != null) {
+							UpdateTileObject (obj, true, true);
 						}
 					}
 				}
@@ -95,66 +117,29 @@ public class TileManager : MonoBehaviour {
 		return false;
 	}
 
-	public	void RemoveTerrain(TileTerrain terrain) {
-		_map.RemoveTerrain (terrain);
-		if (_table.ContainsKey (terrain)) {
-			var list = _table [terrain];
-			for (int i = list.Count - 1; i >= 0; i--) {
-				DestroyImmediate (list [i].gameObject);
+	public	void RemoveTileObject(TileObject tile) {
+		if (_table.ContainsKey (tile)) {
+			var group = _table [tile];
+			_table.Remove (tile);
+			if (group != null && group.gameObject != null) {
+				DestroyImmediate (group.gameObject);
 			}
+		}
+
+		if (tile is TileTerrain) {
+			_map.RemoveTerrain (tile as TileTerrain);
+		} else if (tile is TileUnit) {
+			_map.RemoveUnit (tile as TileUnit);
 		}
 	}
 
-	public	void UpdateTerrain(TileTerrain terrain, bool updateCoord = true, bool updateSprite = false) {
+	public	void UpdateTileObject(TileObject tile, bool updateCoord = true, bool updateSprite = false) {
 		if (!(updateCoord || updateSprite)) {
 			return;
 		}
-		if (_table.ContainsKey (terrain)) {
-			var list = _table [terrain];
-			int count = list.Count;
-			List<TileItem> items = updateSprite ? terrain.GetTileItem (_config.library) : null;
-
-			for (int i = 0; i < count; i++) {
-				var tr = list [i];
-				if (updateCoord) {
-					tr.localPosition = GetPixelCoord (terrain.xf, terrain.yf, terrain.zf);
-				}
-				if (updateSprite) {
-					var item = items [i];
-					tr.Translate (-item.pivotX,-item.pivotY, 0);
-					tr.GetComponent<SpriteRenderer> ().sprite = LoadSprite (item.assetPath);
-				}
-			}
+		if (_table.ContainsKey (tile)) {
+			_table [tile].UpdateSprite (GetPixelCoord (tile.xf, tile.yf, tile.zf));
 		}
-	}
-
-	private	void RenderTerrain(TileTerrain terrain, Transform container) {
-		var items = terrain.GetTileItem (_config.library);
-		var count = items.Count;
-		List<Transform> list = new List<Transform> (count);
-		Vector3 coord = GetPixelCoord (terrain.xf, terrain.yf, terrain.zf);
-		for (int j = 0; j < count; j++) {
-			list.Add (RenderTileItem (container, items [j], coord));
-		}
-		_table.Add (terrain, list);
-	}
-
-	private	Transform RenderTileItem(Transform container, TileItem item, Vector3 position) {
-		var go = new GameObject (item.asset, typeof(SpriteRenderer));
-		go.GetComponent<SpriteRenderer> ().sprite = LoadSprite (item.assetPath);
-		var tr = go.transform;
-		tr.SetParent (container);
-		tr.localPosition = position;
-		tr.Translate (-item.pivotX,-item.pivotY, 0);
-		return tr;
-	}
-
-	private	Sprite LoadSprite(string assetPath) {
-		var sprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite> (assetPath);
-		if (sprite == null) {
-			Debug.LogWarningFormat ("can't find resource at {0}", assetPath);
-		}
-		return sprite;
 	}
 
 	public	Vector3 GetPixelCoord(float x, float y, float z) {
