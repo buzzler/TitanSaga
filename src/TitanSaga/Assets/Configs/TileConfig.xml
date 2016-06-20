@@ -301,6 +301,76 @@
 			<Item id="i_wall_e_3" asset="ISO_Unit_Wall_e_03.png" pivotX="0" pivotY="0" />
 			<Item id="i_wall_e_4" asset="ISO_Unit_Wall_e_04.png" pivotX="0" pivotY="0" />
 		</Category>
+		<Category name="c_titan" path="Assets/Bundles/Tiles/Unit">
+			<Item id="i_13006_a_01" asset="13006_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_13006_a_02" asset="13006_a_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_13006_a_03" asset="13006_a_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_13006_a_04" asset="13006_a_04.png" pivotX="0" pivotY="0" />
+			<Item id="i_13006_a_05" asset="13006_a_05.png" pivotX="0" pivotY="0" />
+			<Item id="i_13006_a_06" asset="13006_a_06.png" pivotX="0" pivotY="0" />
+			<Item id="i_13006_a_07" asset="13006_a_07.png" pivotX="0" pivotY="0" />
+			<Item id="i_13006_a_08" asset="13006_a_08.png" pivotX="0" pivotY="0" />
+			<Item id="i_13006_a_09" asset="13006_a_09.png" pivotX="0" pivotY="0" />
+			<Item id="i_13006_a_10" asset="13006_a_10.png" pivotX="0" pivotY="0" />
+			<Item id="i_13006_b_01" asset="13006_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_13006_b_02" asset="13006_b_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_13006_b_03" asset="13006_b_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_13006_b_04" asset="13006_b_04.png" pivotX="0" pivotY="0" />
+			<Item id="i_13006_b_05" asset="13006_b_05.png" pivotX="0" pivotY="0" />
+			<Item id="i_13006_b_06" asset="13006_b_06.png" pivotX="0" pivotY="0" />
+			<Item id="i_13006_b_07" asset="13006_b_07.png" pivotX="0" pivotY="0" />
+			<Item id="i_13006_b_08" asset="13006_b_08.png" pivotX="0" pivotY="0" />
+			<Item id="i_13006_b_09" asset="13006_b_09.png" pivotX="0" pivotY="0" />
+			<Item id="i_13006_b_10" asset="13006_b_10.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_a_01" asset="13007_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_a_02" asset="13007_a_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_a_03" asset="13007_a_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_a_04" asset="13007_a_04.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_a_05" asset="13007_a_05.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_a_06" asset="13007_a_06.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_a_07" asset="13007_a_07.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_a_08" asset="13007_a_08.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_a_09" asset="13007_a_09.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_a_10" asset="13007_a_10.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_b_01" asset="13007_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_b_02" asset="13007_b_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_b_03" asset="13007_b_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_b_04" asset="13007_b_04.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_b_05" asset="13007_b_05.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_b_06" asset="13007_b_06.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_b_07" asset="13007_b_07.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_b_08" asset="13007_b_08.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_b_09" asset="13007_b_09.png" pivotX="0" pivotY="0" />
+			<Item id="i_13007_b_10" asset="13007_b_10.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_a_01" asset="13008_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_a_02" asset="13008_a_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_a_03" asset="13008_a_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_a_04" asset="13008_a_04.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_a_05" asset="13008_a_05.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_a_06" asset="13008_a_06.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_a_07" asset="13008_a_07.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_a_08" asset="13008_a_08.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_a_09" asset="13008_a_09.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_a_10" asset="13008_a_10.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_b_01" asset="13008_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_b_02" asset="13008_b_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_b_03" asset="13008_b_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_b_04" asset="13008_b_04.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_b_05" asset="13008_b_05.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_b_06" asset="13008_b_06.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_b_07" asset="13008_b_07.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_b_08" asset="13008_b_08.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_b_09" asset="13008_b_09.png" pivotX="0" pivotY="0" />
+			<Item id="i_13008_b_10" asset="13008_b_10.png" pivotX="0" pivotY="0" />
+		</Category>
+		<Titan id="t_13006">
+			<IdleFront item="i_13006_a_01" seq="i_13006_a_01|i_13006_a_02|i_13006_a_03|i_13006_a_02" fps="15" />
+			<IdleBack item="i_13006_b_01" seq="i_13006_b_01|i_13006_b_02|i_13006_b_03|i_13006_b_02" fps="15" />
+			<MoveFront item="i_13006_a_04" seq="i_13006_a_04|i_13006_a_05|i_13006_a_06|i_13006_a_07" fps="15" />
+			<MoveBack item="i_13006_b_04" seq="i_13006_b_04|i_13006_b_05|i_13006_b_06|i_13006_b_07" fps="15" />
+			<AttackFront item="i_13006_a_08" seq="i_13006_a_08|i_13006_a_09|i_13006_a_10" fps="15" loop="false" />
+			<AttackBack item="i_13006_b_08" seq="i_13006_b_08|i_13006_b_09|i_13006_b_10" fps="15" loop="false" />
+		</Titan>
 		<Building id="t_piece_a">
 			<Basic item="i_piece_a">
 				<Child item="i_flag_b_1" x="0" y="60" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
