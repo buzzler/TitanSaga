@@ -324,57 +324,807 @@
 				<Child item="i_flag_y_1" x="0" y="60" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
 			</Yellow>
 		</Building>
+		<Building id="t_piece_b">
+			<Basic item="i_piece_b">
+				<Child item="i_flag_b_1" x="0" y="60" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_piece_b">
+				<Child item="i_flag_b_1" x="0" y="60" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_piece_b">
+				<Child item="i_flag_g_1" x="0" y="60" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_piece_b">
+				<Child item="i_flag_k_1" x="0" y="60" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_piece_b">
+				<Child item="i_flag_p_1" x="0" y="60" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_piece_b">
+				<Child item="i_flag_r_1" x="0" y="60" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_piece_b">
+				<Child item="i_flag_y_1" x="0" y="60" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_piece_c">
+			<Basic item="i_piece_c">
+				<Child item="i_flag_b_1" x="0" y="60" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_piece_c">
+				<Child item="i_flag_b_1" x="0" y="60" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_piece_c">
+				<Child item="i_flag_g_1" x="0" y="60" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_piece_c">
+				<Child item="i_flag_k_1" x="0" y="60" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_piece_c">
+				<Child item="i_flag_p_1" x="0" y="60" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_piece_c">
+				<Child item="i_flag_r_1" x="0" y="60" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_piece_c">
+				<Child item="i_flag_y_1" x="0" y="60" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_piece_d">
+			<Basic item="i_piece_d">
+				<Child item="i_flag_b_1" x="0" y="60" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_piece_d">
+				<Child item="i_flag_b_1" x="0" y="60" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_piece_d">
+				<Child item="i_flag_g_1" x="0" y="60" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_piece_d">
+				<Child item="i_flag_k_1" x="0" y="60" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_piece_d">
+				<Child item="i_flag_p_1" x="0" y="60" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_piece_d">
+				<Child item="i_flag_r_1" x="0" y="60" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_piece_d">
+				<Child item="i_flag_y_1" x="0" y="60" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_piece_e">
+			<Basic item="i_piece_e">
+				<Child item="i_flag_b_1" x="0" y="60" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_piece_e">
+				<Child item="i_flag_b_1" x="0" y="60" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_piece_e">
+				<Child item="i_flag_g_1" x="0" y="60" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_piece_e">
+				<Child item="i_flag_k_1" x="0" y="60" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_piece_e">
+				<Child item="i_flag_p_1" x="0" y="60" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_piece_e">
+				<Child item="i_flag_r_1" x="0" y="60" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_piece_e">
+				<Child item="i_flag_y_1" x="0" y="60" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
 		<Building id="t_bankgold_a">
 			<Basic item="i_bankgold_a">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
 			</Basic>
+			<Blue item="i_bankgold_a">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_bankgold_a">
+				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_bankgold_a">
+				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_bankgold_a">
+				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_bankgold_a">
+				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_bankgold_a">
+				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_bankgold_b">
+			<Basic item="i_bankgold_b">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_bankgold_b">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_bankgold_b">
+				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_bankgold_b">
+				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_bankgold_b">
+				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_bankgold_b">
+				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_bankgold_b">
+				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_bankgold_c">
+			<Basic item="i_bankgold_c">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_bankgold_c">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_bankgold_c">
+				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_bankgold_c">
+				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_bankgold_c">
+				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_bankgold_c">
+				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_bankgold_c">
+				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_bankgold_d">
+			<Basic item="i_bankgold_d">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_bankgold_d">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_bankgold_d">
+				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_bankgold_d">
+				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_bankgold_d">
+				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_bankgold_d">
+				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_bankgold_d">
+				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_bankgold_e">
+			<Basic item="i_bankgold_e">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_bankgold_e">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_bankgold_e">
+				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_bankgold_e">
+				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_bankgold_e">
+				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_bankgold_e">
+				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_bankgold_e">
+				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
 		</Building>
 		<Building id="t_bankperidot_a">
 			<Basic item="i_bankperidot_a">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
 			</Basic>
+			<Blue item="i_bankperidot_a">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_bankperidot_a">
+				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_bankperidot_a">
+				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_bankperidot_a">
+				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_bankperidot_a">
+				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_bankperidot_a">
+				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_bankperidot_b">
+			<Basic item="i_bankperidot_b">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_bankperidot_b">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_bankperidot_b">
+				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_bankperidot_b">
+				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_bankperidot_b">
+				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_bankperidot_b">
+				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_bankperidot_b">
+				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_bankperidot_c">
+			<Basic item="i_bankperidot_c">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_bankperidot_c">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_bankperidot_c">
+				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_bankperidot_c">
+				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_bankperidot_c">
+				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_bankperidot_c">
+				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_bankperidot_c">
+				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_bankperidot_d">
+			<Basic item="i_bankperidot_d">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_bankperidot_d">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_bankperidot_d">
+				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_bankperidot_d">
+				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_bankperidot_d">
+				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_bankperidot_d">
+				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_bankperidot_d">
+				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_bankperidot_e">
+			<Basic item="i_bankperidot_e">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_bankperidot_e">
+				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_bankperidot_e">
+				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_bankperidot_e">
+				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_bankperidot_e">
+				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_bankperidot_e">
+				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_bankperidot_e">
+				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
 		</Building>
 		<Building id="t_bootcamp_a">
 			<Basic item="i_bootcamp_a">
 				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
 			</Basic>
+			<Blue item="i_bootcamp_a">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_bootcamp_a">
+				<Child item="i_flag_g_1" x="0" y="108" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_bootcamp_a">
+				<Child item="i_flag_k_1" x="0" y="108" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_bootcamp_a">
+				<Child item="i_flag_p_1" x="0" y="108" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_bootcamp_a">
+				<Child item="i_flag_r_1" x="0" y="108" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_bootcamp_a">
+				<Child item="i_flag_y_1" x="0" y="108" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_bootcamp_b">
+			<Basic item="i_bootcamp_b">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_bootcamp_b">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_bootcamp_b">
+				<Child item="i_flag_g_1" x="0" y="108" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_bootcamp_b">
+				<Child item="i_flag_k_1" x="0" y="108" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_bootcamp_b">
+				<Child item="i_flag_p_1" x="0" y="108" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_bootcamp_b">
+				<Child item="i_flag_r_1" x="0" y="108" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_bootcamp_b">
+				<Child item="i_flag_y_1" x="0" y="108" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_bootcamp_c">
+			<Basic item="i_bootcamp_c">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_bootcamp_c">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_bootcamp_c">
+				<Child item="i_flag_g_1" x="0" y="108" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_bootcamp_c">
+				<Child item="i_flag_k_1" x="0" y="108" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_bootcamp_c">
+				<Child item="i_flag_p_1" x="0" y="108" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_bootcamp_c">
+				<Child item="i_flag_r_1" x="0" y="108" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_bootcamp_c">
+				<Child item="i_flag_y_1" x="0" y="108" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_bootcamp_d">
+			<Basic item="i_bootcamp_d">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_bootcamp_d">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_bootcamp_d">
+				<Child item="i_flag_g_1" x="0" y="108" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_bootcamp_d">
+				<Child item="i_flag_k_1" x="0" y="108" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_bootcamp_d">
+				<Child item="i_flag_p_1" x="0" y="108" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_bootcamp_d">
+				<Child item="i_flag_r_1" x="0" y="108" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_bootcamp_d">
+				<Child item="i_flag_y_1" x="0" y="108" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_bootcamp_e">
+			<Basic item="i_bootcamp_e">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_bootcamp_e">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_bootcamp_e">
+				<Child item="i_flag_g_1" x="0" y="108" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_bootcamp_e">
+				<Child item="i_flag_k_1" x="0" y="108" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_bootcamp_e">
+				<Child item="i_flag_p_1" x="0" y="108" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_bootcamp_e">
+				<Child item="i_flag_r_1" x="0" y="108" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_bootcamp_e">
+				<Child item="i_flag_y_1" x="0" y="108" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
 		</Building>
 		<Building id="t_cannon_a">
 			<Basic item="i_cannon_a" />
+		</Building>
+		<Building id="t_cannon_b">
+			<Basic item="i_cannon_b" />
+		</Building>
+		<Building id="t_cannon_c">
+			<Basic item="i_cannon_c" />
+		</Building>
+		<Building id="t_cannon_d">
+			<Basic item="i_cannon_d" />
+		</Building>
+		<Building id="t_cannon_e">
+			<Basic item="i_cannon_e" />
 		</Building>
 		<Building id="t_castle_a">
 			<Basic item="i_castle_a">
 				<Child item="i_flag_b_1" x="0" y="147" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
 			</Basic>
+			<Blue item="i_castle_a">
+				<Child item="i_flag_b_1" x="0" y="147" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_castle_a">
+				<Child item="i_flag_g_1" x="0" y="147" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_castle_a">
+				<Child item="i_flag_k_1" x="0" y="147" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_castle_a">
+				<Child item="i_flag_p_1" x="0" y="147" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_castle_a">
+				<Child item="i_flag_r_1" x="0" y="147" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_castle_a">
+				<Child item="i_flag_y_1" x="0" y="147" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_castle_b">
+			<Basic item="i_castle_b">
+				<Child item="i_flag_b_1" x="0" y="147" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_castle_b">
+				<Child item="i_flag_b_1" x="0" y="147" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_castle_b">
+				<Child item="i_flag_g_1" x="0" y="147" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_castle_b">
+				<Child item="i_flag_k_1" x="0" y="147" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_castle_b">
+				<Child item="i_flag_p_1" x="0" y="147" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_castle_b">
+				<Child item="i_flag_r_1" x="0" y="147" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_castle_b">
+				<Child item="i_flag_y_1" x="0" y="147" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_castle_c">
+			<Basic item="i_castle_c">
+				<Child item="i_flag_b_1" x="0" y="147" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_castle_c">
+				<Child item="i_flag_b_1" x="0" y="147" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_castle_c">
+				<Child item="i_flag_g_1" x="0" y="147" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_castle_c">
+				<Child item="i_flag_k_1" x="0" y="147" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_castle_c">
+				<Child item="i_flag_p_1" x="0" y="147" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_castle_c">
+				<Child item="i_flag_r_1" x="0" y="147" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_castle_c">
+				<Child item="i_flag_y_1" x="0" y="147" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_castle_d">
+			<Basic item="i_castle_d">
+				<Child item="i_flag_b_1" x="0" y="147" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_castle_d">
+				<Child item="i_flag_b_1" x="0" y="147" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_castle_d">
+				<Child item="i_flag_g_1" x="0" y="147" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_castle_d">
+				<Child item="i_flag_k_1" x="0" y="147" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_castle_d">
+				<Child item="i_flag_p_1" x="0" y="147" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_castle_d">
+				<Child item="i_flag_r_1" x="0" y="147" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_castle_d">
+				<Child item="i_flag_y_1" x="0" y="147" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_castle_e">
+			<Basic item="i_castle_e">
+				<Child item="i_flag_b_1" x="0" y="147" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_castle_e">
+				<Child item="i_flag_b_1" x="0" y="147" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_castle_e">
+				<Child item="i_flag_g_1" x="0" y="147" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_castle_e">
+				<Child item="i_flag_k_1" x="0" y="147" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_castle_e">
+				<Child item="i_flag_p_1" x="0" y="147" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_castle_e">
+				<Child item="i_flag_r_1" x="0" y="147" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_castle_e">
+				<Child item="i_flag_y_1" x="0" y="147" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
 		</Building>
 		<Building id="t_dungeon_a">
 			<Basic item="i_dungeon_a" />
 		</Building>
+		<Building id="t_dungeon_b">
+			<Basic item="i_dungeon_b" />
+		</Building>
+		<Building id="t_dungeon_c">
+			<Basic item="i_dungeon_c" />
+		</Building>
+		<Building id="t_dungeon_d">
+			<Basic item="i_dungeon_d" />
+		</Building>
+		<Building id="t_dungeon_e">
+			<Basic item="i_dungeon_e" />
+		</Building>
 		<Building id="t_engineer_a">
 			<Basic item="i_engineer_a" />
+		</Building>
+		<Building id="t_engineer_b">
+			<Basic item="i_engineer_b" />
+		</Building>
+		<Building id="t_engineer_c">
+			<Basic item="i_engineer_c" />
+		</Building>
+		<Building id="t_engineer_d">
+			<Basic item="i_engineer_d" />
+		</Building>
+		<Building id="t_engineer_e">
+			<Basic item="i_engineer_e" />
 		</Building>
 		<Building id="t_house_a">
 			<Basic item="i_house_a" />
 		</Building>
+		<Building id="t_house_b">
+			<Basic item="i_house_b" />
+		</Building>
+		<Building id="t_house_c">
+			<Basic item="i_house_c" />
+		</Building>
+		<Building id="t_house_d">
+			<Basic item="i_house_d" />
+		</Building>
+		<Building id="t_house_e">
+			<Basic item="i_house_e" />
+		</Building>
 		<Building id="t_magicalter_a">
 			<Basic item="i_magicalter_a" />
+		</Building>
+		<Building id="t_magicalter_b">
+			<Basic item="i_magicalter_b" />
+		</Building>
+		<Building id="t_magicalter_c">
+			<Basic item="i_magicalter_c" />
+		</Building>
+		<Building id="t_magicalter_d">
+			<Basic item="i_magicalter_d" />
+		</Building>
+		<Building id="t_magicalter_e">
+			<Basic item="i_magicalter_e" />
 		</Building>
 		<Building id="t_magiclab_a">
 			<Basic item="i_magiclab_a" />
 		</Building>
+		<Building id="t_magiclab_b">
+			<Basic item="i_magiclab_b" />
+		</Building>
+		<Building id="t_magiclab_c">
+			<Basic item="i_magiclab_c" />
+		</Building>
+		<Building id="t_magiclab_d">
+			<Basic item="i_magiclab_d" />
+		</Building>
+		<Building id="t_magiclab_e">
+			<Basic item="i_magiclab_e" />
+		</Building>
 		<Building id="t_magictower_a">
 			<Basic item="i_magictower_a" />
+		</Building>
+		<Building id="t_magictower_b">
+			<Basic item="i_magictower_b" />
+		</Building>
+		<Building id="t_magictower_c">
+			<Basic item="i_magictower_c" />
+		</Building>
+		<Building id="t_magictower_d">
+			<Basic item="i_magictower_d" />
+		</Building>
+		<Building id="t_magictower_e">
+			<Basic item="i_magictower_e" />
 		</Building>
 		<Building id="t_minegold_a">
 			<Basic item="i_minegold_a" />
 		</Building>
+		<Building id="t_minegold_b">
+			<Basic item="i_minegold_b" />
+		</Building>
+		<Building id="t_minegold_c">
+			<Basic item="i_minegold_c" />
+		</Building>
+		<Building id="t_minegold_d">
+			<Basic item="i_minegold_d" />
+		</Building>
+		<Building id="t_minegold_e">
+			<Basic item="i_minegold_e" />
+		</Building>
 		<Building id="t_mineperidot_a">
 			<Basic item="i_mineperidot_a" />
+		</Building>
+		<Building id="t_mineperidot_b">
+			<Basic item="i_mineperidot_b" />
+		</Building>
+		<Building id="t_mineperidot_c">
+			<Basic item="i_mineperidot_c" />
+		</Building>
+		<Building id="t_mineperidot_d">
+			<Basic item="i_mineperidot_d" />
+		</Building>
+		<Building id="t_mineperidot_e">
+			<Basic item="i_mineperidot_e" />
 		</Building>
 		<Building id="t_pentagon_a">
 			<Basic item="i_pentagon_a">
 				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
 			</Basic>
+			<Blue item="i_pentagon_a">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_pentagon_a">
+				<Child item="i_flag_g_1" x="0" y="108" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_pentagon_a">
+				<Child item="i_flag_k_1" x="0" y="108" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_pentagon_a">
+				<Child item="i_flag_p_1" x="0" y="108" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_pentagon_a">
+				<Child item="i_flag_r_1" x="0" y="108" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_pentagon_a">
+				<Child item="i_flag_y_1" x="0" y="108" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_pentagon_b">
+			<Basic item="i_pentagon_b">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_pentagon_b">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_pentagon_b">
+				<Child item="i_flag_g_1" x="0" y="108" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_pentagon_b">
+				<Child item="i_flag_k_1" x="0" y="108" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_pentagon_b">
+				<Child item="i_flag_p_1" x="0" y="108" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_pentagon_b">
+				<Child item="i_flag_r_1" x="0" y="108" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_pentagon_b">
+				<Child item="i_flag_y_1" x="0" y="108" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_pentagon_c">
+			<Basic item="i_pentagon_c">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_pentagon_c">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_pentagon_c">
+				<Child item="i_flag_g_1" x="0" y="108" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_pentagon_c">
+				<Child item="i_flag_k_1" x="0" y="108" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_pentagon_c">
+				<Child item="i_flag_p_1" x="0" y="108" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_pentagon_c">
+				<Child item="i_flag_r_1" x="0" y="108" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_pentagon_c">
+				<Child item="i_flag_y_1" x="0" y="108" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_pentagon_d">
+			<Basic item="i_pentagon_d">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_pentagon_d">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_pentagon_d">
+				<Child item="i_flag_g_1" x="0" y="108" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_pentagon_d">
+				<Child item="i_flag_k_1" x="0" y="108" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_pentagon_d">
+				<Child item="i_flag_p_1" x="0" y="108" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_pentagon_d">
+				<Child item="i_flag_r_1" x="0" y="108" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_pentagon_d">
+				<Child item="i_flag_y_1" x="0" y="108" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
+		</Building>
+		<Building id="t_pentagon_e">
+			<Basic item="i_pentagon_e">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Basic>
+			<Blue item="i_pentagon_e">
+				<Child item="i_flag_b_1" x="0" y="108" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+			</Blue>
+			<Green item="i_pentagon_e">
+				<Child item="i_flag_g_1" x="0" y="108" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+			</Green>
+			<Black item="i_pentagon_e">
+				<Child item="i_flag_k_1" x="0" y="108" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+			</Black>
+			<Purple item="i_pentagon_e">
+				<Child item="i_flag_p_1" x="0" y="108" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+			</Purple>
+			<Red item="i_pentagon_e">
+				<Child item="i_flag_r_1" x="0" y="108" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+			</Red>
+			<Yellow item="i_pentagon_e">
+				<Child item="i_flag_y_1" x="0" y="108" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+			</Yellow>
 		</Building>
 		<Simple id="t_wall_a">
 			<None item="i_wall_a_1"/>
