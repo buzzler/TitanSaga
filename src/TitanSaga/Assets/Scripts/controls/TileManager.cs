@@ -107,7 +107,7 @@ public class TileManager : MonoBehaviour {
 					for (int _z = -1 ; _z <= 1 ; _z++) {
 						var obj = _map.GetTileObject (tile.x + _x, tile.y + _y, tile.z + _z);
 						if (obj != null) {
-							UpdateTileObject (obj, true, true);
+							UpdateTileObject (obj);
 						}
 					}
 				}
@@ -133,10 +133,7 @@ public class TileManager : MonoBehaviour {
 		}
 	}
 
-	public	void UpdateTileObject(TileObject tile, bool updateCoord = true, bool updateSprite = false) {
-		if (!(updateCoord || updateSprite)) {
-			return;
-		}
+	public	void UpdateTileObject(TileObject tile) {
 		if (_table.ContainsKey (tile)) {
 			_table [tile].UpdateSprite (GetPixelCoord (tile.xf, tile.yf, tile.zf));
 		}

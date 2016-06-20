@@ -82,7 +82,7 @@ public class AddNewTile : MonoBehaviour {
 			_face = TileFace.Up;	break;
 		}
 		_object.face = _face;
-		_observer.tileManager.UpdateTileObject (_object, true, true);
+		_observer.tileManager.UpdateTileObject (_object);
 	}
 
 	private	void OnClickCCW() {
@@ -97,7 +97,7 @@ public class AddNewTile : MonoBehaviour {
 			_face = TileFace.Up;	break;
 		}
 		_object.face = _face;
-		_observer.tileManager.UpdateTileObject (_object, true, true);
+		_observer.tileManager.UpdateTileObject (_object);
 	}
 
 	private	void OnClickCancel() {

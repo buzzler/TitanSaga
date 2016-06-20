@@ -823,13 +823,16 @@ namespace TileLib
 			c.height = this.height;
 			c.depth = this.depth;
 
-			var len = this.terrains.Length;
-			c.terrains = new TileTerrain[len];
-			System.Array.Copy (this.terrains, c.terrains, len);
-
-			len = this.units.Length;
-			c.units = new TileUnit[len];
-			System.Array.Copy (this.units, c.units, len);
+			if (this.terrains != null) {
+				var len = this.terrains.Length;
+				c.terrains = new TileTerrain[len];
+				System.Array.Copy (this.terrains, c.terrains, len);
+			}
+			if (this.units != null) {
+				var len = this.units.Length;
+				c.units = new TileUnit[len];
+				System.Array.Copy (this.units, c.units, len);
+			}
 
 			return c;
 		}

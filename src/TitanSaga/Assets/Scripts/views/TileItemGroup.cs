@@ -4,25 +4,34 @@ using TileLib;
 
 public class TileItemGroup : MonoBehaviour {
 	private	Transform			_transform;
+	private	TileLibrary			_library;
 	private	ITileObject			_object;
 	private	TileItemRenderer[]	_renderers;
 
 	void OnDestroy() {
 		_transform = null;
+		_library = null;
 		_object = null;
 		_renderers = null;
 	}
 
 	public	void SetTileObject(TileLibrary library, ITileObject obj, Transform parent) {
 		_transform = transform;
+		_library = library;
 		_transform.SetParent (parent);
 
-		if (_object == obj) {
+		if (_object != obj) {
+			_object = obj;
+			ResetSprite ();
+		}
+	}
+
+	public	void ResetSprite() {
+		if (_object == null || _library == null) {
 			return;
 		}
-		_object = obj;
 
-		var links = _object.GetTileItemLink (library);
+		var links = _object.GetTileItemLink (_library);
 		var count = links.Count;
 
 		if (_renderers == null) {
@@ -47,12 +56,13 @@ public class TileItemGroup : MonoBehaviour {
 
 		if (_renderers != null) {
 			for (int i = 0; i < count; i++) {
-				_renderers [i].SetTileItemLInk (library, links [i], _transform);
+				_renderers [i].SetTileItemLInk (_library, links [i], _transform);
 			}
 		}
 	}
 
 	public	void UpdateSprite(Vector3 position) {
+		ResetSprite ();
 		_transform.localPosition = position;
 		for (int i = _renderers.Length - 1; i >= 0; i--) {
 			_renderers [i].UpdateSprite ();
