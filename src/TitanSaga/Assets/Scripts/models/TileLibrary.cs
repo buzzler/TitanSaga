@@ -300,7 +300,8 @@ namespace TileLib
 		Complex,
 		Direction,
 		Building,
-		Normal
+		Normal,
+		Character
 	}
 
 	public	enum TileFace
@@ -352,6 +353,8 @@ namespace TileLib
 		public	TileBuilding[]	buildings;
 		[XmlElement ("Normal")]
 		public	TileNormal[]	normals;
+		[XmlElement ("Character")]
+		public	TileCharacter[]	characters;
 
 		private	Dictionary<string, TileCategory>	_dictionaryCategory;
 		private	Dictionary<string, TileBase>		_dictionaryItem;
@@ -364,6 +367,7 @@ namespace TileLib
 			directions = new TileDirection[0];
 			buildings = new TileBuilding[0];
 			normals = new TileNormal[0];
+			characters = new TileCharacter[0];
 			_dictionaryCategory	= new Dictionary<string, TileCategory> ();
 			_dictionaryItem = new Dictionary<string, TileBase> ();
 		}
@@ -387,31 +391,43 @@ namespace TileLib
 			for (int i = simples.Length - 1; i >= 0; i--) {
 				TileSimple simple = simples [i];
 				simple.library = this;
+				simple.Hashing ();
 				_dictionaryItem.Add (simple.id, simple);
 			}
 
 			for (int i = complexs.Length - 1; i >= 0; i--) {
 				TileComplex complex = complexs [i];
 				complex.library = this;
+				complex.Hashing ();
 				_dictionaryItem.Add (complex.id, complex);
 			}
 
 			for (int i = directions.Length - 1; i >= 0; i--) {
 				TileDirection direction = directions [i];
 				direction.library = this;
+				direction.Hashing ();
 				_dictionaryItem.Add (direction.id, direction);
 			}
 
 			for (int i = buildings.Length - 1; i >= 0; i--) {
 				TileBuilding building = buildings [i];
 				building.library = this;
+				building.Hashing ();
 				_dictionaryItem.Add (building.id, building);
 			}
 
 			for (int i = normals.Length - 1; i >= 0; i--) {
 				TileNormal normal = normals [i];
 				normal.library = this;
+				normal.Hashing ();
 				_dictionaryItem.Add (normal.id, normal);
+			}
+
+			for (int i = characters.Length - 1; i >= 0 ;i--) {
+				TileCharacter character = characters [i];
+				character.library = this;
+				character.Hashing ();
+				_dictionaryItem.Add (character.id, character);
 			}
 		}
 
@@ -485,7 +501,8 @@ namespace TileLib
 		public	TileType type;
 		public	TileLibrary library;
 
-
+		public	virtual void Hashing() {
+		}
 	}
 
 	public	class TileItem : TileBase
@@ -541,6 +558,51 @@ namespace TileLib
 
 		public	TileNormal() {
 			type = TileType.Normal;
+		}
+	}
+
+	public	class TileCharacterMotion {
+		[XmlAttribute("id")]
+		public	string			id;
+		[XmlAttribute("basic")]
+		public	bool			basic;
+		[XmlElement("U")]
+		public	TileItemLink	up;
+		[XmlElement("D")]
+		public	TileItemLink	down;
+		[XmlElement("L")]
+		public	TileItemLink	left;
+		[XmlElement("R")]
+		public	TileItemLink	right;
+	}
+
+	public	class TileCharacter : TileBase {
+		[XmlElement("Motion")]
+		public	TileCharacterMotion[] motions;
+		private	TileCharacterMotion _basic;
+		private	Dictionary<string, TileCharacterMotion> _dic;
+
+		public	TileCharacter() {
+			type = TileType.Character;
+			motions = new TileCharacterMotion[0];
+			_dic = new Dictionary<string, TileCharacterMotion> ();
+		}
+
+		public override void Hashing () {
+			for (int i = motions.Length - 1; i >= 0; i--) {
+				var motion = motions [i];
+				_dic.Add (motion.id, motion);
+				if (motion.basic) {
+					_basic = motion;
+				}
+			}
+		}
+
+		public	TileCharacterMotion GetMotion(string motion = "") {
+			if (_dic.ContainsKey (motion)) {
+				return _dic [motion];
+			}
+			return _basic;
 		}
 	}
 
@@ -738,6 +800,8 @@ namespace TileLib
 		public	string sequence;
 		[XmlAttribute ("fps")]
 		public	float fps;
+		[XmlAttribute ("flip")]
+		public	bool flip;
 		[XmlElement ("Child")]
 		public	TileItemLink[]	children;
 
@@ -746,6 +810,9 @@ namespace TileLib
 			this.item = string.Empty;
 			this.x = 0;
 			this.y = 0;
+			this.sequence = string.Empty;
+			this.fps = 30;
+			this.flip = false;
 			this.children = new TileItemLink[0];
 		}
 			
@@ -1024,6 +1091,9 @@ namespace TileLib
 			case TileType.Building:
 				GetTileItemForBuilding (tb as TileBuilding, list);
 				break;
+			case TileType.Character:
+				GetTileItemForCharacter (tb as TileCharacter, list);
+				break;
 			}
 
 			return list;
@@ -1051,6 +1121,23 @@ namespace TileLib
 				break;
 			case TileColor.Yellow:
 				GetAllTileItem (building.yellow, list);
+				break;
+			}
+		}
+
+		private	void GetTileItemForCharacter (TileCharacter character, List<TileItemLink> list) {
+			switch (face) {
+			case TileFace.Up:
+				GetAllTileItem (character.GetMotion ().up, list);
+				break;
+			case TileFace.Down:
+				GetAllTileItem (character.GetMotion ().down, list);
+				break;
+			case TileFace.Left:
+				GetAllTileItem (character.GetMotion ().left, list);
+				break;
+			case TileFace.Right:
+				GetAllTileItem (character.GetMotion ().right, list);
 				break;
 			}
 		}

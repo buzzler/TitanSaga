@@ -117,6 +117,8 @@ public class AddNewTile : MonoBehaviour {
 
 		switch (_base.type) {
 		case TileType.Building:
+		case TileType.Normal:
+		case TileType.Character:
 			GenerateUnit (pos);
 			break;
 		case TileType.Complex:

@@ -11,6 +11,8 @@ public class DebugConsole : MonoBehaviour {
 	public	Button				btnComplex;
 	public	Button				btnDirection;
 	public	Button				btnBuilding;
+	public	Button				btnNormal;
+	public	Button				btnCharacter;
 	public	Button				btnClear;
 	public	Button				btnLoad;
 	public	Button				btnSave;
@@ -24,6 +26,8 @@ public class DebugConsole : MonoBehaviour {
 		btnComplex.onClick.AddListener (OnClickComplex);
 		btnDirection.onClick.AddListener (OnClickDirection);
 		btnBuilding.onClick.AddListener (OnClickBuilding);
+		btnNormal.onClick.AddListener (OnClickNormal);
+		btnCharacter.onClick.AddListener (OnClickCharacter);
 		btnClear.onClick.AddListener (OnClickClear);
 		btnLoad.onClick.AddListener (OnClickLoad);
 		btnSave.onClick.AddListener (OnClickSave);
@@ -37,6 +41,8 @@ public class DebugConsole : MonoBehaviour {
 		btnComplex.onClick.RemoveAllListeners ();
 		btnDirection.onClick.RemoveAllListeners ();
 		btnBuilding.onClick.RemoveAllListeners ();
+		btnNormal.onClick.RemoveAllListeners ();
+		btnCharacter.onClick.RemoveAllListeners ();
 		btnClear.onClick.RemoveAllListeners ();
 		btnLoad.onClick.RemoveAllListeners ();
 		btnSave.onClick.RemoveAllListeners ();
@@ -98,6 +104,26 @@ public class DebugConsole : MonoBehaviour {
 		for (int d = 0 ; d < build ; d++) {
 			var building = _library.buildings[d];
 			AddContent(_library.FindItem(building.basic.item) as TileItem, building);
+		}
+		scrollView.Align();
+	}
+
+	private	void OnClickNormal() {
+		scrollView.Clear();
+		int norms = _library.normals.Length;
+		for (int d = 0 ; d < norms ; d++) {
+			var norm = _library.normals[d];
+			AddContent(_library.FindItem(norm.link.item) as TileItem, norm);
+		}
+		scrollView.Align();
+	}
+
+	private	void OnClickCharacter() {
+		scrollView.Clear();
+		int count = _library.characters.Length;
+		for (int d = 0 ; d < count ; d++) {
+			var character = _library.characters[d];
+			AddContent(_library.FindItem(character.GetMotion().right.item) as TileItem, character);
 		}
 		scrollView.Align();
 	}

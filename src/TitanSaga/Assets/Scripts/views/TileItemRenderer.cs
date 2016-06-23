@@ -77,6 +77,7 @@ public class TileItemRenderer : MonoBehaviour {
 		var sprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite> (item.assetPath);
 		if (_renderer.sprite != sprite) {
 			_renderer.sprite = sprite;
+			_renderer.flipX = _link.flip;
 			_last = Time.realtimeSinceStartup;
 		}
 	}
