@@ -42,7 +42,7 @@ public class AddNewTile : MonoBehaviour {
 			var pos = _observer.cameraManager.GetCurrentTilePosition ();
 			pos.y = _height;
 			_object.SetPosition (pos);
-			_observer.tileManager.UpdateTileObject (_object);
+			_observer.tileManager.UpdateSingle (_object);
 		}
 	}
 
@@ -82,7 +82,7 @@ public class AddNewTile : MonoBehaviour {
 			_face = TileFace.Up;	break;
 		}
 		_object.face = _face;
-		_observer.tileManager.UpdateTileObject (_object);
+		_observer.tileManager.UpdateSingle (_object);
 	}
 
 	private	void OnClickCCW() {
@@ -97,7 +97,7 @@ public class AddNewTile : MonoBehaviour {
 			_face = TileFace.Up;	break;
 		}
 		_object.face = _face;
-		_observer.tileManager.UpdateTileObject (_object);
+		_observer.tileManager.UpdateSingle (_object);
 	}
 
 	private	void OnClickCancel() {
@@ -117,6 +117,7 @@ public class AddNewTile : MonoBehaviour {
 
 		switch (_base.type) {
 		case TileType.Building:
+		case TileType.Wall:
 		case TileType.Normal:
 		case TileType.Character:
 			GenerateUnit (pos);

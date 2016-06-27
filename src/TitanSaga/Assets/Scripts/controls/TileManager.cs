@@ -102,16 +102,7 @@ public class TileManager : MonoBehaviour {
 		}
 
 		if (added) {
-			for (int _x = -1 ; _x <= 1 ; _x++) {
-				for (int _y = -1 ; _y <= 1 ; _y++) {
-					for (int _z = -1 ; _z <= 1 ; _z++) {
-						var obj = _map.GetTileObject (tile.x + _x, tile.y + _y, tile.z + _z);
-						if (obj != null) {
-							UpdateTileObject (obj);
-						}
-					}
-				}
-			}
+			UpdateBoundary (tile.x, tile.y, tile.z);
 			return true;
 		}
 		return false;
@@ -133,9 +124,22 @@ public class TileManager : MonoBehaviour {
 		}
 	}
 
-	public	void UpdateTileObject(TileObject tile) {
+	public	void UpdateSingle(TileObject tile) {
 		if (_table.ContainsKey (tile)) {
 			_table [tile].UpdateSprite (GetPixelCoord (tile.xf, tile.yf, tile.zf));
+		}
+	}
+
+	public	void UpdateBoundary(int x, int y, int z) {
+		for (int _x = -1 ; _x <= 1 ; _x++) {
+			for (int _y = -1 ; _y <= 1 ; _y++) {
+				for (int _z = -1 ; _z <= 1 ; _z++) {
+					var obj = _map.GetTileObject (x + _x, y + _y, z + _z);
+					if (obj != null) {
+						UpdateSingle (obj);
+					}
+				}
+			}
 		}
 	}
 

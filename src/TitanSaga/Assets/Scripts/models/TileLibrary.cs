@@ -7,6 +7,15 @@ using System.IO;
 
 namespace TileLib
 {
+	public	class TileWallConst
+	{
+		public	const uint NONE = 0x00;
+		public	const uint U = 0x01;
+		public	const uint L = 0x04;
+		public	const uint UL = 0x10;
+
+		public	const uint U_L = U | L;
+	}
 
 	public	class TileSimpleConst
 	{
@@ -300,6 +309,7 @@ namespace TileLib
 		Complex,
 		Direction,
 		Building,
+		Wall,
 		Normal,
 		Character
 	}
@@ -351,6 +361,8 @@ namespace TileLib
 		public	TileDirection[]	directions;
 		[XmlElement ("Building")]
 		public	TileBuilding[]	buildings;
+		[XmlElement ("Wall")]
+		public	TileWall[]		walls;
 		[XmlElement ("Normal")]
 		public	TileNormal[]	normals;
 		[XmlElement ("Character")]
@@ -366,6 +378,7 @@ namespace TileLib
 			complexs = new TileComplex[0];
 			directions = new TileDirection[0];
 			buildings = new TileBuilding[0];
+			walls = new TileWall[0];
 			normals = new TileNormal[0];
 			characters = new TileCharacter[0];
 			_dictionaryCategory	= new Dictionary<string, TileCategory> ();
@@ -414,6 +427,13 @@ namespace TileLib
 				building.library = this;
 				building.Hashing ();
 				_dictionaryItem.Add (building.id, building);
+			}
+
+			for (int i = walls.Length - 1; i >= 0; i--) {
+				TileWall wall = walls [i];
+				wall.library = this;
+				wall.Hashing ();
+				_dictionaryItem.Add (wall.id, wall);
 			}
 
 			for (int i = normals.Length - 1; i >= 0; i--) {
@@ -624,6 +644,23 @@ namespace TileLib
 
 		public	TileBuilding() {
 			type = TileType.Building;
+		}
+	}
+
+	public	class TileWall : TileBase
+	{
+		[XmlElement ("None")]
+		public	TileItemLink	none;
+		[XmlElement ("U")]
+		public	TileItemLink	up;
+		[XmlElement ("L")]
+		public	TileItemLink	left;
+		[XmlElement ("UL")]
+		public	TileItemLink	upleft;
+
+		public	TileWall ()
+		{
+			type = TileType.Wall;
 		}
 	}
 
@@ -936,6 +973,7 @@ namespace TileLib
 			for (int i = units.Length - 1; i >= 0; i--) {
 				var unit = units [i];
 				_tlist [unit.x] [unit.y] [unit.z] = unit;
+				unit.SetMap (this);
 			}
 		}
 
@@ -1008,11 +1046,13 @@ namespace TileLib
 		public	float zf;
 		[XmlAttribute ("face")]
 		public	TileFace	face;
+		protected TileMap	map;
 
 		public	TileObject ()
 		{
 			this.item = string.Empty;
 			this.face = TileFace.Up;
+			this.map = null;
 			SetPosition (0f, 0f, 0f);
 		}
 
@@ -1020,6 +1060,7 @@ namespace TileLib
 		{
 			this.item = item;
 			this.face = TileFace.Up;
+			this.map = null;
 			SetPosition (x, y, z);
 		}
 
@@ -1053,6 +1094,14 @@ namespace TileLib
 			}
 		}
 
+		public	void SetMap (TileMap map) {
+			this.map = map;
+		}
+
+		public	TileMap GetMap () {
+			return map;
+		}
+
 		protected	void GetAllTileItem (TileItemLink link, List<TileItemLink> list)
 		{
 			if (!string.IsNullOrEmpty (link.item)) {
@@ -1080,6 +1129,36 @@ namespace TileLib
 			this.color = TileColor.Basic;
 		}
 
+		public	TileUnit u {
+			get {
+				if (map != null) {
+					return map.GetTileObject (x, y, z - 1) as TileUnit;
+				} else {
+					return null;
+				}
+			}
+		}
+
+		public	TileUnit l {
+			get {
+				if (map != null) {
+					return map.GetTileObject (x - 1, y, z) as TileUnit;
+				} else {
+					return null;
+				}
+			}
+		}
+
+		public	TileUnit ul {
+			get {
+				if (map != null) {
+					return map.GetTileObject (x - 1, y, z - 1) as TileUnit;
+				} else {
+					return null;
+				}
+			}
+		}
+
 		public List<TileItemLink> GetTileItemLink (TileLibrary library) {
 			TileBase tb = library.FindItem (item);
 
@@ -1090,6 +1169,9 @@ namespace TileLib
 				break;
 			case TileType.Building:
 				GetTileItemForBuilding (tb as TileBuilding, list);
+				break;
+			case TileType.Wall:
+				GetTileItemForWall (library, tb as TileWall, list);
 				break;
 			case TileType.Character:
 				GetTileItemForCharacter (tb as TileCharacter, list);
@@ -1125,6 +1207,35 @@ namespace TileLib
 			}
 		}
 
+		private	void GetTileItemForWall (TileLibrary library, TileWall wall, List<TileItemLink> list)
+		{
+			var up = u;
+			var left = l;
+			uint result = 0;
+
+			if (up != null && TileType.Wall == library.FindItem (up.item).type) {
+				result |= TileWallConst.U;
+			}
+			if (left != null && TileType.Wall == library.FindItem (left.item).type) {
+				result |= TileWallConst.L;
+			}
+
+			switch (result) {
+			case TileWallConst.U:
+				GetAllTileItem (wall.up, list);
+				break;
+			case TileWallConst.L:
+				GetAllTileItem (wall.left, list);
+				break;
+			case TileWallConst.U_L:
+				GetAllTileItem (wall.upleft, list);
+				break;
+			default:
+				GetAllTileItem (wall.none, list);
+				break;
+			}
+		}
+
 		private	void GetTileItemForCharacter (TileCharacter character, List<TileItemLink> list) {
 			switch (face) {
 			case TileFace.Up:
@@ -1145,28 +1256,16 @@ namespace TileLib
 
 	public	class TileTerrain : TileObject, ITileObject
 	{
-		private	TileMap _map;
-
-		public	TileTerrain () : base () {
-			this._map = null;
+		public	TileTerrain (){
 		}
 
 		public	TileTerrain (string item, float x, float y, float z) : base (item, x, y, z) {
-			this._map = null;
-		}
-
-		public	void SetMap (TileMap map) {
-			_map = map;
-		}
-
-		public	TileMap GetMap () {
-			return _map;
 		}
 
 		public	TileTerrain u {
 			get {
-				if (_map != null) {
-					return _map.GetTileObject (x, y, z - 1) as TileTerrain;
+				if (map != null) {
+					return map.GetTileObject (x, y, z - 1) as TileTerrain;
 				} else {
 					return null;
 				}
@@ -1175,8 +1274,8 @@ namespace TileLib
 
 		public	TileTerrain d {
 			get {
-				if (_map != null) {
-					return _map.GetTileObject (x, y, z + 1) as TileTerrain;
+				if (map != null) {
+					return map.GetTileObject (x, y, z + 1) as TileTerrain;
 				} else {
 					return null;
 				}
@@ -1185,8 +1284,8 @@ namespace TileLib
 
 		public	TileTerrain l {
 			get {
-				if (_map != null) {
-					return _map.GetTileObject (x - 1, y, z) as TileTerrain;
+				if (map != null) {
+					return map.GetTileObject (x - 1, y, z) as TileTerrain;
 				} else {
 					return null;
 				}
@@ -1195,8 +1294,8 @@ namespace TileLib
 
 		public	TileTerrain r {
 			get {
-				if (_map != null) {
-					return _map.GetTileObject (x + 1, y, z) as TileTerrain;
+				if (map != null) {
+					return map.GetTileObject (x + 1, y, z) as TileTerrain;
 				} else {
 					return null;
 				}
@@ -1205,8 +1304,8 @@ namespace TileLib
 
 		public	TileTerrain ul {
 			get {
-				if (_map != null) {
-					return _map.GetTileObject (x - 1, y, z - 1) as TileTerrain;
+				if (map != null) {
+					return map.GetTileObject (x - 1, y, z - 1) as TileTerrain;
 				} else {
 					return null;
 				}
@@ -1215,8 +1314,8 @@ namespace TileLib
 
 		public	TileTerrain ur {
 			get {
-				if (_map != null) {
-					return _map.GetTileObject (x + 1, y, z - 1) as TileTerrain;
+				if (map != null) {
+					return map.GetTileObject (x + 1, y, z - 1) as TileTerrain;
 				} else {
 					return null;
 				}
@@ -1225,8 +1324,8 @@ namespace TileLib
 
 		public	TileTerrain dl {
 			get {
-				if (_map != null) {
-					return _map.GetTileObject (x - 1, y, z + 1) as TileTerrain;
+				if (map != null) {
+					return map.GetTileObject (x - 1, y, z + 1) as TileTerrain;
 				} else {
 					return null;
 				}
@@ -1235,8 +1334,8 @@ namespace TileLib
 
 		public	TileTerrain dr {
 			get {
-				if (_map != null) {
-					return _map.GetTileObject (x + 1, y, z + 1) as TileTerrain;
+				if (map != null) {
+					return map.GetTileObject (x + 1, y, z + 1) as TileTerrain;
 				} else {
 					return null;
 				}

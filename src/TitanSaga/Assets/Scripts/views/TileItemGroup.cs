@@ -26,7 +26,15 @@ public class TileItemGroup : MonoBehaviour {
 		}
 	}
 
-	public	void ResetSprite() {
+	public	void UpdateSprite(Vector3 position) {
+		ResetSprite ();
+		_transform.localPosition = position;
+		for (int i = _renderers.Length - 1; i >= 0; i--) {
+			_renderers [i].UpdateSprite ();
+		}
+	}
+
+	private	void ResetSprite() {
 		if (_object == null || _library == null) {
 			return;
 		}
@@ -58,15 +66,6 @@ public class TileItemGroup : MonoBehaviour {
 			for (int i = 0; i < count; i++) {
 				_renderers [i].SetTileItemLInk (_library, links [i], _transform);
 			}
-		}
-	}
-
-	public	void UpdateSprite(Vector3 position) {
-		ResetSprite ();
-		_transform.localPosition = position;
-		for (int i = _renderers.Length - 1; i >= 0; i--) {
-			_renderers [i].UpdateSprite ();
-			_renderers [i].UpdatePosition ();
 		}
 	}
 }

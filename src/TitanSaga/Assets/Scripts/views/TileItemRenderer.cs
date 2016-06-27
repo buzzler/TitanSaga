@@ -13,6 +13,7 @@ public class TileItemRenderer : MonoBehaviour {
 	private	string[]		_sequence;
 	private	float			_speed;
 	private	float			_last;
+	private	bool			_reserved;
 
 	void Awake() {
 		_transfom = transform;
@@ -21,11 +22,20 @@ public class TileItemRenderer : MonoBehaviour {
 		_animation = false;
 		_frame = 0;
 		_sequence = null;
+		_reserved = false;
 	}
 
-	void Update() {
+	void LateUpdate() {
 		if (_animation) {
-			UpdateSprite ();
+			if (Time.realtimeSinceStartup - _last > _speed) {
+				_frame = (_frame + 1) % _sequence.Length;
+				_last = Time.realtimeSinceStartup;
+				_reserved = true;
+			}
+		}
+
+		if (_reserved) {
+			ExeUpdateSprite ();
 		}
 	}
 
@@ -50,35 +60,25 @@ public class TileItemRenderer : MonoBehaviour {
 		}
 	}
 
-	public	void UpdatePosition() {
-		if (_link != null) {
-			_transfom.localPosition = new Vector3 (_link.x / 128f, _link.y / 128f, 0f);
-		}
+	public	void UpdateSprite() {
+		_reserved = true;
 	}
 
-	public	void UpdateSprite() {
-		if (_link == null) {
-			_renderer.sprite = null;
-			return;
-		}
-
+	private	void ExeUpdateSprite() {
 		TileItem item = null;
 		if (_animation) {
-			if (Time.realtimeSinceStartup - _last <= _speed) {
-				return;
-			} else {
-				_frame = (_frame + 1) % _sequence.Length;
-				item = _library.FindItem (_sequence [_frame]) as TileItem;
-			}
+			item = _library.FindItem (_sequence [_frame]) as TileItem;
 		} else {
 			item = _library.FindItem (_link.item) as TileItem;
 		}
-			
-		var sprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite> (item.assetPath);
-		if (_renderer.sprite != sprite) {
-			_renderer.sprite = sprite;
-			_renderer.flipX = _link.flip;
-			_last = Time.realtimeSinceStartup;
+
+		if (item != null) {
+			_transfom.localPosition = new Vector3 ((item.pivotX + _link.x) / 128f, (item.pivotY + _link.y) / 128f, 0f);
+			var sprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite> (item.assetPath);
+			if (_renderer.sprite != sprite) {
+				_renderer.sprite = sprite;
+				_renderer.flipX = _link.flip;
+			}
 		}
 	}
 }
