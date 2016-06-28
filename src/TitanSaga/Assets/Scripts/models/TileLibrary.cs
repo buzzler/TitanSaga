@@ -995,6 +995,7 @@ namespace TileLib
 		{
 			if (_tlist [unit.x] [unit.y] [unit.z] == null) {
 				_tlist [unit.x] [unit.y] [unit.z] = unit as TileObject;
+				unit.SetMap (this);
 				System.Array.Resize<TileUnit> (ref units, units.Length + 1);
 				units [units.Length - 1] = unit;
 				return true;
@@ -1019,6 +1020,7 @@ namespace TileLib
 		{
 			if (_tlist [unit.x] [unit.y] [unit.z] == unit) {
 				_tlist [unit.x] [unit.y] [unit.z] = null;
+				unit.SetMap (null);
 				units = System.Array.FindAll<TileUnit> (units, (TileUnit a) => {
 					return a != unit;
 				});
@@ -1212,7 +1214,6 @@ namespace TileLib
 			var up = u;
 			var left = l;
 			uint result = 0;
-
 			if (up != null && TileType.Wall == library.FindItem (up.item).type) {
 				result |= TileWallConst.U;
 			}
