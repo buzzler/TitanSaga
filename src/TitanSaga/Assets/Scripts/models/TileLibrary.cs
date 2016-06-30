@@ -168,71 +168,71 @@ namespace TileLib
 		public	const uint U_D_UL_DL_DR = U_D_UL_DL | DR;
 		public	const uint U_D_UR_DL_DR = U_D_UR_DL | DR;
 		public	const uint U_D_UL_UR_DL_DR = U_D_UL_UR_DL | DR;
+		public	const uint L_R = L | R;
+		public	const uint L_R_UL = L_R | UL;
+		public	const uint L_R_UR = L_R | UR;
+		public	const uint L_R_DL = L_R | DL;
+		public	const uint L_R_DR = L_R | DR;
+		public	const uint L_R_UL_UR = L_R_UL | UR;
+		public	const uint L_R_UL_DL = L_R_UL | DL;
+		public	const uint L_R_UL_DR = L_R_UL | DR;
+		public	const uint L_R_UR_DL = L_R_UR | DL;
+		public	const uint L_R_UR_DR = L_R_UR | DR;
+		public	const uint L_R_DL_DR = L_R_DL | DR;
+		public	const uint L_R_UL_UR_DL = L_R_UL_UR | DL;
+		public	const uint L_R_UL_UR_DR = L_R_UL_UR | DR;
+		public	const uint L_R_UL_DL_DR = L_R_UL_DL | DR;
+		public	const uint L_R_UR_DL_DR = L_R_UR_DL | DR;
+		public	const uint L_R_UL_UR_DL_DR = L_R_UL_UR_DL | DR;
+		public	const uint D_R_UL = D_R | UL;
+		public	const uint D_R_UL_UR = D_R_UL | UR;
+		public	const uint D_R_UL_DL = D_R_UL | DL;
+		public	const uint D_R_UL_DR = D_R_UL | DR;
+		public	const uint D_R_UL_UR_DL = D_R_UL_UR | DL;
+		public	const uint D_R_UL_UR_DR = D_R_UL_UR | DR;
+		public	const uint D_R_UL_DL_DR = D_R_UL_DL | DR;
+		public	const uint D_R_UL_UR_DL_DR = D_R_UL_UR_DL | DR;
+		public	const uint D_L_UR = D_L | UR;
+		public	const uint D_L_UR_UL = D_L_UR | UL;
+		public	const uint D_L_UR_DL = D_L_UR | DL;
+		public	const uint D_L_UR_DR = D_L_UR | DR;
+		public	const uint D_L_UR_UL_DL = D_L_UR_UL | DL;
+		public	const uint D_L_UR_UL_DR = D_L_UR_UL | DR;
+		public	const uint D_L_UR_DL_DR = D_L_UR_DL | DR;
+		public	const uint D_L_UR_UL_DL_DR = D_L_UR_UL_DL | DR;
+		public	const uint U_L_DR = U_L | DR;
+		public	const uint U_L_DR_UL = U_L_DR | UL;
+		public	const uint U_L_DR_DL = U_L_DR | DL;
+		public	const uint U_L_DR_UR = U_L_DR | UR;
+		public	const uint U_L_DR_UL_DL = U_L_DR_UL | DL;
+		public	const uint U_L_DR_UL_UR = U_L_DR_UL | UR;
+		public	const uint U_L_DR_DL_UR = U_L_DR_DL | UR;
+		public	const uint U_L_DR_UL_DL_UR = U_L_DR_UL_DL | UR;
+		public	const uint U_R_DL = U_R | DL;
+		public	const uint U_R_DL_UL = U_R_DL | UL;
+		public	const uint U_R_DL_DR = U_R_DL | DR;
+		public	const uint U_R_DL_UR = U_R_DL | UR;
+		public	const uint U_R_DL_UL_DR = U_R_DL_UL | DR;
+		public	const uint U_R_DL_UL_UR = U_R_DL_UL | UR;
+		public	const uint U_R_DL_DR_UR = U_R_DL_DR | UR;
+		public	const uint U_R_DL_UL_DR_UR = U_R_DL_UL_DR | UR;
+		public	const uint D_L_R = D_L | R;
+		public	const uint D_L_R_UL = D_L_R | UL;
+		public	const uint D_L_R_UR = D_L_R | UR;
+		public	const uint D_L_R_DL = D_L_R | DL;
+		public	const uint D_L_R_DR = D_L_R | DR;
+		public	const uint D_L_R_UL_UR = D_L_R_UL | UR;
+		public	const uint D_L_R_UL_DL = D_L_R_UL | DL;
+		public	const uint D_L_R_UL_DR = D_L_R_UL | DR;
+		public	const uint D_L_R_UR_DL = D_L_R_UR | DL;
+		public	const uint D_L_R_UR_DR = D_L_R_UR | DR;
+		public	const uint D_L_R_DL_DR = D_L_R_DL | DR;
+		public	const uint D_L_R_UL_UR_DL = D_L_R_UL_UR | DL;
+		public	const uint D_L_R_UL_UR_DR = D_L_R_UL_UR | DR;
+		public	const uint D_L_R_UL_DL_DR = D_L_R_UL_DL | DR;
+		public	const uint D_L_R_UR_DL_DR = D_L_R_UR_DL | DR;
+		public	const uint D_L_R_UL_UR_DL_DR = D_L_R_UL_UR_DL | DR;
 		/*
-		case TileComplexConst.L|TileComplexConst.R:
-		case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL:
-		case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR:
-		case TileComplexConst.L|TileComplexConst.R|TileComplexConst.DL:
-		case TileComplexConst.L|TileComplexConst.R|TileComplexConst.DR:
-		case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR:
-		case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DL:
-		case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DR:
-		case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR|TileComplexConst.DL:
-		case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR|TileComplexConst.DR:
-		case TileComplexConst.L|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.DR:
-		case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL:
-		case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DR:
-		case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.DR:
-		case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
-		case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
-		case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL:
-		case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR:
-		case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DL:
-		case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DR:
-		case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL:
-		case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DR:
-		case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.DR:
-		case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR|TileComplexConst.UL:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR|TileComplexConst.DL:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR|TileComplexConst.DR:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR|TileComplexConst.UL|TileComplexConst.DL:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR|TileComplexConst.UL|TileComplexConst.DR:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR|TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.DR:
-		case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR:
-		case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR|TileComplexConst.UL:
-		case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR|TileComplexConst.DL:
-		case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR|TileComplexConst.UR:
-		case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR|TileComplexConst.UL|TileComplexConst.DL:
-		case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR|TileComplexConst.UL|TileComplexConst.UR:
-		case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR|TileComplexConst.DL|TileComplexConst.UR:
-		case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR|TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.UR:
-		case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL:
-		case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.UL:
-		case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.DR:
-		case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.UR:
-		case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.UL|TileComplexConst.DR:
-		case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.UL|TileComplexConst.UR:
-		case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.DR|TileComplexConst.UR:
-		case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.UL|TileComplexConst.DR|TileComplexConst.UR:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.DL:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.DR:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DL:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DR:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR|TileComplexConst.DL:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR|TileComplexConst.DR:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.DR:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DR:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.DR:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
-		case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
 		case TileComplexConst.U|TileComplexConst.L|TileComplexConst.R:
 		case TileComplexConst.U|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL:
 		case TileComplexConst.U|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR:
@@ -312,6 +312,13 @@ namespace TileLib
 		Wall,
 		Normal,
 		Character
+	}
+
+	public	enum TileGroup
+	{
+		Object,
+		Terrain,
+		Unit
 	}
 
 	public	enum TileFace
@@ -977,53 +984,51 @@ namespace TileLib
 			}
 		}
 
-		public	bool AddTerrain (TileTerrain terrain)
+		public	bool AddTileObject(TileObject obj)
 		{
-			if (_tlist [terrain.x] [terrain.y] [terrain.z] == null) {
-				_tlist [terrain.x] [terrain.y] [terrain.z] = terrain as TileObject;
-				terrain.SetMap (this);
-				System.Array.Resize<TileTerrain> (ref terrains, terrains.Length + 1);
-				terrains [terrains.Length - 1] = terrain;
+			if (_tlist [obj.x] [obj.y] [obj.z] == null) {
+				_tlist [obj.x] [obj.y] [obj.z] = obj;
+				obj.SetMap (this);
+
+				switch (obj.group) {
+				case TileGroup.Terrain:
+					System.Array.Resize<TileTerrain> (ref terrains, terrains.Length + 1);
+					terrains [terrains.Length - 1] = obj as TileTerrain;
+					break;
+				case TileGroup.Unit:
+					System.Array.Resize<TileUnit> (ref units, units.Length + 1);
+					units [units.Length - 1] = obj as TileUnit;
+					break;
+				}
 				return true;
 			} else {
-				Debug.LogWarningFormat ("Conflict x:{0}, y:{1}, z:{2}", terrain.x, terrain.y, terrain.z);
+				Debug.LogWarningFormat ("Conflict x:{0}, y:{1}, z:{2}", obj.x, obj.y, obj.z);
 				return false;
 			}
 		}
 
-		public	bool AddUnit (TileUnit unit)
+		public	bool RemoveTileObject (TileObject obj)
 		{
-			if (_tlist [unit.x] [unit.y] [unit.z] == null) {
-				_tlist [unit.x] [unit.y] [unit.z] = unit as TileObject;
-				unit.SetMap (this);
-				System.Array.Resize<TileUnit> (ref units, units.Length + 1);
-				units [units.Length - 1] = unit;
+			if (_tlist [obj.x] [obj.y] [obj.z] == obj) {
+				_tlist [obj.x] [obj.y] [obj.z] = null;
+				obj.SetMap (null);
+
+				switch (obj.group) {
+				case TileGroup.Terrain:
+					terrains = System.Array.FindAll<TileTerrain> (terrains, (TileTerrain a) => {
+						return a != obj;
+					});
+					break;
+				case TileGroup.Unit:
+					units = System.Array.FindAll<TileUnit> (units, (TileUnit a) => {
+						return a != obj;
+					});
+					break;
+				}
 				return true;
 			} else {
-				Debug.LogWarningFormat ("Conflict x:{0}, y:{1}, z:{2}", unit.x, unit.y, unit.z);
+				Debug.LogWarningFormat ("Wrong Operation x:{0}, y:{1}, z:{2}", obj.x, obj.y, obj.z);
 				return false;
-			}
-		}
-
-		public	void RemoveTerrain (TileTerrain terrain)
-		{
-			if (_tlist [terrain.x] [terrain.y] [terrain.z] == terrain) {
-				_tlist [terrain.x] [terrain.y] [terrain.z] = null;
-				terrain.SetMap (null);
-				terrains = System.Array.FindAll<TileTerrain> (terrains, (TileTerrain a) => {
-					return a != terrain;
-				});
-			}
-		}
-
-		public	void RemoveUnit (TileUnit unit)
-		{
-			if (_tlist [unit.x] [unit.y] [unit.z] == unit) {
-				_tlist [unit.x] [unit.y] [unit.z] = null;
-				unit.SetMap (null);
-				units = System.Array.FindAll<TileUnit> (units, (TileUnit a) => {
-					return a != unit;
-				});
 			}
 		}
 
@@ -1048,12 +1053,14 @@ namespace TileLib
 		public	float zf;
 		[XmlAttribute ("face")]
 		public	TileFace	face;
+		public	TileGroup	group;
 		protected TileMap	map;
 
 		public	TileObject ()
 		{
 			this.item = string.Empty;
 			this.face = TileFace.Up;
+			this.group = TileGroup.Object;
 			this.map = null;
 			SetPosition (0f, 0f, 0f);
 		}
@@ -1062,6 +1069,7 @@ namespace TileLib
 		{
 			this.item = item;
 			this.face = TileFace.Up;
+			this.group = TileGroup.Object;
 			this.map = null;
 			SetPosition (x, y, z);
 		}
@@ -1125,6 +1133,7 @@ namespace TileLib
 		public	TileColor	color;
 
 		public	TileUnit () : base () {
+			this.group = TileGroup.Unit;
 		}
 
 		public	TileUnit (string item, float x, float y, float z) : base (item, x, y, z) {
@@ -1257,10 +1266,12 @@ namespace TileLib
 
 	public	class TileTerrain : TileObject, ITileObject
 	{
-		public	TileTerrain (){
+		public	TileTerrain () : base () {
+			this.group = TileGroup.Terrain;
 		}
 
 		public	TileTerrain (string item, float x, float y, float z) : base (item, x, y, z) {
+			this.group = TileGroup.Terrain;
 		}
 
 		public	TileTerrain u {
@@ -1666,62 +1677,62 @@ namespace TileLib
 			case TileComplexConst.U_D_UL_UR_DL_DR:
 				GetAllTileItem (complex.updown_2s, list);
 				return;
-			case TileComplexConst.L|TileComplexConst.R:
-			case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL:
-			case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR:
-			case TileComplexConst.L|TileComplexConst.R|TileComplexConst.DL:
-			case TileComplexConst.L|TileComplexConst.R|TileComplexConst.DR:
-			case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR:
-			case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DL:
-			case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DR:
-			case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR|TileComplexConst.DL:
-			case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR|TileComplexConst.DR:
-			case TileComplexConst.L|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.DR:
-			case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL:
-			case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DR:
-			case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.DR:
-			case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
-			case TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
+			case TileComplexConst.L_R:
+			case TileComplexConst.L_R_UL:
+			case TileComplexConst.L_R_UR:
+			case TileComplexConst.L_R_DL:
+			case TileComplexConst.L_R_DR:
+			case TileComplexConst.L_R_UL_UR:
+			case TileComplexConst.L_R_UL_DL:
+			case TileComplexConst.L_R_UL_DR:
+			case TileComplexConst.L_R_UR_DL:
+			case TileComplexConst.L_R_UR_DR:
+			case TileComplexConst.L_R_DL_DR:
+			case TileComplexConst.L_R_UL_UR_DL:
+			case TileComplexConst.L_R_UL_UR_DR:
+			case TileComplexConst.L_R_UL_DL_DR:
+			case TileComplexConst.L_R_UR_DL_DR:
+			case TileComplexConst.L_R_UL_UR_DL_DR:
 				GetAllTileItem (complex.leftright_2s, list);
 				return;
-			case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL:
-			case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR:
-			case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DL:
-			case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DR:
-			case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL:
-			case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DR:
-			case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.DR:
-			case TileComplexConst.D|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
+			case TileComplexConst.D_R_UL:
+			case TileComplexConst.D_R_UL_UR:
+			case TileComplexConst.D_R_UL_DL:
+			case TileComplexConst.D_R_UL_DR:
+			case TileComplexConst.D_R_UL_UR_DL:
+			case TileComplexConst.D_R_UL_UR_DR:
+			case TileComplexConst.D_R_UL_DL_DR:
+			case TileComplexConst.D_R_UL_UR_DL_DR:
 				GetAllTileItem (complex.updownright_1c2s, list);
 				return;
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR|TileComplexConst.UL:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR|TileComplexConst.DL:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR|TileComplexConst.DR:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR|TileComplexConst.UL|TileComplexConst.DL:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR|TileComplexConst.UL|TileComplexConst.DR:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.UR|TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.DR:
+			case TileComplexConst.D_L_UR:
+			case TileComplexConst.D_L_UR_UL:
+			case TileComplexConst.D_L_UR_DL:
+			case TileComplexConst.D_L_UR_DR:
+			case TileComplexConst.D_L_UR_UL_DL:
+			case TileComplexConst.D_L_UR_UL_DR:
+			case TileComplexConst.D_L_UR_DL_DR:
+			case TileComplexConst.D_L_UR_UL_DL_DR:
 				GetAllTileItem (complex.rightdownleft_1c2s, list);
 				return;
-			case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR:
-			case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR|TileComplexConst.UL:
-			case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR|TileComplexConst.DL:
-			case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR|TileComplexConst.UR:
-			case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR|TileComplexConst.UL|TileComplexConst.DL:
-			case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR|TileComplexConst.UL|TileComplexConst.UR:
-			case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR|TileComplexConst.DL|TileComplexConst.UR:
-			case TileComplexConst.U|TileComplexConst.L|TileComplexConst.DR|TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.UR:
+			case TileComplexConst.U_L_DR:
+			case TileComplexConst.U_L_DR_UL:
+			case TileComplexConst.U_L_DR_DL:
+			case TileComplexConst.U_L_DR_UR:
+			case TileComplexConst.U_L_DR_UL_DL:
+			case TileComplexConst.U_L_DR_UL_UR:
+			case TileComplexConst.U_L_DR_DL_UR:
+			case TileComplexConst.U_L_DR_UL_DL_UR:
 				GetAllTileItem (complex.downupleft_1c2s, list);
 				return;
-			case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL:
-			case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.UL:
-			case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.DR:
-			case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.UR:
-			case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.UL|TileComplexConst.DR:
-			case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.UL|TileComplexConst.UR:
-			case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.DR|TileComplexConst.UR:
-			case TileComplexConst.U|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.UL|TileComplexConst.DR|TileComplexConst.UR:
+			case TileComplexConst.U_R_DL:
+			case TileComplexConst.U_R_DL_UL:
+			case TileComplexConst.U_R_DL_DR:
+			case TileComplexConst.U_R_DL_UR:
+			case TileComplexConst.U_R_DL_UL_DR:
+			case TileComplexConst.U_R_DL_UL_UR:
+			case TileComplexConst.U_R_DL_DR_UR:
+			case TileComplexConst.U_R_DL_UL_DR_UR:
 				GetAllTileItem (complex.leftupright_1c2s, list);
 				return;
 			case TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
@@ -1736,22 +1747,22 @@ namespace TileLib
 			case TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL:
 				GetAllTileItem (complex.upleftright_3c, list);
 				return;
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.DL:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.DR:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DL:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DR:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR|TileComplexConst.DL:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR|TileComplexConst.DR:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.DL|TileComplexConst.DR:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DR:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.DL|TileComplexConst.DR:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
-			case TileComplexConst.D|TileComplexConst.L|TileComplexConst.R|TileComplexConst.UL|TileComplexConst.UR|TileComplexConst.DL|TileComplexConst.DR:
+			case TileComplexConst.D_L_R:
+			case TileComplexConst.D_L_R_UL:
+			case TileComplexConst.D_L_R_UR:
+			case TileComplexConst.D_L_R_DL:
+			case TileComplexConst.D_L_R_DR:
+			case TileComplexConst.D_L_R_UL_UR:
+			case TileComplexConst.D_L_R_UL_DL:
+			case TileComplexConst.D_L_R_UL_DR:
+			case TileComplexConst.D_L_R_UR_DL:
+			case TileComplexConst.D_L_R_UR_DR:
+			case TileComplexConst.D_L_R_DL_DR:
+			case TileComplexConst.D_L_R_UL_UR_DL:
+			case TileComplexConst.D_L_R_UL_UR_DR:
+			case TileComplexConst.D_L_R_UL_DL_DR:
+			case TileComplexConst.D_L_R_UR_DL_DR:
+			case TileComplexConst.D_L_R_UL_UR_DL_DR:
 				GetAllTileItem (complex.downleftright_3s, list);
 				return;
 			case TileComplexConst.U|TileComplexConst.L|TileComplexConst.R:

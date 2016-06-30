@@ -16,6 +16,7 @@ public class AddNewTile : MonoBehaviour {
 	private	TileObject	_object;
 	private	float		_height;
 	private	TileFace	_face;
+	private	bool		_manual;
 
 	void OnEnable() {
 		btnUp.onClick.AddListener (OnClickUp);
@@ -31,6 +32,7 @@ public class AddNewTile : MonoBehaviour {
 			_base = data [0] as TileBase;
 			_height = 0;
 			_face = TileFace.Up;
+			_manual = false;
 		}
 		if (_object == null) {
 			GenerateTile ();
@@ -40,7 +42,12 @@ public class AddNewTile : MonoBehaviour {
 	void Update() {
 		if (_object != null) {
 			var pos = _observer.cameraManager.GetCurrentTilePosition ();
-			pos.y = _height;
+			if (!_manual) {
+				pos = _observer.tileManager.GetSurfaceCoord (pos.x, pos.z);
+			} else {
+				pos.y = _height;
+			}
+
 			_object.SetPosition (pos);
 			_observer.tileManager.UpdateSingle (_object);
 		}
@@ -63,10 +70,12 @@ public class AddNewTile : MonoBehaviour {
 	}
 
 	private	void OnClickUp() {
+		_manual = true;
 		_height = Mathf.Clamp (_height + 1, 0, _observer.tileManager.height - 1);
 	}
 
 	private	void OnClickDown() {
+		_manual = true;
 		_height = Mathf.Clamp (_height - 1, 0, _observer.tileManager.height - 1);
 	}
 
@@ -114,6 +123,7 @@ public class AddNewTile : MonoBehaviour {
 
 	private	void GenerateTile() {
 		var pos = _observer.cameraManager.GetCurrentTilePosition ();
+		_manual = false;
 
 		switch (_base.type) {
 		case TileType.Building:

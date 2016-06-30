@@ -94,14 +94,7 @@ public class TileManager : MonoBehaviour {
 	}
 
 	public	bool ConfirmTileObject(TileObject tile) {
-		bool added = false;
-		if (tile is TileTerrain) {
-			added = _map.AddTerrain (tile as TileTerrain);
-		} else if (tile is TileUnit) {
-			added = _map.AddUnit (tile as TileUnit);
-		}
-
-		if (added) {
+		if (_map.AddTileObject (tile)) {
 			UpdateBoundary (tile.x, tile.y, tile.z);
 			return true;
 		}
@@ -116,12 +109,7 @@ public class TileManager : MonoBehaviour {
 				DestroyImmediate (group.gameObject);
 			}
 		}
-
-		if (tile is TileTerrain) {
-			_map.RemoveTerrain (tile as TileTerrain);
-		} else if (tile is TileUnit) {
-			_map.RemoveUnit (tile as TileUnit);
-		}
+		_map.RemoveTileObject (tile);
 	}
 
 	public	void UpdateSingle(TileObject tile) {
@@ -169,6 +157,19 @@ public class TileManager : MonoBehaviour {
 			v3.z = Mathf.Ceil (v3.z);
 		}
 		return v3;
+	}
+
+	public	Vector3 GetSurfaceCoord(float x, float z) {
+		int _x = (int)x;
+		int _z = (int)z;
+
+		int max = _map.height;
+		for (int y = 0; y < max; y++) {
+			if (_map.GetTileObject (_x, y, _z) == null) {
+				return new Vector3 (x, (float)y, z);
+			}
+		}
+		return new Vector3 (x, (float)max, z);
 	}
 
 	public	Rect GetTileBound() {
