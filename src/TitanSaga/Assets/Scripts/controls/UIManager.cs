@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
+using System.Collections.Generic;
 
 public class UIManager : MonoBehaviour {
-	public	TextAsset	asset;
-	private	UILibrary	_config;
-	private	UIState		_opened;
-	private	object[]	_data;
+	public	TextAsset							asset;
+	private	UILibrary							_config;
+	private	UIState								_opened;
+	private	object[]							_data;
+	private	Dictionary<string, UIStateParam>	_params;
 
 	public	UILibrary	config	{get{return _config;}}
 
@@ -14,6 +15,7 @@ public class UIManager : MonoBehaviour {
 		GameObject.DontDestroyOnLoad(gameObject);
 		_config = TitanUtility.LoadFromText<UILibrary>(asset.text);
 		_config.Hashing();
+		_params = new Dictionary<string, UIStateParam> ();
 	}
 
 	void Start() {
@@ -60,5 +62,26 @@ public class UIManager : MonoBehaviour {
 			SceneManager.UnloadScene(_opened.sceneName);
 			_opened = null;
 		}
+	}
+
+	public	UIStateParam GetStateParam(string stateId) {
+		if (_config.FindState (stateId) != null) {
+			if (!_params.ContainsKey (stateId)) {
+				_params [stateId] = new UIStateParam ();
+			}
+			return _params [stateId];
+		}
+		return null;
+	}
+
+	public	void ClearStateParam(string stateId) {
+		if (_params.ContainsKey (stateId)) {
+			_params.Remove (stateId);
+		}
+	}
+
+	public	void ClearAllStateParam() {
+		_params.Clear ();
+		_params = new Dictionary<string, UIStateParam> ();
 	}
 }

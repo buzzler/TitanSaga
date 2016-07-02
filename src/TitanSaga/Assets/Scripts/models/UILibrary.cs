@@ -60,3 +60,61 @@ public	class UIState {
 	[XmlAttribute("scene")]
 	public	string	sceneName;
 }
+
+public	class UIStateParam {
+	private	Dictionary<string, string>	_dicString;
+	private	Dictionary<string, bool>	_dicBool;
+	private	Dictionary<string, int>		_dicInt;
+	private	Dictionary<string, float>	_dicFloat;
+
+	public	UIStateParam() {
+		_dicBool = new Dictionary<string, bool> ();
+		_dicFloat = new Dictionary<string, float> ();
+		_dicInt = new Dictionary<string, int> ();
+		_dicString = new Dictionary<string, string> ();
+	}
+
+	public	bool HasKey(string key) {
+		return _dicBool.ContainsKey (key) || _dicFloat.ContainsKey (key) || _dicInt.ContainsKey (key) || _dicString.ContainsKey (key);
+	}
+
+	public	void SetString(string key, string value) {
+		_dicString [key] = value;
+	}
+
+	public	void SetBool(string key, bool value) {
+		_dicBool [key] = value;
+	}
+
+	public	void SetInt(string key, int value) {
+		_dicInt [key] = value;
+	}
+
+	public	void SetFloat(string key, float value) {
+		_dicFloat [key] = value;
+	}
+
+	public	string GetString(string key) {
+		string result;
+		_dicString.TryGetValue (key, out result);
+		return result;
+	}
+
+	public	bool GetBool(string key) {
+		bool result;
+		_dicBool.TryGetValue (key, out result);
+		return result;
+	}
+
+	public	int GetInt(string key) {
+		int result;
+		_dicInt.TryGetValue (key, out result);
+		return result;
+	}
+
+	public	float GetFloat(string key) {
+		float result;
+		_dicFloat.TryGetValue(key, out result);
+		return result;
+	}
+}

@@ -20,6 +20,7 @@ public class DebugConsole : MonoBehaviour {
 	public	Button				btnClose;
 
 	private	TileLibrary			_library;
+	private	UIStateParam		_param;
 
 	void OnEnable () {
 		btnCategory.onClick.AddListener (OnClickCategory);
@@ -35,9 +36,12 @@ public class DebugConsole : MonoBehaviour {
 		btnSave.onClick.AddListener (OnClickSave);
 		btnClose.onClick.AddListener (OnClickClose);
 		_library = Observer.Instance.tileManager.config.library;
+		_param = Observer.Instance.uiManager.GetStateParam ("debugconsole");
+		Invoke ("OnRestore", 0.5f);
 	}
 
 	void OnDisable() {
+		OnBackup ();
 		btnCategory.onClick.RemoveAllListeners ();
 		btnSimple.onClick.RemoveAllListeners ();
 		btnComplex.onClick.RemoveAllListeners ();
@@ -51,6 +55,47 @@ public class DebugConsole : MonoBehaviour {
 		btnSave.onClick.RemoveAllListeners ();
 		btnClose.onClick.RemoveAllListeners ();
 		_library = null;
+		_param = null;
+	}
+
+	private	void OnBackup() {
+		float scrolled = scrollView.transform.localPosition.x;
+		_param.SetFloat ("scrolled", scrolled);
+	}
+
+	private	void OnRestore() {
+		string clicked = _param.GetString ("onclicked");
+		switch (clicked) {
+		case "category":
+			OnClickCategory ();
+			break;
+		case "simple":
+			OnClickSimple ();
+			break;
+		case "complex":
+			OnClickComplex ();
+			break;
+		case "direction":
+			OnClickDirection ();
+			break;
+		case "building":
+			OnClickBuilding ();
+			break;
+		case "wall":
+			OnClickWall ();
+			break;
+		case "normal":
+			OnClickNormal ();
+			break;
+		case "character":
+			OnClickCharacter ();
+			break;
+		}
+
+		if (_param.HasKey ("scrolled")) {
+			float scrolled = _param.GetFloat ("scrolled");
+			scrollView.transform.localPosition = new Vector3 (scrolled, 0f, 0f);
+		}
 	}
 
 	private	void OnClickItem(TileBase tilebase) {
@@ -58,6 +103,7 @@ public class DebugConsole : MonoBehaviour {
 	}
 
 	private	void OnClickCategory() {
+		_param.SetString ("onclicked", "category");
 		scrollView.Clear();
 		int categories = _library.categories.Length;
 		for (int c = 0 ; c < categories ; c++) {
@@ -72,6 +118,7 @@ public class DebugConsole : MonoBehaviour {
 	}
 
 	private	void OnClickSimple() {
+		_param.SetString ("onclicked", "simple");
 		scrollView.Clear();
 		int simples = _library.simples.Length;
 		for (int s = 0 ; s < simples ; s++) {
@@ -82,6 +129,7 @@ public class DebugConsole : MonoBehaviour {
 	}
 
 	private	void OnClickComplex() {
+		_param.SetString ("onclicked", "complex");
 		scrollView.Clear();
 		int complexs = _library.complexs.Length;
 		for (int c = 0 ; c < complexs ; c++) {
@@ -92,6 +140,7 @@ public class DebugConsole : MonoBehaviour {
 	}
 
 	private	void OnClickDirection() {
+		_param.SetString ("onclicked", "direction");
 		scrollView.Clear();
 		int directs = _library.directions.Length;
 		for (int d = 0 ; d < directs ; d++) {
@@ -102,6 +151,7 @@ public class DebugConsole : MonoBehaviour {
 	}
 
 	private	void OnClickBuilding() {
+		_param.SetString ("onclicked", "building");
 		scrollView.Clear();
 		int build = _library.buildings.Length;
 		for (int d = 0 ; d < build ; d++) {
@@ -112,6 +162,7 @@ public class DebugConsole : MonoBehaviour {
 	}
 
 	private	void OnClickWall() {
+		_param.SetString ("onclicked", "wall");
 		scrollView.Clear();
 		int count = _library.walls.Length;
 		for (int d = 0 ; d < count ; d++) {
@@ -122,6 +173,7 @@ public class DebugConsole : MonoBehaviour {
 	}
 
 	private	void OnClickNormal() {
+		_param.SetString ("onclicked", "normal");
 		scrollView.Clear();
 		int norms = _library.normals.Length;
 		for (int d = 0 ; d < norms ; d++) {
@@ -132,6 +184,7 @@ public class DebugConsole : MonoBehaviour {
 	}
 
 	private	void OnClickCharacter() {
+		_param.SetString ("onclicked", "character");
 		scrollView.Clear();
 		int count = _library.characters.Length;
 		for (int d = 0 ; d < count ; d++) {

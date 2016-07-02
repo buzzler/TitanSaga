@@ -1026,10 +1026,8 @@ namespace TileLib
 					break;
 				}
 				return true;
-			} else {
-				Debug.LogWarningFormat ("Wrong Operation x:{0}, y:{1}, z:{2}", obj.x, obj.y, obj.z);
-				return false;
 			}
+			return false;
 		}
 
 		public	TileObject GetTileObject (int x, int y, int z)
