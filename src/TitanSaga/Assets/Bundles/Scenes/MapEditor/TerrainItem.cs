@@ -1,5 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.IO;
@@ -13,7 +12,7 @@ public class TerrainItem : MonoBehaviour {
 	private	TileBase	tilebase;
 
 	public	void SetItem(TileItem item, TileBase tilebase) {
-		this.image.texture = AssetDatabase.LoadAssetAtPath<Texture>(item.assetPath);
+		this.image.texture = Resources.Load<Texture>(item.assetPath);
 		this.text.text = Path.GetFileNameWithoutExtension(item.asset);
 		this.tilebase = tilebase;
 	}

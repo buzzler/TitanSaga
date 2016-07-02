@@ -3,8 +3,8 @@
 [RequireComponent(typeof(Camera))]
 public class PinchZoom : MonoBehaviour
 {
-	public float perspectiveZoomSpeed = 0.5f;
-	public float orthoZoomSpeed = 0.5f;
+	public	float orthoZoomSpeed = 0.01f;
+	public	float orthoSize = 3f;
 	private	Camera _camera;
 
 	void Awake() {
@@ -13,10 +13,9 @@ public class PinchZoom : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.touchCount == 2)
-		{
-			Touch touchZero = Input.GetTouch(0);
-			Touch touchOne = Input.GetTouch(1);
+		if (Input.touchCount == 2) {
+			Touch touchZero = Input.touches [0];
+			Touch touchOne = Input.touches [1];
 
 			Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
 			Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
@@ -26,7 +25,14 @@ public class PinchZoom : MonoBehaviour
 			float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
 
 			_camera.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
-			_camera.orthographicSize = Mathf.Max(_camera.orthographicSize, 0.1f);
+			_camera.orthographicSize = Mathf.Clamp (_camera.orthographicSize, 1f, 5f);
+		} else if (_camera.orthographicSize != orthoSize) {
+			var delta = (orthoSize - _camera.orthographicSize) * orthoZoomSpeed;
+			if (delta < 0.0001) {
+				_camera.orthographicSize = orthoSize;
+			} else {
+				_camera.orthographicSize += delta;
+			}
 		}
 	}
 }

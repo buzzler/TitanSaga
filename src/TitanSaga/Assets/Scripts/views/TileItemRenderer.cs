@@ -74,7 +74,7 @@ public class TileItemRenderer : MonoBehaviour {
 
 		if (item != null) {
 			_transfom.localPosition = new Vector3 ((item.pivotX + _link.x) / 128f, (item.pivotY + _link.y) / 128f, 0f);
-			var sprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite> (item.assetPath);
+			var sprite = Resources.Load<Sprite> (item.assetPath);
 			if (_renderer.sprite != sprite) {
 				_renderer.sprite = sprite;
 				_renderer.flipX = _link.flip;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<Library default="i_snow_1">
-		<Category name="c_flag" path="Assets/Bundles/Tiles/Unit">
+		<Category name="c_flag" path="Tiles/Unit">
 			<Item id="i_flag_b_1" asset="ISO_Prob_Flag_b_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_flag_b_2" asset="ISO_Prob_Flag_b_02.png" pivotX="0" pivotY="0" />
 			<Item id="i_flag_b_3" asset="ISO_Prob_Flag_b_03.png" pivotX="0" pivotY="0" />
@@ -39,7 +39,7 @@
 			<Item id="i_flag_y_5" asset="ISO_Prob_Flag_y_05.png" pivotX="0" pivotY="0" />
 			<Item id="i_flag_y_6" asset="ISO_Prob_Flag_y_06.png" pivotX="0" pivotY="0" />
 		</Category>
-		<Category name="c_brick" path="Assets/Bundles/Tiles/Terrain">
+		<Category name="c_brick" path="Tiles/Terrain">
 			<Item id="i_brick_1" asset="ISO_Tile_Brick_Brick_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_brick_2" asset="ISO_Tile_Brick_Brick_02.png" pivotX="0" pivotY="0" />
 			<Item id="i_brick_3" asset="ISO_Tile_Brick_Brick_03.png" pivotX="0" pivotY="0" />
@@ -53,7 +53,7 @@
 			<Item id="i_brick_11" asset="ISO_Tile_Brick_Stone_01_05.png" pivotX="0" pivotY="0" />
 			<Item id="i_brick_12" asset="ISO_Tile_Brick_Stone_02_01.png" pivotX="0" pivotY="0" />
 		</Category>
-		<Category name="c_dirt"  path="Assets/Bundles/Tiles/Terrain">
+		<Category name="c_dirt"  path="Tiles/Terrain">
 			<Item id="i_dirt_1" asset="ISO_Tile_Dirt_01_ToSnow_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_dirt_2" asset="ISO_Tile_Dirt_01_ToSnow_02.png" pivotX="0" pivotY="0" />
 			<Item id="i_dirt_3" asset="ISO_Tile_Dirt_01_ToStone_01.png" pivotX="0" pivotY="0" />
@@ -63,7 +63,7 @@
 			<Item id="i_dirt_7" asset="ISO_Tile_Dirt_02_ToStone_02.png" pivotX="0" pivotY="0" />
 			<Item id="i_dirt_8" asset="ISO_Tile_Dirt_02.png" pivotX="0" pivotY="0" />
 		</Category>
-		<Category name="c_grass"  path="Assets/Bundles/Tiles/Terrain">
+		<Category name="c_grass"  path="Tiles/Terrain">
 			<Item id="i_grass_1" asset="ISO_Tile_Dirt_01_Grass_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_grass_2" asset="ISO_Tile_Dirt_01_GrassPatch_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_grass_3" asset="ISO_Tile_Dirt_01_GrassPatch_02.png" pivotX="0" pivotY="0" />
@@ -85,13 +85,13 @@
 			<Item id="i_grass_19" asset="ISO_Tile_Dirt_01_GrassPath_Straight_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_grass_20" asset="ISO_Tile_Dirt_01_GrassPath_Straight_02.png" pivotX="0" pivotY="0" />
 		</Category>
-		<Category name="lava"  path="Assets/Bundles/Tiles/Terrain">
+		<Category name="lava"  path="Tiles/Terrain">
 			<Item id="i_lava_1" asset="ISO_Tile_Lava_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_lava_2" asset="ISO_Tile_Lava_02.png" pivotX="0" pivotY="0" />
 			<Item id="i_lava_3" asset="ISO_Tile_LavaCracks_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_lava_4" asset="ISO_Tile_LavaStone_01.png" pivotX="0" pivotY="0" />
 		</Category>
-		<Category name="low"  path="Assets/Bundles/Tiles/Terrain">
+		<Category name="low"  path="Tiles/Terrain">
 			<Item id="i_low_1" asset="ISO_LowTile_Dirt_01.png" pivotX="0" pivotY="-19" />
 			<Item id="i_low_2" asset="ISO_LowTile_DirtToStoneTransition_01.png" pivotX="0" pivotY="-19" />
 			<Item id="i_low_3" asset="ISO_LowTile_DirtToStoneTransition_02.png" pivotX="0" pivotY="-19" />
@@ -106,7 +106,7 @@
 			<Item id="i_low_12" asset="ISO_LowTile_Stone_02.png" pivotX="0" pivotY="-19" />
 			<Item id="i_low_13" asset="ISO_LowTile_Stone_03.png" pivotX="0" pivotY="-19" />
 		</Category>
-		<Category name="c_sand"  path="Assets/Bundles/Tiles/Terrain">
+		<Category name="c_sand"  path="Tiles/Terrain">
 			<Item id="i_sand_1" asset="ISO_Tile_Sand_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_sand_2" asset="ISO_Tile_Sand_02.png" pivotX="0" pivotY="0" />
 			<Item id="i_sand_3" asset="ISO_Tile_Sand_03.png" pivotX="0" pivotY="0" />
@@ -118,7 +118,7 @@
 			<Item id="i_sand_9" asset="ISO_Tile_Sand_03_ToStone_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_sand_10" asset="ISO_Tile_Sand_03_ToStone_02.png" pivotX="0" pivotY="0" />
 		</Category>
-		<Category name="c_snow"  path="Assets/Bundles/Tiles/Terrain">
+		<Category name="c_snow"  path="Tiles/Terrain">
 			<Item id="i_snow_1" asset="ISO_Tile_Snow_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_snow_2" asset="ISO_Tile_Snow_02.png" pivotX="0" pivotY="0" />
 			<Item id="i_snow_3" asset="ISO_Tile_Snow_01_ToStone_01.png" pivotX="0" pivotY="0" />
@@ -126,7 +126,7 @@
 			<Item id="i_snow_5" asset="ISO_Tile_Snow_02_ToStone_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_snow_6" asset="ISO_Tile_Snow_02_ToStone_02.png" pivotX="0" pivotY="0" />
 		</Category>
-		<Category name="c_stair"  path="Assets/Bundles/Tiles/Terrain">
+		<Category name="c_stair"  path="Tiles/Terrain">
 			<Item id="i_stair_1" asset="ISO_Prop_Stair_Stone_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_stair_2" asset="ISO_Prop_Stair_Stone_02.png" pivotX="0" pivotY="0" />
 			<Item id="i_stair_3" asset="ISO_Prop_Stair_Stone_03.png" pivotX="0" pivotY="0" />
@@ -140,7 +140,7 @@
 			<Item id="i_stair_11" asset="ISO_Prop_Stair_Stone_11.png" pivotX="0" pivotY="0" />
 			<Item id="i_stair_12" asset="ISO_Prop_Stair_Stone_12.png" pivotX="0" pivotY="0" />
 		</Category>
-		<Category name="c_stone"  path="Assets/Bundles/Tiles/Terrain">
+		<Category name="c_stone"  path="Tiles/Terrain">
 			<Item id="i_stone_1" asset="ISO_Tile_Riverbed_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_stone_2" asset="ISO_Tile_Riverbed_02.png" pivotX="0" pivotY="0" />
 			<Item id="i_stone_3" asset="ISO_Tile_Riverbed_03.png" pivotX="0" pivotY="0" />
@@ -149,7 +149,7 @@
 			<Item id="i_stone_6" asset="ISO_Tile_Stone_03.png" pivotX="0" pivotY="0" />
 			<Item id="i_stone_7" asset="ISO_Tile_Stone_02.png" pivotX="0" pivotY="0" />
 		</Category>
-		<Category name="c_water"  path="Assets/Bundles/Tiles/Terrain">
+		<Category name="c_water"  path="Tiles/Terrain">
 			<Item id="i_water_1" asset="ISO_Tile_Water_01.png" pivotX="0" pivotY="-19"   />
 			<Item id="i_water_2" asset="ISO_Tile_Water_Shore_1C_01.png" pivotX="0" pivotY="-19"   />
 			<Item id="i_water_3" asset="ISO_Tile_Water_Shore_1C_02.png" pivotX="0" pivotY="-19"   />
@@ -198,13 +198,13 @@
 			<Item id="i_water_46" asset="ISO_Tile_Water_Shore_4C_01.png" pivotX="0" pivotY="-19"   />
 			<Item id="i_water_47" asset="ISO_Tile_Water_Shore_4S_04.png" pivotX="0" pivotY="-19"   />
 		</Category>
-		<Category name="c_wood"  path="Assets/Bundles/Tiles/Terrain">
+		<Category name="c_wood"  path="Tiles/Terrain">
 			<Item id="i_wood_1" asset="ISO_Tile_Wood_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_wood_2" asset="ISO_Tile_Wood_02.png" pivotX="0" pivotY="0" />
 			<Item id="i_wood_3" asset="ISO_Tile_Wood_03.png" pivotX="0" pivotY="0" />
 			<Item id="i_wood_4" asset="ISO_Tile_Wood_04.png" pivotX="0" pivotY="0" />
 		</Category>
-		<Category name="c_unit" path="Assets/Bundles/Tiles/Unit">
+		<Category name="c_unit" path="Tiles/Unit">
 			<Item id="i_piece_a" asset="ISO_Prob_Pieces_a_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_piece_b" asset="ISO_Prob_Pieces_b_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_piece_c" asset="ISO_Prob_Pieces_c_01.png" pivotX="0" pivotY="0" />
@@ -301,7 +301,7 @@
 			<Item id="i_wall_e_3" asset="ISO_Unit_Wall_e_03.png" pivotX="0" pivotY="0" />
 			<Item id="i_wall_e_4" asset="ISO_Unit_Wall_e_04.png" pivotX="0" pivotY="0" />
 		</Category>
-		<Category name="c_titan" path="Assets/Bundles/Tiles/Unit">
+		<Category name="c_titan" path="Tiles/Unit">
 			<Item id="i_13006_a_01" asset="13006_a_01.png" pivotX="0" pivotY="13" />
 			<Item id="i_13006_a_02" asset="13006_a_02.png" pivotX="0" pivotY="13" />
 			<Item id="i_13006_a_03" asset="13006_a_03.png" pivotX="0" pivotY="13" />

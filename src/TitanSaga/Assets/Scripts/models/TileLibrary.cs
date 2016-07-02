@@ -555,7 +555,7 @@ namespace TileLib
 			set {
 				_category = value;
 				if (value != null) {
-					_assetPath = Path.Combine (value.path, asset);
+					_assetPath = Path.Combine (value.path, Path.GetFileNameWithoutExtension(asset));
 				}
 			}
 		}
