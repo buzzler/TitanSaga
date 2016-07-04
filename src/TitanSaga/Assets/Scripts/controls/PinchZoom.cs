@@ -3,36 +3,91 @@
 [RequireComponent(typeof(Camera))]
 public class PinchZoom : MonoBehaviour
 {
-	public	float orthoZoomSpeed = 0.01f;
-	public	float orthoSize = 3f;
+	public	float orthoSize = 2.5f;
+
 	private	Camera _camera;
+	private	bool	_zoom;
+	private	float	_ortho;
+	private	float	_magnitude;
 
 	void Awake() {
 		_camera = GetComponent<Camera>();
+		_zoom = false;
+		_ortho = orthoSize;
+		_magnitude = 0f;
 	}
 
 	void Update()
 	{
-		if (Input.touchCount == 2) {
-			Touch touchZero = Input.touches [0];
-			Touch touchOne = Input.touches [1];
-
-			Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-			Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
-
-			float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-			float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
-			float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
-
-			_camera.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
-			_camera.orthographicSize = Mathf.Clamp (_camera.orthographicSize, 1f, 5f);
-		} else if (_camera.orthographicSize != orthoSize) {
-			var delta = (orthoSize - _camera.orthographicSize) * orthoZoomSpeed;
-			if (delta < 0.0001) {
-				_camera.orthographicSize = orthoSize;
+		#if UNITY_EDITOR
+		if ((!_zoom) && Input.GetKey(KeyCode.LeftShift)) {
+			BeginZoom ();
+		} else if (_zoom && (!Input.GetKey(KeyCode.LeftShift))) {
+			EndZoom ();
+		} else if (_zoom && Input.GetKey(KeyCode.LeftShift)) {
+			if (Input.GetKey(KeyCode.Equals)) {
+				_camera.orthographicSize = Mathf.Clamp (_ortho + 1.5f, 1f, 4.5f);
+			} else if (Input.GetKey(KeyCode.Minus)) {
+				_camera.orthographicSize = Mathf.Clamp (_ortho - 1.5f, 1f, 4.5f);
 			} else {
-				_camera.orthographicSize += delta;
+				_camera.orthographicSize = Mathf.Clamp (_ortho, 1f, 4.5f);
 			}
+		} else if ((!_zoom) && (!Input.GetKey(KeyCode.LeftShift)) && _camera.orthographicSize != orthoSize) {
+			ReleaseZoom ();
+		}
+		#else
+		int tc = Input.touchCount;
+		if ((!_zoom) && tc == 2) {
+			BeginZoom ();
+		} else if (_zoom && tc != 2) {
+			EndZoom ();
+		} else if (_zoom && tc == 2) {
+			HoldZoom ();
+		} else if ((!_zoom) && tc != 2 && _camera.orthographicSize != orthoSize) {
+			ReleaseZoom ();
+		}
+		#endif
+	}
+
+	private	void BeginZoom() {
+		if (!_zoom) {
+			_zoom = true;
+			_ortho = _camera.orthographicSize;
+			_magnitude = GetMagnitude ();
+		}
+	}
+
+	private	void EndZoom() {
+		if (_zoom) {
+			_zoom = false;
+			_magnitude = 0f;
+		}
+	}
+
+	private	void HoldZoom() {
+		var current = GetMagnitude ();
+		var inch = (_magnitude - current) / Screen.dpi;
+		var rate = inch / 2f;
+		var delta = rate * 1.5f;
+		_camera.orthographicSize = Mathf.Clamp (_ortho + delta, 1f, 4.5f);
+	}
+
+	private	void ReleaseZoom() {
+		var molph = (orthoSize - _camera.orthographicSize) * 0.005f;
+		if (molph < 0.00101) {
+			_camera.orthographicSize += molph;
+		} else {
+			_camera.orthographicSize = orthoSize;
+		}
+	}
+
+	private	float GetMagnitude() {
+		if (Input.touchCount >= 2) {
+			Touch t1 = Input.touches [0];
+			Touch t2 = Input.touches [1];
+			return (t1.position - t2.position).magnitude;
+		} else {
+			return 0f;
 		}
 	}
 }

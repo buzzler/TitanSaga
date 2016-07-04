@@ -5,50 +5,52 @@ public class Panning : MonoBehaviour {
 	public	float speed = 0.1F;
 	public	Rect bound;
 
-	private Vector3 dest = Vector3.zero;
-	private	Vector3 prev = Vector3.zero;
-	private	float mult = 0.01f;
+	private	Transform _transform;
+	private Vector3 _dest = Vector3.zero;
+	private	Vector3 _prev = Vector3.zero;
+	private	float _mult = 0.01f;
 
 	void Start() {
-		dest = transform.localPosition;
+		_transform = transform;
+		_dest = _transform.localPosition;
 	}
 		
 	void Update() {
-		var lp = transform.localPosition;
-		var dist = (dest - lp) / 2;
-		transform.localPosition += dist;
+		var lp = _transform.localPosition;
+		var dist = (_dest - lp) / 2;
+		_transform.localPosition += dist;
 
 		#if UNITY_EDITOR
 		if (Input.GetButton("Fire1")) {
-			if (prev == Vector3.zero) {
-				prev = Input.mousePosition;
+			if (_prev == Vector3.zero) {
+				_prev = Input.mousePosition;
 			}
 			var cp = Input.mousePosition;
 			bound = Observer.Instance.tileManager.bound;
-			dest += (prev - cp) * mult;
+			_dest += (_prev - cp) * _mult;
 
-			dest.x = Mathf.Clamp(dest.x, bound.xMin, bound.xMax);
-			dest.y = Mathf.Clamp(dest.y, bound.yMin, bound.yMax);
-			prev = cp;
+			_dest.x = Mathf.Clamp(_dest.x, bound.xMin, bound.xMax);
+			_dest.y = Mathf.Clamp(_dest.y, bound.yMin, bound.yMax);
+			_prev = cp;
 		} else {
-			prev = Vector3.zero;
+			_prev = Vector3.zero;
 		}
 		#else
 		if (Input.touchCount > 0) {
 			var touch = Input.touches [0];
-			if (prev == Vector3.zero) {
-				prev = touch.position;
+			if (_prev == Vector3.zero) {
+				_prev = touch.position;
 			}
 			var cp = touch.position;
 			bound = Observer.Instance.tileManager.bound;
 
-			dest.x += (prev.x - cp.x) * mult;
-			dest.y += (prev.y - cp.y) * mult;
-			dest.x = Mathf.Clamp(dest.x, bound.xMin, bound.xMax);
-			dest.y = Mathf.Clamp(dest.y, bound.yMin, bound.yMax);
-			prev = cp;
+			_dest.x += (_prev.x - cp.x) * _mult;
+			_dest.y += (_prev.y - cp.y) * _mult;
+			_dest.x = Mathf.Clamp(_dest.x, bound.xMin, bound.xMax);
+			_dest.y = Mathf.Clamp(_dest.y, bound.yMin, bound.yMax);
+			_prev = cp;
 		} else {
-			prev = Vector3.zero;
+			_prev = Vector3.zero;
 		}
 		#endif
 	}
