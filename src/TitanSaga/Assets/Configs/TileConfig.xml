@@ -1363,7 +1363,74 @@
 			<L item="i_stair_8"/>
 			<R item="i_stair_6"/>
 		</Direction>
+		<Normal id="t_dirt_1" item="i_dirt_1"/>
+		<Normal id="t_dirt_2" item="i_dirt_2"/>
+		<Normal id="t_dirt_3" item="i_dirt_3"/>
+		<Normal id="t_dirt_4" item="i_dirt_4"/>
 		<Normal id="t_dirt_5" item="i_dirt_5"/>
+		<Normal id="t_dirt_6" item="i_dirt_6"/>
+		<Normal id="t_dirt_7" item="i_dirt_7"/>
+		<Normal id="t_dirt_8" item="i_dirt_8"/>
+		<Normal id="t_brick_1" item="i_brick_1"/>
+		<Normal id="t_brick_2" item="i_brick_2"/>
+		<Normal id="t_brick_3" item="i_brick_3"/>
+		<Normal id="t_brick_4" item="i_brick_4"/>
+		<Normal id="t_brick_5" item="i_brick_5"/>
+		<Normal id="t_brick_6" item="i_brick_6"/>
+		<Normal id="t_brick_7" item="i_brick_7"/>
+		<Normal id="t_brick_8" item="i_brick_8"/>
+		<Normal id="t_brick_9" item="i_brick_9"/>
+		<Normal id="t_brick_10" item="i_brick_10"/>
+		<Normal id="t_brick_11" item="i_brick_11"/>
+		<Normal id="t_brick_12" item="i_brick_12"/>
+		<Normal id="t_grass_1" item="i_grass_1"/>
+		<Normal id="t_grass_2" item="i_grass_2"/>
+		<Normal id="t_grass_3" item="i_grass_3"/>
+		<Normal id="t_grass_4" item="i_grass_4"/>
+		<Normal id="t_lava_1" item="i_lava_1"/>
+		<Normal id="t_lava_2" item="i_lava_2"/>
+		<Normal id="t_lava_3" item="i_lava_3"/>
+		<Normal id="t_lava_4" item="i_lava_4"/>
+		<Normal id="t_low_1" item="i_low_1"/>
+		<Normal id="t_low_2" item="i_low_2"/>
+		<Normal id="t_low_3" item="i_low_3"/>
+		<Normal id="t_low_4" item="i_low_4"/>
+		<Normal id="t_low_5" item="i_low_5"/>
+		<Normal id="t_low_6" item="i_low_6"/>
+		<Normal id="t_low_7" item="i_low_7"/>
+		<Normal id="t_low_8" item="i_low_8"/>
+		<Normal id="t_low_9" item="i_low_9"/>
+		<Normal id="t_low_10" item="i_low_10"/>
+		<Normal id="t_low_11" item="i_low_11"/>
+		<Normal id="t_low_12" item="i_low_12"/>
+		<Normal id="t_low_13" item="i_low_13"/>
+		<Normal id="t_sand_1" item="i_sand_1"/>
+		<Normal id="t_sand_2" item="i_sand_2"/>
+		<Normal id="t_sand_3" item="i_sand_3"/>
+		<Normal id="t_sand_4" item="i_sand_4"/>
+		<Normal id="t_sand_5" item="i_sand_5"/>
+		<Normal id="t_sand_6" item="i_sand_6"/>
+		<Normal id="t_sand_7" item="i_sand_7"/>
+		<Normal id="t_sand_8" item="i_sand_8"/>
+		<Normal id="t_sand_9" item="i_sand_9"/>
+		<Normal id="t_sand_10" item="i_sand_10"/>
+		<Normal id="t_snow_1" item="i_snow_1"/>
+		<Normal id="t_snow_2" item="i_snow_2"/>
+		<Normal id="t_snow_3" item="i_snow_3"/>
+		<Normal id="t_snow_4" item="i_snow_4"/>
+		<Normal id="t_snow_5" item="i_snow_5"/>
+		<Normal id="t_snow_6" item="i_snow_6"/>
+		<Normal id="t_stone_1" item="i_stone_1"/>
+		<Normal id="t_stone_2" item="i_stone_2"/>
+		<Normal id="t_stone_3" item="i_stone_3"/>
+		<Normal id="t_stone_4" item="i_stone_4"/>
+		<Normal id="t_stone_5" item="i_stone_5"/>
+		<Normal id="t_stone_6" item="i_stone_6"/>
+		<Normal id="t_stone_7" item="i_stone_7"/>
+		<Normal id="t_wood_1" item="i_wood_1"/>
+		<Normal id="t_wood_2" item="i_wood_2"/>
+		<Normal id="t_wood_3" item="i_wood_3"/>
+		<Normal id="t_wood_4" item="i_wood_4"/>
 	</Library>
 	<Tutorial>
 		<Map id="tutorial_1" width="20" height="3" depth="20">
