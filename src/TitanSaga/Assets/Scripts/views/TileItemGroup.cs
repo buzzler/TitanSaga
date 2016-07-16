@@ -64,7 +64,7 @@ public class TileItemGroup : MonoBehaviour {
 
 		if (_renderers != null) {
 			for (int i = 0; i < count; i++) {
-				_renderers [i].SetTileItemLInk (_library, links [i], _transform);
+				_renderers [i].SetTileItemLInk (_library, links [i], _transform, (float)i * -0.1f);
 			}
 		}
 	}

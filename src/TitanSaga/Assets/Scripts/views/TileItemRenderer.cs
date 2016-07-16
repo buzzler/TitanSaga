@@ -8,6 +8,7 @@ public class TileItemRenderer : MonoBehaviour {
 	private	SpriteRenderer	_renderer;
 	private	TileLibrary		_library;
 	private	TileItemLink	_link;
+	private	float			_depth;
 	private	bool			_animation;
 	private	int				_frame;
 	private	string[]		_sequence;
@@ -47,9 +48,10 @@ public class TileItemRenderer : MonoBehaviour {
 		_sequence = null;
 	}
 
-	public	void SetTileItemLInk(TileLibrary library, TileItemLink link, Transform parent) {
+	public	void SetTileItemLInk(TileLibrary library, TileItemLink link, Transform parent, float depth = 0f) {
 		_transfom.SetParent (parent);
 		_library = library;
+		_depth = depth;
 
 		if (_link != link) {
 			_link = link;
@@ -73,7 +75,7 @@ public class TileItemRenderer : MonoBehaviour {
 		}
 
 		if (item != null) {
-			_transfom.localPosition = new Vector3 ((item.pivotX + _link.x) / 128f, (item.pivotY + _link.y) / 128f, 0f);
+			_transfom.localPosition = new Vector3 ((item.pivotX + _link.x) / 128f, (item.pivotY + _link.y) / 128f, _depth);
 			var sprite = Resources.Load<Sprite> (item.assetPath);
 			if (_renderer.sprite != sprite) {
 				_renderer.sprite = sprite;

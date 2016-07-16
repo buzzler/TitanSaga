@@ -38,6 +38,10 @@
 			<Item id="i_flag_y_4" asset="ISO_Prob_Flag_y_04.png" pivotX="0" pivotY="0" />
 			<Item id="i_flag_y_5" asset="ISO_Prob_Flag_y_05.png" pivotX="0" pivotY="0" />
 			<Item id="i_flag_y_6" asset="ISO_Prob_Flag_y_06.png" pivotX="0" pivotY="0" />
+			<Item id="i_gold_big" asset="ISO_Prob_Gold_Big.png" pivotX="0" pivotY="0" />
+			<Item id="i_gold_small" asset="ISO_Prob_Gold_Small.png" pivotX="0" pivotY="0" />
+			<Item id="i_peridot_big" asset="ISO_Prob_Peridot_Big.png" pivotX="0" pivotY="0" />
+			<Item id="i_peridot_small" asset="ISO_Prob_Peridot_Small.png" pivotX="0" pivotY="0" />
 		</Category>
 		<Category name="c_brick" path="Tiles/Terrain">
 			<Item id="i_brick_1" asset="ISO_Tile_Brick_Brick_01.png" pivotX="0" pivotY="0" />
@@ -210,16 +214,11 @@
 			<Item id="i_piece_c" asset="ISO_Prob_Pieces_c_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_piece_d" asset="ISO_Prob_Pieces_d_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_piece_e" asset="ISO_Prob_Pieces_e_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_bankgold_a" asset="ISO_Unit_Bankgold_a_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_bankgold_b" asset="ISO_Unit_Bankgold_b_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_bankgold_c" asset="ISO_Unit_Bankgold_c_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_bankgold_d" asset="ISO_Unit_Bankgold_d_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_bankgold_e" asset="ISO_Unit_Bankgold_e_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_bankperidot_a" asset="ISO_Unit_Bankperidot_a_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_bankperidot_b" asset="ISO_Unit_Bankperidot_b_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_bankperidot_c" asset="ISO_Unit_Bankperidot_c_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_bankperidot_d" asset="ISO_Unit_Bankperidot_d_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_bankperidot_e" asset="ISO_Unit_Bankperidot_e_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bank_a" asset="ISO_Unit_Bank_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bank_b" asset="ISO_Unit_Bank_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bank_c" asset="ISO_Unit_Bank_c_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bank_d" asset="ISO_Unit_Bank_d_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_bank_e" asset="ISO_Unit_Bank_e_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_bootcamp_a" asset="ISO_Unit_Bootcamp_a_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_bootcamp_b" asset="ISO_Unit_Bootcamp_b_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_bootcamp_c" asset="ISO_Unit_Bootcamp_c_01.png" pivotX="0" pivotY="0" />
@@ -265,16 +264,13 @@
 			<Item id="i_magictower_c" asset="ISO_Unit_Magictower_c_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_magictower_d" asset="ISO_Unit_Magictower_d_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_magictower_e" asset="ISO_Unit_Magictower_e_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_minegold_a" asset="ISO_Unit_Minegold_a_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_minegold_b" asset="ISO_Unit_Minegold_b_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_minegold_c" asset="ISO_Unit_Minegold_c_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_minegold_d" asset="ISO_Unit_Minegold_d_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_minegold_e" asset="ISO_Unit_Minegold_e_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_mineperidot_a" asset="ISO_Unit_Mineperidot_a_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_mineperidot_b" asset="ISO_Unit_Mineperidot_b_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_mineperidot_c" asset="ISO_Unit_Mineperidot_c_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_mineperidot_d" asset="ISO_Unit_Mineperidot_d_01.png" pivotX="0" pivotY="0" />
-			<Item id="i_mineperidot_e" asset="ISO_Unit_Mineperidot_e_01.png" pivotX="0" pivotY="0" />
+
+			<Item id="i_mine_a" asset="ISO_Unit_Mine_a_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_mine_b" asset="ISO_Unit_Mine_b_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_mine_c" asset="ISO_Unit_Mine_c_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_mine_d" asset="ISO_Unit_Mine_d_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_mine_e" asset="ISO_Unit_Mine_e_01.png" pivotX="0" pivotY="0" />
+
 			<Item id="i_pentagon_a" asset="ISO_Unit_Pentagon_a_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_pentagon_b" asset="ISO_Unit_Pentagon_b_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_pentagon_c" asset="ISO_Unit_Pentagon_c_01.png" pivotX="0" pivotY="0" />
@@ -539,233 +535,303 @@
 			</Yellow>
 		</Building>
 		<Building id="t_bankgold_a">
-			<Basic item="i_bankgold_a">
+			<Basic item="i_bank_a">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Basic>
-			<Blue item="i_bankgold_a">
+			<Blue item="i_bank_a">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Blue>
-			<Green item="i_bankgold_a">
+			<Green item="i_bank_a">
 				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Green>
-			<Black item="i_bankgold_a">
+			<Black item="i_bank_a">
 				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Black>
-			<Purple item="i_bankgold_a">
+			<Purple item="i_bank_a">
 				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Purple>
-			<Red item="i_bankgold_a">
+			<Red item="i_bank_a">
 				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Red>
-			<Yellow item="i_bankgold_a">
+			<Yellow item="i_bank_a">
 				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Yellow>
 		</Building>
 		<Building id="t_bankgold_b">
-			<Basic item="i_bankgold_b">
+			<Basic item="i_bank_b">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Basic>
-			<Blue item="i_bankgold_b">
+			<Blue item="i_bank_b">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Blue>
-			<Green item="i_bankgold_b">
+			<Green item="i_bank_b">
 				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Green>
-			<Black item="i_bankgold_b">
+			<Black item="i_bank_b">
 				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Black>
-			<Purple item="i_bankgold_b">
+			<Purple item="i_bank_b">
 				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Purple>
-			<Red item="i_bankgold_b">
+			<Red item="i_bank_b">
 				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Red>
-			<Yellow item="i_bankgold_b">
+			<Yellow item="i_bank_b">
 				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Yellow>
 		</Building>
 		<Building id="t_bankgold_c">
-			<Basic item="i_bankgold_c">
+			<Basic item="i_bank_c">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Basic>
-			<Blue item="i_bankgold_c">
+			<Blue item="i_bank_c">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Blue>
-			<Green item="i_bankgold_c">
+			<Green item="i_bank_c">
 				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Green>
-			<Black item="i_bankgold_c">
+			<Black item="i_bank_c">
 				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Black>
-			<Purple item="i_bankgold_c">
+			<Purple item="i_bank_c">
 				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Purple>
-			<Red item="i_bankgold_c">
+			<Red item="i_bank_c">
 				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Red>
-			<Yellow item="i_bankgold_c">
+			<Yellow item="i_bank_c">
 				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Yellow>
 		</Building>
 		<Building id="t_bankgold_d">
-			<Basic item="i_bankgold_d">
+			<Basic item="i_bank_d">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Basic>
-			<Blue item="i_bankgold_d">
+			<Blue item="i_bank_d">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Blue>
-			<Green item="i_bankgold_d">
+			<Green item="i_bank_d">
 				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Green>
-			<Black item="i_bankgold_d">
+			<Black item="i_bank_d">
 				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Black>
-			<Purple item="i_bankgold_d">
+			<Purple item="i_bank_d">
 				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Purple>
-			<Red item="i_bankgold_d">
+			<Red item="i_bank_d">
 				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Red>
-			<Yellow item="i_bankgold_d">
+			<Yellow item="i_bank_d">
 				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Yellow>
 		</Building>
 		<Building id="t_bankgold_e">
-			<Basic item="i_bankgold_e">
+			<Basic item="i_bank_e">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Basic>
-			<Blue item="i_bankgold_e">
+			<Blue item="i_bank_e">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Blue>
-			<Green item="i_bankgold_e">
+			<Green item="i_bank_e">
 				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Green>
-			<Black item="i_bankgold_e">
+			<Black item="i_bank_e">
 				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Black>
-			<Purple item="i_bankgold_e">
+			<Purple item="i_bank_e">
 				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Purple>
-			<Red item="i_bankgold_e">
+			<Red item="i_bank_e">
 				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Red>
-			<Yellow item="i_bankgold_e">
+			<Yellow item="i_bank_e">
 				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+				<Child item="i_gold_big" x="0" y="25" />
 			</Yellow>
 		</Building>
 		<Building id="t_bankperidot_a">
-			<Basic item="i_bankperidot_a">
+			<Basic item="i_bank_a">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Basic>
-			<Blue item="i_bankperidot_a">
+			<Blue item="i_bank_a">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Blue>
-			<Green item="i_bankperidot_a">
+			<Green item="i_bank_a">
 				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Green>
-			<Black item="i_bankperidot_a">
+			<Black item="i_bank_a">
 				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Black>
-			<Purple item="i_bankperidot_a">
+			<Purple item="i_bank_a">
 				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Purple>
-			<Red item="i_bankperidot_a">
+			<Red item="i_bank_a">
 				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Red>
-			<Yellow item="i_bankperidot_a">
+			<Yellow item="i_bank_a">
 				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Yellow>
 		</Building>
 		<Building id="t_bankperidot_b">
-			<Basic item="i_bankperidot_b">
+			<Basic item="i_bank_b">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Basic>
-			<Blue item="i_bankperidot_b">
+			<Blue item="i_bank_b">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Blue>
-			<Green item="i_bankperidot_b">
+			<Green item="i_bank_b">
 				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Green>
-			<Black item="i_bankperidot_b">
+			<Black item="i_bank_b">
 				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Black>
-			<Purple item="i_bankperidot_b">
+			<Purple item="i_bank_b">
 				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Purple>
-			<Red item="i_bankperidot_b">
+			<Red item="i_bank_b">
 				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Red>
-			<Yellow item="i_bankperidot_b">
+			<Yellow item="i_bank_b">
 				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Yellow>
 		</Building>
 		<Building id="t_bankperidot_c">
-			<Basic item="i_bankperidot_c">
+			<Basic item="i_bank_c">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Basic>
-			<Blue item="i_bankperidot_c">
+			<Blue item="i_bank_c">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Blue>
-			<Green item="i_bankperidot_c">
+			<Green item="i_bank_c">
 				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Green>
-			<Black item="i_bankperidot_c">
+			<Black item="i_bank_c">
 				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Black>
-			<Purple item="i_bankperidot_c">
+			<Purple item="i_bank_c">
 				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Purple>
-			<Red item="i_bankperidot_c">
+			<Red item="i_bank_c">
 				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Red>
-			<Yellow item="i_bankperidot_c">
+			<Yellow item="i_bank_c">
 				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Yellow>
 		</Building>
 		<Building id="t_bankperidot_d">
-			<Basic item="i_bankperidot_d">
+			<Basic item="i_bank_d">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Basic>
-			<Blue item="i_bankperidot_d">
+			<Blue item="i_bank_d">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Blue>
-			<Green item="i_bankperidot_d">
+			<Green item="i_bank_d">
 				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Green>
-			<Black item="i_bankperidot_d">
+			<Black item="i_bank_d">
 				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Black>
-			<Purple item="i_bankperidot_d">
+			<Purple item="i_bank_d">
 				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Purple>
-			<Red item="i_bankperidot_d">
+			<Red item="i_bank_d">
 				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Red>
-			<Yellow item="i_bankperidot_d">
+			<Yellow item="i_bank_d">
 				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Yellow>
 		</Building>
 		<Building id="t_bankperidot_e">
-			<Basic item="i_bankperidot_e">
+			<Basic item="i_bank_e">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Basic>
-			<Blue item="i_bankperidot_e">
+			<Blue item="i_bank_e">
 				<Child item="i_flag_b_1" x="0" y="140" seq="i_flag_b_1|i_flag_b_2|i_flag_b_3|i_flag_b_4|i_flag_b_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Blue>
-			<Green item="i_bankperidot_e">
+			<Green item="i_bank_e">
 				<Child item="i_flag_g_1" x="0" y="140" seq="i_flag_g_1|i_flag_g_2|i_flag_g_3|i_flag_g_4|i_flag_g_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Green>
-			<Black item="i_bankperidot_e">
+			<Black item="i_bank_e">
 				<Child item="i_flag_k_1" x="0" y="140" seq="i_flag_k_1|i_flag_k_2|i_flag_k_3|i_flag_k_4|i_flag_k_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Black>
-			<Purple item="i_bankperidot_e">
+			<Purple item="i_bank_e">
 				<Child item="i_flag_p_1" x="0" y="140" seq="i_flag_p_1|i_flag_p_2|i_flag_p_3|i_flag_p_4|i_flag_p_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Purple>
-			<Red item="i_bankperidot_e">
+			<Red item="i_bank_e">
 				<Child item="i_flag_r_1" x="0" y="140" seq="i_flag_r_1|i_flag_r_2|i_flag_r_3|i_flag_r_4|i_flag_r_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Red>
-			<Yellow item="i_bankperidot_e">
+			<Yellow item="i_bank_e">
 				<Child item="i_flag_y_1" x="0" y="140" seq="i_flag_y_1|i_flag_y_2|i_flag_y_3|i_flag_y_4|i_flag_y_5" fps="15" />
+				<Child item="i_peridot_big" x="0" y="25" />
 			</Yellow>
 		</Building>
 		<Building id="t_bootcamp_a">
@@ -1104,34 +1170,54 @@
 			<Basic item="i_magictower_e" />
 		</Building>
 		<Building id="t_minegold_a">
-			<Basic item="i_minegold_a" />
+			<Basic item="i_mine_a">
+				<Child item="i_gold_small" x="29" y="41" />
+			</Basic>
 		</Building>
 		<Building id="t_minegold_b">
-			<Basic item="i_minegold_b" />
+			<Basic item="i_mine_b">
+				<Child item="i_gold_small" x="29" y="41" />
+			</Basic>
 		</Building>
 		<Building id="t_minegold_c">
-			<Basic item="i_minegold_c" />
+			<Basic item="i_mine_c">
+				<Child item="i_gold_small" x="29" y="41" />
+			</Basic>
 		</Building>
 		<Building id="t_minegold_d">
-			<Basic item="i_minegold_d" />
+			<Basic item="i_mine_d">
+				<Child item="i_gold_small" x="29" y="41" />
+			</Basic>
 		</Building>
 		<Building id="t_minegold_e">
-			<Basic item="i_minegold_e" />
+			<Basic item="i_mine_e">
+				<Child item="i_gold_small" x="29" y="41" />
+			</Basic>
 		</Building>
 		<Building id="t_mineperidot_a">
-			<Basic item="i_mineperidot_a" />
+			<Basic item="i_mine_a">
+				<Child item="i_peridot_small" x="29" y="41" />
+			</Basic>
 		</Building>
 		<Building id="t_mineperidot_b">
-			<Basic item="i_mineperidot_b" />
+			<Basic item="i_mine_b">
+				<Child item="i_peridot_small" x="29" y="41" />
+			</Basic>
 		</Building>
 		<Building id="t_mineperidot_c">
-			<Basic item="i_mineperidot_c" />
+			<Basic item="i_mine_c">
+				<Child item="i_peridot_small" x="29" y="41" />
+			</Basic>
 		</Building>
 		<Building id="t_mineperidot_d">
-			<Basic item="i_mineperidot_d" />
+			<Basic item="i_mine_d">
+				<Child item="i_peridot_small" x="29" y="41" />
+			</Basic>
 		</Building>
 		<Building id="t_mineperidot_e">
-			<Basic item="i_mineperidot_e" />
+			<Basic item="i_mine_e">
+				<Child item="i_peridot_small" x="29" y="41" />
+			</Basic>
 		</Building>
 		<Building id="t_pentagon_a">
 			<Basic item="i_pentagon_a">
