@@ -311,6 +311,8 @@ namespace TileLib
 		Building,
 		Wall,
 		Normal,
+		Perlin,
+		Random,
 		Character
 	}
 
@@ -374,6 +376,10 @@ namespace TileLib
 		public	TileNormal[]	normals;
 		[XmlElement ("Character")]
 		public	TileCharacter[]	characters;
+		[XmlElement ("Perlin")]
+		public	TilePerlin[]	perlins;
+		[XmlElement ("Random")]
+		public	TileRandom[]	randoms;
 
 		private	Dictionary<string, TileCategory>	_dictionaryCategory;
 		private	Dictionary<string, TileBase>		_dictionaryItem;
@@ -388,6 +394,7 @@ namespace TileLib
 			walls = new TileWall[0];
 			normals = new TileNormal[0];
 			characters = new TileCharacter[0];
+			perlins = new TilePerlin[0];
 			_dictionaryCategory	= new Dictionary<string, TileCategory> ();
 			_dictionaryItem = new Dictionary<string, TileBase> ();
 		}
@@ -455,6 +462,19 @@ namespace TileLib
 				character.library = this;
 				character.Hashing ();
 				_dictionaryItem.Add (character.id, character);
+			}
+
+			for (int i = perlins.Length - 1; i >= 0 ;i--) {
+				TilePerlin perlin = perlins [i];
+				perlin.library = this;
+				perlin.Hashing ();
+				_dictionaryItem.Add (perlin.id, perlin);
+			}
+
+			for (int i = randoms.Length - 1; i >= 0; i--) {
+				TileRandom random = randoms [i];
+				random.library = this;
+				_dictionaryItem.Add (random.id, random);
 			}
 		}
 
@@ -815,6 +835,30 @@ namespace TileLib
 		}
 	}
 
+	public	class TilePerlin : TileBase
+	{
+		[XmlAttribute ("scale")]
+		public	float			scale;
+		[XmlElement ("Link")]
+		public	TileItemLink[]	links;
+
+		public	TilePerlin()
+		{
+			type = TileType.Perlin;
+		}
+	}
+
+	public	class TileRandom : TileBase
+	{
+		[XmlElement ("Link")]
+		public	TileItemLink[]	links;
+
+		public	TileRandom()
+		{
+			type = TileType.Random;
+		}
+	}
+
 	public	class TileDirection : TileBase
 	{
 		[XmlElement ("U")]
@@ -1041,18 +1085,21 @@ namespace TileLib
 	}
 
 	public	class TileObject {
+		private	static int sequence = 0;
 		[XmlAttribute ("item")]
-		public	string item;
+		public		string		item;
 		[XmlAttribute ("x")]
-		public	float xf;
+		public		float		xf;
 		[XmlAttribute ("y")]
-		public	float yf;
+		public		float 		yf;
 		[XmlAttribute ("z")]
-		public	float zf;
+		public		float 		zf;
 		[XmlAttribute ("face")]
-		public	TileFace	face;
-		public	TileGroup	group;
-		protected TileMap	map;
+		public		TileFace	face;
+		public		TileGroup	group;
+		protected	TileMap		map;
+		private		float 		_rnd;
+		private		int 		_seq;
 
 		public	TileObject ()
 		{
@@ -1060,6 +1107,8 @@ namespace TileLib
 			this.face = TileFace.Up;
 			this.group = TileGroup.Object;
 			this.map = null;
+			this._rnd = Random.value;
+			this._seq = sequence++;
 			SetPosition (0f, 0f, 0f);
 		}
 
@@ -1069,6 +1118,8 @@ namespace TileLib
 			this.face = TileFace.Up;
 			this.group = TileGroup.Object;
 			this.map = null;
+			this._rnd = Random.value;
+			this._seq = sequence++;
 			SetPosition (x, y, z);
 		}
 
@@ -1099,6 +1150,18 @@ namespace TileLib
 		public	int z {
 			get {
 				return (int)zf;
+			}
+		}
+
+		public	float valueRandom {
+			get {
+				return _rnd;
+			}
+		}
+
+		public	int valueSequence {
+			get {
+				return _seq;
 			}
 		}
 
@@ -1369,6 +1432,12 @@ namespace TileLib
 				break;
 			case TileType.Direction:
 				GetTileItemForDirection (library, tb as TileDirection, list);
+				break;
+			case TileType.Perlin:
+				GetTileItemForPerlin (library, tb as TilePerlin, list);
+				break;
+			case TileType.Random:
+				GetTileItemForRandom (library, tb as TileRandom, list);
 				break;
 			}
 
@@ -1858,6 +1927,24 @@ namespace TileLib
 				GetAllTileItem (direction.right, list);
 				break;
 			}
+		}
+
+		private	void GetTileItemForPerlin (TileLibrary library, TilePerlin perlin, List<TileItemLink> list)
+		{
+			if (map == null) {
+				GetAllTileItem (perlin.links [0], list);
+				return;
+			}
+			var density = Mathf.PerlinNoise (this.xf / (float)map.width, this.zf / (float)map.depth);
+			var seg = (float)perlin.links.Length * density;
+			GetAllTileItem (perlin.links [(int)seg], list);
+		}
+
+		private	void GetTileItemForRandom (TileLibrary library, TileRandom random, List<TileItemLink> list)
+		{
+			var index = this.valueRandom * (float)random.links.Length;
+			index = Mathf.Min (index, random.links.Length-1);
+			GetAllTileItem (random.links [(int)index], list);
 		}
 	}
 }

@@ -136,6 +136,8 @@ public class AddNewTile : MonoBehaviour {
 		case TileType.Direction:
 		case TileType.Item:
 		case TileType.Simple:
+		case TileType.Perlin:
+		case TileType.Random:
 			GenerateTerrain (pos);
 			break;
 		}

@@ -14,6 +14,8 @@ public class DebugConsole : MonoBehaviour {
 	public	Button				btnWall;
 	public	Button				btnNormal;
 	public	Button				btnCharacter;
+	public	Button				btnPerlin;
+	public	Button				btnRandom;
 	public	Button				btnClear;
 	public	Button				btnLoad;
 	public	Button				btnSave;
@@ -31,6 +33,8 @@ public class DebugConsole : MonoBehaviour {
 		btnWall.onClick.AddListener (OnClickWall);
 		btnNormal.onClick.AddListener (OnClickNormal);
 		btnCharacter.onClick.AddListener (OnClickCharacter);
+		btnPerlin.onClick.AddListener (onClickPerlin);
+		btnRandom.onClick.AddListener (OnClickRandom);
 		btnClear.onClick.AddListener (OnClickClear);
 		btnLoad.onClick.AddListener (OnClickLoad);
 		btnSave.onClick.AddListener (OnClickSave);
@@ -50,6 +54,8 @@ public class DebugConsole : MonoBehaviour {
 		btnWall.onClick.RemoveAllListeners ();
 		btnNormal.onClick.RemoveAllListeners ();
 		btnCharacter.onClick.RemoveAllListeners ();
+		btnPerlin.onClick.RemoveAllListeners ();
+		btnRandom.onClick.RemoveAllListeners ();
 		btnClear.onClick.RemoveAllListeners ();
 		btnLoad.onClick.RemoveAllListeners ();
 		btnSave.onClick.RemoveAllListeners ();
@@ -89,6 +95,12 @@ public class DebugConsole : MonoBehaviour {
 			break;
 		case "character":
 			OnClickCharacter ();
+			break;
+		case "perlin":
+			onClickPerlin ();
+			break;
+		case "random":
+			OnClickRandom ();
 			break;
 		}
 
@@ -185,13 +197,35 @@ public class DebugConsole : MonoBehaviour {
 
 	private	void OnClickCharacter() {
 		_param.SetString ("onclicked", "character");
-		scrollView.Clear();
+		scrollView.Clear ();
 		int count = _library.characters.Length;
-		for (int d = 0 ; d < count ; d++) {
-			var character = _library.characters[d];
-			AddContent(_library.FindItem(character.GetMotion().right.item) as TileItem, character);
+		for (int d = 0; d < count; d++) {
+			var character = _library.characters [d];
+			AddContent (_library.FindItem (character.GetMotion ().right.item) as TileItem, character);
 		}
-		scrollView.Align();
+		scrollView.Align ();
+	}
+
+	private	void onClickPerlin() {
+		_param.SetString ("onclicked", "perlin");
+		scrollView.Clear ();
+		int count = _library.perlins.Length;
+		for (int d = 0; d < count; d++) {
+			var perlin = _library.perlins [d];
+			AddContent (_library.FindItem (perlin.links [0].item) as TileItem, perlin);
+		}
+		scrollView.Align ();
+	}
+
+	private	void OnClickRandom() {
+		_param.SetString ("onclicked", "random");
+		scrollView.Clear ();
+		int count = _library.randoms.Length;
+		for (int d = 0; d < count; d++) {
+			var random = _library.randoms [d];
+			AddContent (_library.FindItem (random.links [0].item) as TileItem, random);
+		}
+		scrollView.Align ();
 	}
 
 	private	void OnClickClear() {

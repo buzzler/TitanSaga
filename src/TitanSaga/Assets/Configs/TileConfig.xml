@@ -92,19 +92,19 @@
 			<Item id="i_lava_4" asset="ISO_Tile_LavaStone_01.png" pivotX="0" pivotY="0" />
 		</Category>
 		<Category name="low"  path="Tiles/Terrain">
-			<Item id="i_low_1" asset="ISO_LowTile_Dirt_01.png" pivotX="0" pivotY="-19" />
-			<Item id="i_low_2" asset="ISO_LowTile_DirtToStoneTransition_01.png" pivotX="0" pivotY="-19" />
-			<Item id="i_low_3" asset="ISO_LowTile_DirtToStoneTransition_02.png" pivotX="0" pivotY="-19" />
-			<Item id="i_low_4" asset="ISO_LowTile_Riverbed_01.png" pivotX="0" pivotY="-19" />
-			<Item id="i_low_5" asset="ISO_LowTile_Riverbed_02.png" pivotX="0" pivotY="-19" />
-			<Item id="i_low_6" asset="ISO_LowTile_Riverbed_03.png" pivotX="0" pivotY="-19" />
-			<Item id="i_low_7" asset="ISO_LowTile_Riverbed_04.png" pivotX="0" pivotY="-19" />
-			<Item id="i_low_8" asset="ISO_LowTile_Sand_01.png" pivotX="0" pivotY="-19" />
-			<Item id="i_low_9" asset="ISO_LowTile_Sand_02.png" pivotX="0" pivotY="-19" />
-			<Item id="i_low_10" asset="ISO_LowTile_Sand_03.png" pivotX="0" pivotY="-19" />
-			<Item id="i_low_11" asset="ISO_LowTile_Stone_01.png" pivotX="0" pivotY="-19" />
-			<Item id="i_low_12" asset="ISO_LowTile_Stone_02.png" pivotX="0" pivotY="-19" />
-			<Item id="i_low_13" asset="ISO_LowTile_Stone_03.png" pivotX="0" pivotY="-19" />
+			<Item id="i_low_1" asset="ISO_LowTile_Dirt_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_low_2" asset="ISO_LowTile_DirtToStoneTransition_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_low_3" asset="ISO_LowTile_DirtToStoneTransition_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_low_4" asset="ISO_LowTile_Riverbed_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_low_5" asset="ISO_LowTile_Riverbed_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_low_6" asset="ISO_LowTile_Riverbed_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_low_7" asset="ISO_LowTile_Riverbed_04.png" pivotX="0" pivotY="0" />
+			<Item id="i_low_8" asset="ISO_LowTile_Sand_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_low_9" asset="ISO_LowTile_Sand_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_low_10" asset="ISO_LowTile_Sand_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_low_11" asset="ISO_LowTile_Stone_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_low_12" asset="ISO_LowTile_Stone_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_low_13" asset="ISO_LowTile_Stone_03.png" pivotX="0" pivotY="0" />
 		</Category>
 		<Category name="c_sand"  path="Tiles/Terrain">
 			<Item id="i_sand_1" asset="ISO_Tile_Sand_01.png" pivotX="0" pivotY="0" />
@@ -1363,6 +1363,28 @@
 			<L item="i_stair_8"/>
 			<R item="i_stair_6"/>
 		</Direction>
+		<Perlin id="t_perlin_dirt" scale="3">
+			<Link item="i_low_2"/>
+			<Link item="i_low_3"/>
+			<Link item="i_low_1"/>
+		</Perlin>
+		<Perlin id="t_perlin_riverbed" scale="3">
+			<Link item="i_low_7"/>
+			<Link item="i_low_6"/>
+			<Link item="i_low_5"/>
+			<Link item="i_low_4"/>
+		</Perlin>
+		<Random id="t_random_dirt">
+			<Link item="i_low_2"/>
+			<Link item="i_low_3"/>
+			<Link item="i_low_1"/>
+		</Random>
+		<Random id="t_random_riverbed">
+			<Link item="i_low_7"/>
+			<Link item="i_low_6"/>
+			<Link item="i_low_5"/>
+			<Link item="i_low_4"/>
+		</Random>
 		<Normal id="t_dirt_1" item="i_dirt_1"/>
 		<Normal id="t_dirt_2" item="i_dirt_2"/>
 		<Normal id="t_dirt_3" item="i_dirt_3"/>
