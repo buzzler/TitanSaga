@@ -67,6 +67,20 @@
 			<Item id="i_dirt_7" asset="ISO_Tile_Dirt_02_ToStone_02.png" pivotX="0" pivotY="0" />
 			<Item id="i_dirt_8" asset="ISO_Tile_Dirt_02.png" pivotX="0" pivotY="0" />
 		</Category>
+		<Category name="c_ground" path="Tiles/Terrain">
+			<Item id="i_ground_1" asset="ISO_Ground_00_01.png" pivotX="0" pivotY="64" />
+			<Item id="i_ground_2" asset="ISO_Ground_00_02.png" pivotX="0" pivotY="64" />
+			<Item id="i_ground_3" asset="ISO_Ground_00_03.png" pivotX="0" pivotY="64" />
+			<Item id="i_ground_4" asset="ISO_Ground_00_04.png" pivotX="0" pivotY="64" />
+			<Item id="i_ground_5" asset="ISO_Ground_00_05.png" pivotX="0" pivotY="64" />
+			<Item id="i_ground_6" asset="ISO_Ground_00_06.png" pivotX="0" pivotY="64" />
+			<Item id="i_ground_7" asset="ISO_Ground_00_07.png" pivotX="0" pivotY="64" />
+			<Item id="i_ground_8" asset="ISO_Ground_00_08.png" pivotX="0" pivotY="64" />
+			<Item id="i_ground_9" asset="ISO_Ground_00_09.png" pivotX="0" pivotY="64" />
+			<Item id="i_ground_10" asset="ISO_Ground_00_10.png" pivotX="0" pivotY="64" />
+			<Item id="i_ground_11" asset="ISO_Ground_00_11.png" pivotX="0" pivotY="64" />
+			<Item id="i_ground_12" asset="ISO_Ground_00_12.png" pivotX="0" pivotY="64" />
+		</Category>
 		<Category name="c_grass"  path="Tiles/Terrain">
 			<Item id="i_grass_1" asset="ISO_Tile_Dirt_01_Grass_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_grass_2" asset="ISO_Tile_Dirt_01_GrassPatch_01.png" pivotX="0" pivotY="0" />
@@ -1470,6 +1484,20 @@
 			<Link item="i_low_6"/>
 			<Link item="i_low_5"/>
 			<Link item="i_low_4"/>
+		</Random>
+		<Random id="t_ground">
+			<Link item="i_ground_1" />
+			<Link item="i_ground_2" />
+			<Link item="i_ground_3" />
+			<Link item="i_ground_4" />
+			<Link item="i_ground_5" />
+			<Link item="i_ground_6" />
+			<Link item="i_ground_7" />
+			<Link item="i_ground_8" />
+			<Link item="i_ground_9" />
+			<Link item="i_ground_10" />
+			<Link item="i_ground_11" />
+			<Link item="i_ground_12" />
 		</Random>
 		<Normal id="t_dirt_1" item="i_dirt_1"/>
 		<Normal id="t_dirt_2" item="i_dirt_2"/>
