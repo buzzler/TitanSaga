@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<Library default="i_snow_1">
+		<Category name="c_marble" path="Tiles/Unit">
+			<Item id="i_marble_1" asset="ISO_prob_marble_01.png" pivotX="0" pivotY="0" />
+			<Item id="i_marble_2" asset="ISO_prob_marble_02.png" pivotX="0" pivotY="0" />
+			<Item id="i_marble_3" asset="ISO_prob_marble_03.png" pivotX="0" pivotY="0" />
+			<Item id="i_marble_4" asset="ISO_prob_marble_04.png" pivotX="0" pivotY="0" />
+			<Item id="i_marble_5" asset="ISO_prob_marble_05.png" pivotX="0" pivotY="0" />
+			<Item id="i_marble_6" asset="ISO_prob_marble_06.png" pivotX="0" pivotY="0" />
+		</Category>
 		<Category name="c_flag" path="Tiles/Unit">
 			<Item id="i_flag_b_1" asset="ISO_Prob_Flag_b_01.png" pivotX="0" pivotY="0" />
 			<Item id="i_flag_b_2" asset="ISO_Prob_Flag_b_02.png" pivotX="0" pivotY="0" />
@@ -1094,19 +1102,29 @@
 			</Yellow>
 		</Building>
 		<Building id="t_dungeon_a">
-			<Basic item="i_dungeon_a" />
+			<Basic item="i_dungeon_a">
+				<Child item="i_marble_1" x="0" y="74" seq="i_marble_1|i_marble_2|i_marble_3|i_marble_4|i_marble_5|i_marble_6" fps="15" />
+			</Basic>
 		</Building>
 		<Building id="t_dungeon_b">
-			<Basic item="i_dungeon_b" />
+			<Basic item="i_dungeon_b">
+				<Child item="i_marble_1" x="0" y="74" seq="i_marble_1|i_marble_2|i_marble_3|i_marble_4|i_marble_5|i_marble_6" fps="15" />
+			</Basic>
 		</Building>
 		<Building id="t_dungeon_c">
-			<Basic item="i_dungeon_c" />
+			<Basic item="i_dungeon_c">
+				<Child item="i_marble_1" x="0" y="74" seq="i_marble_1|i_marble_2|i_marble_3|i_marble_4|i_marble_5|i_marble_6" fps="15" />
+			</Basic>
 		</Building>
 		<Building id="t_dungeon_d">
-			<Basic item="i_dungeon_d" />
+			<Basic item="i_dungeon_d">
+				<Child item="i_marble_1" x="0" y="74" seq="i_marble_1|i_marble_2|i_marble_3|i_marble_4|i_marble_5|i_marble_6" fps="15" />
+			</Basic>
 		</Building>
 		<Building id="t_dungeon_e">
-			<Basic item="i_dungeon_e" />
+			<Basic item="i_dungeon_e">
+				<Child item="i_marble_1" x="0" y="74" seq="i_marble_1|i_marble_2|i_marble_3|i_marble_4|i_marble_5|i_marble_6" fps="15" />
+			</Basic>
 		</Building>
 		<Building id="t_engineer_a">
 			<Basic item="i_engineer_a" />
