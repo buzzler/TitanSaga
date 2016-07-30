@@ -50,17 +50,39 @@ public class TileManager : MonoBehaviour {
 		return GetPixelCoord (_map.width - 1, 0, 0);
 	}
 
-	public	void ClearMap() {
+	public	void HideMap() {
 		_containerMap.gameObject.SetActive (false);
+	}
 
+	public	void ShowMap() {
+		_containerMap.gameObject.SetActive (true);
+	}
+
+	public	void ClearMap() {
 		for (int i = _containerMap.childCount - 1; i >= 0; i--) {
 			var t = _containerMap.GetChild (0);
 			if (t != null && t.gameObject != null) {
 				DestroyImmediate (t.gameObject);
 			}
 		}
-		_map = new TileMap ();
+		if (_map != null) {
+			_map = new TileMap (_map.width, _map.height, _map.depth);
+		} else {
+			_map = new TileMap ();
+		}
 		_rect = new Rect ();
+	}
+
+	public	void ClearMap(int width, int height, int depth) {
+		for (int i = _containerMap.childCount - 1; i >= 0; i--) {
+			var t = _containerMap.GetChild (0);
+			if (t != null && t.gameObject != null) {
+				DestroyImmediate (t.gameObject);
+			}
+		}
+		_map = new TileMap (width, height, depth);
+		_map.Hashing ();
+		_rect = GetTileBound ();
 	}
 
 	public	void LoadMap(TileMap map) {
@@ -79,7 +101,6 @@ public class TileManager : MonoBehaviour {
 		for (int i = 0; i < total; i++) {
 			AddTileObject (units [i]);
 		}
-		_containerMap.gameObject.SetActive (true);
 	}
 
 	public	void AddTileObject(TileObject tile) {

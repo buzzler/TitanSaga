@@ -16,10 +16,9 @@ public class DebugConsole : MonoBehaviour {
 	public	Button				btnCharacter;
 	public	Button				btnPerlin;
 	public	Button				btnRandom;
-	public	Button				btnClear;
+	public	Button				btnNew;
 	public	Button				btnLoad;
 	public	Button				btnSave;
-	public	Button				btnClose;
 
 	private	TileLibrary			_library;
 	private	UIStateParam		_param;
@@ -35,10 +34,9 @@ public class DebugConsole : MonoBehaviour {
 		btnCharacter.onClick.AddListener (OnClickCharacter);
 		btnPerlin.onClick.AddListener (onClickPerlin);
 		btnRandom.onClick.AddListener (OnClickRandom);
-		btnClear.onClick.AddListener (OnClickClear);
+		btnNew.onClick.AddListener (OnClickNew);
 		btnLoad.onClick.AddListener (OnClickLoad);
 		btnSave.onClick.AddListener (OnClickSave);
-		btnClose.onClick.AddListener (OnClickClose);
 		_library = Observer.Instance.tileManager.config.library;
 		_param = Observer.Instance.uiManager.GetStateParam ("debugconsole");
 		Invoke ("OnRestore", 0.5f);
@@ -56,10 +54,9 @@ public class DebugConsole : MonoBehaviour {
 		btnCharacter.onClick.RemoveAllListeners ();
 		btnPerlin.onClick.RemoveAllListeners ();
 		btnRandom.onClick.RemoveAllListeners ();
-		btnClear.onClick.RemoveAllListeners ();
+		btnNew.onClick.RemoveAllListeners ();
 		btnLoad.onClick.RemoveAllListeners ();
 		btnSave.onClick.RemoveAllListeners ();
-		btnClose.onClick.RemoveAllListeners ();
 		_library = null;
 		_param = null;
 	}
@@ -228,10 +225,10 @@ public class DebugConsole : MonoBehaviour {
 		scrollView.Align ();
 	}
 
-	private	void OnClickClear() {
+	private	void OnClickNew() {
 		#if UNITY_EDITOR
-		if (UnityEditor.EditorUtility.DisplayDialog("clear map info", "really?", "OK", "Cancel")) {
-			Observer.Instance.tileManager.ClearMap();
+		if (UnityEditor.EditorUtility.DisplayDialog("create new map", "really?", "OK", "Cancel")) {
+			Observer.Instance.uiManager.OpenState ("newworld");
 		}
 		#endif
 	}

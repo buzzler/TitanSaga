@@ -3,4 +3,5 @@
 	<Event id="error" />
 	<State id="debugconsole" scene="DebugConsole"/>
 	<State id="addnewtile" scene="AddNewTile"/>
+	<State id="newworld" scene="NewWorld"/>
 </Config>

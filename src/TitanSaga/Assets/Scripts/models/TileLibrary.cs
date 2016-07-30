@@ -970,6 +970,16 @@ namespace TileLib
 			this.depth = 1;
 		}
 
+		public	TileMap (int w, int h, int d)
+		{
+			this.id = string.Empty;
+			this.terrains = new TileTerrain[0];
+			this.units = new TileUnit[0];
+			this.width = w;
+			this.height = h;
+			this.depth = d;
+		}
+
 		public	TileMap Clone ()
 		{
 			var c = new TileMap ();
