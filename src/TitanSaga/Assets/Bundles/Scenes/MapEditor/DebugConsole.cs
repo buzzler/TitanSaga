@@ -230,6 +230,8 @@ public class DebugConsole : MonoBehaviour {
 		if (UnityEditor.EditorUtility.DisplayDialog("create new map", "really?", "OK", "Cancel")) {
 			Observer.Instance.uiManager.OpenState ("newworld");
 		}
+		#else
+		Observer.Instance.uiManager.OpenState ("newworld");
 		#endif
 	}
 
@@ -240,6 +242,9 @@ public class DebugConsole : MonoBehaviour {
 			var xml = System.IO.File.ReadAllText(path);
 			Observer.Instance.tileManager.LoadMap(TitanUtility.LoadFromText<TileMap>(xml));
 		}
+		#else
+		var save = PlayerPrefs.GetString("save", "");
+		Observer.Instance.tileManager.LoadMap(TitanUtility.LoadFromText<TileMap>(save));
 		#endif
 	}
 
@@ -250,6 +255,8 @@ public class DebugConsole : MonoBehaviour {
 			System.IO.File.WriteAllText(path, Observer.Instance.tileManager.mapXml);
 			UnityEditor.EditorUtility.RevealInFinder(path);
 		}
+		#else
+		PlayerPrefs.SetString("save", Observer.Instance.tileManager.mapXml);
 		#endif
 	}
 
@@ -258,6 +265,8 @@ public class DebugConsole : MonoBehaviour {
 		if (UnityEditor.EditorUtility.DisplayDialog("exit map editor", "really?", "OK", "Cancel")) {
 			Observer.Instance.uiManager.CloseAllState();
 		}
+		#else
+		Observer.Instance.uiManager.CloseAllState();
 		#endif
 	}
 
