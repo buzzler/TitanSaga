@@ -77,7 +77,6 @@ public class NewWorld : MonoBehaviour {
 		var d = (int)sldDepth.value;
 		tileManager.ClearMap (w, h , d);
 
-
 		if (ddFill.value >= 0) {
 			var selected = ddFill.options [(ddFill.value)].text;
 			var tb = tileManager.config.library.FindItem (selected);
