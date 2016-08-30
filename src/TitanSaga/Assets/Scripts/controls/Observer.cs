@@ -9,11 +9,13 @@ public class Observer : MonoBehaviour {
 	private	TileManager		_tile;
 	private	UIManager		_ui;
 	private	CameraManager	_camera;
+	private	DBMS			_dbms;
 
 	public	static Observer	Instance		{ get { return _instance; } }
 	public	TileManager		tileManager		{ get { return _tile; } }
 	public	UIManager		uiManager		{ get { return _ui; } }
 	public	CameraManager	cameraManager	{ get { return _camera; } }
+	public	DBMS dbms						{ get { return _dbms; } }
 
 	void Awake() {
 		if (_instance != null) {
@@ -23,5 +25,6 @@ public class Observer : MonoBehaviour {
 		_tile = GetComponent<TileManager> ();
 		_ui = GetComponent<UIManager> ();
 		_camera = GetComponent<CameraManager> ();
+		_dbms = GetComponent<DBMS> ();
 	}
 }
