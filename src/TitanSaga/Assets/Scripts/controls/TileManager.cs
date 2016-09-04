@@ -31,6 +31,7 @@ public class TileManager : MonoBehaviour {
 	}
 
 	void Start() {
+		LoadDB ();
 		LoadMap (config.tutorial.FindItem ("tutorial_1"));
 	}
 
@@ -83,6 +84,15 @@ public class TileManager : MonoBehaviour {
 		_map = new TileMap (width, height, depth);
 		_map.Hashing ();
 		_rect = GetTileBound ();
+	}
+
+	public	void LoadDB() {
+		var dbms = Observer.Instance.dbms;
+		dbms.ExecuteReader("SELECT * FROM tile_item", (System.Data.IDataReader dr) => {
+			while (dr.Read()) {
+				config.library.AddTileItem(new TileItem(dr.GetString(0), dr.GetString(1), dr.GetInt32(2), dr.GetInt32(3)));
+			}
+		});
 	}
 
 	public	void LoadMap(TileMap map) {

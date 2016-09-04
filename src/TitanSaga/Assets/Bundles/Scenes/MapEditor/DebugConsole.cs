@@ -24,7 +24,6 @@ public class DebugConsole : MonoBehaviour {
 	private	UIStateParam		_param;
 
 	void OnEnable () {
-		btnCategory.onClick.AddListener (OnClickCategory);
 		btnSimple.onClick.AddListener (OnClickSimple);
 		btnComplex.onClick.AddListener (OnClickComplex);
 		btnDirection.onClick.AddListener (OnClickDirection);
@@ -69,9 +68,6 @@ public class DebugConsole : MonoBehaviour {
 	private	void OnRestore() {
 		string clicked = _param.GetString ("onclicked");
 		switch (clicked) {
-		case "category":
-			OnClickCategory ();
-			break;
 		case "simple":
 			OnClickSimple ();
 			break;
@@ -109,21 +105,6 @@ public class DebugConsole : MonoBehaviour {
 
 	private	void OnClickItem(TileBase tilebase) {
 		Observer.Instance.uiManager.OpenState ("addnewtile", tilebase);
-	}
-
-	private	void OnClickCategory() {
-		_param.SetString ("onclicked", "category");
-		scrollView.Clear();
-		int categories = _library.categories.Length;
-		for (int c = 0 ; c < categories ; c++) {
-			var category = _library.categories[c];
-			int items = category.items.Length;
-			for (int i = 0 ; i < items ; i++) {
-				var item = category.items[i];
-				AddContent(item, item);
-			}
-		}
-		scrollView.Align();
 	}
 
 	private	void OnClickSimple() {

@@ -13,7 +13,7 @@ public class TerrainItem : MonoBehaviour {
 
 	public	void SetItem(TileItem item, TileBase tilebase) {
 		this.image.texture = Resources.Load<Texture>(item.assetPath);
-		this.text.text = Path.GetFileNameWithoutExtension(item.asset);
+		this.text.text = Path.GetFileNameWithoutExtension(item.assetPath);
 		this.tilebase = tilebase;
 	}
 

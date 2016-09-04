@@ -360,8 +360,6 @@ namespace TileLib
 	{
 		[XmlAttribute ("default")]
 		public	string unit;
-		[XmlElement ("Category")]
-		public	TileCategory[]	categories;
 		[XmlElement ("Simple")]
 		public	TileSimple[]	simples;
 		[XmlElement ("Complex")]
@@ -381,12 +379,10 @@ namespace TileLib
 		[XmlElement ("Random")]
 		public	TileRandom[]	randoms;
 
-		private	Dictionary<string, TileCategory>	_dictionaryCategory;
 		private	Dictionary<string, TileBase>		_dictionaryItem;
 
 		public	TileLibrary ()
 		{
-			categories = new TileCategory[0];
 			simples = new TileSimple[0];
 			complexs = new TileComplex[0];
 			directions = new TileDirection[0];
@@ -395,25 +391,18 @@ namespace TileLib
 			normals = new TileNormal[0];
 			characters = new TileCharacter[0];
 			perlins = new TilePerlin[0];
-			_dictionaryCategory	= new Dictionary<string, TileCategory> ();
 			_dictionaryItem = new Dictionary<string, TileBase> ();
+		}
+
+		public	void AddTileItem(TileItem item) {
+			item.library = this;
+			item.Hashing ();
+			_dictionaryItem.Add (item.id, item);
 		}
 
 		public	void Hashing ()
 		{
-			_dictionaryCategory.Clear ();
 			_dictionaryItem.Clear ();
-
-			for (int i = categories.Length - 1; i >= 0; i--) {
-				TileCategory category = categories [i];
-				category.Hashing ();
-				_dictionaryCategory.Add (category.name, category);
-				for (int j = category.items.Length - 1; j >= 0; j--) {
-					TileItem item = category.items [j];
-					item.library = this;
-					_dictionaryItem.Add (item.id, item);
-				}
-			}
 
 			for (int i = simples.Length - 1; i >= 0; i--) {
 				TileSimple simple = simples [i];
@@ -478,15 +467,6 @@ namespace TileLib
 			}
 		}
 
-		public	TileCategory FindCategory (string name)
-		{
-			if (_dictionaryCategory.ContainsKey (name)) {
-				return _dictionaryCategory [name];
-			} else {
-				return null;
-			}
-		}
-
 		public	TileBase FindItem (string id)
 		{
 			if (_dictionaryItem.ContainsKey (id)) {
@@ -499,44 +479,6 @@ namespace TileLib
 		public	TileItem unitItem {
 			get {
 				return FindItem (unit) as TileItem;
-			}
-		}
-	}
-
-
-	public	class TileCategory
-	{
-		[XmlAttribute ("name")]
-		public	string name;
-		[XmlAttribute ("path")]
-		public	string path;
-		[XmlElement ("Item")]
-		public	TileItem[] items;
-		private	Dictionary<string, TileItem>	_dictionary;
-
-		public	TileCategory ()
-		{
-			name = string.Empty;
-			items = new TileItem[0];
-			_dictionary	= new Dictionary<string, TileItem> ();
-		}
-
-		public	void Hashing ()
-		{
-			_dictionary.Clear ();
-			for (int i = items.Length - 1; i >= 0; i--) {
-				TileItem item = items [i];
-				item.category = this;
-				_dictionary.Add (item.id, item);
-			}
-		}
-
-		public	TileItem FindItem (string id)
-		{
-			if (_dictionary.ContainsKey (id)) {
-				return _dictionary [name];
-			} else {
-				return null;
 			}
 		}
 	}
@@ -554,36 +496,15 @@ namespace TileLib
 
 	public	class TileItem : TileBase
 	{
-		[XmlAttribute ("asset")]
-		public	string			asset;
-		[XmlAttribute ("pivotX")]
 		public	float			pivotX;
-		[XmlAttribute ("pivotY")]
 		public	float			pivotY;
-		private	string			_assetPath;
-		private	TileCategory	_category;
+		public	string			assetPath;
 
-		public	TileItem ()
-		{
-			type = TileType.Item;
-		}
-
-		public	TileCategory category {
-			get {
-				return _category;
-			}
-			set {
-				_category = value;
-				if (value != null) {
-					_assetPath = Path.Combine (value.path, Path.GetFileNameWithoutExtension(asset));
-				}
-			}
-		}
-
-		public	string assetPath {
-			get {
-				return _assetPath;
-			}
+		public	TileItem(string id, string assetPath, float pivotX, float pivotY) {
+			this.id = id;
+			this.assetPath = assetPath;
+			this.pivotX = pivotX;
+			this.pivotY = pivotY;
 		}
 	}
 
