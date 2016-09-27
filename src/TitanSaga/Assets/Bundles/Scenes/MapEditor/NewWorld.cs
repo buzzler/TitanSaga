@@ -29,7 +29,7 @@ public class NewWorld : MonoBehaviour {
 		sldHeight.value = 7f;
 		sldDepth.value = 50;
 
-		var lib = Observer.Instance.tileManager.config.library;
+		var lib = Observer.Instance.tileManager.library;
 		ddFill.options = new System.Collections.Generic.List<Dropdown.OptionData> ();
 		foreach (var a in lib.perlins) {
 			ddFill.options.Add (new Dropdown.OptionData(a.id));
@@ -79,7 +79,7 @@ public class NewWorld : MonoBehaviour {
 
 		if (ddFill.value >= 0) {
 			var selected = ddFill.options [(ddFill.value)].text;
-			var tb = tileManager.config.library.FindItem (selected);
+			var tb = tileManager.library.FindItem (selected);
 
 			int y = 0;
 			for (int x = 0 ;  x < w ; x++) {

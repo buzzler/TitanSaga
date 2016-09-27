@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
@@ -344,141 +345,51 @@ namespace TileLib
 	[XmlRoot ("Config")]
 	public	class TileConfig
 	{
-		[XmlElement ("Library")]
-		public	TileLibrary		library;
 		[XmlElement ("Tutorial")]
 		public	TileTutorial	tutorial;
 
 		public	void Hashing ()
 		{
-			library.Hashing ();
 			tutorial.Hashing ();
 		}
 	}
 
 	public class TileLibrary
 	{
-		[XmlAttribute ("default")]
-		public	string unit;
-		[XmlElement ("Simple")]
-		public	TileSimple[]	simples;
-		[XmlElement ("Complex")]
-		public	TileComplex[]	complexs;
-		[XmlElement ("Direction")]
-		public	TileDirection[]	directions;
-		[XmlElement ("Building")]
-		public	TileBuilding[]	buildings;
-		[XmlElement ("Wall")]
-		public	TileWall[]		walls;
-		[XmlElement ("Normal")]
-		public	TileNormal[]	normals;
-		[XmlElement ("Character")]
-		public	TileCharacter[]	characters;
-		[XmlElement ("Perlin")]
-		public	TilePerlin[]	perlins;
-		[XmlElement ("Random")]
-		public	TileRandom[]	randoms;
-
-		private	Dictionary<string, TileBase>		_dictionaryItem;
+		public	Dictionary<string, TileSimple>			simples;
+		public	Dictionary<string, TileComplex>			complexs;
+		public	Dictionary<string, TileDirection>		directions;
+		public	Dictionary<string, TileBuilding>		buildings;
+		public	Dictionary<string, TileWall>			walls;
+		public	Dictionary<string, TileNormal>			normals;
+		public	Dictionary<string, TileCharacterMotion>	motions;
+		public	Dictionary<string, TileCharacter>		characters;
+		public	Dictionary<string, TilePerlin>			perlins;
+		public	Dictionary<string, TileRandom>			randoms;
+		public	Dictionary<string, TileItem>			items;
+		public	Dictionary<string, TileItemLink>		itemLinks;
 
 		public	TileLibrary ()
 		{
-			simples = new TileSimple[0];
-			complexs = new TileComplex[0];
-			directions = new TileDirection[0];
-			buildings = new TileBuilding[0];
-			walls = new TileWall[0];
-			normals = new TileNormal[0];
-			characters = new TileCharacter[0];
-			perlins = new TilePerlin[0];
-			_dictionaryItem = new Dictionary<string, TileBase> ();
+			simples = new Dictionary<string, TileSimple> ();
+			complexs = new Dictionary<string, TileComplex> ();
+			directions = new Dictionary<string, TileDirection> ();
+			buildings = new Dictionary<string, TileBuilding> ();
+			walls = new Dictionary<string, TileWall> ();
+			normals = new Dictionary<string, TileNormal> ();
+			motions = new Dictionary<string, TileCharacterMotion> ();
+			characters = new Dictionary<string, TileCharacter> ();
+			perlins = new Dictionary<string, TilePerlin> ();
+			items = new Dictionary<string, TileItem> ();
+			itemLinks = new Dictionary<string, TileItemLink> ();
 		}
 
-		public	void AddTileItem(TileItem item) {
-			item.library = this;
-			item.Hashing ();
-			_dictionaryItem.Add (item.id, item);
-		}
-
-		public	void Hashing ()
+		public	TileItem FindItem (string id)
 		{
-			_dictionaryItem.Clear ();
-
-			for (int i = simples.Length - 1; i >= 0; i--) {
-				TileSimple simple = simples [i];
-				simple.library = this;
-				simple.Hashing ();
-				_dictionaryItem.Add (simple.id, simple);
-			}
-
-			for (int i = complexs.Length - 1; i >= 0; i--) {
-				TileComplex complex = complexs [i];
-				complex.library = this;
-				complex.Hashing ();
-				_dictionaryItem.Add (complex.id, complex);
-			}
-
-			for (int i = directions.Length - 1; i >= 0; i--) {
-				TileDirection direction = directions [i];
-				direction.library = this;
-				direction.Hashing ();
-				_dictionaryItem.Add (direction.id, direction);
-			}
-
-			for (int i = buildings.Length - 1; i >= 0; i--) {
-				TileBuilding building = buildings [i];
-				building.library = this;
-				building.Hashing ();
-				_dictionaryItem.Add (building.id, building);
-			}
-
-			for (int i = walls.Length - 1; i >= 0; i--) {
-				TileWall wall = walls [i];
-				wall.library = this;
-				wall.Hashing ();
-				_dictionaryItem.Add (wall.id, wall);
-			}
-
-			for (int i = normals.Length - 1; i >= 0; i--) {
-				TileNormal normal = normals [i];
-				normal.library = this;
-				normal.Hashing ();
-				_dictionaryItem.Add (normal.id, normal);
-			}
-
-			for (int i = characters.Length - 1; i >= 0 ;i--) {
-				TileCharacter character = characters [i];
-				character.library = this;
-				character.Hashing ();
-				_dictionaryItem.Add (character.id, character);
-			}
-
-			for (int i = perlins.Length - 1; i >= 0 ;i--) {
-				TilePerlin perlin = perlins [i];
-				perlin.library = this;
-				perlin.Hashing ();
-				_dictionaryItem.Add (perlin.id, perlin);
-			}
-
-			for (int i = randoms.Length - 1; i >= 0; i--) {
-				TileRandom random = randoms [i];
-				random.library = this;
-				_dictionaryItem.Add (random.id, random);
-			}
-		}
-
-		public	TileBase FindItem (string id)
-		{
-			if (_dictionaryItem.ContainsKey (id)) {
-				return _dictionaryItem [id];
+			if (items.ContainsKey (id)) {
+				return items [id];
 			} else {
 				return null;
-			}
-		}
-
-		public	TileItem unitItem {
-			get {
-				return FindItem (unit) as TileItem;
 			}
 		}
 	}
@@ -500,156 +411,175 @@ namespace TileLib
 		public	float			pivotY;
 		public	string			assetPath;
 
-		public	TileItem(string id, string assetPath, float pivotX, float pivotY) {
-			this.id = id;
-			this.assetPath = assetPath;
-			this.pivotX = pivotX;
-			this.pivotY = pivotY;
+		public	TileItem(IDataReader dr)
+		{
+			this.id = dr.GetString (0);
+			this.assetPath = dr.GetString (1);
+			this.pivotX = dr.GetInt32 (2);
+			this.pivotY = dr.GetInt32 (3);
 		}
 	}
 
 	public	class TileNormal : TileBase {
 		private	TileItemLink _link;
+		public	TileItemLink link { get { return _link; } }
 
-		[XmlAttribute("item")]
-		public	string item;
-
-		public	TileItemLink link {
-			get {
-				if (_link == null) {
-					_link = new TileItemLink ();
-					_link.item = item;
-				}
-				return _link;
-			}
-		}
-
-		public	TileNormal() {
-			type = TileType.Normal;
+		public	TileNormal(IDataReader dr, Dictionary<string, TileItemLink> dic) {
+			this.type = TileType.Normal;
+			this.id = dr.GetString (0);
+			this._link = dic [dr.GetString (1)];
 		}
 	}
 
 	public	class TileCharacterMotion {
-		[XmlAttribute("id")]
-		public	string			id;
-		[XmlAttribute("basic")]
-		public	bool			basic;
-		[XmlElement("U")]
-		public	TileItemLink	up;
-		[XmlElement("D")]
-		public	TileItemLink	down;
-		[XmlElement("L")]
-		public	TileItemLink	left;
-		[XmlElement("R")]
-		public	TileItemLink	right;
+		private	string			_id;
+		private	string			_behavior;
+		private	TileItemLink	_up;
+		private	TileItemLink	_down;
+		private	TileItemLink	_left;
+		private	TileItemLink	_right;
+		public	string			id		{ get { return _id; } }
+		public	string			behavior{ get { return _behavior; } }
+		public	TileItemLink	up		{ get { return _up; } }
+		public	TileItemLink	down	{ get { return _down; } }
+		public	TileItemLink	left	{ get { return _left; } }
+		public	TileItemLink	right	{ get { return _right; } }
+
+		public	TileCharacterMotion(IDataReader dr, Dictionary<string, TileItemLink> dic) {
+			this._id = dr.GetInt32 (0).ToString ();
+			this._behavior = dr.GetString (1);
+			this._up = dic [dr.GetString (2)];
+			this._down = dic [dr.GetString (3)];
+			this._left = dic [dr.GetString (4)];
+			this._right = dic [dr.GetString (5)];
+		}
 	}
 
 	public	class TileCharacter : TileBase {
-		[XmlElement("Motion")]
-		public	TileCharacterMotion[] motions;
-		private	TileCharacterMotion _basic;
-		private	Dictionary<string, TileCharacterMotion> _dic;
+		private	string				_name;
+		private	TileCharacterMotion	_basic;
+		private	TileCharacterMotion _wait;
+		private	TileCharacterMotion _walk;
+		private TileCharacterMotion	_attack;
+		public	string				name	{ get { return _name; } }
+		public	TileCharacterMotion	basic	{ get { return _basic; } }
+		public	TileCharacterMotion	wait	{ get { return _wait; } }
+		public	TileCharacterMotion	walk	{ get { return _walk; } }
+		public	TileCharacterMotion	attack	{ get { return _attack; } }
 
-		public	TileCharacter() {
-			type = TileType.Character;
-			motions = new TileCharacterMotion[0];
-			_dic = new Dictionary<string, TileCharacterMotion> ();
-		}
-
-		public override void Hashing () {
-			for (int i = motions.Length - 1; i >= 0; i--) {
-				var motion = motions [i];
-				_dic.Add (motion.id, motion);
-				if (motion.basic) {
-					_basic = motion;
-				}
-			}
-		}
-
-		public	TileCharacterMotion GetMotion(string motion = "") {
-			if (_dic.ContainsKey (motion)) {
-				return _dic [motion];
-			}
-			return _basic;
+		public	TileCharacter(IDataReader dr, Dictionary<string, TileCharacterMotion> dic) {
+			this.type = TileType.Character;
+			this.id = dr.GetString (0);
+			this._name = dr.GetString (1);
+			this._basic = dic [dr.GetString (2)];
+			this._wait = dic [dr.GetString (3)];
+			this._attack = dic [dr.GetString (4)];
 		}
 	}
 
 	public	class TileBuilding : TileBase {
-		[XmlElement ("Basic")]
-		public	TileItemLink	basic;
-		[XmlElement ("Blue")]
-		public	TileItemLink	blue;
-		[XmlElement ("Green")]
-		public	TileItemLink	green;
-		[XmlElement ("Black")]
-		public	TileItemLink	black;
-		[XmlElement ("Purple")]
-		public	TileItemLink	purple;
-		[XmlElement ("Red")]
-		public	TileItemLink	red;
-		[XmlElement ("Yellow")]
-		public	TileItemLink	yellow;
+		private	TileItemLink	_basic;
+		private	TileItemLink	_blue;
+		private	TileItemLink	_green;
+		private	TileItemLink	_black;
+		private	TileItemLink	_purple;
+		private	TileItemLink	_red;
+		private	TileItemLink	_yellow;
+		public	TileItemLink	basic	{ get { return _basic; } }
+		public	TileItemLink	blue	{ get { return _blue; } }
+		public	TileItemLink	green	{ get { return _green; } }
+		public	TileItemLink	black	{ get { return _black; } }
+		public	TileItemLink	purple	{ get { return _purple; } }
+		public	TileItemLink	red		{ get { return _red; } }
+		public	TileItemLink	yellow	{ get { return _yellow; } }
 
-		public	TileBuilding() {
-			type = TileType.Building;
+		public	TileBuilding(IDataReader dr, Dictionary<string, TileItemLink> dic) {
+			this.type = TileType.Building;
+			this.id = dr.GetString (0);
+			this._basic = dic [dr.GetString (1)];
+			this._blue = dic [dr.GetString (2)];
+			this._green = dic [dr.GetString (3)];
+			this._black = dic [dr.GetString (4)];
+			this._purple = dic [dr.GetString (5)];
+			this._red = dic [dr.GetString (6)];
+			this._yellow = dic [dr.GetString (7)];
 		}
 	}
 
-	public	class TileWall : TileBase
-	{
-		[XmlElement ("None")]
-		public	TileItemLink	none;
-		[XmlElement ("U")]
-		public	TileItemLink	up;
-		[XmlElement ("L")]
-		public	TileItemLink	left;
-		[XmlElement ("UL")]
-		public	TileItemLink	upleft;
+	public	class TileWall : TileBase {
+		private	TileItemLink	_basic;
+		private	TileItemLink	_up;
+		private	TileItemLink	_left;
+		private	TileItemLink	_upleft;
 
-		public	TileWall ()
-		{
-			type = TileType.Wall;
+		public	TileItemLink	basic	{ get { return _basic; } }
+		public	TileItemLink	up		{ get { return _up; } }
+		public	TileItemLink	left	{ get { return _left; } }
+		public	TileItemLink	upleft	{ get { return _upleft; } }
+
+		public	TileWall (IDataReader dr, Dictionary<string, TileItemLink> dic) {
+			this.type = TileType.Wall;
+			this.id = dr.GetString (0);
+			this._basic = dic [dr.GetString (1)];
+			this._up = dic [dr.GetString (2)];
+			this._upleft = dic [dr.GetString (3)];
 		}
 	}
 
-	public	class TileSimple : TileBase
-	{
-		[XmlElement ("None")]
-		public	TileItemLink	none;
-		[XmlElement ("U")]
-		public	TileItemLink	up;
-		[XmlElement ("D")]
-		public	TileItemLink	down;
-		[XmlElement ("L")]
-		public	TileItemLink	left;
-		[XmlElement ("R")]
-		public	TileItemLink	right;
-		[XmlElement ("UD")]
-		public	TileItemLink	updown;
-		[XmlElement ("UL")]
-		public	TileItemLink	upleft;
-		[XmlElement ("UR")]
-		public	TileItemLink	upright;
-		[XmlElement ("DL")]
-		public	TileItemLink	downleft;
-		[XmlElement ("DR")]
-		public	TileItemLink	downright;
-		[XmlElement ("LR")]
-		public	TileItemLink	leftright;
-		[XmlElement ("UDL")]
-		public	TileItemLink	updownleft;
-		[XmlElement ("UDR")]
-		public	TileItemLink	updownright;
-		[XmlElement ("ULR")]
-		public	TileItemLink	upleftright;
-		[XmlElement ("DLR")]
-		public	TileItemLink	downleftright;
-		[XmlElement ("UDLR")]
-		public	TileItemLink	updownleftright;
+	public	class TileSimple : TileBase {
+		private	TileItemLink	_basic;
+		private	TileItemLink	_u;
+		private	TileItemLink	_d;
+		private	TileItemLink	_l;
+		private	TileItemLink	_r;
+		private	TileItemLink	_ud;
+		private	TileItemLink	_ul;
+		private	TileItemLink	_ur;
+		private	TileItemLink	_dl;
+		private	TileItemLink	_dr;
+		private	TileItemLink	_lr;
+		private	TileItemLink	_udl;
+		private	TileItemLink	_udr;
+		private	TileItemLink	_ulr;
+		private	TileItemLink	_dlr;
+		private	TileItemLink	_udlr;
 
-		public	TileSimple ()
-		{
-			type = TileType.Simple;
+		public	TileItemLink	basic	{ get { return _basic; } }
+		public	TileItemLink	u		{ get { return _u; } }
+		public	TileItemLink	d		{ get { return _d; } }
+		public	TileItemLink	l		{ get { return _l; } }
+		public	TileItemLink	r		{ get { return _r; } }
+		public	TileItemLink	ud		{ get { return _ud; } }
+		public	TileItemLink	ul		{ get { return _ul; } }
+		public	TileItemLink	ur		{ get { return _ur; } }
+		public	TileItemLink	dl		{ get { return _dl; } }
+		public	TileItemLink	dr		{ get { return _dr; } }
+		public	TileItemLink	lr		{ get { return _lr; } }
+		public	TileItemLink	udl		{ get { return _udl; } }
+		public	TileItemLink	udr		{ get { return _udr; } }
+		public	TileItemLink	ulr		{ get { return _ulr; } }
+		public	TileItemLink	dlr		{ get { return _dlr; } }
+		public	TileItemLink	udlr	{ get { return _udlr; } }
+
+		public	TileSimple (IDataReader dr, Dictionary<string, TileItemLink> dic) {
+			this.type = TileType.Simple;
+			this.id = dr.GetString (0);
+			this._basic = dic [dr.GetString (1)];
+			this._u = dic [dr.GetString (2)];
+			this._d = dic [dr.GetString (3)];
+			this._l = dic [dr.GetString (4)];
+			this._r = dic [dr.GetString (5)];
+			this._ud = dic [dr.GetString (6)];
+			this._ul = dic [dr.GetString (7)];
+			this._ur = dic [dr.GetString (8)];
+			this._dl = dic [dr.GetString (9)];
+			this._dr = dic [dr.GetString (0)];
+			this._lr = dic [dr.GetString (10)];
+			this._udl = dic [dr.GetString (11)];
+			this._udr = dic [dr.GetString (12)];
+			this._ulr = dic [dr.GetString (13)];
+			this._dlr = dic [dr.GetString (14)];
+			this._udlr = dic [dr.GetString (15)];
 		}
 	}
 
@@ -797,39 +727,82 @@ namespace TileLib
 		}
 	}
 
+	public	enum TileItemDirection
+	{
+		NONE = 0,
+		UP = 1,
+		DOWN = 2,
+		LEFT = 3,
+		RIGHT = 4
+	}
+
+	public	enum TileItemAniType
+	{
+		SINGLE = 0,
+		LOOP = 1,
+		MULTI = 2,
+		PINGPONG = 3
+	}
+
 	public	class TileItemLink
 	{
-		[XmlAttribute ("item")]
-		public	string item;
-		[XmlAttribute ("x")]
-		public	float x;
-		[XmlAttribute ("y")]
-		public	float y;
-		[XmlAttribute ("seq")]
-		public	string sequence;
-		[XmlAttribute ("fps")]
-		public	float fps;
-		[XmlAttribute ("flip")]
-		public	bool flip;
-		[XmlElement ("Child")]
-		public	TileItemLink[]	children;
+		private	string							_id;
+		private TileItemDirection				_direction;
+		private	TileItemAniType					_aniType;
+		private	float							_fps;
+		private	bool							_flipV;
+		private	bool							_flipH;
+		private	float							_x;
+		private	float							_y;
+		private	TileItem						_item;
+		private	Dictionary<string, TileItem>	_items;
 
-		public	TileItemLink ()
+		public	string							id			{ get { return _id; } }
+		public	TileItemDirection				direction	{ get { return _direction; } }
+		public	TileItemAniType					aniType		{ get { return _aniType; } }
+		public	float							fps			{ get { return _fps; } }
+		public	bool							flipV		{ get { return _flipV; } }
+		public	bool							flipH		{ get { return _flipH; } }
+		public	float							x			{ get { return _x; } }
+		public	float							y			{ get { return _y; } }
+		public	Dictionary<string, TileItem>	items		{ get { return _items; } }
+		public	TileItem						item		{ get { return _item; } }
+
+		public	TileItemLink(IDataReader dr, Dictionary<string, TileItem> dic)
 		{
-			this.item = string.Empty;
-			this.x = 0;
-			this.y = 0;
-			this.sequence = string.Empty;
-			this.fps = 30;
-			this.flip = false;
-			this.children = new TileItemLink[0];
-		}
-			
-		public	string[] GetSequence() {
-			if (!string.IsNullOrEmpty (sequence)) {
-				return sequence.Split ("|"[0]);
+			_id = dr.GetInt32 (0).ToString();
+			_direction = (TileItemDirection) dr.GetInt32 (1);
+			_aniType = (TileItemAniType) dr.GetInt32 (2);
+			_fps = dr.GetInt32 (3);
+			_flipV = dr.GetInt32 (4) == 1;
+			_flipH = dr.GetInt32 (5) == 1;
+			_x = (float) dr.GetInt32 (6);
+			_y = (float) dr.GetInt32 (7);
+
+			var list = new List<string> ();
+			var ptr = 8;
+			while (!dr.IsDBNull (ptr))
+			{
+				list.Add (dr.GetString (ptr));
+				ptr++;
+				if (ptr > 15)
+					break;
 			}
-			return null;
+
+			_items = new Dictionary<string, TileItem>(list.Count);
+			int total = 0;
+			for (int i = 0; i < total; i++) {
+				var current = list [i];
+				var tile = dic [current];
+				if (_item == null) {
+					_item = tile;
+				}
+				if (dic.ContainsKey (current)) {
+					_items.Add (current, tile);
+				} else {
+					throw new KeyNotFoundException (current);
+				}
+			}
 		}
 	}
 

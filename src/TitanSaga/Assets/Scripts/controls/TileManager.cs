@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Data;
 using System.Collections;
 using System.Collections.Generic;
 using TileLib;
@@ -8,11 +9,13 @@ public class TileManager : MonoBehaviour {
 	private	Dictionary<TileObject, TileItemGroup>	_table;
 	private	Transform								_containerMap;
 	private	TileConfig								_config;
+	private	TileLibrary								_library;
 	private	TileMap									_map;
 	private	Rect									_rect;
 
 	public	Transform	container	{ get { return _containerMap; } }
 	public	TileConfig	config		{ get { return _config; } }
+	public	TileLibrary	library		{ get { return _library; } }
 	public	TileMap		map			{ get { return _map; } }
 	public	string		mapXml		{ get { return TitanUtility.SaveToText<TileMap> (_map); } }
 	public	Rect		bound		{ get { return _rect; } }
@@ -25,8 +28,9 @@ public class TileManager : MonoBehaviour {
 		_table = new Dictionary<TileObject, TileItemGroup> ();
 		_containerMap = new GameObject ("Map").transform;
 		_config = TitanUtility.LoadFromText<TileConfig> (asset.text);
-		_config.Hashing ();
+		_library = new TileLibrary ();
 
+		_config.Hashing ();
 		ClearMap ();
 	}
 
@@ -88,9 +92,60 @@ public class TileManager : MonoBehaviour {
 
 	public	void LoadDB() {
 		var dbms = Observer.Instance.dbms;
-		dbms.ExecuteReader("SELECT * FROM tile_item", (System.Data.IDataReader dr) => {
+		dbms.ExecuteReader ("SELECT * FROM tile_item", (IDataReader dr) => {
+			while (dr.Read ()) {
+				var item = new TileItem (dr);
+				library.items.Add(item.id, item);
+			}
+			dr.Dispose ();
+		});
+		dbms.ExecuteReader ("SELECT * FROM tile_itemlink", (IDataReader dr) => {
+			while (dr.Read ()) {
+				var link = new TileItemLink (dr, library.items);
+				library.itemLinks.Add(link.id, link);
+			}
+			dr.Dispose ();
+		});
+
+		dbms.ExecuteReader ("SELECT * FROM tile_normal", (IDataReader dr) => {
 			while (dr.Read()) {
-				config.library.AddTileItem(new TileItem(dr.GetString(0), dr.GetString(1), dr.GetInt32(2), dr.GetInt32(3)));
+				var norm = new TileNormal(dr, library.itemLinks);
+				library.normals.Add(norm.id, norm);
+			}
+		});
+
+		dbms.ExecuteReader ("SELECT * FROM tile_motion", (IDataReader dr) => {
+			while (dr.Read()) {
+				var motion = new TileCharacterMotion(dr, library.itemLinks);
+				library.motions.Add(motion.id, motion);
+			}
+		});
+
+		dbms.ExecuteReader ("SELECT * FROM tile_character", (IDataReader dr) => {
+			while (dr.Read()) {
+				var character = new TileCharacter(dr, library.motions);
+				library.characters.Add(character.id, character);
+			}
+		});
+
+		dbms.ExecuteReader ("SELECT * FROM tile_building", (IDataReader dr) => {
+			while (dr.Read ()) {
+				var building = new TileBuilding (dr, library.itemLinks);
+				library.buildings.Add (building.id, building);
+			}
+		});
+
+		dbms.ExecuteReader ("SELECT * FROM tile_wall", (IDataReader dr) => {
+			while (dr.Read ()) {
+				var wall = new TileWall (dr, library.itemLinks);
+				library.walls.Add (wall.id, wall);
+			}
+		});
+
+		dbms.ExecuteReader ("SELECT * FROM tile_simple", (IDataReader dr) => {
+			while (dr.Read ()) {
+				var simple = new TileSimple (dr, library.itemLinks);
+				library.simples.Add (simple.id, simple);
 			}
 		});
 	}
@@ -116,7 +171,7 @@ public class TileManager : MonoBehaviour {
 	public	void AddTileObject(TileObject tile) {
 		var coord = GetPixelCoord (tile.xf, tile.yf, tile.zf);
 		var group = new GameObject (tile.item).AddComponent<TileItemGroup> ();
-		group.SetTileObject (_config.library, tile as ITileObject, _containerMap);
+		group.SetTileObject (library, tile as ITileObject, _containerMap);
 		group.UpdateSprite (coord);
 
 		if (!_table.ContainsKey (tile)) {
