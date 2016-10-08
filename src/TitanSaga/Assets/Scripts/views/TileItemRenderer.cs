@@ -6,12 +6,10 @@ using TileLib;
 public class TileItemRenderer : MonoBehaviour {
 	private	Transform		_transfom;
 	private	SpriteRenderer	_renderer;
-	private	TileLibrary		_library;
 	private	TileItemLink	_link;
 	private	float			_depth;
 	private	bool			_animation;
 	private	int				_frame;
-	private	string[]		_sequence;
 	private	float			_speed;
 	private	float			_last;
 	private	bool			_reserved;
@@ -22,14 +20,13 @@ public class TileItemRenderer : MonoBehaviour {
 		_link = null;
 		_animation = false;
 		_frame = 0;
-		_sequence = null;
 		_reserved = false;
 	}
 
 	void LateUpdate() {
 		if (_animation) {
 			if (Time.realtimeSinceStartup - _last > _speed) {
-				_frame = (_frame + 1) % _sequence.Length;
+				_frame = (_frame + 1) % _link.itemArray.Length;
 				_last = Time.realtimeSinceStartup;
 				_reserved = true;
 			}
@@ -43,20 +40,16 @@ public class TileItemRenderer : MonoBehaviour {
 	void OnDestroy() {
 		_transfom = null;
 		_renderer = null;
-		_library = null;
 		_link = null;
-		_sequence = null;
 	}
 
-	public	void SetTileItemLInk(TileLibrary library, TileItemLink link, Transform parent, float depth = 0f) {
+	public	void SetTileItemLInk(TileItemLink link, Transform parent, float depth = 0f) {
 		_transfom.SetParent (parent);
-		_library = library;
 		_depth = depth;
 
 		if (_link != link) {
 			_link = link;
-			_sequence = _link.GetSequence ();
-			_animation = _sequence != null;
+			_animation = _link.itemArray.Length > 1;
 			_speed = 1f / _link.fps;
 			_last = Time.realtimeSinceStartup - _speed;
 		}
@@ -69,9 +62,9 @@ public class TileItemRenderer : MonoBehaviour {
 	private	void ExeUpdateSprite() {
 		TileItem item = null;
 		if (_animation) {
-			item = _library.FindItem (_sequence [_frame]) as TileItem;
+			item = _link.itemArray [_frame];
 		} else {
-			item = _library.FindItem (_link.item) as TileItem;
+			item = _link.item;
 		}
 
 		if (item != null) {
@@ -79,7 +72,8 @@ public class TileItemRenderer : MonoBehaviour {
 			var sprite = Resources.Load<Sprite> (item.assetPath);
 			if (_renderer.sprite != sprite) {
 				_renderer.sprite = sprite;
-				_renderer.flipX = _link.flip;
+				_renderer.flipX = _link.flipH;
+				_renderer.flipY = _link.flipV;
 			}
 		}
 	}

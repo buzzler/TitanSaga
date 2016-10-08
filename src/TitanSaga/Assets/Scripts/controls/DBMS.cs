@@ -146,7 +146,8 @@ public class DBMS : MonoBehaviour {
 						case ReturnType.READER:
 							var raction = _reader.Dequeue ();
 							if (raction != null) {
-								raction (dbcmd.ExecuteReader ());
+								using (var rd = dbcmd.ExecuteReader ())
+									raction (rd);
 							}
 							break;
 						case ReturnType.SCALAR:

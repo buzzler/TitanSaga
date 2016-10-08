@@ -36,7 +36,6 @@ public class TileManager : MonoBehaviour {
 
 	void Start() {
 		LoadDB ();
-		LoadMap (config.tutorial.FindItem ("tutorial_1"));
 	}
 
 	public	Vector3 GetTopCoord() {
@@ -96,6 +95,7 @@ public class TileManager : MonoBehaviour {
 			while (dr.Read ()) {
 				var item = new TileItem (dr);
 				library.items.Add(item.id, item);
+				library.allItems.Add(item.id, item);
 			}
 			dr.Dispose ();
 		});
@@ -111,6 +111,7 @@ public class TileManager : MonoBehaviour {
 			while (dr.Read()) {
 				var norm = new TileNormal(dr, library.itemLinks);
 				library.normals.Add(norm.id, norm);
+				library.allItems.Add(norm.id, norm);
 			}
 		});
 
@@ -125,6 +126,7 @@ public class TileManager : MonoBehaviour {
 			while (dr.Read()) {
 				var character = new TileCharacter(dr, library.motions);
 				library.characters.Add(character.id, character);
+				library.allItems.Add(character.id, character);
 			}
 		});
 
@@ -132,6 +134,7 @@ public class TileManager : MonoBehaviour {
 			while (dr.Read ()) {
 				var building = new TileBuilding (dr, library.itemLinks);
 				library.buildings.Add (building.id, building);
+				library.allItems.Add(building.id, building);
 			}
 		});
 
@@ -139,6 +142,7 @@ public class TileManager : MonoBehaviour {
 			while (dr.Read ()) {
 				var wall = new TileWall (dr, library.itemLinks);
 				library.walls.Add (wall.id, wall);
+				library.allItems.Add(wall.id, wall);
 			}
 		});
 
@@ -146,8 +150,49 @@ public class TileManager : MonoBehaviour {
 			while (dr.Read ()) {
 				var simple = new TileSimple (dr, library.itemLinks);
 				library.simples.Add (simple.id, simple);
+				library.allItems.Add(simple.id, simple);
 			}
 		});
+
+		dbms.ExecuteReader ("SELECT * FROM tile_complex", (IDataReader dr) => {
+			while (dr.Read ()) {
+				var complex = new TileComplex (dr, library.itemLinks);
+				library.complexs.Add (complex.id, complex);
+				library.allItems.Add(complex.id, complex);
+			}
+		});
+
+		dbms.ExecuteReader ("SELECT * FROM tile_direction", (IDataReader dr) => {
+			while (dr.Read ()) {
+				var direnction = new TileDirection (dr, library.itemLinks);
+				library.directions.Add (direnction.id, direnction);
+				library.allItems.Add(direnction.id, direnction);
+			}
+		});
+
+		dbms.ExecuteReader ("SELECT * FROM tile_perlin", (IDataReader dr) => {
+			while (dr.Read ()) {
+				var perlin = new TilePerlin (dr, library.itemLinks);
+				library.perlins.Add (perlin.id, perlin);
+				library.allItems.Add(perlin.id, perlin);
+			}
+		});
+
+		dbms.ExecuteReader ("SELECT * FROM tile_random", (IDataReader dr) => {
+			while (dr.Read ()) {
+				var rand = new TileRandom (dr, library.itemLinks);
+				library.randoms.Add (rand.id, rand);
+				library.allItems.Add(rand.id, rand);
+			}
+
+
+			// complete!!
+			OnLoadDBComplete ();
+		});
+	}
+
+	private	void OnLoadDBComplete() {
+		LoadMap (config.tutorial.FindItem ("tutorial_1"));
 	}
 
 	public	void LoadMap(TileMap map) {

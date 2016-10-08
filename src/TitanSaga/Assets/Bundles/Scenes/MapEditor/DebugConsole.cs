@@ -6,7 +6,6 @@ using TileLib;
 public class DebugConsole : MonoBehaviour {
 	public	HorizontalLayoutor	scrollView;
 	public	RectTransform		scrollPrefab;
-	public	Button				btnCategory;
 	public	Button				btnSimple;
 	public	Button				btnComplex;
 	public	Button				btnDirection;
@@ -43,7 +42,6 @@ public class DebugConsole : MonoBehaviour {
 
 	void OnDisable() {
 		OnBackup ();
-		btnCategory.onClick.RemoveAllListeners ();
 		btnSimple.onClick.RemoveAllListeners ();
 		btnComplex.onClick.RemoveAllListeners ();
 		btnDirection.onClick.RemoveAllListeners ();
@@ -111,7 +109,7 @@ public class DebugConsole : MonoBehaviour {
 		_param.SetString ("onclicked", "simple");
 		scrollView.Clear();
 		foreach(var simple in _library.simples.Values) {
-			AddContent(simple.basic.item, simple);
+			AddContent(simple.basic[0].item, simple);
 		}
 
 		scrollView.Align();
@@ -120,10 +118,8 @@ public class DebugConsole : MonoBehaviour {
 	private	void OnClickComplex() {
 		_param.SetString ("onclicked", "complex");
 		scrollView.Clear();
-		int complexs = _library.complexs.Count;
-		for (int c = 0 ; c < complexs ; c++) {
-			var complex = _library.complexs[c];
-			AddContent(complex.none.item, complex);
+		foreach (var complex in _library.complexs.Values) {
+			AddContent(complex.basic[0].item, complex);
 		}
 		scrollView.Align();
 	}
@@ -131,10 +127,8 @@ public class DebugConsole : MonoBehaviour {
 	private	void OnClickDirection() {
 		_param.SetString ("onclicked", "direction");
 		scrollView.Clear();
-		int directs = _library.directions.Count;
-		for (int d = 0 ; d < directs ; d++) {
-			var direction = _library.directions[d];
-			AddContent(direction.up.item, direction);
+		foreach (var direction in _library.directions.Values) {
+			AddContent(direction.u[0].item, direction);
 		}
 		scrollView.Align();
 	}
@@ -143,7 +137,7 @@ public class DebugConsole : MonoBehaviour {
 		_param.SetString ("onclicked", "building");
 		scrollView.Clear();
 		foreach(var building in _library.buildings.Values) {
-			AddContent(building.basic.item, building);
+			AddContent(building.basic[0].item, building);
 		}
 		scrollView.Align();
 	}
@@ -152,7 +146,7 @@ public class DebugConsole : MonoBehaviour {
 		_param.SetString ("onclicked", "wall");
 		scrollView.Clear();
 		foreach (var wall in _library.walls.Values) {
-			AddContent(wall.basic.item, wall);
+			AddContent(wall.basic[0].item, wall);
 		}
 		scrollView.Align();
 	}
@@ -161,7 +155,7 @@ public class DebugConsole : MonoBehaviour {
 		_param.SetString ("onclicked", "normal");
 		scrollView.Clear();
 		foreach(var norm in _library.normals.Values) {
-			AddContent(norm.link.item, norm);
+			AddContent(norm.link[0].item, norm);
 		}
 		scrollView.Align();
 	}
@@ -170,7 +164,7 @@ public class DebugConsole : MonoBehaviour {
 		_param.SetString ("onclicked", "character");
 		scrollView.Clear ();
 		foreach(var character in _library.characters.Values) {
-			AddContent (character.basic.right.item, character);
+			AddContent (character.basic.right[0].item, character);
 		}
 		scrollView.Align ();
 	}
@@ -178,10 +172,8 @@ public class DebugConsole : MonoBehaviour {
 	private	void onClickPerlin() {
 		_param.SetString ("onclicked", "perlin");
 		scrollView.Clear ();
-		int count = _library.perlins.Count;
-		for (int d = 0; d < count; d++) {
-			var perlin = _library.perlins [d];
-			AddContent (perlin.links [0].item, perlin);
+		foreach (var perlin in _library.perlins.Values) {
+			AddContent (perlin.GetTileItemLInk(0)[0].item, perlin);
 		}
 		scrollView.Align ();
 	}
@@ -189,10 +181,8 @@ public class DebugConsole : MonoBehaviour {
 	private	void OnClickRandom() {
 		_param.SetString ("onclicked", "random");
 		scrollView.Clear ();
-		int count = _library.randoms.Count;
-		for (int d = 0; d < count; d++) {
-			var random = _library.randoms [d];
-			AddContent (random.links [0].item, random);
+		foreach (var random in this._library.randoms.Values) {
+			AddContent (random.GetTileItemLink()[0].item, random);
 		}
 		scrollView.Align ();
 	}
