@@ -1101,46 +1101,59 @@ namespace TileLib
 
 		public	bool AddTileObject(TileObject obj)
 		{
-			if (_tlist [obj.x] [obj.y] [obj.z] == null) {
-				_tlist [obj.x] [obj.y] [obj.z] = obj;
-				obj.SetMap (this);
+			try {
+				if (_tlist [obj.x] [obj.y] [obj.z] == null) {
+					_tlist [obj.x] [obj.y] [obj.z] = obj;
+					obj.SetMap (this);
 
-				switch (obj.group) {
-				case TileGroup.Terrain:
-					System.Array.Resize<TileTerrain> (ref terrains, terrains.Length + 1);
-					terrains [terrains.Length - 1] = obj as TileTerrain;
-					break;
-				case TileGroup.Unit:
-					System.Array.Resize<TileUnit> (ref units, units.Length + 1);
-					units [units.Length - 1] = obj as TileUnit;
-					break;
+					switch (obj.group) {
+					case TileGroup.Terrain:
+						System.Array.Resize<TileTerrain> (ref terrains, terrains.Length + 1);
+						terrains [terrains.Length - 1] = obj as TileTerrain;
+						break;
+					case TileGroup.Unit:
+						System.Array.Resize<TileUnit> (ref units, units.Length + 1);
+						units [units.Length - 1] = obj as TileUnit;
+						break;
+					default:
+						Debug.LogWarningFormat ("Unkown group: {0}", obj.group);
+						break;
+					}
+					return true;
+				} else {
+					Debug.LogWarningFormat ("Conflict x:{0}, y:{1}, z:{2}", obj.x, obj.y, obj.z);
+					return false;
 				}
-				return true;
-			} else {
-				Debug.LogWarningFormat ("Conflict x:{0}, y:{1}, z:{2}", obj.x, obj.y, obj.z);
+			} catch (System.Exception e) {
+				Debug.LogWarningFormat ("Adding Tile: {0}", e.Message);
 				return false;
 			}
 		}
 
 		public	bool RemoveTileObject (TileObject obj)
 		{
-			if (_tlist [obj.x] [obj.y] [obj.z] == obj) {
-				_tlist [obj.x] [obj.y] [obj.z] = null;
-				obj.SetMap (null);
+			try {
+				if (_tlist [obj.x] [obj.y] [obj.z] == obj) {
+					_tlist [obj.x] [obj.y] [obj.z] = null;
+					obj.SetMap (null);
 
-				switch (obj.group) {
-				case TileGroup.Terrain:
-					terrains = System.Array.FindAll<TileTerrain> (terrains, (TileTerrain a) => {
-						return a != obj;
-					});
-					break;
-				case TileGroup.Unit:
-					units = System.Array.FindAll<TileUnit> (units, (TileUnit a) => {
-						return a != obj;
-					});
-					break;
+					switch (obj.group) {
+					case TileGroup.Terrain:
+						terrains = System.Array.FindAll<TileTerrain> (terrains, (TileTerrain a) => {
+							return a != obj;
+						});
+						break;
+					case TileGroup.Unit:
+						units = System.Array.FindAll<TileUnit> (units, (TileUnit a) => {
+							return a != obj;
+						});
+						break;
+					}
+					return true;
 				}
-				return true;
+			} catch (System.Exception e) {
+				Debug.LogWarningFormat ("Removing tile: {0}", e.Message);
+				return false;
 			}
 			return false;
 		}
@@ -1258,6 +1271,7 @@ namespace TileLib
 		}
 
 		public	TileUnit (string item, float x, float y, float z) : base (item, x, y, z) {
+			this.group = TileGroup.Unit;
 			this.color = TileColor.Basic;
 		}
 
