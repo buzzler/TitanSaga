@@ -4,8 +4,12 @@ using UnityEditor.iOS.Xcode;
 
 public class PostProcessor {
 	public	static void Run(string buildPath) {
-		InfoPlist (buildPath);
-		PBX (buildPath);
+		if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.Android) {
+		}
+		if (EditorUserBuildSettings.activeBuildTarget == BuildTarget.iOS) {
+			InfoPlist (buildPath);
+			PBX (buildPath);
+		}
 	}
 
 	private	static void InfoPlist(string buildPath) {

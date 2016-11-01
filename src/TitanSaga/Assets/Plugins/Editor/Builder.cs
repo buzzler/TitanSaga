@@ -22,6 +22,7 @@ public class Builder {
 			}
 		}
 		Build (path, EditorUserBuildSettings.activeBuildTarget);
+		EditorApplication.Exit (0);
 	}
 
 	private	static void Build(string path, BuildTarget target) {
