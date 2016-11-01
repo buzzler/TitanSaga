@@ -1,0 +1,25 @@
+#!/bin/sh
+
+funcVars() {
+    if [ "$BUILD_TARGET" = "ios" ]; then
+        EXPORT_PATH="${EXPORT_PATH}/${EXPORT_FILE}"
+    fi
+    if [ "$BUILD_TARGET" = "android" ]; then
+        EXPORT_PATH="${EXPORT_PATH}/${EXPORT_FILE}_Android.apk"
+    fi
+}
+
+funcBuild() {
+    $UNITY_PATH -batchmode -nographics -quit \
+    -projectPath $PROJECT_PATH \
+    -executeMethod $EXE_BUILD \
+    -buildPath $EXPORT_PATH \
+    -buildTarget $BUILD_TARGET
+}
+
+funcCompress() {
+    if [ "$BUILD_TARGET" = "ios" ]; then
+        zip -r -m -q "${EXPORT_PATH}_iOS.zip" "$EXPORT_PATH"
+        EXPORT_PATH="${EXPORT_PATH}_iOS.zip"
+    fi
+}

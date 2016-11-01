@@ -1,0 +1,6 @@
+#!/bin/sh
+UNITY_PATH="/Applications/Unity_541p2/Unity.app/Contents/MacOS/Unity"
+EXPORT_PATH="/Volumes/8TB/WWW/jenkins"
+EXPORT_FILE="TitanSaga"
+PROJECT_PATH="/Users/buzzler/Documents/Projects/TitanSaga/src/TitanSaga"
+EXE_BUILD="Builder.BuildAutoInterface"
