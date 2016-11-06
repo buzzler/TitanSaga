@@ -265,7 +265,7 @@ public class TileManager : MonoBehaviour {
 	public	Vector3 GetPixelCoord(float x, float y, float z) {
 		Vector3 v3;
 		v3.x = x * 0.5f - z * 0.5f;
-		v3.y = y * 0.75f - (x * 0.25f + z * 0.25f);
+		v3.y = y * 0.5f - (x * 0.25f + z * 0.25f);
 		v3.z = -(x + z + y);
 		return v3;
 	}
