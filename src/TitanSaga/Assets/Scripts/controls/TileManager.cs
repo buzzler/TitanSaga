@@ -193,6 +193,7 @@ public class TileManager : MonoBehaviour {
 
 	private	void OnLoadDBComplete() {
 		LoadMap (config.tutorial.FindItem ("tutorial_1"));
+		Debug.Log ("Load DB Complete");
 	}
 
 	public	void LoadMap(TileMap map) {
@@ -265,7 +266,7 @@ public class TileManager : MonoBehaviour {
 	public	Vector3 GetPixelCoord(float x, float y, float z) {
 		Vector3 v3;
 		v3.x = x * 0.5f - z * 0.5f;
-		v3.y = y * 0.5f - (x * 0.25f + z * 0.25f);
+		v3.y = y * 0.6f - (x * 0.25f + z * 0.25f);
 		v3.z = -(x + z + y);
 		return v3;
 	}
