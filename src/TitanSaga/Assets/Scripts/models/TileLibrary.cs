@@ -863,7 +863,7 @@ namespace TileLib
 		}
 
 		public	TileItemLink[] GetTileItemLink() {
-			return _links [Random.Range (0, _count - 1)];
+			return _links [Random.Range (0, _count)];
 		}
 	}
 

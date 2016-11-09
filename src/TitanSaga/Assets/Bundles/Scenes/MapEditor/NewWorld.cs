@@ -34,9 +34,9 @@ public class NewWorld : MonoBehaviour {
 //		foreach (var a in lib.perlins.Values) {
 //			ddFill.options.Add (new Dropdown.OptionData(a.id));
 //		}
-//		foreach (var a in lib.randoms.Values) {
-//			ddFill.options.Add (new Dropdown.OptionData(a.id));
-//		}
+		foreach (var a in lib.randoms.Values) {
+			ddFill.options.Add (new Dropdown.OptionData(a.id));
+		}
 //		foreach (var a in lib.simples.Values) {
 //			ddFill.options.Add (new Dropdown.OptionData(a.id));
 //		}
