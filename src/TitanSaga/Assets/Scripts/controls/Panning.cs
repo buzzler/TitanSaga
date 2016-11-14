@@ -2,13 +2,11 @@
 using System.Collections;
 
 public class Panning : MonoBehaviour {
-	public	float speed = 0.1F;
-	public	Rect bound;
-
 	private	Transform _transform;
 	private Vector3 _dest = Vector3.zero;
 	private	Vector3 _prev = Vector3.zero;
 	private	float _mult = 0.01f;
+	private	Rect _bound;
 
 	void Start() {
 		_transform = transform;
@@ -26,11 +24,11 @@ public class Panning : MonoBehaviour {
 				_prev = Input.mousePosition;
 			}
 			var cp = Input.mousePosition;
-			bound = Observer.Instance.tileManager.bound;
+			_bound = Observer.Instance.tileManager.bound;
 			_dest += (_prev - cp) * _mult;
 
-			_dest.x = Mathf.Clamp(_dest.x, bound.xMin, bound.xMax);
-			_dest.y = Mathf.Clamp(_dest.y, bound.yMin, bound.yMax);
+			_dest.x = Mathf.Clamp(_dest.x, _bound.xMin, _bound.xMax);
+			_dest.y = Mathf.Clamp(_dest.y, _bound.yMin, _bound.yMax);
 			_prev = cp;
 		} else {
 			_prev = Vector3.zero;
@@ -42,12 +40,12 @@ public class Panning : MonoBehaviour {
 				_prev = touch.position;
 			}
 			var cp = touch.position;
-			bound = Observer.Instance.tileManager.bound;
+			_bound = Observer.Instance.tileManager.bound;
 
 			_dest.x += (_prev.x - cp.x) * _mult;
 			_dest.y += (_prev.y - cp.y) * _mult;
-			_dest.x = Mathf.Clamp(_dest.x, bound.xMin, bound.xMax);
-			_dest.y = Mathf.Clamp(_dest.y, bound.yMin, bound.yMax);
+			_dest.x = Mathf.Clamp(_dest.x, _bound.xMin, _bound.xMax);
+			_dest.y = Mathf.Clamp(_dest.y, _bound.yMin, _bound.yMax);
 			_prev = cp;
 		} else {
 			_prev = Vector3.zero;
