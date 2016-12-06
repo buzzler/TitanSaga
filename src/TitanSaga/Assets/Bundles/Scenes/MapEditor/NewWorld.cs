@@ -31,27 +31,27 @@ public class NewWorld : MonoBehaviour {
 
 		var lib = Observer.Instance.tileManager.library;
 		ddFill.options = new System.Collections.Generic.List<Dropdown.OptionData> ();
-		foreach (var a in lib.perlins.Values) {
-			ddFill.options.Add (new Dropdown.OptionData(a.id));
-		}
+//		foreach (var a in lib.perlins.Values) {
+//			ddFill.options.Add (new Dropdown.OptionData(a.id));
+//		}
 		foreach (var a in lib.randoms.Values) {
 			ddFill.options.Add (new Dropdown.OptionData(a.id));
 		}
-		foreach (var a in lib.simples.Values) {
-			ddFill.options.Add (new Dropdown.OptionData(a.id));
-		}
-		foreach (var a in lib.complexs.Values) {
-			ddFill.options.Add (new Dropdown.OptionData(a.id));
-		}
+//		foreach (var a in lib.simples.Values) {
+//			ddFill.options.Add (new Dropdown.OptionData(a.id));
+//		}
+//		foreach (var a in lib.complexs.Values) {
+//			ddFill.options.Add (new Dropdown.OptionData(a.id));
+//		}
 		foreach (var a in lib.normals.Values) {
 			ddFill.options.Add (new Dropdown.OptionData(a.id));
 		}
-		foreach (var a in lib.directions.Values) {
-			ddFill.options.Add (new Dropdown.OptionData(a.id));
-		}
-		foreach (var a in lib.walls.Values) {
-			ddFill.options.Add (new Dropdown.OptionData(a.id));
-		}
+//		foreach (var a in lib.directions.Values) {
+//			ddFill.options.Add (new Dropdown.OptionData(a.id));
+//		}
+//		foreach (var a in lib.walls.Values) {
+//			ddFill.options.Add (new Dropdown.OptionData(a.id));
+//		}
 	}
 
 	void OnDisable() {

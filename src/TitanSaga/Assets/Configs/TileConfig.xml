@@ -1,407 +1,1207 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <Config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 	<Tutorial>
-		<Map id="tutorial_1" width="20" height="3" depth="20">
-			<Terrain item="t_grasspath" x="0" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="1" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="2" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="3" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="4" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="5" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="6" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="7" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="8" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="9" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="10" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="11" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="12" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="13" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="14" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="15" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="16" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="17" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="18" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="0"/>
-			<Terrain item="t_grasspath" x="0" y="0" z="1"/>
-			<Terrain item="t_grasspath" x="0" y="0" z="2"/>
-			<Terrain item="t_grasspath" x="0" y="0" z="3"/>
-			<Terrain item="t_grasspath" x="0" y="0" z="4"/>
-			<Terrain item="t_grasspath" x="0" y="0" z="5"/>
-			<Terrain item="t_grasspath" x="0" y="0" z="6"/>
-			<Terrain item="t_grasspath" x="0" y="0" z="7"/>
-			<Terrain item="t_grasspath" x="0" y="0" z="8"/>
-			<Terrain item="t_grasspath" x="0" y="0" z="9"/>
-			<Terrain item="t_grasspath" x="0" y="0" z="10"/>
-			<Terrain item="t_grasspath" x="0" y="0" z="11"/>
-			<Terrain item="t_grasspath" x="0" y="0" z="12"/>
-			<Terrain item="t_grasspath" x="0" y="0" z="13"/>
-			<Terrain item="t_grasspath" x="0" y="0" z="14"/>
-			<Terrain item="t_grasspath" x="0" y="0" z="15"/>
-			<Terrain item="t_grasspath" x="0" y="0" z="16"/>
-			<Terrain item="t_grasspath" x="0" y="0" z="17"/>
-			<Terrain item="t_grasspath" x="0" y="0" z="18"/>
-			<Terrain item="t_grasspath" x="0" y="0" z="19"/>
-			<Terrain item="t_grasspath" x="1" y="0" z="19"/>
-			<Terrain item="t_grasspath" x="2" y="0" z="19"/>
-			<Terrain item="t_grasspath" x="3" y="0" z="19"/>
-			<Terrain item="t_grasspath" x="4" y="0" z="19"/>
-			<Terrain item="t_grasspath" x="5" y="0" z="19"/>
-			<Terrain item="t_grasspath" x="6" y="0" z="19"/>
-			<Terrain item="t_grasspath" x="7" y="0" z="19"/>
-			<Terrain item="t_grasspath" x="8" y="0" z="19"/>
-			<Terrain item="t_grasspath" x="9" y="0" z="19"/>
-			<Terrain item="t_grasspath" x="10" y="0" z="19"/>
-			<Terrain item="t_grasspath" x="11" y="0" z="19"/>
-			<Terrain item="t_grasspath" x="12" y="0" z="19"/>
-			<Terrain item="t_grasspath" x="13" y="0" z="19"/>
-			<Terrain item="t_grasspath" x="14" y="0" z="19"/>
-			<Terrain item="t_grasspath" x="15" y="0" z="19"/>
-			<Terrain item="t_grasspath" x="16" y="0" z="19"/>
-			<Terrain item="t_grasspath" x="17" y="0" z="19"/>
-			<Terrain item="t_grasspath" x="18" y="0" z="19"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="1"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="2"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="3"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="4"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="5"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="6"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="7"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="8"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="9"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="10"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="11"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="12"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="13"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="14"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="15"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="16"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="17"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="18"/>
-			<Terrain item="t_grasspath" x="19" y="0" z="19"/>
-			<Terrain item="t_water" x="1" y="0" z="1"/>
-			<Terrain item="t_water" x="2" y="0" z="1"/>
-			<Terrain item="t_water" x="3" y="0" z="1"/>
-			<Terrain item="t_water" x="4" y="0" z="1"/>
-			<Terrain item="t_water" x="5" y="0" z="1"/>
-			<Terrain item="t_water" x="6" y="0" z="1"/>
-			<Terrain item="t_water" x="7" y="0" z="1"/>
-			<Terrain item="t_water" x="8" y="0" z="1"/>
-			<Terrain item="t_water" x="9" y="0" z="1"/>
-			<Terrain item="t_water" x="10" y="0" z="1"/>
-			<Terrain item="t_water" x="11" y="0" z="1"/>
-			<Terrain item="t_water" x="12" y="0" z="1"/>
-			<Terrain item="t_water" x="13" y="0" z="1"/>
-			<Terrain item="t_water" x="14" y="0" z="1"/>
-			<Terrain item="t_water" x="15" y="0" z="1"/>
-			<Terrain item="t_water" x="16" y="0" z="1"/>
-			<Terrain item="t_water" x="17" y="0" z="1"/>
-			<Terrain item="t_water" x="18" y="0" z="1"/>
-			<Terrain item="t_water" x="1" y="0" z="2"/>
-			<Terrain item="t_water" x="2" y="0" z="2"/>
-			<Terrain item="t_water" x="3" y="0" z="2"/>
-			<Terrain item="t_water" x="4" y="0" z="2"/>
-			<Terrain item="t_water" x="5" y="0" z="2"/>
-			<Terrain item="t_water" x="6" y="0" z="2"/>
-			<Terrain item="t_water" x="7" y="0" z="2"/>
-			<Terrain item="t_water" x="8" y="0" z="2"/>
-			<Terrain item="t_water" x="9" y="0" z="2"/>
-			<Terrain item="t_water" x="10" y="0" z="2"/>
-			<Terrain item="t_water" x="11" y="0" z="2"/>
-			<Terrain item="t_water" x="12" y="0" z="2"/>
-			<Terrain item="t_water" x="13" y="0" z="2"/>
-			<Terrain item="t_water" x="14" y="0" z="2"/>
-			<Terrain item="t_water" x="15" y="0" z="2"/>
-			<Terrain item="t_water" x="16" y="0" z="2"/>
-			<Terrain item="t_water" x="17" y="0" z="2"/>
-			<Terrain item="t_water" x="18" y="0" z="2"/>
-			<Terrain item="t_water" x="1" y="0" z="3"/>
-			<Terrain item="t_water" x="2" y="0" z="3"/>
-			<Terrain item="t_water" x="3" y="0" z="3"/>
-			<Terrain item="t_water" x="4" y="0" z="3"/>
-			<Terrain item="t_water" x="5" y="0" z="3"/>
-			<Terrain item="t_water" x="6" y="0" z="3"/>
-			<Terrain item="t_water" x="7" y="0" z="3"/>
-			<Terrain item="t_water" x="8" y="0" z="3"/>
-			<Terrain item="t_water" x="9" y="0" z="3"/>
-			<Terrain item="t_water" x="10" y="0" z="3"/>
-			<Terrain item="t_water" x="11" y="0" z="3"/>
-			<Terrain item="t_water" x="12" y="0" z="3"/>
-			<Terrain item="t_water" x="13" y="0" z="3"/>
-			<Terrain item="t_water" x="14" y="0" z="3"/>
-			<Terrain item="t_water" x="15" y="0" z="3"/>
-			<Terrain item="t_water" x="16" y="0" z="3"/>
-			<Terrain item="t_water" x="17" y="0" z="3"/>
-			<Terrain item="t_water" x="18" y="0" z="3"/>
-			<Terrain item="t_water" x="1" y="0" z="4"/>
-			<Terrain item="t_water" x="2" y="0" z="4"/>
-			<Terrain item="t_water" x="3" y="0" z="4"/>
-			<Terrain item="t_water" x="4" y="0" z="4"/>
-			<Terrain item="t_water" x="5" y="0" z="4"/>
-			<Terrain item="t_water" x="6" y="0" z="4"/>
-			<Terrain item="t_water" x="7" y="0" z="4"/>
-			<Terrain item="t_water" x="8" y="0" z="4"/>
-			<Terrain item="t_water" x="9" y="0" z="4"/>
-			<Terrain item="t_water" x="10" y="0" z="4"/>
-			<Terrain item="t_water" x="11" y="0" z="4"/>
-			<Terrain item="t_water" x="12" y="0" z="4"/>
-			<Terrain item="t_water" x="13" y="0" z="4"/>
-			<Terrain item="t_water" x="14" y="0" z="4"/>
-			<Terrain item="t_water" x="15" y="0" z="4"/>
-			<Terrain item="t_water" x="16" y="0" z="4"/>
-			<Terrain item="t_water" x="17" y="0" z="4"/>
-			<Terrain item="t_water" x="18" y="0" z="4"/>
-			<Terrain item="t_water" x="1" y="0" z="5"/>
-			<Terrain item="t_water" x="2" y="0" z="5"/>
-			<Terrain item="t_water" x="3" y="0" z="5"/>
-			<Terrain item="t_water" x="4" y="0" z="5"/>
-			<Terrain item="t_water" x="15" y="0" z="5"/>
-			<Terrain item="t_water" x="16" y="0" z="5"/>
-			<Terrain item="t_water" x="17" y="0" z="5"/>
-			<Terrain item="t_water" x="18" y="0" z="5"/>
-			<Terrain item="t_water" x="1" y="0" z="6"/>
-			<Terrain item="t_water" x="2" y="0" z="6"/>
-			<Terrain item="t_water" x="3" y="0" z="6"/>
-			<Terrain item="t_water" x="4" y="0" z="6"/>
-			<Terrain item="t_water" x="15" y="0" z="6"/>
-			<Terrain item="t_water" x="16" y="0" z="6"/>
-			<Terrain item="t_water" x="17" y="0" z="6"/>
-			<Terrain item="t_water" x="18" y="0" z="6"/>
-			<Terrain item="t_water" x="1" y="0" z="7"/>
-			<Terrain item="t_water" x="2" y="0" z="7"/>
-			<Terrain item="t_water" x="3" y="0" z="7"/>
-			<Terrain item="t_water" x="4" y="0" z="7"/>
-			<Terrain item="t_water" x="15" y="0" z="7"/>
-			<Terrain item="t_water" x="16" y="0" z="7"/>
-			<Terrain item="t_water" x="17" y="0" z="7"/>
-			<Terrain item="t_water" x="18" y="0" z="7"/>
-			<Terrain item="t_water" x="1" y="0" z="8"/>
-			<Terrain item="t_water" x="2" y="0" z="8"/>
-			<Terrain item="t_water" x="3" y="0" z="8"/>
-			<Terrain item="t_water" x="4" y="0" z="8"/>
-			<Terrain item="t_water" x="15" y="0" z="8"/>
-			<Terrain item="t_water" x="16" y="0" z="8"/>
-			<Terrain item="t_water" x="17" y="0" z="8"/>
-			<Terrain item="t_water" x="18" y="0" z="8"/>
-			<Terrain item="t_water" x="1" y="0" z="9"/>
-			<Terrain item="t_water" x="2" y="0" z="9"/>
-			<Terrain item="t_water" x="3" y="0" z="9"/>
-			<Terrain item="t_water" x="4" y="0" z="9"/>
-			<Terrain item="t_water" x="15" y="0" z="9"/>
-			<Terrain item="t_water" x="16" y="0" z="9"/>
-			<Terrain item="t_water" x="17" y="0" z="9"/>
-			<Terrain item="t_water" x="18" y="0" z="9"/>
-			<Terrain item="t_water" x="1" y="0" z="10"/>
-			<Terrain item="t_water" x="2" y="0" z="10"/>
-			<Terrain item="t_water" x="3" y="0" z="10"/>
-			<Terrain item="t_water" x="4" y="0" z="10"/>
-			<Terrain item="t_water" x="15" y="0" z="10"/>
-			<Terrain item="t_water" x="16" y="0" z="10"/>
-			<Terrain item="t_water" x="17" y="0" z="10"/>
-			<Terrain item="t_water" x="18" y="0" z="10"/>
-			<Terrain item="t_water" x="1" y="0" z="11"/>
-			<Terrain item="t_water" x="2" y="0" z="11"/>
-			<Terrain item="t_water" x="3" y="0" z="11"/>
-			<Terrain item="t_water" x="4" y="0" z="11"/>
-			<Terrain item="t_water" x="15" y="0" z="11"/>
-			<Terrain item="t_water" x="16" y="0" z="11"/>
-			<Terrain item="t_water" x="17" y="0" z="11"/>
-			<Terrain item="t_water" x="18" y="0" z="11"/>
-			<Terrain item="t_water" x="1" y="0" z="12"/>
-			<Terrain item="t_water" x="2" y="0" z="12"/>
-			<Terrain item="t_water" x="3" y="0" z="12"/>
-			<Terrain item="t_water" x="4" y="0" z="12"/>
-			<Terrain item="t_water" x="15" y="0" z="12"/>
-			<Terrain item="t_water" x="16" y="0" z="12"/>
-			<Terrain item="t_water" x="17" y="0" z="12"/>
-			<Terrain item="t_water" x="18" y="0" z="12"/>
-			<Terrain item="t_water" x="1" y="0" z="13"/>
-			<Terrain item="t_water" x="2" y="0" z="13"/>
-			<Terrain item="t_water" x="3" y="0" z="13"/>
-			<Terrain item="t_water" x="4" y="0" z="13"/>
-			<Terrain item="t_water" x="15" y="0" z="13"/>
-			<Terrain item="t_water" x="16" y="0" z="13"/>
-			<Terrain item="t_water" x="17" y="0" z="13"/>
-			<Terrain item="t_water" x="18" y="0" z="13"/>
-			<Terrain item="t_water" x="1" y="0" z="14"/>
-			<Terrain item="t_water" x="2" y="0" z="14"/>
-			<Terrain item="t_water" x="3" y="0" z="14"/>
-			<Terrain item="t_water" x="4" y="0" z="14"/>
-			<Terrain item="t_water" x="15" y="0" z="14"/>
-			<Terrain item="t_water" x="16" y="0" z="14"/>
-			<Terrain item="t_water" x="17" y="0" z="14"/>
-			<Terrain item="t_water" x="18" y="0" z="14"/>
-			<Terrain item="t_water" x="1" y="0" z="15"/>
-			<Terrain item="t_water" x="2" y="0" z="15"/>
-			<Terrain item="t_water" x="3" y="0" z="15"/>
-			<Terrain item="t_water" x="4" y="0" z="15"/>
-			<Terrain item="t_water" x="5" y="0" z="15"/>
-			<Terrain item="t_water" x="6" y="0" z="15"/>
-			<Terrain item="t_water" x="7" y="0" z="15"/>
-			<Terrain item="t_water" x="8" y="0" z="15"/>
-			<Terrain item="t_water" x="9" y="0" z="15"/>
-			<Terrain item="t_water" x="10" y="0" z="15"/>
-			<Terrain item="t_water" x="11" y="0" z="15"/>
-			<Terrain item="t_water" x="12" y="0" z="15"/>
-			<Terrain item="t_water" x="13" y="0" z="15"/>
-			<Terrain item="t_water" x="14" y="0" z="15"/>
-			<Terrain item="t_water" x="15" y="0" z="15"/>
-			<Terrain item="t_water" x="16" y="0" z="15"/>
-			<Terrain item="t_water" x="17" y="0" z="15"/>
-			<Terrain item="t_water" x="18" y="0" z="15"/>
-			<Terrain item="t_water" x="1" y="0" z="16"/>
-			<Terrain item="t_water" x="2" y="0" z="16"/>
-			<Terrain item="t_water" x="3" y="0" z="16"/>
-			<Terrain item="t_water" x="4" y="0" z="16"/>
-			<Terrain item="t_water" x="5" y="0" z="16"/>
-			<Terrain item="t_water" x="6" y="0" z="16"/>
-			<Terrain item="t_water" x="7" y="0" z="16"/>
-			<Terrain item="t_water" x="8" y="0" z="16"/>
-			<Terrain item="t_water" x="9" y="0" z="16"/>
-			<Terrain item="t_water" x="10" y="0" z="16"/>
-			<Terrain item="t_water" x="11" y="0" z="16"/>
-			<Terrain item="t_water" x="12" y="0" z="16"/>
-			<Terrain item="t_water" x="13" y="0" z="16"/>
-			<Terrain item="t_water" x="14" y="0" z="16"/>
-			<Terrain item="t_water" x="15" y="0" z="16"/>
-			<Terrain item="t_water" x="16" y="0" z="16"/>
-			<Terrain item="t_water" x="17" y="0" z="16"/>
-			<Terrain item="t_water" x="18" y="0" z="16"/>
-			<Terrain item="t_water" x="1" y="0" z="17"/>
-			<Terrain item="t_water" x="2" y="0" z="17"/>
-			<Terrain item="t_water" x="3" y="0" z="17"/>
-			<Terrain item="t_water" x="4" y="0" z="17"/>
-			<Terrain item="t_water" x="5" y="0" z="17"/>
-			<Terrain item="t_water" x="6" y="0" z="17"/>
-			<Terrain item="t_water" x="7" y="0" z="17"/>
-			<Terrain item="t_water" x="8" y="0" z="17"/>
-			<Terrain item="t_water" x="9" y="0" z="17"/>
-			<Terrain item="t_water" x="10" y="0" z="17"/>
-			<Terrain item="t_water" x="11" y="0" z="17"/>
-			<Terrain item="t_water" x="12" y="0" z="17"/>
-			<Terrain item="t_water" x="13" y="0" z="17"/>
-			<Terrain item="t_water" x="14" y="0" z="17"/>
-			<Terrain item="t_water" x="15" y="0" z="17"/>
-			<Terrain item="t_water" x="16" y="0" z="17"/>
-			<Terrain item="t_water" x="17" y="0" z="17"/>
-			<Terrain item="t_water" x="18" y="0" z="17"/>
-			<Terrain item="t_water" x="1" y="0" z="18"/>
-			<Terrain item="t_water" x="2" y="0" z="18"/>
-			<Terrain item="t_water" x="3" y="0" z="18"/>
-			<Terrain item="t_water" x="4" y="0" z="18"/>
-			<Terrain item="t_water" x="5" y="0" z="18"/>
-			<Terrain item="t_water" x="6" y="0" z="18"/>
-			<Terrain item="t_water" x="7" y="0" z="18"/>
-			<Terrain item="t_water" x="8" y="0" z="18"/>
-			<Terrain item="t_water" x="9" y="0" z="18"/>
-			<Terrain item="t_water" x="10" y="0" z="18"/>
-			<Terrain item="t_water" x="11" y="0" z="18"/>
-			<Terrain item="t_water" x="12" y="0" z="18"/>
-			<Terrain item="t_water" x="13" y="0" z="18"/>
-			<Terrain item="t_water" x="14" y="0" z="18"/>
-			<Terrain item="t_water" x="15" y="0" z="18"/>
-			<Terrain item="t_water" x="16" y="0" z="18"/>
-			<Terrain item="t_water" x="17" y="0" z="18"/>
-			<Terrain item="t_water" x="18" y="0" z="18"/>
-			<Terrain item="t_dirt_5" x="5" y="0" z="5"/>
-			<Terrain item="t_dirt_5" x="6" y="0" z="5"/>
-			<Terrain item="t_dirt_5" x="7" y="0" z="5"/>
-			<Terrain item="t_dirt_5" x="8" y="0" z="5"/>
-			<Terrain item="t_dirt_5" x="9" y="0" z="5"/>
-			<Terrain item="t_dirt_5" x="10" y="0" z="5"/>
-			<Terrain item="t_dirt_5" x="11" y="0" z="5"/>
-			<Terrain item="t_dirt_5" x="12" y="0" z="5"/>
-			<Terrain item="t_dirt_5" x="13" y="0" z="5"/>
-			<Terrain item="t_dirt_5" x="14" y="0" z="5"/>
-			<Terrain item="t_dirt_5" x="5" y="0" z="6"/>
-			<Terrain item="t_dirt_5" x="6" y="0" z="6"/>
-			<Terrain item="t_dirt_5" x="7" y="0" z="6"/>
-			<Terrain item="t_dirt_5" x="8" y="0" z="6"/>
-			<Terrain item="t_dirt_5" x="9" y="0" z="6"/>
-			<Terrain item="t_dirt_5" x="10" y="0" z="6"/>
-			<Terrain item="t_dirt_5" x="11" y="0" z="6"/>
-			<Terrain item="t_dirt_5" x="12" y="0" z="6"/>
-			<Terrain item="t_dirt_5" x="13" y="0" z="6"/>
-			<Terrain item="t_dirt_5" x="14" y="0" z="6"/>
-			<Terrain item="t_dirt_5" x="5" y="0" z="7"/>
-			<Terrain item="t_dirt_5" x="6" y="0" z="7"/>
-			<Terrain item="t_dirt_5" x="7" y="0" z="7"/>
-			<Terrain item="t_dirt_5" x="8" y="0" z="7"/>
-			<Terrain item="t_dirt_5" x="9" y="0" z="7"/>
-			<Terrain item="t_dirt_5" x="10" y="0" z="7"/>
-			<Terrain item="t_dirt_5" x="11" y="0" z="7"/>
-			<Terrain item="t_dirt_5" x="12" y="0" z="7"/>
-			<Terrain item="t_dirt_5" x="13" y="0" z="7"/>
-			<Terrain item="t_dirt_5" x="14" y="0" z="7"/>
-			<Terrain item="t_dirt_5" x="5" y="0" z="8"/>
-			<Terrain item="t_dirt_5" x="6" y="0" z="8"/>
-			<Terrain item="t_dirt_5" x="7" y="0" z="8"/>
-			<Terrain item="t_dirt_5" x="8" y="0" z="8"/>
-			<Terrain item="t_dirt_5" x="9" y="0" z="8"/>
-			<Terrain item="t_dirt_5" x="10" y="0" z="8"/>
-			<Terrain item="t_dirt_5" x="11" y="0" z="8"/>
-			<Terrain item="t_dirt_5" x="12" y="0" z="8"/>
-			<Terrain item="t_dirt_5" x="13" y="0" z="8"/>
-			<Terrain item="t_dirt_5" x="14" y="0" z="8"/>
-			<Terrain item="t_dirt_5" x="5" y="0" z="9"/>
-			<Terrain item="t_dirt_5" x="6" y="0" z="9"/>
-			<Terrain item="t_dirt_5" x="7" y="0" z="9"/>
-			<Terrain item="t_dirt_5" x="8" y="0" z="9"/>
-			<Terrain item="t_dirt_5" x="9" y="0" z="9"/>
-			<Terrain item="t_dirt_5" x="10" y="0" z="9"/>
-			<Terrain item="t_dirt_5" x="11" y="0" z="9"/>
-			<Terrain item="t_dirt_5" x="12" y="0" z="9"/>
-			<Terrain item="t_dirt_5" x="13" y="0" z="9"/>
-			<Terrain item="t_dirt_5" x="14" y="0" z="9"/>
-			<Terrain item="t_dirt_5" x="5" y="0" z="10"/>
-			<Terrain item="t_dirt_5" x="6" y="0" z="10"/>
-			<Terrain item="t_dirt_5" x="7" y="0" z="10"/>
-			<Terrain item="t_dirt_5" x="8" y="0" z="10"/>
-			<Terrain item="t_dirt_5" x="9" y="0" z="10"/>
-			<Terrain item="t_dirt_5" x="10" y="0" z="10"/>
-			<Terrain item="t_dirt_5" x="11" y="0" z="10"/>
-			<Terrain item="t_dirt_5" x="12" y="0" z="10"/>
-			<Terrain item="t_dirt_5" x="13" y="0" z="10"/>
-			<Terrain item="t_dirt_5" x="14" y="0" z="10"/>
-			<Terrain item="t_dirt_5" x="5" y="0" z="11"/>
-			<Terrain item="t_dirt_5" x="6" y="0" z="11"/>
-			<Terrain item="t_dirt_5" x="7" y="0" z="11"/>
-			<Terrain item="t_dirt_5" x="8" y="0" z="11"/>
-			<Terrain item="t_dirt_5" x="9" y="0" z="11"/>
-			<Terrain item="t_dirt_5" x="10" y="0" z="11"/>
-			<Terrain item="t_dirt_5" x="11" y="0" z="11"/>
-			<Terrain item="t_dirt_5" x="12" y="0" z="11"/>
-			<Terrain item="t_dirt_5" x="13" y="0" z="11"/>
-			<Terrain item="t_dirt_5" x="14" y="0" z="11"/>
-			<Terrain item="t_dirt_5" x="5" y="0" z="12"/>
-			<Terrain item="t_dirt_5" x="6" y="0" z="12"/>
-			<Terrain item="t_dirt_5" x="7" y="0" z="12"/>
-			<Terrain item="t_dirt_5" x="8" y="0" z="12"/>
-			<Terrain item="t_dirt_5" x="9" y="0" z="12"/>
-			<Terrain item="t_dirt_5" x="10" y="0" z="12"/>
-			<Terrain item="t_dirt_5" x="11" y="0" z="12"/>
-			<Terrain item="t_dirt_5" x="12" y="0" z="12"/>
-			<Terrain item="t_dirt_5" x="13" y="0" z="12"/>
-			<Terrain item="t_dirt_5" x="14" y="0" z="12"/>
-			<Terrain item="t_dirt_5" x="5" y="0" z="13"/>
-			<Terrain item="t_dirt_5" x="6" y="0" z="13"/>
-			<Terrain item="t_dirt_5" x="7" y="0" z="13"/>
-			<Terrain item="t_dirt_5" x="8" y="0" z="13"/>
-			<Terrain item="t_dirt_5" x="9" y="0" z="13"/>
-			<Terrain item="t_dirt_5" x="10" y="0" z="13"/>
-			<Terrain item="t_dirt_5" x="11" y="0" z="13"/>
-			<Terrain item="t_dirt_5" x="12" y="0" z="13"/>
-			<Terrain item="t_dirt_5" x="13" y="0" z="13"/>
-			<Terrain item="t_dirt_5" x="14" y="0" z="13"/>
-			<Terrain item="t_dirt_5" x="5" y="0" z="14"/>
-			<Terrain item="t_dirt_5" x="6" y="0" z="14"/>
-			<Terrain item="t_dirt_5" x="7" y="0" z="14"/>
-			<Terrain item="t_dirt_5" x="8" y="0" z="14"/>
-			<Terrain item="t_dirt_5" x="9" y="0" z="14"/>
-			<Terrain item="t_dirt_5" x="10" y="0" z="14"/>
-			<Terrain item="t_dirt_5" x="11" y="0" z="14"/>
-			<Terrain item="t_dirt_5" x="12" y="0" z="14"/>
-			<Terrain item="t_dirt_5" x="13" y="0" z="14"/>
-			<Terrain item="t_dirt_5" x="14" y="0" z="14"/>
+		<Map id="tutorial_1" width="20" height="5" depth="20">
+		  <Terrain item="t_block_dirt" x="0" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="0" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="0" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="0" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="0" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="0" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="0" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="0" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="0" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="0" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="0" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="0" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="0" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="0" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="0" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="0" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="0" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="0" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="0" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="0" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="1" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="2" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="3" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="4" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="5" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="6" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="7" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="8" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="9" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="10" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="11" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="12" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="13" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="14" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="15" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="16" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="17" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="18" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="0" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="1" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="2" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="3" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="4" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="5" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="6" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="7" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="8" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="9" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="10" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="11" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="12" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="13" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="14" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="15" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="16" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="17" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="18" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
+		  <Terrain item="t_block_dirt" x="19" y="0" z="19" face="Up">
+		    <group>Terrain</group>
+		  </Terrain>
 		</Map>
 	</Tutorial>
 </Config>

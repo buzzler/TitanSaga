@@ -862,8 +862,9 @@ namespace TileLib
 			}
 		}
 
-		public	TileItemLink[] GetTileItemLink() {
-			return _links [Random.Range (0, _count - 1)];
+		public	TileItemLink[] GetTileItemLink(float seed = 0) {
+			var index = (int)(seed * (float)_count);
+			return _links [index];
 		}
 	}
 
@@ -1401,12 +1402,16 @@ namespace TileLib
 
 	public	class TileTerrain : TileObject, ITileObject
 	{
+		private	float seed;
+
 		public	TileTerrain () : base () {
 			this.group = TileGroup.Terrain;
+			this.seed = Random.value;
 		}
 
 		public	TileTerrain (string item, float x, float y, float z) : base (item, x, y, z) {
 			this.group = TileGroup.Terrain;
+			this.seed = Random.value;
 		}
 
 		public	TileTerrain u {
@@ -1511,7 +1516,7 @@ namespace TileLib
 				GetTileItemForPerlin (library, tb as TilePerlin, list);
 				break;
 			case TileType.Random:
-				GetTileItemForRandom (library, tb as TileRandom, list);
+				GetTileItemForRandom (library, tb as TileRandom, list, seed);
 				break;
 			}
 
@@ -2013,9 +2018,9 @@ namespace TileLib
 			list.AddRange (perlin.GetTileItemLink (density));
 		}
 
-		private	void GetTileItemForRandom (TileLibrary library, TileRandom random, List<TileItemLink> list)
+		private	void GetTileItemForRandom (TileLibrary library, TileRandom random, List<TileItemLink> list, float seed)
 		{
-			list.AddRange (random.GetTileItemLink ());
+			list.AddRange (random.GetTileItemLink (seed));
 		}
 	}
 }
