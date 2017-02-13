@@ -1,4 +1,4 @@
 ﻿public interface IController {
-	void OnInit();
-	void OnUpdate();
+	void AttachListener();
+	void DetachListener();
 }

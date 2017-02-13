@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 
-public class CameraController : IController {
+public class CameraController : Controller, IController {
 	private	Camera actor;
 	private	Camera background;
 
-	public	void OnInit() {
-		System.Console.WriteLine ("CameraController.OnInit");
+	public	CameraController(Observer observer) : base (observer) {
 		actor = GameObject.Find ("ActorCamera").GetComponent<Camera> ();
 		background = GameObject.Find ("BackgroundCamera").GetComponent<Camera> ();
 	}
 
-	public	void OnUpdate() {
+	public	void AttachListener() {
+	}
+
+	public	void DetachListener() {
 	}
 
 	public	void EnableActorCamera() {

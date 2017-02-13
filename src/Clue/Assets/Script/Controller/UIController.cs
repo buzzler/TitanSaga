@@ -3,24 +3,35 @@ using UnityEngine.SceneManagement;
 using System;
 using System.Collections.Generic;
 
-public class UIController : IController {
+public class UIController : Controller, IController {
 	private	Transform								canvas;
 	private	string									currentBackground;
 	private	Dictionary<string, Transform>			currentUI;
 	private	Dictionary<string, CharacterAdapter>	currentCharacters;
 
-	public	void OnInit() {
-		System.Console.WriteLine ("UIController.OnInit");
+	public	UIController(Observer observer) : base (observer) {
 		canvas = GameObject.FindObjectOfType<Canvas> ().transform;
 		currentBackground = null;
 		currentUI = new Dictionary<string, Transform> ();
 		currentCharacters = new Dictionary<string, CharacterAdapter> ();
 	}
 
-	public	void OnUpdate() {
+	public	void AttachListener() {
+		dispatcher.AddEventListener (Events.UI_ADD, OnAdd);
 	}
 
-	public	Transform AddUI(string name, bool flush = false) {
+	public	void DetachListener() {
+		dispatcher.RemoveEventListener (Events.UI_ADD, OnAdd);
+	}
+
+	private	void OnAdd(params object[] list) {
+		if (list.Length > 1)
+			Add (list [0] as string, (bool)list [1]);
+		else
+			Add (list [0] as string);
+	}
+
+	public	Transform Add(string name, bool flush = false) {
 		try {
 			if (flush) {
 				var total = canvas.childCount;
@@ -42,14 +53,14 @@ public class UIController : IController {
 		}
 	}
 
-	public	void RemoveUI(string name) {
+	public	void Remove(string name) {
 		if (currentUI.ContainsKey (name)) {
 			GameObject.DestroyImmediate (currentUI [name].gameObject);
 			currentUI.Remove (name);
 		}
 	}
 
-	public	void SetBackground(string name) {
+	public	void ChangeBackground(string name) {
 		if (!string.IsNullOrEmpty (currentBackground)) {
 			SceneManager.UnloadScene (currentBackground);
 			currentBackground = null;
@@ -80,12 +91,12 @@ public class UIController : IController {
 	}
 
 	public	void ShowDialog(string speaker, string comment, float speed = 0.03f) {
-		var tr = AddUI ("Dialog");
+		var tr = Add ("Dialog");
 		var view = tr.GetComponent<DialogView> ();
 		view.SetDialog (speaker, comment, speed);
 	}
 
 	public	void HideDialog() {
-		RemoveUI ("Dialog");
+		Remove ("Dialog");
 	}
 }

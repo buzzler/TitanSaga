@@ -2,31 +2,38 @@
 using UnityEngine.SceneManagement;
 
 public class Observer : MonoBehaviour {
-	public	AudioController		ac;
-	public	UIController		uc;
-	public	CameraController	cc;
-	public	EventController		ec;
+	public	AudioController		audioCtr;
+	public	BundleController	bundleCtr;
+	public	UIController		uiCtr;
+	public	CameraController	cameraCtr;
+	public	EventController		eventCtr;
+	private	IController[]		_controllers;
 
 	void Awake() {
-		ac = new AudioController ();
-		uc = new UIController ();
-		cc = new CameraController ();
-		ec = new EventController ();
+		_controllers	= new IController[] {
+			audioCtr	= new AudioController (this),
+			bundleCtr	= new BundleController (this),
+			cameraCtr	= new CameraController (this),
+			eventCtr	= new EventController (this),
+			uiCtr		= new UIController (this)
+		};
+	}
 
-		ac.OnInit ();
-		uc.OnInit ();
-		cc.OnInit ();
-		ec.OnInit ();
+	void OnEnable() {
+		int total = _controllers.Length;
+		for (int i = 0; i < total; i++) {
+			_controllers [i].AttachListener ();
+		}
+	}
+
+	void OnDisable() {
+		int total = _controllers.Length;
+		for (int i = 0; i < total; i++) {
+			_controllers [i].DetachListener ();
+		}
 	}
 
 	void Start() {
-		uc.AddUI ("Debug");
-	}
-
-	void Update() {
-		ac.OnUpdate ();
-		uc.OnUpdate ();
-		cc.OnUpdate ();
-		ec.OnUpdate ();
+		eventCtr.DispatchEvent(Events.UI_ADD, "Debug");
 	}
 }

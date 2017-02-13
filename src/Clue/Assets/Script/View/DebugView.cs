@@ -43,7 +43,7 @@ public class DebugView : MonoBehaviour {
 
 		if (!string.IsNullOrEmpty (item.text)) {
 			var observer = GameObject.FindObjectOfType<Observer> ();
-			observer.uc.SetBackground (item.text);
+			observer.uiCtr.ChangeBackground (item.text);
 		}
 	}
 
@@ -53,7 +53,7 @@ public class DebugView : MonoBehaviour {
 		var emotion = GameObject.Find ("Dropdown-Emotion").GetComponent<Dropdown> ();
 		var observer = GameObject.FindObjectOfType<Observer> ();
 
-		observer.uc.AddCharacter (
+		observer.uiCtr.AddCharacter (
 			character.captionText.text, 
 			(ActorPosition)Enum.Parse (typeof(ActorPosition), position.captionText.text, true), 
 			(ActorEmotion)Enum.Parse (typeof(ActorEmotion), emotion.captionText.text, true)
@@ -65,6 +65,6 @@ public class DebugView : MonoBehaviour {
 		var comment = GameObject.Find ("InputField-Comment").GetComponent<InputField> ();
 		var observer = GameObject.FindObjectOfType<Observer> ();
 
-		observer.uc.ShowDialog (speaker.text, comment.text);
+		observer.uiCtr.ShowDialog (speaker.text, comment.text);
 	}
 }
