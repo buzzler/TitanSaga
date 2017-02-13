@@ -21,7 +21,7 @@ public class DebugView : MonoBehaviour {
 		if (list.Count > 0) {
 			var dd = GameObject.Find ("Dropdown-Background").GetComponent<Dropdown> ();
 			dd.AddOptions (list);
-			OnChangeBackground (0);
+			OnChangeBackground ();
 		}
 
 		// auto-add all character to dropdown
@@ -37,9 +37,9 @@ public class DebugView : MonoBehaviour {
 		}
 	}
 
-	public	void OnChangeBackground(int index) {
+	public	void OnChangeBackground() {
 		var dd = GameObject.Find ("Dropdown-Background").GetComponent<Dropdown> ();
-		var item = dd.options [index];
+		var item = dd.options [dd.value];
 
 		if (!string.IsNullOrEmpty (item.text)) {
 			var observer = GameObject.FindObjectOfType<Observer> ();
@@ -58,5 +58,13 @@ public class DebugView : MonoBehaviour {
 			(ActorPosition)Enum.Parse (typeof(ActorPosition), position.captionText.text, true), 
 			(ActorEmotion)Enum.Parse (typeof(ActorEmotion), emotion.captionText.text, true)
 		);
+	}
+
+	public	void OnClickSpeak() {
+		var speaker = GameObject.Find ("InputField-Speaker").GetComponent<InputField> ();
+		var comment = GameObject.Find ("InputField-Comment").GetComponent<InputField> ();
+		var observer = GameObject.FindObjectOfType<Observer> ();
+
+		observer.uc.ShowDialog (speaker.text, comment.text);
 	}
 }

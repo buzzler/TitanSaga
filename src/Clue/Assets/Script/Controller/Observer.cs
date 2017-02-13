@@ -20,7 +20,7 @@ public class Observer : MonoBehaviour {
 	}
 
 	void Start() {
-		uc.SetUI ("UI_Debug");
+		uc.AddUI ("Debug");
 	}
 
 	void Update() {
