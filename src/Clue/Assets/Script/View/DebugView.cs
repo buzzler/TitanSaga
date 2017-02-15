@@ -43,7 +43,7 @@ public class DebugView : MonoBehaviour {
 
 		if (!string.IsNullOrEmpty (item.text)) {
 			var observer = GameObject.FindObjectOfType<Observer> ();
-			observer.uiCtr.ChangeBackground (item.text);
+			observer.DispatchEvent (Events.BACKGROUND_CHANGE, item.text);
 		}
 	}
 

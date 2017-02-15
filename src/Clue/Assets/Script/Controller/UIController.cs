@@ -5,41 +5,42 @@ using System.Collections.Generic;
 
 public class UIController : Controller, IController {
 	private	Transform								canvas;
-	private	string									currentBackground;
 	private	Dictionary<string, Transform>			currentUI;
 	private	Dictionary<string, CharacterAdapter>	currentCharacters;
 
 	public	UIController(Observer observer) : base (observer) {
 		canvas = GameObject.FindObjectOfType<Canvas> ().transform;
-		currentBackground = null;
 		currentUI = new Dictionary<string, Transform> ();
 		currentCharacters = new Dictionary<string, CharacterAdapter> ();
 	}
 
 	public	void AttachListener() {
-		dispatcher.AddEventListener (Events.UI_ADD, OnAdd);
+		observer.AddEventListener (Events.UI_ADD, OnAdd);
+		observer.AddEventListener (Events.UI_REMOVE, OnRemove);
+		observer.AddEventListener (Events.UI_REMOVEALL, OnRemoveAll);
 	}
 
 	public	void DetachListener() {
-		dispatcher.RemoveEventListener (Events.UI_ADD, OnAdd);
+		observer.RemoveEventListener (Events.UI_ADD, OnAdd);
+		observer.RemoveEventListener (Events.UI_REMOVE, OnRemove);
+		observer.RemoveEventListener (Events.UI_REMOVEALL, OnRemoveAll);
 	}
 
-	private	void OnAdd(params object[] list) {
-		if (list.Length > 1)
-			Add (list [0] as string, (bool)list [1]);
-		else
-			Add (list [0] as string);
+	private	void OnAdd(string value) {
+		Add (value);
 	}
 
-	public	Transform Add(string name, bool flush = false) {
+	private	void OnRemove(string value) {
+		Remove (value);
+	}
+
+	private void OnRemoveAll() {
+		RemoveAll ();
+	}
+
+	private	Transform Add(string name) {
 		try {
-			if (flush) {
-				var total = canvas.childCount;
-				for (var i = total - 1; i >= 0; i--) {
-					GameObject.DestroyImmediate (canvas.GetChild (i).gameObject);
-				}
-				currentUI.Clear ();
-			} else if (currentUI.ContainsKey (name)) {
+			if (currentUI.ContainsKey (name)) {
 				return currentUI [name];
 			}
 
@@ -53,20 +54,19 @@ public class UIController : Controller, IController {
 		}
 	}
 
-	public	void Remove(string name) {
+	private	void Remove(string name) {
 		if (currentUI.ContainsKey (name)) {
 			GameObject.DestroyImmediate (currentUI [name].gameObject);
 			currentUI.Remove (name);
 		}
 	}
 
-	public	void ChangeBackground(string name) {
-		if (!string.IsNullOrEmpty (currentBackground)) {
-			SceneManager.UnloadScene (currentBackground);
-			currentBackground = null;
+	private	void RemoveAll() {
+		var total = canvas.childCount;
+		for (var i = total - 1; i >= 0; i--) {
+			GameObject.DestroyImmediate (canvas.GetChild (i).gameObject);
 		}
-		currentBackground = name;
-		SceneManager.LoadScene (currentBackground, LoadSceneMode.Additive);
+		currentUI.Clear ();
 	}
 
 	public	void AddCharacter(string name, ActorPosition position, ActorEmotion emotion) {
