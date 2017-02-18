@@ -25,7 +25,7 @@ public class DebugView : MonoBehaviour {
 		}
 
 		// auto-add all character to dropdown
-		files = Directory.GetFiles (Path.Combine(Application.dataPath, "Art/Character/Resources"), "*.prefab", SearchOption.AllDirectories);
+		files = Directory.GetFiles (Path.Combine(Application.dataPath, "Art/Actor/Resources"), "*.prefab", SearchOption.AllDirectories);
 		list = new List<string> ();
 		foreach (var file in files) {
 			list.Add (Path.GetFileNameWithoutExtension (file));
@@ -43,7 +43,7 @@ public class DebugView : MonoBehaviour {
 
 		if (!string.IsNullOrEmpty (item.text)) {
 			var observer = GameObject.FindObjectOfType<Observer> ();
-			observer.DispatchEvent (Events.BACKGROUND_CHANGE, item.text);
+			observer.backgroundCtr.ChangeBackground (item.text);
 		}
 	}
 
@@ -53,10 +53,10 @@ public class DebugView : MonoBehaviour {
 		var emotion = GameObject.Find ("Dropdown-Emotion").GetComponent<Dropdown> ();
 		var observer = GameObject.FindObjectOfType<Observer> ();
 
-		observer.uiCtr.AddCharacter (
+		observer.actorCtr.Add(
 			character.captionText.text, 
-			(ActorPosition)Enum.Parse (typeof(ActorPosition), position.captionText.text, true), 
-			(ActorEmotion)Enum.Parse (typeof(ActorEmotion), emotion.captionText.text, true)
+			position.captionText.text,
+			emotion.captionText.text
 		);
 	}
 
@@ -65,6 +65,6 @@ public class DebugView : MonoBehaviour {
 		var comment = GameObject.Find ("InputField-Comment").GetComponent<InputField> ();
 		var observer = GameObject.FindObjectOfType<Observer> ();
 
-		observer.uiCtr.ShowDialog (speaker.text, comment.text);
+		observer.dialogCtr.Show (speaker.text, comment.text);
 	}
 }

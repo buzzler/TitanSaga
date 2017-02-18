@@ -1,20 +1,13 @@
 ﻿using UnityEngine.SceneManagement;
 
-public class BackgroundController : Controller, IController {
+public class BackgroundController : Controller {
 	private	string currentBackground;
+
 	public BackgroundController (Observer observer) : base (observer) {
 		currentBackground = null;
 	}
 
-	public	void AttachListener() {
-		observer.AddEventListener (Events.BACKGROUND_CHANGE, OnChangeBackground);
-	}
-
-	public	void DetachListener() {
-		observer.RemoveEventListener (Events.BACKGROUND_CHANGE, OnChangeBackground);
-	}
-
-	private	void OnChangeBackground(string name) {
+	public	void ChangeBackground(string name) {
 		if (!string.IsNullOrEmpty (currentBackground)) {
 			SceneManager.UnloadScene (currentBackground);
 			currentBackground = null;

@@ -1667,15 +1667,15 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: IDLE
+    - m_Text: idle
       m_Image: {fileID: 0}
-    - m_Text: ANGRY
+    - m_Text: angry
       m_Image: {fileID: 0}
-    - m_Text: SAD
+    - m_Text: sad
       m_Image: {fileID: 0}
-    - m_Text: SHY
+    - m_Text: shy
       m_Image: {fileID: 0}
-    - m_Text: SMILE
+    - m_Text: smile
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1882,7 +1882,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CENTER
+  m_Text: center
 --- !u!114 &114000011415543546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2746,11 +2746,15 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: CENTER
+    - m_Text: center
       m_Image: {fileID: 0}
-    - m_Text: LEFT
+    - m_Text: left
       m_Image: {fileID: 0}
-    - m_Text: RIGHT
+    - m_Text: right
+      m_Image: {fileID: 0}
+    - m_Text: leftmost
+      m_Image: {fileID: 0}
+    - m_Text: rightmost
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2876,7 +2880,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: IDLE
+  m_Text: idle
 --- !u!114 &114000013220405622
 MonoBehaviour:
   m_ObjectHideFlags: 1
