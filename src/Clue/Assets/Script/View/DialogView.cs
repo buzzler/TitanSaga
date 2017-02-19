@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System;
 using System.Collections;
 
 public class DialogView : MonoBehaviour {
+	public	Action onClick;
 	public	Image panel;
 	public	Text textSpeaker;
 	public	Text textComment;
@@ -28,7 +30,7 @@ public class DialogView : MonoBehaviour {
 	}
 
 	void Update() {
-		if (_index >= _length) {
+		if (!IsPlaying ()) {
 			return;
 		}
 
@@ -54,7 +56,7 @@ public class DialogView : MonoBehaviour {
 		}
 	}
 
-	public	void SetDialog(string speaker, string comment, float speed) {
+	public	void Dialog(string speaker, string comment, float speed) {
 		panel.color = Color.white;
 		textSpeaker.text = speaker;
 		textComment.text = string.Empty;
@@ -68,9 +70,22 @@ public class DialogView : MonoBehaviour {
 		_timer = 0f;
 	}
 
-	public	void SetSkip() {
+	public	void Skip() {
 		textComment.text = _comment;
 		textSystem.text = _CLICK;
 		_length = _index;
+	}
+
+	public	void SetCallback(Action callback) {
+		onClick = callback;
+	}
+		
+	public	bool IsPlaying() {
+		return (_index < _length);
+	}
+
+	public	void OnClick() {
+		if (onClick != null)
+			onClick.Invoke ();
 	}
 }

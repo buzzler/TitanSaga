@@ -66,7 +66,7 @@ public class ActorView : MonoBehaviour {
 			local.x = 3f;
 			break;
 		}
-		local.y = -5f;
+		local.y = -2f;
 		_tr.localPosition = local;
 	}
 }

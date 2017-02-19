@@ -15,7 +15,11 @@ public class UIController : Controller {
 	public	Transform Add(string name) {
 		try {
 			if (currentUI.ContainsKey (name)) {
-				return currentUI [name];
+				Transform result = currentUI [name];
+				if (result != null)
+					return result;
+				else
+					currentUI.Remove(name);
 			}
 
 			Transform tr = GameObject.Instantiate (Resources.Load<Transform> (name));

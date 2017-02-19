@@ -12,7 +12,7 @@ public class DebugView : MonoBehaviour {
 
 	void Start() {
 		// auto-add all background to dropdown
-		var files = Directory.GetFiles (Application.dataPath, "BG_*.unity", SearchOption.AllDirectories);
+		var files = Directory.GetFiles (Path.Combine(Application.dataPath, "Art/Background/Resources"), "*.prefab", SearchOption.AllDirectories);
 		var list = new List<string> ();
 		foreach (var file in files) {
 			list.Add (Path.GetFileNameWithoutExtension (file));
@@ -43,7 +43,7 @@ public class DebugView : MonoBehaviour {
 
 		if (!string.IsNullOrEmpty (item.text)) {
 			var observer = GameObject.FindObjectOfType<Observer> ();
-			observer.backgroundCtr.ChangeBackground (item.text);
+			observer.backgroundCtr.Change (item.text);
 		}
 	}
 

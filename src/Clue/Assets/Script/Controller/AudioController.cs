@@ -1,11 +1,5 @@
-﻿public class AudioController : Controller, IController {
+﻿public class AudioController : Controller {
 	public	AudioController(Observer observer) : base (observer) {
-	}
-
-	public	void AttachListener() {
-	}
-
-	public	void DetachListener() {
 	}
 
 	public	void Play() {

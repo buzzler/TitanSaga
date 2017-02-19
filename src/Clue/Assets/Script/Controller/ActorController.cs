@@ -1,13 +1,19 @@
 ﻿using UnityEngine;
-using System;
 using System.Collections.Generic;
 
 public class ActorController : Controller {
-	private	const int _MAX_ACTORS = 5;
+	private	const int _CAPACITY = 5;
+	private	Transform _group;
 	private	Dictionary<string, ActorView> _views;
 
 	public	ActorController(Observer observer) : base (observer) {
-		_views = new Dictionary<string, ActorView> (_MAX_ACTORS);
+		_group = null;
+		_views = new Dictionary<string, ActorView> (_CAPACITY);
+		observer.OnInited += OnInited;
+	}
+
+	private	void OnInited() {
+		_group = observer.cameraCtr.CreateActorGroup ();
 	}
 
 	public	void Add(string name, string position, string emotion) {
@@ -17,6 +23,7 @@ public class ActorController : Controller {
 			view.SetEmotion (emotion);
 		} else {
 			var model = GameObject.Instantiate (Resources.Load (name)) as GameObject;
+			model.transform.SetParent (_group);
 			var view = model.AddComponent<ActorView> ();
 			view.Init ();
 			view.SetPosition (position);
@@ -25,7 +32,12 @@ public class ActorController : Controller {
 		}
 	}
 
-	public	void OnRemove(string name) {
+	public	void Change(string name, string position, string emotion) {
+		RemoveAll ();
+		Add (name, position, emotion);
+	}
+
+	public	void Remove(string name) {
 		if (_views.ContainsKey (name)) {
 			var view = _views [name];
 			_views.Remove (name);
@@ -33,12 +45,13 @@ public class ActorController : Controller {
 		}
 	}
 
-	public	void OnRemoveAll() {
-		var itr = _views.GetEnumerator ();
-		while (itr.MoveNext ()) {
-			var view = itr.Current.Value;
-			GameObject.Destroy (view.gameObject);
+	public	void RemoveAll() {
+		if (_views.Count > 0) {
+			_views.Clear ();
+			var total = _group.childCount;
+			for (int i = 0; i < total; i++) {
+				GameObject.Destroy (_group.GetChild (i).gameObject);
+			}
 		}
-		_views.Clear ();
 	}
 }
