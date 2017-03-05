@@ -21,7 +21,6 @@ public class DebugView : MonoBehaviour {
 		if (list.Count > 0) {
 			var dd = GameObject.Find ("Dropdown-Background").GetComponent<Dropdown> ();
 			dd.AddOptions (list);
-			OnChangeBackground ();
 		}
 
 		// auto-add all character to dropdown
@@ -33,6 +32,18 @@ public class DebugView : MonoBehaviour {
 
 		if (list.Count > 0) {
 			var dd = GameObject.Find ("Dropdown-Character").GetComponent<Dropdown> ();
+			dd.AddOptions (list);
+		}
+
+		// auto-add all scenario to dropdown
+		files = Directory.GetFiles (Path.Combine(Application.dataPath, "Scene/Resources"), "*.json", SearchOption.AllDirectories);
+		list = new List<string> ();
+		foreach (var file in files) {
+			list.Add (Path.GetFileNameWithoutExtension (file));
+		}
+
+		if (list.Count > 0) {
+			var dd = GameObject.Find ("Dropdown-Scenario").GetComponent<Dropdown> ();
 			dd.AddOptions (list);
 		}
 	}
@@ -66,5 +77,19 @@ public class DebugView : MonoBehaviour {
 		var observer = GameObject.FindObjectOfType<Observer> ();
 
 		observer.dialogCtr.Show (speaker.text, comment.text);
+	}
+
+	public	void OnClickPlay() {
+		var scenario = GameObject.Find ("Dropdown-Scenario").GetComponent<Dropdown> ();
+		var observer = GameObject.FindObjectOfType<Observer> ();
+
+		observer.scenarioCtr.Play (scenario.captionText.text, OnClickClear);
+	}
+
+	public	void OnClickClear() {
+		var observer = GameObject.FindObjectOfType<Observer> ();
+		observer.backgroundCtr.RemoveAll ();
+		observer.actorCtr.RemoveAll ();
+		observer.dialogCtr.Hide ();
 	}
 }

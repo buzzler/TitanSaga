@@ -13,6 +13,7 @@ public class Observer : MonoBehaviour {
 	public	DialogController		dialogCtr;
 	public	FileController			fileCtr;
 	public	NetworkController		networkCtr;
+	public	ScenarioController		scenarioCtr;
 	public	UIController			uiCtr;
 
 	public	EventDelegate OnInited;
@@ -26,6 +27,7 @@ public class Observer : MonoBehaviour {
 		dialogCtr		= new DialogController (this);
 		fileCtr			= new FileController (this);
 		networkCtr		= new NetworkController (this);
+		scenarioCtr		= new ScenarioController (this);
 		uiCtr			= new UIController (this);
 	}
 
@@ -34,5 +36,6 @@ public class Observer : MonoBehaviour {
 		OnInited.Invoke ();
 
 		uiCtr.Add ("Debug");
+//		scenarioCtr.Play ("TestScene");
 	}
 }

@@ -1,16 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 public class DialogController : Controller {
 	private	DialogView		_view;
 	private Queue<string>	_speakers;
 	private Queue<string>	_comments;
 	private Queue<float>	_speeds;
+	private	Action			_callback;
 
 	public	DialogController(Observer observer) : base (observer) {
 		_view		= null;
 		_speakers	= new Queue<string> ();
 		_comments	= new Queue<string> ();
 		_speeds		= new Queue<float> ();
+		_callback	= null;
+	}
+
+	public	void SetCallback(Action callback) {
+		_callback = callback;
 	}
 
 	public	void Show(string speaker, string comment, float speed = 0.03f) {
@@ -48,9 +55,15 @@ public class DialogController : Controller {
 
 		if (_comments.Count > 0) {
 			_view.Dialog (_speakers.Dequeue (), _comments.Dequeue (), _speeds.Dequeue ());
+		} else if (_callback != null) {
+			_callback.Invoke ();
+			if (_comments.Count > 0) {
+				_view.Dialog (_speakers.Dequeue (), _comments.Dequeue (), _speeds.Dequeue ());
+			} else {
+				Hide ();
+			}
 		} else {
 			Hide ();
 		}
 	}
 }
-	
