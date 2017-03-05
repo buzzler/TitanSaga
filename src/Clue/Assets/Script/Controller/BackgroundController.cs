@@ -16,6 +16,10 @@ public class BackgroundController : Controller {
 		_group = observer.cameraCtr.CreateBackgroundGroup ();
 	}
 
+	public	bool Contains(string name) {
+		return _views.ContainsKey (name);
+	}
+
 	public	void Add(string name) {
 		if (!_views.ContainsKey (name)) {
 			var model = GameObject.Instantiate (Resources.Load (name)) as GameObject;

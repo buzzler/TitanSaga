@@ -4,27 +4,31 @@ using System;
 using System.Collections.Generic;
 
 public class UIController : Controller {
-	private	Transform								canvas;
-	private	Dictionary<string, Transform>			currentUI;
+	private	Transform						_canvas;
+	private	Dictionary<string, Transform>	_current;
 
 	public	UIController(Observer observer) : base (observer) {
-		canvas = GameObject.FindObjectOfType<Canvas> ().transform;
-		currentUI = new Dictionary<string, Transform> ();
+		_canvas = GameObject.FindObjectOfType<Canvas> ().transform;
+		_current = new Dictionary<string, Transform> ();
+	}
+
+	public	bool Contains(string name) {
+		return _current.ContainsKey (name);
 	}
 
 	public	Transform Add(string name) {
 		try {
-			if (currentUI.ContainsKey (name)) {
-				Transform result = currentUI [name];
+			if (_current.ContainsKey (name)) {
+				Transform result = _current [name];
 				if (result != null)
 					return result;
 				else
-					currentUI.Remove(name);
+					_current.Remove(name);
 			}
 
 			Transform tr = GameObject.Instantiate (Resources.Load<Transform> (name));
-			tr.SetParent (canvas, false);
-			currentUI.Add (name, tr);
+			tr.SetParent (_canvas, false);
+			_current.Add (name, tr);
 			return tr;
 		} catch (Exception e) {
 			Debug.LogError (e.Message);
@@ -33,17 +37,17 @@ public class UIController : Controller {
 	}
 
 	public	void Remove(string name) {
-		if (currentUI.ContainsKey (name)) {
-			GameObject.Destroy (currentUI [name].gameObject);
-			currentUI.Remove (name);
+		if (_current.ContainsKey (name)) {
+			GameObject.Destroy (_current [name].gameObject);
+			_current.Remove (name);
 		}
 	}
 
 	public	void RemoveAll() {
-		var total = canvas.childCount;
+		var total = _canvas.childCount;
 		for (var i = total - 1; i >= 0; i--) {
-			GameObject.Destroy (canvas.GetChild (i).gameObject);
+			GameObject.Destroy (_canvas.GetChild (i).gameObject);
 		}
-		currentUI.Clear ();
+		_current.Clear ();
 	}
 }

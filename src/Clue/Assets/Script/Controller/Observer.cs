@@ -11,6 +11,7 @@ public class Observer : MonoBehaviour {
 	public	BundleController		bundleCtr;
 	public	CameraController		cameraCtr;
 	public	DialogController		dialogCtr;
+	public	FaderController			faderCtr;
 	public	FileController			fileCtr;
 	public	NetworkController		networkCtr;
 	public	ScenarioController		scenarioCtr;
@@ -25,6 +26,7 @@ public class Observer : MonoBehaviour {
 		bundleCtr		= new BundleController (this);
 		cameraCtr		= new CameraController (this);
 		dialogCtr		= new DialogController (this);
+		faderCtr		= new FaderController (this);
 		fileCtr			= new FileController (this);
 		networkCtr		= new NetworkController (this);
 		scenarioCtr		= new ScenarioController (this);

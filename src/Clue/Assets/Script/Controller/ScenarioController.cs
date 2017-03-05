@@ -19,7 +19,21 @@ public class ScenarioController : Controller {
 			return;
 
 		_callback = callback;
+		if (observer.backgroundCtr.Contains (_current.background)) {
+			Next ();
+		} else {
+			observer.faderCtr.FadeOut (OnFadeOut);
+		}
+	}
+
+	private	void OnFadeOut() {
+		observer.actorCtr.RemoveAll ();
+		observer.dialogCtr.Hide ();
 		observer.backgroundCtr.Change (_current.background);
+		observer.faderCtr.FadeIn (OnFadeIn);
+	}
+
+	private	void OnFadeIn() {
 		Next ();
 	}
 

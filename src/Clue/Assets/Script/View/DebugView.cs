@@ -87,9 +87,9 @@ public class DebugView : MonoBehaviour {
 	}
 
 	public	void OnClickClear() {
-		var observer = GameObject.FindObjectOfType<Observer> ();
-		observer.backgroundCtr.RemoveAll ();
-		observer.actorCtr.RemoveAll ();
-		observer.dialogCtr.Hide ();
+//		var observer = GameObject.FindObjectOfType<Observer> ();
+//		observer.backgroundCtr.RemoveAll ();
+//		observer.actorCtr.RemoveAll ();
+//		observer.dialogCtr.Hide ();
 	}
 }
