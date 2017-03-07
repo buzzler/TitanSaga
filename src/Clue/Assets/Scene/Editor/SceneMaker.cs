@@ -22,6 +22,14 @@ public class SceneMaker : EditorWindow {
 	}
 
 	void OnGUI() {
+		DrawToolbar ();
+		DrawSceneData ();
+		DrawActorData ();
+		DrawDialogData ();
+		DrawStatusBar ();
+	}
+
+	private	void DrawToolbar() {
 		GUILayout.BeginHorizontal ();
 		if (GUILayout.Button ("New", GUILayout.Width (90)))
 			OnClickNew ();
@@ -33,6 +41,85 @@ public class SceneMaker : EditorWindow {
 		if (_data != null)
 		if (GUILayout.Button ("Save As...", GUILayout.Width (90)))
 			OnClickSaveAs ();
+		GUILayout.EndHorizontal ();
+	}
+
+	private	void DrawSceneData() {
+		if (_data == null)
+			return;
+		GUILayout.BeginVertical ();
+		GUILayout.BeginHorizontal ();
+		GUILayout.Label ("title", GUILayout.Width (90));
+		_data.title = GUILayout.TextField (_data.title);
+		GUILayout.EndHorizontal ();
+		GUILayout.BeginHorizontal ();
+		GUILayout.Label ("background", GUILayout.Width (90));
+		GUILayout.TextField (_data.background);
+		EditorGUILayout.Popup (0, new string[] {"select", "B1", "B2", "B3", "B4", "B5"}, GUILayout.Width (90));
+		GUILayout.EndHorizontal ();
+		GUILayout.EndVertical ();
+	}
+
+	private	void DrawActorData() {
+		if (_data == null)
+			return;
+		GUILayout.BeginHorizontal ();
+		GUILayout.BeginHorizontal (GUILayout.Width (90));
+		GUILayout.Label ("actors");
+		if (GUILayout.Button ("+", GUILayout.Width (20)))
+			OnClickAddActor ();
+		GUILayout.EndHorizontal ();
+		GUILayout.BeginVertical ();
+
+		int index = 0;
+		foreach (var actor in _actors) {
+			GUILayout.BeginHorizontal ();
+			GUILayout.TextField (actor.label, GUILayout.Width (90));
+			GUILayout.Label (actor.name, GUILayout.Width (90));
+			GUILayout.TextField (actor.asset);
+			if (GUILayout.Button ("-", GUILayout.Width (20)))
+				OnClickRemoveActor (index);
+			GUILayout.EndHorizontal ();
+			index++;
+		}
+
+		GUILayout.EndVertical ();
+		GUILayout.EndHorizontal ();
+	}
+
+	private	 void DrawDialogData() {
+		if (_data == null)
+			return;
+		GUILayout.BeginHorizontal ();
+		GUILayout.BeginHorizontal (GUILayout.Width (90));
+		GUILayout.Label ("dialog");
+		if (GUILayout.Button ("+", GUILayout.Width (20)))
+			OnClickAddDialog ();
+		GUILayout.EndHorizontal ();
+		GUILayout.BeginVertical ();
+
+		int index = 0;
+		foreach (var dialog in _dialogs) {
+			GUILayout.BeginHorizontal ();
+			EditorGUILayout.EnumPopup (dialog.command, GUILayout.Width (90));
+			EditorGUILayout.Popup (0, new string[]{ dialog.actor }, GUILayout.Width (90));
+			EditorGUILayout.Popup (0, new string[]{ "center", "left", "right" }, GUILayout.Width (90));
+			EditorGUILayout.Popup (0, new string[]{ "idle", "smile", "shy", "sad", "angry" }, GUILayout.Width (90));
+			GUILayout.TextField (dialog.dialog);
+			if (GUILayout.Button ("-", GUILayout.Width (20)))
+				OnClickRemoveDialog (index);
+			GUILayout.EndHorizontal ();
+			index++;
+		}
+
+		GUILayout.EndVertical ();
+		GUILayout.EndHorizontal ();
+	}
+
+	private	void DrawStatusBar() {
+		GUILayout.FlexibleSpace ();
+		GUILayout.BeginHorizontal ();
+		GUILayout.Box ("STATUS", GUILayout.Width (90));
 		GUILayout.EndHorizontal ();
 	}
 	 
@@ -90,6 +177,18 @@ public class SceneMaker : EditorWindow {
 			return;
 		_path = filepath;
 		OnClickSave ();
+	}
+
+	private	void OnClickAddActor() {
+	}
+
+	private	void OnClickRemoveActor(int index) {
+	}
+
+	private	void OnClickAddDialog() {
+	}
+
+	private	void OnClickRemoveDialog(int index) {
 	}
 
 	private	void UpdateData() {
