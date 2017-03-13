@@ -1,4 +1,5 @@
-﻿using System;
+﻿using UnityEngine;
+using System;
 using System.Collections.Generic;
 
 [Serializable]
@@ -7,6 +8,13 @@ public	class SceneData {
 	public	string			background;
 	public	ActorData[]		actors;
 	public	DialogData[]	sequences;
+
+	public	SceneData() {
+		title = string.Empty;
+		background = string.Empty;
+		actors = new ActorData[0];
+		sequences = new DialogData[0];
+	}
 
 	public	ActorData GetActor(string name) {
 		for (int i = actors.Length - 1; i >= 0; i--) {
