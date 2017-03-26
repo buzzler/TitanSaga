@@ -13,7 +13,7 @@ public class UIController : Controller {
 	}
 
 	public	bool Contains(string name) {
-		return _current.ContainsKey (name);
+		return string.IsNullOrEmpty (name) || _current.ContainsKey (name);
 	}
 
 	public	Transform Add(string name) {
@@ -34,6 +34,13 @@ public class UIController : Controller {
 			Debug.LogError (e.Message);
 			return null;
 		}
+	}
+
+	public	void Change(string name) {
+		if (Contains (name))
+			return;
+		RemoveAll ();
+		Add (name);
 	}
 
 	public	void Remove(string name) {

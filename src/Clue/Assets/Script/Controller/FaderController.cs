@@ -18,15 +18,32 @@ public class FaderController : Controller
 
 	public	void FadeOut(Action callback = null) {
 		_callback = callback;
-		LeanTween.color (_tr as RectTransform, Color.black, 0.5f).setEaseInOutCubic ().setOnComplete (OnFade);
+		LeanTween.color (_tr as RectTransform, Color.black, 0.5f).setEaseInOutCubic ().setOnComplete (OnFadeOutComplete).setOnStart(OnFadeOutStart);
 	}
 
 	public	void FadeIn(Action callback = null) {
 		_callback = callback;
-		LeanTween.color (_tr as RectTransform, Color.clear, 1f).setEaseInOutCubic ().setOnComplete (OnFade);
+		LeanTween.color (_tr as RectTransform, Color.clear, 1f).setEaseInOutCubic ().setOnComplete (OnFadeInComplete).setOnStart(OnFadeInStart);
 	}
 
-	private	void OnFade() {
+	private	void OnFadeInStart() {
+	}
+
+	private	void OnFadeInComplete() {
+		_tr.gameObject.SetActive (false);
+		if (_callback != null) {
+			Action cb = _callback;
+			_callback = null;
+			cb.Invoke ();
+		}
+	}
+
+	private	void OnFadeOutStart() {
+		_tr.SetAsLastSibling ();
+		_tr.gameObject.SetActive (true);
+	}
+
+	private	void OnFadeOutComplete() {
 		if (_callback != null) {
 			Action cb = _callback;
 			_callback = null;

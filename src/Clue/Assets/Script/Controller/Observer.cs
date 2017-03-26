@@ -38,6 +38,5 @@ public class Observer : MonoBehaviour {
 		OnInited.Invoke ();
 
 		uiCtr.Add ("Debug");
-//		scenarioCtr.Play ("TestScene");
 	}
 }

@@ -5,20 +5,30 @@ using System.Collections.Generic;
 [Serializable]
 public	class SceneData {
 	public	string			title;
+	public	string			ui;
 	public	string			background;
 	public	ActorData[]		actors;
 	public	DialogData[]	sequences;
 
 	public	SceneData() {
 		title = string.Empty;
+		ui = string.Empty;
 		background = string.Empty;
 		actors = new ActorData[0];
 		sequences = new DialogData[0];
 	}
 
-	public	ActorData GetActor(string name) {
+	public	ActorData GetActorByName(string name) {
 		for (int i = actors.Length - 1; i >= 0; i--) {
 			if (actors [i].name == name)
+				return actors [i];
+		}
+		return null;
+	}
+
+	public	ActorData GetActorByLabel(string label) {
+		for (int i = actors.Length - 1; i >= 0; i--) {
+			if (actors [i].label == label)
 				return actors [i];
 		}
 		return null;
@@ -32,6 +42,14 @@ public	class DialogData {
 	public	string position;
 	public	string emotion;
 	public	string dialog;
+
+	public	DialogData() {
+		command = SceneCommand.NONE;
+		actor = string.Empty;
+		position = string.Empty;
+		emotion = string.Empty;
+		dialog = string.Empty;
+	}
 }
 
 [Serializable]
@@ -39,6 +57,12 @@ public	class ActorData {
 	public	string name;
 	public	string asset;
 	public	string label;
+
+	public	ActorData() {
+		name = string.Empty;
+		asset = string.Empty;
+		label = string.Empty;
+	}
 }
 
 public	enum SceneCommand {

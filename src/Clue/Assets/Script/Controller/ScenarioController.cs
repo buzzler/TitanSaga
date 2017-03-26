@@ -19,7 +19,7 @@ public class ScenarioController : Controller {
 			return;
 
 		_callback = callback;
-		if (observer.backgroundCtr.Contains (_current.background)) {
+		if (observer.backgroundCtr.Contains (_current.background) && observer.uiCtr.Contains (_current.ui)) {
 			Next ();
 		} else {
 			observer.faderCtr.FadeOut (OnFadeOut);
@@ -27,6 +27,7 @@ public class ScenarioController : Controller {
 	}
 
 	private	void OnFadeOut() {
+		observer.uiCtr.Change (_current.ui);
 		observer.actorCtr.RemoveAll ();
 		observer.dialogCtr.Hide ();
 		observer.backgroundCtr.Change (_current.background);
@@ -55,12 +56,12 @@ public class ScenarioController : Controller {
 
 			// actor
 			if (!string.IsNullOrEmpty (dd.actor))
-				observer.actorCtr.Add (_current.GetActor(dd.actor).asset, dd.position, dd.emotion);
+				observer.actorCtr.Add (_current.GetActorByName(dd.actor).asset, dd.position, dd.emotion);
 
 			// dialog
 			if (!string.IsNullOrEmpty (dd.dialog)) {
 				observer.dialogCtr.SetCallback (Next);
-				observer.dialogCtr.Show (_current.GetActor(dd.actor).label, dd.dialog);
+				observer.dialogCtr.Show (_current.GetActorByName(dd.actor).label, dd.dialog);
 			}
 		} while (
 			(_index < _current.sequences.Length) &&

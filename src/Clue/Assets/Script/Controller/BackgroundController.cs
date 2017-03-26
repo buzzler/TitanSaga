@@ -17,7 +17,7 @@ public class BackgroundController : Controller {
 	}
 
 	public	bool Contains(string name) {
-		return _views.ContainsKey (name);
+		return string.IsNullOrEmpty(name) || _views.ContainsKey (name);
 	}
 
 	public	void Add(string name) {
@@ -30,6 +30,8 @@ public class BackgroundController : Controller {
 	}
 
 	public	void Change(string name) {
+		if (Contains (name))
+			return;
 		RemoveAll ();
 		Add (name);
 	}
