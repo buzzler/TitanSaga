@@ -4,7 +4,7 @@ using System.IO;
 using System.Collections.Generic;
 
 public class SceneMaker : EditorWindow {
-	[MenuItem("FNF Games/SceneMaker")]
+	[MenuItem("HyperLuna/SceneMaker")]
 	private	static void Open() {
 		var window = CreateInstance<SceneMaker> ();
 		window.Show ();
