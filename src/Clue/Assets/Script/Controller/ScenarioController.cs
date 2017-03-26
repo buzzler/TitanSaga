@@ -39,19 +39,19 @@ public class ScenarioController : Controller {
 	}
 
 	private	void Next() {
-		if (_index >= _current.sequences.Length) {
+		if (_index >= _current.shots.Length) {
 			observer.dialogCtr.Hide ();
 			if (_callback != null)
 				_callback.Invoke ();
 			return;
 		}
 
-		DialogData dd = null;
+		ShotData dd = null;
 		do {
-			dd = _current.sequences [_index++];
+			dd = _current.shots [_index++];
 
 			// command
-			if (dd.command == SceneCommand.ACTOR_CLEAR)
+			if (dd.command == ShotCommand.ACTOR_CLEAR)
 				observer.actorCtr.RemoveAll ();
 
 			// actor
@@ -59,13 +59,13 @@ public class ScenarioController : Controller {
 				observer.actorCtr.Add (_current.GetActorByName(dd.actor).asset, dd.position, dd.emotion);
 
 			// dialog
-			if (!string.IsNullOrEmpty (dd.dialog)) {
+			if (!string.IsNullOrEmpty (dd.comment)) {
 				observer.dialogCtr.SetCallback (Next);
-				observer.dialogCtr.Show (_current.GetActorByName(dd.actor).label, dd.dialog);
+				observer.dialogCtr.Show (_current.GetActorByName(dd.actor).label, dd.comment);
 			}
 		} while (
-			(_index < _current.sequences.Length) &&
-			(_current.sequences [_index].actor == dd.actor) &&
-			(_current.sequences [_index].position == dd.position));
+			(_index < _current.shots.Length) &&
+			(_current.shots [_index].actor == dd.actor) &&
+			(_current.shots [_index].position == dd.position));
 	}
 }

@@ -41,7 +41,7 @@ public class ActorController : Controller {
 		if (_views.ContainsKey (name)) {
 			var view = _views [name];
 			_views.Remove (name);
-			GameObject.Destroy (view.gameObject);
+			view.Remove ();
 		}
 	}
 
@@ -50,7 +50,7 @@ public class ActorController : Controller {
 			_views.Clear ();
 			var total = _group.childCount;
 			for (int i = 0; i < total; i++) {
-				GameObject.Destroy (_group.GetChild (i).gameObject);
+				_group.GetChild (i).GetComponent<ActorView> ().Remove ();
 			}
 		}
 	}

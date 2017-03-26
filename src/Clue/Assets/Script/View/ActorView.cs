@@ -45,28 +45,73 @@ public class ActorView : MonoBehaviour {
 		if (position == _position) {
 			return;
 		}
-			
-		_position = position;
 
-		var local = _tr.localPosition;
+		var localNext = _tr.localPosition;
+		var localNow = _tr.localPosition;
+
+		localNow.y = -2f;
+		if (_position == ActorPosition.NONE) {
+			switch(position) {
+			case ActorPosition.CENTER:
+				localNow.x = 0f;
+				localNow.y = -4f;
+				break;
+			case ActorPosition.LEFT:
+				localNow.x = -4f;
+				break;
+			case ActorPosition.LEFTMOST:
+				localNow.x = -5f;
+				break;
+			case ActorPosition.RIGHT:
+				localNow.x = 4f;
+				break;
+			case ActorPosition.RIGHTMOST:
+				localNow.x = 5f;
+				break;
+			}
+		}
+
 		switch (position) {
 		case ActorPosition.CENTER:
-			local.x = 0f;
+			localNext.x = 0f;
 			break;
 		case ActorPosition.LEFT:
-			local.x = -2f;
+			localNext.x = -2f;
 			break;
 		case ActorPosition.LEFTMOST:
-			local.x = -3f;
+			localNext.x = -3f;
 			break;
 		case ActorPosition.RIGHT:
-			local.x = 2f;
+			localNext.x = 2f;
 			break;
 		case ActorPosition.RIGHTMOST:
-			local.x = 3f;
+			localNext.x = 3f;
 			break;
 		}
-		local.y = -2f;
-		_tr.localPosition = local;
+		localNext.y = -2f;
+
+		_tr.localPosition = localNow;
+		if (LeanTween.isTweening (gameObject))
+			LeanTween.cancelAll ();
+		LeanTween.moveLocal (gameObject, localNext, 0.2f).setEaseInOutCirc();
+		_position = position;
+	}
+
+	public	void Remove() {
+		var localNext = _tr.localPosition;
+		if (localNext.x == 0) {
+			localNext.y -= 2f;
+		} else if (localNext.x < 0) {
+			localNext.x -= 2f;
+		} else {
+			localNext.x += 2f;
+		}
+		if (LeanTween.isTweening (gameObject))
+			LeanTween.cancelAll ();
+		LeanTween.moveLocal (gameObject, localNext, 0.1f).setEaseInCirc ().setOnComplete (OnRemove);
+	}
+
+	private	void OnRemove() {
+		Destroy (gameObject);
 	}
 }

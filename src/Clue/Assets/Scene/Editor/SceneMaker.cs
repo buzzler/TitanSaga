@@ -101,6 +101,9 @@ public class SceneMaker : EditorWindow {
 	private	void DrawActorData() {
 		if (_data == null)
 			return;
+		if (_actorsAry.Length != _actorsDic.Count)
+			UpdateActor();
+
 		GUILayout.BeginHorizontal ();
 		GUILayout.BeginHorizontal (GUILayout.Width (90));
 		_showActor = GUILayout.Toggle (_showActor, "actors");
@@ -154,7 +157,7 @@ public class SceneMaker : EditorWindow {
 			return;
 		GUILayout.BeginHorizontal ();
 		GUILayout.BeginHorizontal (GUILayout.Width (90));
-		_showDialog = GUILayout.Toggle (_showDialog, "dialog");
+		_showDialog = GUILayout.Toggle (_showDialog, "shots");
 		if (_showDialog)
 		if (GUILayout.Button ("+", GUILayout.Width (20)))
 			OnClickAddDialog ();
@@ -175,8 +178,8 @@ public class SceneMaker : EditorWindow {
 			GUILayout.EndHorizontal ();
 
 			int index = 0;
-			for (int i = 0; i < _data.sequences.Length; i++) {
-				var dialog = _data.sequences [i];
+			for (int i = 0; i < _data.shots.Length; i++) {
+				var dialog = _data.shots [i];
 				GUILayout.BeginHorizontal ();
 				if (GUILayout.Button ("-", GUILayout.Width (20)))
 					OnClickRemoveDialog (index);
@@ -184,7 +187,7 @@ public class SceneMaker : EditorWindow {
 				int newLabel = EditorGUILayout.Popup (oldLabel, _actorsAry, GUILayout.Width (90));
 				if (oldLabel != newLabel)
 					dialog.actor = _data.GetActorByLabel (_actorsAry[newLabel]).name;
-				dialog.dialog = GUILayout.TextField (dialog.dialog);
+				dialog.comment = GUILayout.TextField (dialog.comment);
 				int oldIndex = ArrayUtility.IndexOf<string> (_positions, dialog.position);
 				int newIndex = EditorGUILayout.Popup (oldIndex, _positions, GUILayout.Width (90));
 				if (oldIndex != newIndex)
@@ -193,7 +196,7 @@ public class SceneMaker : EditorWindow {
 				newIndex = EditorGUILayout.Popup (oldIndex, _emotions, GUILayout.Width (90));
 				if (oldIndex != newIndex)
 					dialog.emotion = _emotions [newIndex];
-				dialog.command = (SceneCommand) EditorGUILayout.EnumPopup (dialog.command, GUILayout.Width (90));
+				dialog.command = (ShotCommand) EditorGUILayout.EnumPopup (dialog.command, GUILayout.Width (90));
 				GUILayout.EndHorizontal ();
 				index++;
 			}
@@ -263,7 +266,7 @@ public class SceneMaker : EditorWindow {
 		_path = filepath;
 		OnClickSave ();
 	}
-
+		
 	private	void OnClickRescan() {
 		UpdateActor ();
 
@@ -323,21 +326,21 @@ public class SceneMaker : EditorWindow {
 	}
 
 	private	void OnClickAddDialog() {
-		List<DialogData> list = null;
-		if (_data.sequences == null)
-			list = new List<DialogData> ();
+		List<ShotData> list = null;
+		if (_data.shots == null)
+			list = new List<ShotData> ();
 		else
-			list = new List<DialogData> (_data.sequences);
-		list.Add (new DialogData ());
-		_data.sequences = list.ToArray ();
+			list = new List<ShotData> (_data.shots);
+		list.Add (new ShotData ());
+		_data.shots = list.ToArray ();
 	}
 
 	private	void OnClickRemoveDialog(int index) {
 		if (index < 0) {
 			if (EditorUtility.DisplayDialog ("Remove a Dialog", "This will remove a selected dialog. Is it alright?", "Ok", "Cancel"))
-				_data.sequences = new DialogData[0];
+				_data.shots = new ShotData[0];
 		} else if (EditorUtility.DisplayDialog ("Remove a Dialog", "This will remove a selected dialog. Is it alright?", "Ok", "Cancel")) {
-			ArrayUtility.RemoveAt<DialogData> (ref _data.sequences, index);
+			ArrayUtility.RemoveAt<ShotData> (ref _data.shots, index);
 		}
 	}
 

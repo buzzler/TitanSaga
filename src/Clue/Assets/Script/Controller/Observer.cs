@@ -18,6 +18,7 @@ public class Observer : MonoBehaviour {
 	public	UIController			uiCtr;
 
 	public	EventDelegate OnInited;
+	public	EventDelegate OnLoop;
 
 	void Awake() {
 		actorCtr		= new ActorController (this);
@@ -35,8 +36,12 @@ public class Observer : MonoBehaviour {
 
 	void Start() {
 		DontDestroyOnLoad (gameObject);
-		OnInited.Invoke ();
+		if (OnInited != null)
+			OnInited.Invoke ();
+	}
 
-		uiCtr.Add ("Debug");
+	void Update() {
+		if (OnLoop != null)
+			OnLoop.Invoke ();
 	}
 }

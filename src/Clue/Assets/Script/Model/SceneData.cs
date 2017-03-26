@@ -4,18 +4,18 @@ using System.Collections.Generic;
 
 [Serializable]
 public	class SceneData {
-	public	string			title;
-	public	string			ui;
-	public	string			background;
-	public	ActorData[]		actors;
-	public	DialogData[]	sequences;
+	public	string		title;
+	public	string		ui;
+	public	string		background;
+	public	ActorData[]	actors;
+	public	ShotData[]	shots;
 
 	public	SceneData() {
 		title = string.Empty;
 		ui = string.Empty;
 		background = string.Empty;
 		actors = new ActorData[0];
-		sequences = new DialogData[0];
+		shots = new ShotData[0];
 	}
 
 	public	ActorData GetActorByName(string name) {
@@ -36,19 +36,19 @@ public	class SceneData {
 }
 
 [Serializable]
-public	class DialogData {
-	public	SceneCommand command;
+public	class ShotData {
+	public	ShotCommand command;
 	public	string actor;
 	public	string position;
 	public	string emotion;
-	public	string dialog;
+	public	string comment;
 
-	public	DialogData() {
-		command = SceneCommand.NONE;
+	public	ShotData() {
+		command = ShotCommand.NONE;
 		actor = string.Empty;
 		position = string.Empty;
 		emotion = string.Empty;
-		dialog = string.Empty;
+		comment = string.Empty;
 	}
 }
 
@@ -65,7 +65,7 @@ public	class ActorData {
 	}
 }
 
-public	enum SceneCommand {
+public	enum ShotCommand {
 	NONE = 0,
 	ACTOR_CLEAR = 1
 }
