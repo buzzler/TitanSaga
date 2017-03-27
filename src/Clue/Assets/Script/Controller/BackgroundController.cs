@@ -22,7 +22,7 @@ public class BackgroundController : Controller {
 
 	public	void Add(string name) {
 		if (!_views.ContainsKey (name)) {
-			var model = GameObject.Instantiate (Resources.Load (name)) as GameObject;
+			var model = observer.bundleCtr.Instantiate<GameObject> ((name));
 			model.transform.SetParent (_group);
 			var view = model.AddComponent<BackgroundView> ();
 			_views.Add (name, view);

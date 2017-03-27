@@ -211,6 +211,11 @@ public class SceneMaker : EditorWindow {
 	private	void DrawStatusBar() {
 		GUILayout.BeginHorizontal ();
 		GUILayout.Box ("STATUS", GUILayout.Width (90));
+		GUILayout.FlexibleSpace ();
+		if (GUILayout.Button ("Resume", GUILayout.Width (90))) {
+			var observer = GameObject.FindObjectOfType<Observer> ();
+			observer.scenarioCtr.Resume ();
+		}
 		GUILayout.EndHorizontal ();
 	}
 	 

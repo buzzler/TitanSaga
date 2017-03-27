@@ -4,25 +4,43 @@ using System;
 public class ScenarioController : Controller {
 	private	SceneData _current;
 	private	int _index;
+	private	bool _paused;
 	private	Action _callback;
 
 	public	ScenarioController(Observer observer) : base (observer) {
 	}
 
 	public	void Play(string bundlePath, Action callback = null) {
-		var asset = Resources.Load<TextAsset> (bundlePath);
+		var asset = observer.bundleCtr.Load<TextAsset> (bundlePath);
 		if (asset == null)
 			return;
-		_current = JsonUtility.FromJson<SceneData> (asset.text);
-		_index = 0;
-		if (_current == null)
+		var newScene = JsonUtility.FromJson<SceneData> (asset.text);
+		if (newScene == null)
 			return;
 
+		_index = 0;
+		_current = newScene;
 		_callback = callback;
 		if (observer.backgroundCtr.Contains (_current.background) && observer.uiCtr.Contains (_current.ui)) {
 			Next ();
 		} else {
 			observer.faderCtr.FadeOut (OnFadeOut);
+		}
+	}
+
+	public	void Resume() {
+		if (IsPaused)
+			_paused = false;
+		Next ();
+	}
+
+	public	bool IsPaused {
+		get {
+			if (_current != null)
+			if (_index < _current.shots.Length)
+			if (_paused)
+				return true;
+			return false;
 		}
 	}
 
@@ -39,6 +57,8 @@ public class ScenarioController : Controller {
 	}
 
 	private	void Next() {
+		if (IsPaused)
+			return;
 		if (_index >= _current.shots.Length) {
 			observer.dialogCtr.Hide ();
 			if (_callback != null)
@@ -46,26 +66,29 @@ public class ScenarioController : Controller {
 			return;
 		}
 
-		ShotData dd = null;
+		ShotData sd = null;
 		do {
-			dd = _current.shots [_index++];
+			sd = _current.shots [_index++];
 
 			// command
-			if (dd.command == ShotCommand.ACTOR_CLEAR)
+			if (sd.command == ShotCommand.ACTOR_CLEAR)
 				observer.actorCtr.RemoveAll ();
+			else if (sd.command == ShotCommand.BREAK)
+				_paused = true;
 
 			// actor
-			if (!string.IsNullOrEmpty (dd.actor))
-				observer.actorCtr.Add (_current.GetActorByName(dd.actor).asset, dd.position, dd.emotion);
+			if (!string.IsNullOrEmpty (sd.actor))
+				observer.actorCtr.Add (_current.GetActorByName(sd.actor).asset, sd.position, sd.emotion);
 
 			// dialog
-			if (!string.IsNullOrEmpty (dd.comment)) {
+			if (!string.IsNullOrEmpty (sd.comment)) {
 				observer.dialogCtr.SetCallback (Next);
-				observer.dialogCtr.Show (_current.GetActorByName(dd.actor).label, dd.comment);
+				observer.dialogCtr.Show (_current.GetActorByName(sd.actor).label, sd.comment);
 			}
 		} while (
+			(!_paused) &&
 			(_index < _current.shots.Length) &&
-			(_current.shots [_index].actor == dd.actor) &&
-			(_current.shots [_index].position == dd.position));
+			(_current.shots [_index].actor == sd.actor) &&
+			(_current.shots [_index].position == sd.position));
 	}
 }

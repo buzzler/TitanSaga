@@ -22,7 +22,7 @@ public class ActorController : Controller {
 			view.SetPosition (position);
 			view.SetEmotion (emotion);
 		} else {
-			var model = GameObject.Instantiate (Resources.Load (name)) as GameObject;
+			var model = observer.bundleCtr.Instantiate<GameObject> (name);
 			model.transform.SetParent (_group);
 			var view = model.AddComponent<ActorView> ();
 			view.Init ();

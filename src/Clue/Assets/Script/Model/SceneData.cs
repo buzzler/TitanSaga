@@ -67,5 +67,6 @@ public	class ActorData {
 
 public	enum ShotCommand {
 	NONE = 0,
-	ACTOR_CLEAR = 1
+	ACTOR_CLEAR,
+	BREAK
 }

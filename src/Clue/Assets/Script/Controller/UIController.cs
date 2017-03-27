@@ -25,8 +25,8 @@ public class UIController : Controller {
 				else
 					_current.Remove(name);
 			}
-
-			Transform tr = GameObject.Instantiate (Resources.Load<Transform> (name));
+				
+			Transform tr = observer.bundleCtr.Instantiate<Transform> (name);
 			tr.SetParent (_canvas, false);
 			_current.Add (name, tr);
 			return tr;
