@@ -13,7 +13,7 @@ public class FaderController : Controller
 	}
 
 	private	void OnInited() {
-		_tr = observer.uiCtr.Add ("Fader");
+		_tr = observer.uiCtr.Add ("Fader", true);
 	}
 
 	public	void FadeOut(Action callback = null) {
@@ -27,6 +27,7 @@ public class FaderController : Controller
 	}
 
 	private	void OnFadeInStart() {
+		_tr.SetAsLastSibling ();
 	}
 
 	private	void OnFadeInComplete() {

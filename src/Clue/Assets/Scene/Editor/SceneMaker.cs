@@ -12,6 +12,7 @@ public class SceneMaker : EditorWindow {
 
 	private	string		_path;
 	private	SceneData	_data;
+	private	string[]	_uis;
 	private	string[]	_backgrounds;
 	private	string[]	_prefabs;
 	private	string[]	_positions;
@@ -25,6 +26,7 @@ public class SceneMaker : EditorWindow {
 	public	SceneMaker() {
 		_path		= null;
 		_data		= null;
+		_uis		= new string[0];
 		_backgrounds= new string[0];
 		_prefabs	= new string[0];
 		_positions	= new string[]{ ActorPosition.NONE, ActorPosition.CENTER, ActorPosition.LEFT, ActorPosition.LEFTMOST, ActorPosition.RIGHT, ActorPosition.RIGHTMOST};
@@ -85,8 +87,15 @@ public class SceneMaker : EditorWindow {
 		var new_title = GUILayout.TextField (_data.title);
 		if (old_title != new_title) {
 			_data.title = new_title;
-			this.titleContent = new GUIContent(new_title);
+			this.titleContent = new GUIContent (new_title);
 		}
+		GUILayout.EndHorizontal ();
+		GUILayout.BeginHorizontal ();
+		GUILayout.Label ("ui", GUILayout.Width (90));
+		int oldUI = ArrayUtility.IndexOf<string> (_uis, _data.ui);
+		int newUI = EditorGUILayout.Popup (oldUI, _uis);
+		if (oldUI != newUI)
+			_data.ui = _uis [newUI];
 		GUILayout.EndHorizontal ();
 		GUILayout.BeginHorizontal ();
 		GUILayout.Label ("background", GUILayout.Width (90));
@@ -275,10 +284,19 @@ public class SceneMaker : EditorWindow {
 	private	void OnClickRescan() {
 		UpdateActor ();
 
-		// backgrounds
-		var path = Path.Combine (Application.dataPath, "Art/Background/Resources");
+		// ui
+		var path = Path.Combine (Application.dataPath, "Art/UI/Resources");
 		var files = Directory.GetFiles (path, "*.prefab", SearchOption.AllDirectories);
 		var list = new List<string> ();
+		for (int i = 0; i < files.Length; i++) {
+			list.Add (Path.GetFileNameWithoutExtension (files [i]));
+		}
+		_uis = list.ToArray ();
+
+		// backgrounds
+		path = Path.Combine (Application.dataPath, "Art/Background/Resources");
+		files = Directory.GetFiles (path, "*.prefab", SearchOption.AllDirectories);
+		list = new List<string> ();
 		for (int i = 0; i < files.Length; i++) {
 			list.Add (Path.GetFileNameWithoutExtension (files [i]));
 		}
