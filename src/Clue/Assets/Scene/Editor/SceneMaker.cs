@@ -82,7 +82,7 @@ public class SceneMaker : EditorWindow {
 			return;
 		GUILayout.BeginVertical ();
 		GUILayout.BeginHorizontal ();
-		GUILayout.Label ("title", GUILayout.Width (90));
+		GUILayout.Button ("title", GUILayout.Width (90));
 		var old_title = _data.title;
 		var new_title = GUILayout.TextField (_data.title);
 		if (old_title != new_title) {
@@ -91,14 +91,16 @@ public class SceneMaker : EditorWindow {
 		}
 		GUILayout.EndHorizontal ();
 		GUILayout.BeginHorizontal ();
-		GUILayout.Label ("ui", GUILayout.Width (90));
+		if (GUILayout.Button ("ui", GUILayout.Width (90)))
+			OnClickUI ();
 		int oldUI = ArrayUtility.IndexOf<string> (_uis, _data.ui);
 		int newUI = EditorGUILayout.Popup (oldUI, _uis);
 		if (oldUI != newUI)
 			_data.ui = _uis [newUI];
 		GUILayout.EndHorizontal ();
 		GUILayout.BeginHorizontal ();
-		GUILayout.Label ("background", GUILayout.Width (90));
+		if (GUILayout.Button ("background", GUILayout.Width (90)))
+			OnClickBackground ();
 		int indexBackground = ArrayUtility.IndexOf<string> (_backgrounds, _data.background);
 		int newBackground = EditorGUILayout.Popup (indexBackground, _backgrounds);
 		if (indexBackground != newBackground)
@@ -325,6 +327,26 @@ public class SceneMaker : EditorWindow {
 
 		var filename = Path.GetFileNameWithoutExtension (_path);
 		observer.scenarioCtr.Play (filename);
+	}
+
+	private	void OnClickUI() {
+		if (Application.isPlaying)
+			return;
+		if (_data == null)
+			return;
+		if (string.IsNullOrEmpty (_data.ui))
+			return;
+		
+		var canvas = GameObject.Find ("Canvas").transform;
+		for (int i = canvas.childCount - 1; i >= 0; i--) {
+			GameObject.DestroyImmediate (canvas.GetChild (0).gameObject);
+		}
+		var ui = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject> ("Assets/Art/UI/Resources/" + _data.ui + ".prefab");
+		var go = GameObject.Instantiate<GameObject> (ui);
+		go.transform.SetParent (canvas, false);
+	}
+
+	private void OnClickBackground() {
 	}
 
 	private	void OnClickAddActor() {

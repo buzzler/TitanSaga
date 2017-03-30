@@ -17,11 +17,13 @@ public class FaderController : Controller
 	}
 
 	public	void FadeOut(Action callback = null) {
+		_tr.gameObject.SetActive (true);
 		_callback = callback;
 		LeanTween.color (_tr as RectTransform, Color.black, 0.5f).setEaseInOutCubic ().setOnComplete (OnFadeOutComplete).setOnStart(OnFadeOutStart);
 	}
 
 	public	void FadeIn(Action callback = null) {
+		_tr.gameObject.SetActive (true);
 		_callback = callback;
 		LeanTween.color (_tr as RectTransform, Color.clear, 1f).setEaseInOutCubic ().setOnComplete (OnFadeInComplete).setOnStart(OnFadeInStart);
 	}

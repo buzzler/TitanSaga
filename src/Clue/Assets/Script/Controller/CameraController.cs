@@ -44,7 +44,9 @@ public class CameraController : Controller {
 	}
 
 	private	Transform CreateGroup(string name, Camera camera) {
-		var go = new GameObject (name);
+		var go = GameObject.Find (name);
+		if (go == null)
+			go = new GameObject (name);
 		var tr = go.transform;
 		var position = camera.transform.position;
 		tr.position = new Vector3 (position.x, position.y, 0f);

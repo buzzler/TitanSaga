@@ -33,6 +33,7 @@ public class UIController : Controller {
 				
 			Transform tr = observer.bundleCtr.Instantiate<Transform> (name);
 			tr.SetParent (_canvas, false);
+			tr.SetAsFirstSibling();
 			_current.Add (name, tr);
 			if (locking)
 				_lock.Add(name, tr);
@@ -66,8 +67,12 @@ public class UIController : Controller {
 	}
 
 	public	void RemoveAll(bool force = false) {
+		var list = new List<string> ();
 		foreach (string name in _current.Keys) {
-			Remove (name, force);
+			list.Add (name);
+		}
+		for (int i = list.Count - 1; i >= 0; i--) {
+			Remove (list [i], force);
 		}
 	}
 }
