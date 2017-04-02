@@ -1,1 +1,1 @@
-﻿{"title":"MainMenu","ui":"MainMenu","background":"basket","actors":[],"shots":[]}
+﻿{"title":"MainMenu","ui":"MainMenu","background":"","actors":[{"name":"scarlet","asset":"girl1_casual","label":"Scarlet"}],"shots":[{"command":1,"actor":"scarlet","position":"right","emotion":"shy","comment":""}]}

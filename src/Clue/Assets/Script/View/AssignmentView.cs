@@ -5,4 +5,9 @@ public class AssignmentView : MonoBehaviour {
 		var ob = GameObject.FindObjectOfType<Observer> ();
 		ob.scenarioCtr.Play ("MainMenu");
 	}
+
+	public	void OnClickAssignment(int v) {
+		var ob = GameObject.FindObjectOfType<Observer> ();
+		ob.scenarioCtr.Play ("Prologue" + v.ToString ());
+	}
 }

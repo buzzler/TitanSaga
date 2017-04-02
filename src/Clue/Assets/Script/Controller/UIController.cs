@@ -15,7 +15,7 @@ public class UIController : Controller {
 	}
 
 	public	bool Contains(string name) {
-		return string.IsNullOrEmpty (name) || _current.ContainsKey (name);
+		return (!string.IsNullOrEmpty (name)) && _current.ContainsKey (name);
 	}
 
 	public	Transform Add(string name, bool locking = false) {
@@ -45,8 +45,14 @@ public class UIController : Controller {
 	}
 
 	public	void Change(string name) {
+		if (string.IsNullOrEmpty (name)) {
+			RemoveAll ();
+			return;
+		}
+
 		if (Contains (name))
 			return;
+
 		RemoveAll ();
 		Add (name);
 	}

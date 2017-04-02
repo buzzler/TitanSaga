@@ -21,11 +21,11 @@ public class ScenarioController : Controller {
 		_index = 0;
 		_current = newScene;
 		_callback = callback;
-		if (observer.backgroundCtr.Contains (_current.background) && observer.uiCtr.Contains (_current.ui)) {
-			Next ();
-		} else {
-			observer.faderCtr.FadeOut (OnFadeOut);
-		}
+
+		var containBackground = observer.backgroundCtr.Contains (_current.background);
+		var containUI = observer.uiCtr.Contains (_current.ui);
+
+		observer.faderCtr.FadeOut (OnFadeOut);
 	}
 
 	public	void Resume() {

@@ -17,11 +17,14 @@ public class BackgroundController : Controller {
 	}
 
 	public	bool Contains(string name) {
-		return string.IsNullOrEmpty(name) || _views.ContainsKey (name);
+		return (!string.IsNullOrEmpty(name)) && _views.ContainsKey (name);
 	}
 
 	public	void Add(string name) {
-		if (!_views.ContainsKey (name)) {
+		if (string.IsNullOrEmpty (name))
+			return;
+
+		if (!Contains (name)) {
 			var model = observer.bundleCtr.Instantiate<GameObject> ((name));
 			model.transform.SetParent (_group);
 			var view = model.AddComponent<BackgroundView> ();

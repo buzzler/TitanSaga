@@ -93,6 +93,8 @@ public class SceneMaker : EditorWindow {
 		GUILayout.BeginHorizontal ();
 		if (GUILayout.Button ("ui", GUILayout.Width (90)))
 			OnClickUI ();
+		if (GUILayout.Button ("-", GUILayout.Width (20)))
+			OnClickUIClear ();
 		int oldUI = ArrayUtility.IndexOf<string> (_uis, _data.ui);
 		int newUI = EditorGUILayout.Popup (oldUI, _uis);
 		if (oldUI != newUI)
@@ -101,6 +103,8 @@ public class SceneMaker : EditorWindow {
 		GUILayout.BeginHorizontal ();
 		if (GUILayout.Button ("background", GUILayout.Width (90)))
 			OnClickBackground ();
+		if (GUILayout.Button ("-", GUILayout.Width (20)))
+			OnClickBackgroundClear ();
 		int indexBackground = ArrayUtility.IndexOf<string> (_backgrounds, _data.background);
 		int newBackground = EditorGUILayout.Popup (indexBackground, _backgrounds);
 		if (indexBackground != newBackground)
@@ -198,7 +202,7 @@ public class SceneMaker : EditorWindow {
 				int newLabel = EditorGUILayout.Popup (oldLabel, _actorsAry, GUILayout.Width (90));
 				if (oldLabel != newLabel)
 					dialog.actor = _data.GetActorByLabel (_actorsAry[newLabel]).name;
-				dialog.comment = GUILayout.TextField (dialog.comment);
+				dialog.comment = GUILayout.TextArea (dialog.comment);
 				int oldIndex = ArrayUtility.IndexOf<string> (_positions, dialog.position);
 				int newIndex = EditorGUILayout.Popup (oldIndex, _positions, GUILayout.Width (90));
 				if (oldIndex != newIndex)
@@ -346,7 +350,19 @@ public class SceneMaker : EditorWindow {
 		go.transform.SetParent (canvas, false);
 	}
 
+	private	void OnClickUIClear() {
+		if (_data == null)
+			return;
+		_data.ui = string.Empty;
+	}
+
 	private void OnClickBackground() {
+	}
+
+	private	void OnClickBackgroundClear() {
+		if (_data == null)
+			return;
+		_data.background = string.Empty;
 	}
 
 	private	void OnClickAddActor() {
