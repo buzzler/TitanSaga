@@ -42,6 +42,7 @@ public	class ShotData {
 	public	string position;
 	public	string emotion;
 	public	string comment;
+	public	string parameter;
 
 	public	ShotData() {
 		command = ShotCommand.NONE;
@@ -49,6 +50,7 @@ public	class ShotData {
 		position = string.Empty;
 		emotion = string.Empty;
 		comment = string.Empty;
+		parameter = string.Empty;
 	}
 }
 
@@ -68,5 +70,6 @@ public	class ActorData {
 public	enum ShotCommand {
 	NONE = 0,
 	ACTOR_CLEAR,
+	SCENE_CHANGE,
 	BREAK
 }

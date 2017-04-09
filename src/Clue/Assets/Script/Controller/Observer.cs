@@ -38,6 +38,8 @@ public class Observer : MonoBehaviour {
 		DontDestroyOnLoad (gameObject);
 		if (OnInited != null)
 			OnInited.Invoke ();
+
+		scenarioCtr.Play ("MainMenu");
 	}
 
 	void Update() {

@@ -5,12 +5,11 @@ public class ScenarioController : Controller {
 	private	SceneData _current;
 	private	int _index;
 	private	bool _paused;
-	private	Action _callback;
 
 	public	ScenarioController(Observer observer) : base (observer) {
 	}
 
-	public	void Play(string bundlePath, Action callback = null) {
+	public	void Play(string bundlePath) {
 		var asset = observer.bundleCtr.Load<TextAsset> (bundlePath);
 		if (asset == null)
 			return;
@@ -20,7 +19,6 @@ public class ScenarioController : Controller {
 
 		_index = 0;
 		_current = newScene;
-		_callback = callback;
 
 		var containBackground = observer.backgroundCtr.Contains (_current.background);
 		var containUI = observer.uiCtr.Contains (_current.ui);
@@ -61,8 +59,6 @@ public class ScenarioController : Controller {
 			return;
 		if (_index >= _current.shots.Length) {
 			observer.dialogCtr.Hide ();
-			if (_callback != null)
-				_callback.Invoke ();
 			return;
 		}
 
@@ -70,25 +66,51 @@ public class ScenarioController : Controller {
 		do {
 			sd = _current.shots [_index++];
 
-			// command
-			if (sd.command == ShotCommand.ACTOR_CLEAR)
-				observer.actorCtr.RemoveAll ();
-			else if (sd.command == ShotCommand.BREAK)
-				_paused = true;
-
-			// actor
-			if (!string.IsNullOrEmpty (sd.actor))
-				observer.actorCtr.Add (_current.GetActorByName(sd.actor).asset, sd.position, sd.emotion);
-
-			// dialog
-			if (!string.IsNullOrEmpty (sd.comment)) {
-				observer.dialogCtr.SetCallback (Next);
-				observer.dialogCtr.Show (_current.GetActorByName(sd.actor).label, sd.comment);
+			switch (sd.command) {
+			case ShotCommand.ACTOR_CLEAR:
+				ExecuteActorClear(sd);
+				break;
+			case ShotCommand.BREAK:
+				ExecuteBreak(sd);
+				break;
+			case ShotCommand.NONE:
+				ExecuteDefault(sd, Next);
+				break;
+			case ShotCommand.SCENE_CHANGE:
+				ExecuteSceneChange(sd);
+				break;
 			}
 		} while (
 			(!_paused) &&
 			(_index < _current.shots.Length) &&
 			(_current.shots [_index].actor == sd.actor) &&
 			(_current.shots [_index].position == sd.position));
+	}
+
+	private	void ExecuteDefault(ShotData data, Action callback = null) {
+		if (!string.IsNullOrEmpty (data.actor)) {
+			observer.actorCtr.Add (_current.GetActorByName (data.actor).asset, data.position, data.emotion);
+		}
+		if (!string.IsNullOrEmpty (data.comment)) {
+			observer.dialogCtr.SetCallback (callback);
+			observer.dialogCtr.Show (_current.GetActorByName (data.actor).label, data.comment);
+		} else if (callback != null) {
+			callback.Invoke ();
+		}
+	}
+
+	private	void ExecuteActorClear(ShotData data) {
+		observer.actorCtr.RemoveAll ();
+		ExecuteDefault (data, Next);
+	}
+
+	private	void ExecuteBreak(ShotData data) {
+		ExecuteDefault (data);
+	}
+
+	private	void ExecuteSceneChange(ShotData data) {
+		ExecuteDefault (data, () => {
+			this.Play (data.parameter);
+		});
 	}
 }

@@ -12,6 +12,7 @@ public class SceneMaker : EditorWindow {
 
 	private	string		_path;
 	private	SceneData	_data;
+	private	string[]	_scenes;
 	private	string[]	_uis;
 	private	string[]	_backgrounds;
 	private	string[]	_prefabs;
@@ -26,6 +27,7 @@ public class SceneMaker : EditorWindow {
 	public	SceneMaker() {
 		_path		= null;
 		_data		= null;
+		_scenes		= new string[0];
 		_uis		= new string[0];
 		_backgrounds= new string[0];
 		_prefabs	= new string[0];
@@ -212,6 +214,12 @@ public class SceneMaker : EditorWindow {
 				if (oldIndex != newIndex)
 					dialog.emotion = _emotions [newIndex];
 				dialog.command = (ShotCommand) EditorGUILayout.EnumPopup (dialog.command, GUILayout.Width (90));
+				if (dialog.command == ShotCommand.SCENE_CHANGE) {
+					oldIndex = ArrayUtility.IndexOf (_scenes, dialog.parameter);
+					newIndex = EditorGUILayout.Popup (oldIndex, _scenes, GUILayout.Width (90));
+					if (oldIndex != newIndex)
+						dialog.parameter = _scenes [newIndex];
+				}
 				GUILayout.EndHorizontal ();
 				index++;
 			}
@@ -290,10 +298,19 @@ public class SceneMaker : EditorWindow {
 	private	void OnClickRescan() {
 		UpdateActor ();
 
-		// ui
-		var path = Path.Combine (Application.dataPath, "Art/UI/Resources");
-		var files = Directory.GetFiles (path, "*.prefab", SearchOption.AllDirectories);
+		// scene
+		var path = Path.Combine (Application.dataPath, "Scene/Resources");
+		var files = Directory.GetFiles (path, "*.json", SearchOption.AllDirectories);
 		var list = new List<string> ();
+		for (int i = 0; i < files.Length; i++) {
+			list.Add (Path.GetFileNameWithoutExtension (files [i]));
+		}
+		_scenes = list.ToArray ();
+
+		// ui
+		path = Path.Combine (Application.dataPath, "Art/UI/Resources");
+		files = Directory.GetFiles (path, "*.prefab", SearchOption.AllDirectories);
+		list = new List<string> ();
 		for (int i = 0; i < files.Length; i++) {
 			list.Add (Path.GetFileNameWithoutExtension (files [i]));
 		}

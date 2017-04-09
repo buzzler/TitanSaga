@@ -83,13 +83,6 @@ public class DebugView : MonoBehaviour {
 		var scenario = GameObject.Find ("Dropdown-Scenario").GetComponent<Dropdown> ();
 		var observer = GameObject.FindObjectOfType<Observer> ();
 
-		observer.scenarioCtr.Play (scenario.captionText.text, OnClickClear);
-	}
-
-	public	void OnClickClear() {
-//		var observer = GameObject.FindObjectOfType<Observer> ();
-//		observer.backgroundCtr.RemoveAll ();
-//		observer.actorCtr.RemoveAll ();
-//		observer.dialogCtr.Hide ();
+		observer.scenarioCtr.Play (scenario.captionText.text);
 	}
 }
