@@ -56,25 +56,25 @@ public class SceneMaker : EditorWindow {
 	}
 
 	private	void DrawToolbar() {
-		GUILayout.BeginHorizontal ();
-		if (GUILayout.Button ("New", GUILayout.Width (90)))
+		GUILayout.BeginHorizontal (EditorStyles.toolbar);
+		if (GUILayout.Button ("New", EditorStyles.toolbarButton, GUILayout.Width (90)))
 			OnClickNew ();
-		if (GUILayout.Button ("Open...", GUILayout.Width (90)))
+		if (GUILayout.Button ("Open...", EditorStyles.toolbarButton, GUILayout.Width (90)))
 			OnClickOpen ();
 		if (!string.IsNullOrEmpty (_path))
-		if (GUILayout.Button ("Save", GUILayout.Width (90)))
+		if (GUILayout.Button ("Save", EditorStyles.toolbarButton, GUILayout.Width (90)))
 			OnClickSave ();
 		if (_data != null)
-		if (GUILayout.Button ("Save As...", GUILayout.Width (90)))
+		if (GUILayout.Button ("Save As...", EditorStyles.toolbarButton, GUILayout.Width (90)))
 			OnClickSaveAs ();
 		GUILayout.FlexibleSpace ();
 		if (_data != null)
-		if (GUILayout.Button ("Rescan", GUILayout.Width (90)))
+		if (GUILayout.Button ("Rescan", EditorStyles.toolbarButton, GUILayout.Width (90)))
 			OnClickRescan ();
 		if (_data != null)
 		if (Application.isPlaying)
 		if (_path != null)
-		if (GUILayout.Button("Play", GUILayout.Width(90)))
+		if (GUILayout.Button("Play", EditorStyles.toolbarButton, GUILayout.Width(90)))
 			OnClickPlay ();
 		GUILayout.EndHorizontal ();
 	}
@@ -84,7 +84,7 @@ public class SceneMaker : EditorWindow {
 			return;
 		GUILayout.BeginVertical ();
 		GUILayout.BeginHorizontal ();
-		GUILayout.Button ("title", GUILayout.Width (90));
+		GUILayout.Button ("title", EditorStyles.miniButton, GUILayout.Width (90));
 		var old_title = _data.title;
 		var new_title = GUILayout.TextField (_data.title);
 		if (old_title != new_title) {
@@ -93,9 +93,9 @@ public class SceneMaker : EditorWindow {
 		}
 		GUILayout.EndHorizontal ();
 		GUILayout.BeginHorizontal ();
-		if (GUILayout.Button ("ui", GUILayout.Width (90)))
+		if (GUILayout.Button ("ui", EditorStyles.miniButton, GUILayout.Width (90)))
 			OnClickUI ();
-		if (GUILayout.Button ("-", GUILayout.Width (20)))
+		if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
 			OnClickUIClear ();
 		int oldUI = ArrayUtility.IndexOf<string> (_uis, _data.ui);
 		int newUI = EditorGUILayout.Popup (oldUI, _uis);
@@ -103,9 +103,9 @@ public class SceneMaker : EditorWindow {
 			_data.ui = _uis [newUI];
 		GUILayout.EndHorizontal ();
 		GUILayout.BeginHorizontal ();
-		if (GUILayout.Button ("background", GUILayout.Width (90)))
+		if (GUILayout.Button ("background", EditorStyles.miniButton, GUILayout.Width (90)))
 			OnClickBackground ();
-		if (GUILayout.Button ("-", GUILayout.Width (20)))
+		if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
 			OnClickBackgroundClear ();
 		int indexBackground = ArrayUtility.IndexOf<string> (_backgrounds, _data.background);
 		int newBackground = EditorGUILayout.Popup (indexBackground, _backgrounds);
@@ -125,25 +125,25 @@ public class SceneMaker : EditorWindow {
 		GUILayout.BeginHorizontal (GUILayout.Width (90));
 		_showActor = GUILayout.Toggle (_showActor, "actors");
 		if (_showActor)
-		if (GUILayout.Button ("+", GUILayout.Width (20)))
+		if (GUILayout.Button ("+", EditorStyles.miniButton, GUILayout.Width (20)))
 			OnClickAddActor ();
 		GUILayout.EndHorizontal ();
 		GUILayout.Space (4);
 		GUILayout.BeginVertical ();
 		if (_showActor) {
 			GUILayout.BeginHorizontal ();
-			if (GUILayout.Button ("-", GUILayout.Width (20)))
+			if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
 				OnClickRemoveActor (-1);
-			GUILayout.Button ("name", GUILayout.Width (90));
-			GUILayout.Button ("asset");
-			GUILayout.Button ("alias", GUILayout.Width (90));
+			GUILayout.Button ("name", EditorStyles.miniButton, GUILayout.Width (90));
+			GUILayout.Button ("asset", EditorStyles.miniButton);
+			GUILayout.Button ("alias", EditorStyles.miniButton, GUILayout.Width (90));
 			GUILayout.EndHorizontal ();
 
 			int index = 0;
 			for (int i = 0; i < _data.actors.Length; i++) {
 				var actor = _data.actors [i];
 				GUILayout.BeginHorizontal ();
-				if (GUILayout.Button ("-", GUILayout.Width (20)))
+				if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
 					OnClickRemoveActor (index);
 				var oldLabel = actor.label;
 				var newLabel = GUILayout.TextField (oldLabel, GUILayout.Width (90));
@@ -176,7 +176,7 @@ public class SceneMaker : EditorWindow {
 		GUILayout.BeginHorizontal (GUILayout.Width (90));
 		_showDialog = GUILayout.Toggle (_showDialog, "shots");
 		if (_showDialog)
-		if (GUILayout.Button ("+", GUILayout.Width (20)))
+		if (GUILayout.Button ("+", EditorStyles.miniButton, GUILayout.Width (20)))
 			OnClickAddDialog ();
 		GUILayout.EndHorizontal ();
 
@@ -185,20 +185,20 @@ public class SceneMaker : EditorWindow {
 
 		if (_showDialog) {
 			GUILayout.BeginHorizontal ();
-			if (GUILayout.Button ("-", GUILayout.Width (20)))
+			if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
 				OnClickRemoveActor (-1);
-			GUILayout.Button ("name", GUILayout.Width (90));
-			GUILayout.Button ("comment");
-			GUILayout.Button ("position", GUILayout.Width (90));
-			GUILayout.Button ("emotion", GUILayout.Width (90));
-			GUILayout.Button ("command", GUILayout.Width (90));
+			GUILayout.Button ("name", EditorStyles.miniButton, GUILayout.Width (90));
+			GUILayout.Button ("comment", EditorStyles.miniButton);
+			GUILayout.Button ("position", EditorStyles.miniButton, GUILayout.Width (90));
+			GUILayout.Button ("emotion", EditorStyles.miniButton, GUILayout.Width (90));
+			GUILayout.Button ("command", EditorStyles.miniButton, GUILayout.Width (90));
 			GUILayout.EndHorizontal ();
 
 			int index = 0;
 			for (int i = 0; i < _data.shots.Length; i++) {
 				var dialog = _data.shots [i];
 				GUILayout.BeginHorizontal ();
-				if (GUILayout.Button ("-", GUILayout.Width (20)))
+				if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
 					OnClickRemoveDialog (index);
 				int oldLabel = _actorsDic.ContainsKey (dialog.actor) ? ArrayUtility.IndexOf<string> (_actorsAry, _actorsDic [dialog.actor]) : -1;
 				int newLabel = EditorGUILayout.Popup (oldLabel, _actorsAry, GUILayout.Width (90));
