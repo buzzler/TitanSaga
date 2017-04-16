@@ -267,20 +267,18 @@ public class SceneMaker : EditorWindow {
 		if (clear) {
 			_path = path;
 			_data = JsonUtility.FromJson<SceneData> (File.ReadAllText (path));
-			if (_data != null && _data.title != null)
-				this.titleContent = new GUIContent(_data.title);
+//			if (_data != null && _data.title != null)
+//				this.titleContent = new GUIContent(_data.title);
 			UpdateData ();
 		}
 	}
 
 	private	void OnClickSave() {
-		UpdateInput ();
 		File.WriteAllText (_path, JsonUtility.ToJson (_data), System.Text.Encoding.UTF8);
 		AssetDatabase.Refresh ();
 	}
 
 	private	void OnClickSaveAs() {
-		UpdateInput ();
 		string filepath = null;
 		if (string.IsNullOrEmpty (_path)) {
 			filepath = EditorUtility.SaveFilePanel ("Save Scenario Data", Path.Combine(Application.dataPath, "Scene/Resources"), "", "json");
@@ -439,8 +437,5 @@ public class SceneMaker : EditorWindow {
 
 	private	void UpdateData() {
 		UpdateActor ();
-	}
-
-	private	void UpdateInput() {
 	}
 }
