@@ -20,21 +20,9 @@ public	class MansionData {
 		});
 	}
 
-	public	RoomData GetRoomByName(string name) {
-		return UnityEditor.ArrayUtility.Find<RoomData> (rooms, (RoomData room) => {
-			return room.name == name;
-		});
-	}
-
 	public	EvidenceData GetEvidenceById(string id) {
 		return UnityEditor.ArrayUtility.Find<EvidenceData> (evidences, (EvidenceData evidence) => {
 			return evidence.id == id;
-		});
-	}
-
-	public	EvidenceData GetEvidenceByName(string name) {
-		return UnityEditor.ArrayUtility.Find<EvidenceData> (evidences, (EvidenceData evidence) => {
-			return evidence.name == name;
 		});
 	}
 	#endif
@@ -43,32 +31,25 @@ public	class MansionData {
 [Serializable]
 public class RoomData {
 	public	string	id;
-	public	string	name;
 	public	string	scenario;
-	public	Vector2	location;
+	public	bool	available;
 
 	public	RoomData() {
 		id = string.Empty;
-		name = string.Empty;
-		location = Vector2.zero;
+		scenario = string.Empty;
+		available = false;
 	}
 }
 
 [Serializable]
 public	class EvidenceData {
 	public	string	id;
-	public	string	room;
-	public	string	name;
-	public	string	data;
-	public	bool	view;
-	public	float	cost;
+	public	string	scenario;
+	public	bool	available;
 
 	public	EvidenceData() {
 		id = string.Empty;
-		room = string.Empty;
-		name = string.Empty;
-		data = string.Empty;
-		view = false;
-		cost = 0f;
+		scenario = string.Empty;
+		available = false;
 	}
 }

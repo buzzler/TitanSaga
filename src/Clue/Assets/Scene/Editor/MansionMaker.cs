@@ -11,22 +11,34 @@ public class MansionMaker : EditorWindow {
 	}
 
 	private	string		_path;
+	private	GlobalInfo	_global;
 	private	MansionData	_data;
 	private	string[]	_scenes;
 
 	private	string[]					_roomsAry;
 	private	Dictionary<string, string>	_roomsDic;
+	private	string[]					_evidencesAry;
+	private	Dictionary<string, string>	_evidencesDic;
+
+	private bool _showRoom;
+	private	bool _showEvidence;
 
 	public	MansionMaker() {
 		_path = null;
+		_global = null;
 		_data = null;
 		_scenes = new string[0];
 		_roomsAry = new string[0];
 		_roomsDic = new Dictionary<string, string> ();
+		_evidencesAry = new string[0];
+		_evidencesDic = new Dictionary<string, string> ();
+		_showRoom = true;
+		_showEvidence = true;
 	}
 
 	void OnGUI() {
 		try {
+			Verify();
 			DrawToolbar ();
 			GUILayout.Space (2);
 			DrawMansionData ();
@@ -36,6 +48,13 @@ public class MansionMaker : EditorWindow {
 			DrawEvidenceData ();
 		} catch (System.Exception e) {
 			Debug.LogWarning (e.Message);
+		}
+	}
+
+	private	void Verify() {
+		if (_global == null) {
+			EditorUtility.DisplayDialog ("Error", "Can't find Global.json\nYou must open 'Global Database'", "Ok");
+			this.Close ();
 		}
 	}
 
@@ -55,13 +74,11 @@ public class MansionMaker : EditorWindow {
 		if (_data != null)
 		if (GUILayout.Button ("Rescan", EditorStyles.toolbarButton, GUILayout.Width (90)))
 			OnClickRescan ();
-//		if (GUILayout.Button ("Play", EditorStyles.toolbarButton, GUILayout.Width (90)))
-//			OnClickPlay ();
 		GUILayout.EndHorizontal ();
 	}
 
 	private	void DrawMansionData() {
-		if (_data == null)
+		if (_global == null || _data == null)
 			return;
 		
 		GUILayout.BeginHorizontal ();
@@ -71,42 +88,49 @@ public class MansionMaker : EditorWindow {
 	}
 
 	private	void DrawRoomData() {
-		if (_data == null)
+		if (_global == null || _data == null)
 			return;
 		if (_roomsAry.Length != _roomsDic.Count)
 			UpdateRoom();
+		if (_evidencesAry.Length != _evidencesDic.Count)
+			UpdateEvidence ();
 		
 		GUILayout.BeginHorizontal ();
 		GUILayout.BeginHorizontal (GUILayout.Width (90));
-		GUILayout.Toggle (true, "rooms");
+		_showRoom = GUILayout.Toggle (_showRoom, "room");
 		if (GUILayout.Button ("+", EditorStyles.miniButton, GUILayout.Width (20)))
 			OnClickAddRoom ();
 		GUILayout.EndHorizontal ();
 		GUILayout.Space (4);
 		GUILayout.BeginVertical ();
 
-		GUILayout.BeginHorizontal ();
-		if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
-			OnClickRemoveRoom (-1);
-		GUILayout.Button ("name", EditorStyles.miniButton, GUILayout.Width (90));
-		GUILayout.Button ("location", EditorStyles.miniButton, GUILayout.Width (90));
-		GUILayout.Button ("scenario", EditorStyles.miniButton);
-		GUILayout.Button ("alias", EditorStyles.miniButton, GUILayout.Width (90));
-		GUILayout.EndHorizontal ();
-
-		for (int i = 0; i < _data.rooms.Length; i++) {
-			var room = _data.rooms [i];
+		if (_showRoom) {
 			GUILayout.BeginHorizontal ();
 			if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
-				OnClickRemoveRoom (i);
-			room.name = GUILayout.TextField (room.name, GUILayout.Width (90));
-			room.location = EditorGUILayout.Vector2Field ("", room.location, GUILayout.Width (90));
-			var oldIndex = ArrayUtility.IndexOf<string> (_scenes, room.scenario);
-			var newIndex = EditorGUILayout.Popup (oldIndex, _scenes);
-			if (oldIndex != newIndex)
-				room.scenario = _scenes [newIndex];
-			room.id = GUILayout.TextField (room.id, GUILayout.Width (90));
+				OnClickRemoveRoom (-1);
+			GUILayout.Button ("name", EditorStyles.miniButton, GUILayout.Width (90));
+			GUILayout.Button ("scenario", EditorStyles.miniButton);
+			GUILayout.Toggle (false, string.Empty, GUILayout.Width (20));
 			GUILayout.EndHorizontal ();
+
+			for (int i = 0; i < _data.rooms.Length; i++) {
+				var room = _data.rooms [i];
+				GUILayout.BeginHorizontal ();
+				if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
+					OnClickRemoveRoom (i);
+				int oldIndex;
+				int newIndex;
+				oldIndex = ArrayUtility.IndexOf<string> (_roomsAry, _roomsDic.ContainsKey (room.id) ? _roomsDic [room.id] : string.Empty);
+				newIndex = EditorGUILayout.Popup (oldIndex, _roomsAry, GUILayout.Width (90));
+				if (oldIndex != newIndex)
+					room.id = _global.GetRoomByName (_roomsAry [newIndex]).id;
+				oldIndex = ArrayUtility.IndexOf<string> (_scenes, room.scenario);
+				newIndex = EditorGUILayout.Popup (oldIndex, _scenes);
+				if (oldIndex != newIndex)
+					room.scenario = _scenes [newIndex];
+				room.available = GUILayout.Toggle (room.available, "", GUILayout.Width (20));
+				GUILayout.EndHorizontal ();
+			}
 		}
 
 		GUILayout.EndVertical ();
@@ -114,42 +138,46 @@ public class MansionMaker : EditorWindow {
 	}
 
 	private	void DrawEvidenceData() {
-		if (_data == null)
+		if (_global == null || _data == null)
 			return;
 		
 		GUILayout.BeginHorizontal ();
 		GUILayout.BeginHorizontal (GUILayout.Width (90));
-		GUILayout.Toggle (true, "objects");
+		_showEvidence = GUILayout.Toggle (_showEvidence, "evidence");
 		if (GUILayout.Button ("+", EditorStyles.miniButton, GUILayout.Width (20)))
 			OnClickAddEvidence ();
 		GUILayout.EndHorizontal ();
 		GUILayout.Space (4);
 		GUILayout.BeginVertical ();
 
-		GUILayout.BeginHorizontal ();
-		if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
-			OnClickRemoveEvidence (-1);
-		GUILayout.Button ("room", EditorStyles.miniButton, GUILayout.Width (90));
-		GUILayout.Button ("name", EditorStyles.miniButton, GUILayout.Width (90));
-		GUILayout.Button ("data", EditorStyles.miniButton);
-		GUILayout.Button ("cost", EditorStyles.miniButton, GUILayout.Width (90));
-		GUILayout.Button ("alias", EditorStyles.miniButton, GUILayout.Width (90));
-		GUILayout.EndHorizontal ();
 
-		for (int i = 0; i < _data.evidences.Length; i++) {
-			var evidence = _data.evidences [i];
+		if (_showEvidence) {
 			GUILayout.BeginHorizontal ();
 			if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
-				OnClickRemoveEvidence (i);
-			var oldIndex = _roomsDic.ContainsKey (evidence.room) ? ArrayUtility.IndexOf<string> (_roomsAry, _roomsDic [evidence.room]) : -1;
-			var newIndex = EditorGUILayout.Popup (oldIndex, _roomsAry, GUILayout.Width (90));
-			if (oldIndex != newIndex)
-				evidence.room = _data.GetRoomByName (_roomsAry [newIndex]).id;
-			evidence.name = GUILayout.TextField (evidence.name, GUILayout.Width (90));
-			evidence.data = GUILayout.TextArea (evidence.data);
-			evidence.cost = EditorGUILayout.FloatField (evidence.cost, GUILayout.Width (90));
-			evidence.id = GUILayout.TextField (evidence.id, GUILayout.Width (90));
+				OnClickRemoveEvidence (-1);
+			GUILayout.Button ("name", EditorStyles.miniButton, GUILayout.Width (90));
+			GUILayout.Button ("scenario", EditorStyles.miniButton);
+			GUILayout.Toggle (false, string.Empty, GUILayout.Width (20));
 			GUILayout.EndHorizontal ();
+
+			for (int i = 0; i < _data.evidences.Length; i++) {
+				var evidence = _data.evidences [i];
+				GUILayout.BeginHorizontal ();
+				if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
+					OnClickRemoveEvidence (i);
+				int oldIndex;
+				int newIndex;
+				oldIndex = ArrayUtility.IndexOf<string> (_evidencesAry, _evidencesDic.ContainsKey (evidence.id) ? _evidencesDic [evidence.id] : string.Empty);
+				newIndex = EditorGUILayout.Popup (oldIndex, _evidencesAry, GUILayout.Width (90));
+				if (oldIndex != newIndex)
+					evidence.id = _global.GetEvidenceByName (_evidencesAry [newIndex]).id;
+				oldIndex = ArrayUtility.IndexOf<string> (_scenes, evidence.scenario);
+				newIndex = EditorGUILayout.Popup (oldIndex, _scenes);
+				if (oldIndex != newIndex)
+					evidence.scenario = _scenes [newIndex];
+				evidence.available = GUILayout.Toggle (evidence.available, "", GUILayout.Width (20));
+				GUILayout.EndHorizontal ();
+			}
 		}
 
 		GUILayout.EndVertical ();
@@ -181,8 +209,6 @@ public class MansionMaker : EditorWindow {
 		if (clear) {
 			_path = path;
 			_data = JsonUtility.FromJson<MansionData> (File.ReadAllText (path));
-//			if (_data != null && _data.name != null)
-//				this.titleContent = new GUIContent(_data.name);
 			UpdateData ();
 		}
 	}
@@ -208,20 +234,8 @@ public class MansionMaker : EditorWindow {
 	}
 
 	public	void OnClickRescan() {
-		UpdateRoom ();
-
-		// scene
-		var path = Path.Combine (Application.dataPath, "Scene/Resources");
-		var files = Directory.GetFiles (path, "*.json", SearchOption.AllDirectories);
-		var list = new List<string> ();
-		for (int i = 0; i < files.Length; i++) {
-			list.Add (Path.GetFileNameWithoutExtension (files [i]));
-		}
-		_scenes = list.ToArray ();
+		UpdateData ();
 	}
-
-//	public	void OnClickPlay() {
-//	}
 
 	public	void OnClickAddRoom() {
 		List<RoomData> list = null;
@@ -229,7 +243,21 @@ public class MansionMaker : EditorWindow {
 			list = new List<RoomData> ();
 		else
 			list = new List<RoomData> (_data.rooms);
-		list.Add (new RoomData ());
+
+		if (_global == null) {
+			list.Add (new RoomData ());
+		} else {
+			foreach (var info in _global.rooms) {
+				int index = list.FindIndex ((RoomData room) => {
+					return room.id == info.id;
+				});
+				if (index < 0) {
+					var newRoom = new RoomData ();
+					newRoom.id = info.id;
+					list.Add (newRoom);
+				}
+			}
+		}
 		_data.rooms = list.ToArray ();
 	}
 
@@ -240,7 +268,6 @@ public class MansionMaker : EditorWindow {
 		} else if (EditorUtility.DisplayDialog ("Remove a Room", "This will remove a selected room. Is it alright?", "Ok", "Cancel")) {
 			ArrayUtility.RemoveAt<RoomData> (ref _data.rooms, index);
 		}
-		UpdateRoom ();
 	}
 
 	public	void OnClickAddEvidence() {
@@ -263,21 +290,49 @@ public class MansionMaker : EditorWindow {
 	}
 
 	private	void UpdateRoom() {
-		if (_data == null)
+		if (_global == null)
 			return;
 
 		_roomsAry = null;
 		_roomsDic = new Dictionary<string, string> ();
 		var list = new List<string> ();
-		for (var i = _data.rooms.Length - 1; i >= 0; i--) {
-			var room = _data.rooms [i];
+		for (var i = _global.rooms.Length - 1; i >= 0; i--) {
+			var room = _global.rooms [i];
 			list.Add (room.name);
 			_roomsDic.Add (room.id, room.name);
 		}
 		_roomsAry = list.ToArray ();
 	}
 
+	private	void UpdateEvidence() {
+		if (_global == null)
+			return;
+
+		_evidencesAry = null;
+		_evidencesDic = new Dictionary<string, string> ();
+		var list = new List<string> ();
+		for (var i = _global.evidences.Length - 1; i >= 0; i--) {
+			var evidence = _global.evidences [i];
+			list.Add (evidence.name);
+			_evidencesDic.Add (evidence.id, evidence.name);
+		}
+		_evidencesAry = list.ToArray ();
+	}
+
+	private	void UpdateScenario() {
+		var path = Path.Combine (Application.dataPath, "Scene/Resources");
+		var files = Directory.GetFiles (path, "*.json", SearchOption.AllDirectories);
+		var list = new List<string> ();
+		for (int i = 0; i < files.Length; i++) {
+			list.Add (Path.GetFileNameWithoutExtension (files [i]));
+		}
+		_scenes = list.ToArray ();
+	}
+
 	private	void UpdateData() {
+		_global = GlobalInfo.LoadFromJson (Path.Combine (Application.dataPath, "Scene/Resources/Global.json"));
 		UpdateRoom ();
+		UpdateEvidence ();
+		UpdateScenario ();
 	}
 }
