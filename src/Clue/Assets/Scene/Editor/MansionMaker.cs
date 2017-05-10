@@ -186,8 +186,8 @@ public class MansionMaker : EditorWindow {
 				newIndex = EditorGUILayout.Popup (oldIndex, _scenes);
 				if (oldIndex != newIndex)
 					evidence.scenario = _scenes [newIndex];
-				var info = _global.GetEvidenceByName (_evidencesDic.ContainsKey (evidence.id) ? _evidencesDic [evidence.id] : string.Empty);
-				oldIndex = info != null ? ArrayUtility.IndexOf<string> (_roomsAry, _roomsDic[info.room]) : -1;
+				var info = _global.GetEvidenceById (evidence.id);
+				oldIndex = (info != null) ? ArrayUtility.IndexOf<string> (_roomsAry, _roomsDic[info.room]) : -1;
 				EditorGUILayout.Popup (oldIndex, _roomsAry, GUILayout.Width (90));
 				evidence.available = GUILayout.Toggle (evidence.available, "", GUILayout.Width (20));
 				GUILayout.EndHorizontal ();
@@ -207,6 +207,11 @@ public class MansionMaker : EditorWindow {
 		if (clear) {
 			_path = null;
 			_data = new MansionData ();
+			if (_global != null) {
+				OnClickAddRoom ();
+				OnClickAddEvidence ();
+				OnClickAlign ();
+			}
 			UpdateData ();
 		}
 	}
@@ -278,11 +283,11 @@ public class MansionMaker : EditorWindow {
 				return obj.id == infoY.room;
 			});
 			var compare = string.Compare(infoRoomX.name, infoRoomY.name);
-//			if (compare == 0) {
-//				return string.Compare(infoX.name, infoY.name);
-//			} else {
+			if (compare == 0) {
+				return string.Compare(infoX.name, infoY.name);
+			} else {
 				return compare;
-//			}
+			}
 		});
 		_data.rooms = rooms;
 		_data.evidences = evidences;
@@ -326,24 +331,14 @@ public class MansionMaker : EditorWindow {
 	}
 
 	public	void OnClickAddEvidence() {
-		List<EvidenceData> list = null;
-		if (_data.evidences == null)
-			list = new List<EvidenceData> ();
-		else
-			list = new List<EvidenceData> (_data.evidences);
-
+		List<EvidenceData> list = new List<EvidenceData> ();
 		if (_global == null) {
 			list.Add (new EvidenceData ());
 		} else {
 			foreach (var info in _global.evidences) {
-				int index = list.FindIndex ((EvidenceData evidence) => {
-					return evidence.id == info.id;
-				});
-				if (index < 0) {
-					var newEvidence = new EvidenceData ();
-					newEvidence.id = info.id;
-					list.Add (newEvidence);
-				}
+				var newEvidence = new EvidenceData ();
+				newEvidence.id = info.id;
+				list.Add (newEvidence);
 			}
 		}
 		_data.evidences = list.ToArray ();

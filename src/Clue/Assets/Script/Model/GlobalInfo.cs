@@ -34,6 +34,12 @@ public class GlobalInfo {
 			return evidence.name == name;
 		});
 	}
+
+	public	EvidenceInfo GetEvidenceById(string id) {
+		return UnityEditor.ArrayUtility.Find<EvidenceInfo> (evidences, (EvidenceInfo evidence) => {
+			return evidence.id == id;
+		});
+	}
 	#endif
 }
 
