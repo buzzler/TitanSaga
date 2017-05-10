@@ -22,6 +22,7 @@ public class MansionMaker : EditorWindow {
 
 	private bool _showRoom;
 	private	bool _showEvidence;
+	private	Vector2 _scroll;
 
 	public	MansionMaker() {
 		_path = null;
@@ -34,6 +35,7 @@ public class MansionMaker : EditorWindow {
 		_evidencesDic = new Dictionary<string, string> ();
 		_showRoom = true;
 		_showEvidence = true;
+		_scroll = Vector2.zero;
 	}
 
 	void OnGUI() {
@@ -53,6 +55,10 @@ public class MansionMaker : EditorWindow {
 
 	private	void Verify() {
 		if (_global == null) {
+			UpdateData ();
+		}
+
+		if (_global == null) {
 			EditorUtility.DisplayDialog ("Error", "Can't find Global.json\nYou must open 'Global Database'", "Ok");
 			this.Close ();
 		}
@@ -71,6 +77,9 @@ public class MansionMaker : EditorWindow {
 		if (GUILayout.Button ("Save As...", EditorStyles.toolbarButton, GUILayout.Width (90)))
 			OnClickSaveAs ();
 		GUILayout.FlexibleSpace ();
+		if (_data != null)
+		if (GUILayout.Button ("Align", EditorStyles.toolbarButton, GUILayout.Width (90)))
+			OnClickAlign ();
 		if (_data != null)
 		if (GUILayout.Button ("Rescan", EditorStyles.toolbarButton, GUILayout.Width (90)))
 			OnClickRescan ();
@@ -121,9 +130,10 @@ public class MansionMaker : EditorWindow {
 				int oldIndex;
 				int newIndex;
 				oldIndex = ArrayUtility.IndexOf<string> (_roomsAry, _roomsDic.ContainsKey (room.id) ? _roomsDic [room.id] : string.Empty);
-				newIndex = EditorGUILayout.Popup (oldIndex, _roomsAry, GUILayout.Width (90));
-				if (oldIndex != newIndex)
-					room.id = _global.GetRoomByName (_roomsAry [newIndex]).id;
+//				newIndex = EditorGUILayout.Popup (oldIndex, _roomsAry, GUILayout.Width (90));
+//				if (oldIndex != newIndex)
+//					room.id = _global.GetRoomByName (_roomsAry [newIndex]).id;
+				EditorGUILayout.Popup (oldIndex, _roomsAry, GUILayout.Width (90));
 				oldIndex = ArrayUtility.IndexOf<string> (_scenes, room.scenario);
 				newIndex = EditorGUILayout.Popup (oldIndex, _scenes);
 				if (oldIndex != newIndex)
@@ -147,9 +157,8 @@ public class MansionMaker : EditorWindow {
 		if (GUILayout.Button ("+", EditorStyles.miniButton, GUILayout.Width (20)))
 			OnClickAddEvidence ();
 		GUILayout.EndHorizontal ();
-		GUILayout.Space (4);
 		GUILayout.BeginVertical ();
-
+		_scroll = GUILayout.BeginScrollView (_scroll);
 
 		if (_showEvidence) {
 			GUILayout.BeginHorizontal ();
@@ -157,6 +166,7 @@ public class MansionMaker : EditorWindow {
 				OnClickRemoveEvidence (-1);
 			GUILayout.Button ("name", EditorStyles.miniButton, GUILayout.Width (90));
 			GUILayout.Button ("scenario", EditorStyles.miniButton);
+			GUILayout.Button ("room", EditorStyles.miniButton, GUILayout.Width (90));
 			GUILayout.Toggle (false, string.Empty, GUILayout.Width (20));
 			GUILayout.EndHorizontal ();
 
@@ -168,18 +178,23 @@ public class MansionMaker : EditorWindow {
 				int oldIndex;
 				int newIndex;
 				oldIndex = ArrayUtility.IndexOf<string> (_evidencesAry, _evidencesDic.ContainsKey (evidence.id) ? _evidencesDic [evidence.id] : string.Empty);
-				newIndex = EditorGUILayout.Popup (oldIndex, _evidencesAry, GUILayout.Width (90));
-				if (oldIndex != newIndex)
-					evidence.id = _global.GetEvidenceByName (_evidencesAry [newIndex]).id;
+//				newIndex = EditorGUILayout.Popup (oldIndex, _evidencesAry, GUILayout.Width (90));
+//				if (oldIndex != newIndex)
+//					evidence.id = _global.GetEvidenceByName (_evidencesAry [newIndex]).id;
+				EditorGUILayout.Popup (oldIndex, _evidencesAry, GUILayout.Width (90));
 				oldIndex = ArrayUtility.IndexOf<string> (_scenes, evidence.scenario);
 				newIndex = EditorGUILayout.Popup (oldIndex, _scenes);
 				if (oldIndex != newIndex)
 					evidence.scenario = _scenes [newIndex];
+				var info = _global.GetEvidenceByName (_evidencesDic.ContainsKey (evidence.id) ? _evidencesDic [evidence.id] : string.Empty);
+				oldIndex = info != null ? ArrayUtility.IndexOf<string> (_roomsAry, _roomsDic[info.room]) : -1;
+				EditorGUILayout.Popup (oldIndex, _roomsAry, GUILayout.Width (90));
 				evidence.available = GUILayout.Toggle (evidence.available, "", GUILayout.Width (20));
 				GUILayout.EndHorizontal ();
 			}
 		}
 
+		GUILayout.EndScrollView ();
 		GUILayout.EndVertical ();
 		GUILayout.EndHorizontal ();
 	}
@@ -233,6 +248,46 @@ public class MansionMaker : EditorWindow {
 		OnClickSave ();
 	}
 
+	public	void OnClickAlign() {
+		if (_global == null || _data == null)
+			return;
+
+		var rooms = _data.rooms;
+		System.Array.Sort<RoomData> (rooms, (RoomData x, RoomData y) => {
+			var infoX = ArrayUtility.Find<RoomInfo>(_global.rooms, (RoomInfo obj) => {
+				return obj.id == x.id;
+			});
+			var infoY = ArrayUtility.Find<RoomInfo>(_global.rooms, (RoomInfo obj) => {
+				return obj.id == y.id;
+			});
+			return string.Compare(infoX.name, infoY.name);
+		});
+
+		var evidences = _data.evidences;
+		System.Array.Sort<EvidenceData>(evidences, (EvidenceData x, EvidenceData y) => {
+			var infoX = ArrayUtility.Find<EvidenceInfo>(_global.evidences, (EvidenceInfo obj) => {
+				return obj.id == x.id;
+			});
+			var infoY = ArrayUtility.Find<EvidenceInfo>(_global.evidences, (EvidenceInfo obj) => {
+				return obj.id == y.id;
+			});
+			var infoRoomX = ArrayUtility.Find<RoomInfo>(_global.rooms, (RoomInfo obj) => {
+				return obj.id == infoX.room;
+			});
+			var infoRoomY = ArrayUtility.Find<RoomInfo>(_global.rooms, (RoomInfo obj) => {
+				return obj.id == infoY.room;
+			});
+			var compare = string.Compare(infoRoomX.name, infoRoomY.name);
+//			if (compare == 0) {
+//				return string.Compare(infoX.name, infoY.name);
+//			} else {
+				return compare;
+//			}
+		});
+		_data.rooms = rooms;
+		_data.evidences = evidences;
+	}
+
 	public	void OnClickRescan() {
 		UpdateData ();
 	}
@@ -276,7 +331,21 @@ public class MansionMaker : EditorWindow {
 			list = new List<EvidenceData> ();
 		else
 			list = new List<EvidenceData> (_data.evidences);
-		list.Add (new EvidenceData ());
+
+		if (_global == null) {
+			list.Add (new EvidenceData ());
+		} else {
+			foreach (var info in _global.evidences) {
+				int index = list.FindIndex ((EvidenceData evidence) => {
+					return evidence.id == info.id;
+				});
+				if (index < 0) {
+					var newEvidence = new EvidenceData ();
+					newEvidence.id = info.id;
+					list.Add (newEvidence);
+				}
+			}
+		}
 		_data.evidences = list.ToArray ();
 	}
 
