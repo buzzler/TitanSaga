@@ -44,17 +44,17 @@ public class UIController : Controller {
 		}
 	}
 
-	public	void Change(string name) {
+	public	Transform Change(string name) {
 		if (string.IsNullOrEmpty (name)) {
 			RemoveAll ();
-			return;
+			return null;
 		}
 
 		if (Contains (name))
-			return;
+			return _current[name];
 
 		RemoveAll ();
-		Add (name);
+		return Add (name);
 	}
 
 	public	void Remove(string name, bool force = false) {

@@ -94,6 +94,33 @@ public class MansionMaker : EditorWindow {
 		GUILayout.Button ("name", EditorStyles.miniButton, GUILayout.Width(90));
 		_data.name = GUILayout.TextField (_data.name);
 		GUILayout.EndHorizontal ();
+
+		int oldIndex;
+		int newIndex;
+
+		GUILayout.BeginHorizontal ();
+		GUILayout.Button ("prologue", EditorStyles.miniButton, GUILayout.Width(90));
+		oldIndex = ArrayUtility.IndexOf<string> (_scenes, _data.prologueScenario);
+		newIndex = EditorGUILayout.Popup (oldIndex, _scenes);
+		if (oldIndex != newIndex)
+			_data.prologueScenario = _scenes [newIndex];
+		GUILayout.EndHorizontal ();
+
+		GUILayout.BeginHorizontal ();
+		GUILayout.Button ("epilogue", EditorStyles.miniButton, GUILayout.Width(90));
+		oldIndex = ArrayUtility.IndexOf<string> (_scenes, _data.epilogueScenario);
+		newIndex = EditorGUILayout.Popup (oldIndex, _scenes);
+		if (oldIndex != newIndex)
+			_data.epilogueScenario = _scenes [newIndex];
+		GUILayout.EndHorizontal ();
+
+		GUILayout.BeginHorizontal ();
+		GUILayout.Button ("gameover", EditorStyles.miniButton, GUILayout.Width(90));
+		oldIndex = ArrayUtility.IndexOf<string> (_scenes, _data.gameoverScenario);
+		newIndex = EditorGUILayout.Popup (oldIndex, _scenes);
+		if (oldIndex != newIndex)
+			_data.gameoverScenario = _scenes [newIndex];
+		GUILayout.EndHorizontal ();
 	}
 
 	private	void DrawRoomData() {
@@ -122,17 +149,14 @@ public class MansionMaker : EditorWindow {
 			GUILayout.Toggle (false, string.Empty, GUILayout.Width (20));
 			GUILayout.EndHorizontal ();
 
+			int oldIndex;
+			int newIndex;
 			for (int i = 0; i < _data.rooms.Length; i++) {
 				var room = _data.rooms [i];
 				GUILayout.BeginHorizontal ();
 				if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
 					OnClickRemoveRoom (i);
-				int oldIndex;
-				int newIndex;
 				oldIndex = ArrayUtility.IndexOf<string> (_roomsAry, _roomsDic.ContainsKey (room.id) ? _roomsDic [room.id] : string.Empty);
-//				newIndex = EditorGUILayout.Popup (oldIndex, _roomsAry, GUILayout.Width (90));
-//				if (oldIndex != newIndex)
-//					room.id = _global.GetRoomByName (_roomsAry [newIndex]).id;
 				EditorGUILayout.Popup (oldIndex, _roomsAry, GUILayout.Width (90));
 				oldIndex = ArrayUtility.IndexOf<string> (_scenes, room.scenario);
 				newIndex = EditorGUILayout.Popup (oldIndex, _scenes);
@@ -170,17 +194,14 @@ public class MansionMaker : EditorWindow {
 			GUILayout.Toggle (false, string.Empty, GUILayout.Width (20));
 			GUILayout.EndHorizontal ();
 
+			int oldIndex;
+			int newIndex;
 			for (int i = 0; i < _data.evidences.Length; i++) {
 				var evidence = _data.evidences [i];
 				GUILayout.BeginHorizontal ();
 				if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
 					OnClickRemoveEvidence (i);
-				int oldIndex;
-				int newIndex;
 				oldIndex = ArrayUtility.IndexOf<string> (_evidencesAry, _evidencesDic.ContainsKey (evidence.id) ? _evidencesDic [evidence.id] : string.Empty);
-//				newIndex = EditorGUILayout.Popup (oldIndex, _evidencesAry, GUILayout.Width (90));
-//				if (oldIndex != newIndex)
-//					evidence.id = _global.GetEvidenceByName (_evidencesAry [newIndex]).id;
 				EditorGUILayout.Popup (oldIndex, _evidencesAry, GUILayout.Width (90));
 				oldIndex = ArrayUtility.IndexOf<string> (_scenes, evidence.scenario);
 				newIndex = EditorGUILayout.Popup (oldIndex, _scenes);
@@ -327,6 +348,12 @@ public class MansionMaker : EditorWindow {
 				_data.rooms = new RoomData[0];
 		} else if (EditorUtility.DisplayDialog ("Remove a Room", "This will remove a selected room. Is it alright?", "Ok", "Cancel")) {
 			ArrayUtility.RemoveAt<RoomData> (ref _data.rooms, index);
+		}
+	}
+
+	public	void OnToggleRoom(int index) {
+		if (index < 0) {
+		} else {
 		}
 	}
 

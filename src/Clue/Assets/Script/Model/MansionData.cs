@@ -4,11 +4,16 @@ using UnityEngine;
 [Serializable]
 public	class MansionData {
 	public	string			name;
+	public	string			prologueScenario;
+	public	string			epilogueScenario;
+	public	string			gameoverScenario;
 	public	RoomData[]		rooms;
 	public	EvidenceData[]	evidences;
 
 	public	MansionData() {
 		name = string.Empty;
+		prologueScenario = string.Empty;
+		epilogueScenario = string.Empty;
 		rooms = new RoomData[0];
 		evidences = new EvidenceData[0];
 	}

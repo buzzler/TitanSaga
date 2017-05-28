@@ -8,6 +8,7 @@ public class AssignmentView : MonoBehaviour {
 
 	public	void OnClickAssignment(int v) {
 		var ob = GameObject.FindObjectOfType<Observer> ();
-		ob.scenarioCtr.Play ("Prologue" + v.ToString ());
+		if (ob.mansionCtr.Load ("ms_murder_101"))
+			ob.mansionCtr.ShowPrologue ();
 	}
 }

@@ -19,10 +19,8 @@ public class ScenarioController : Controller {
 
 		_index = 0;
 		_current = newScene;
-
-		var containBackground = observer.backgroundCtr.Contains (_current.background);
-		var containUI = observer.uiCtr.Contains (_current.ui);
-
+//		var containBackground = observer.backgroundCtr.Contains (_current.background);
+//		var containUI = observer.uiCtr.Contains (_current.ui);
 		observer.faderCtr.FadeOut (OnFadeOut);
 	}
 
@@ -110,7 +108,7 @@ public class ScenarioController : Controller {
 
 	private	void ExecuteSceneChange(ShotData data) {
 		ExecuteDefault (data, () => {
-			this.Play (data.parameter);
+			observer.mansionCtr.ShowScenario(data.parameter);
 		});
 	}
 }
