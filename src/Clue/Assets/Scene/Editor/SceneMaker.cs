@@ -219,6 +219,13 @@ public class SceneMaker : EditorWindow {
 					newIndex = EditorGUILayout.Popup (oldIndex, _scenes, GUILayout.Width (90));
 					if (oldIndex != newIndex)
 						dialog.parameter = _scenes [newIndex];
+				} else if ((dialog.command == ShotCommand.UI_CHANGE)||
+					(dialog.command == ShotCommand.UI_HIDE)||
+					(dialog.command == ShotCommand.UI_SHOW)) {
+					oldIndex = ArrayUtility.IndexOf (_uis, dialog.parameter);
+					newIndex = EditorGUILayout.Popup (oldIndex, _uis, GUILayout.Width (90));
+					if (oldIndex != newIndex)
+						dialog.parameter = _uis [newIndex];
 				}
 				GUILayout.EndHorizontal ();
 				index++;

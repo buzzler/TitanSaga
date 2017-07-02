@@ -56,4 +56,11 @@ public class BackgroundController : Controller {
 			}
 		}
 	}
+
+	public	void SetInteractivity(bool value) {
+		var itr = _views.GetEnumerator ();
+		while (itr.MoveNext ()) {
+			itr.Current.Value.SetIntectivity (value);
+		}
+	}
 }

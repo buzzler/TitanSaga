@@ -54,4 +54,21 @@ public class ActorController : Controller {
 			}
 		}
 	}
+
+	public	void Show() {
+		SetActive (true);
+	}
+
+	public	void Hide() {
+		SetActive (false);
+	}
+
+	private	void SetActive(bool value) {
+		var itr = _views.GetEnumerator ();
+		while (itr.MoveNext ()) {
+			var actor = itr.Current.Value;
+			actor.gameObject.SetActive (value);
+		}
+	}
 }
+

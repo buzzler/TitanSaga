@@ -44,6 +44,49 @@ public class UIController : Controller {
 		}
 	}
 
+	public	Transform Show(string name) {
+		if (_current.ContainsKey (name)) {
+			var child = _current [name];
+			child.gameObject.SetActive (true);
+			return child;
+		}
+		return null;
+	}
+
+	public	void ShowAll(bool force = false) {
+		ActiveAll (true, force);
+	}
+
+	public	Transform Hide(string name) {
+		if (_current.ContainsKey (name)) {
+			var child = _current [name];
+			child.gameObject.SetActive (false);
+			return child;
+		}
+		return null;
+	}
+
+	public	void HideAll(bool force = false) {
+		ActiveAll (false, force);
+	}
+
+	private	void ActiveAll(bool value, bool force = false) {
+		var itr = _current.GetEnumerator ();
+		while (itr.MoveNext ()) {
+			var locked = _lock.ContainsKey (itr.Current.Key);
+			var change = false;
+			if (locked) {
+				if (force)
+					change = true;
+			} else {
+				change = true;
+			}
+
+			if (change)
+				itr.Current.Value.gameObject.SetActive (value);
+		}
+	}
+
 	public	Transform Change(string name) {
 		if (string.IsNullOrEmpty (name)) {
 			RemoveAll ();

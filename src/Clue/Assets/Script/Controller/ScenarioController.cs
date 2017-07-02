@@ -19,15 +19,20 @@ public class ScenarioController : Controller {
 
 		_index = 0;
 		_current = newScene;
-//		var containBackground = observer.backgroundCtr.Contains (_current.background);
-//		var containUI = observer.uiCtr.Contains (_current.ui);
 		observer.faderCtr.FadeOut (OnFadeOut);
 	}
 
 	public	void Resume() {
 		if (IsPaused)
 			_paused = false;
+		else
+			return;
+		observer.uiCtr.HideAll ();
 		Next ();
+	}
+
+	public	void Pause() {
+		_paused = true;
 	}
 
 	public	bool IsPaused {
@@ -71,6 +76,18 @@ public class ScenarioController : Controller {
 			case ShotCommand.BREAK:
 				ExecuteBreak(sd);
 				break;
+			case ShotCommand.UI_CHANGE:
+				ExecuteBreakUIChange(sd);
+				break;
+			case ShotCommand.UI_CLEAR:
+				ExecuteBreakUIClear(sd);
+				break;
+			case ShotCommand.UI_HIDE:
+				ExecuteBreakUIHide(sd);
+				break;
+			case ShotCommand.UI_SHOW:
+				ExecuteBreakUIShow(sd);
+				break;
 			case ShotCommand.NONE:
 				ExecuteDefault(sd, Next);
 				break;
@@ -82,7 +99,8 @@ public class ScenarioController : Controller {
 			(!_paused) &&
 			(_index < _current.shots.Length) &&
 			(_current.shots [_index].actor == sd.actor) &&
-			(_current.shots [_index].position == sd.position));
+			(_current.shots [_index].position == sd.position)
+		);
 	}
 
 	private	void ExecuteDefault(ShotData data, Action callback = null) {
@@ -104,6 +122,35 @@ public class ScenarioController : Controller {
 
 	private	void ExecuteBreak(ShotData data) {
 		ExecuteDefault (data);
+		Pause ();
+	}
+
+	private	void ExecuteBreakUIShow(ShotData data) {
+		ExecuteDefault (data, () => {
+			observer.uiCtr.Show (data.parameter);
+		});
+		Pause ();
+	}
+
+	private	void ExecuteBreakUIHide(ShotData data) {
+		ExecuteDefault (data, () => {
+			observer.uiCtr.Hide (data.parameter);
+		});
+		Pause ();
+	}
+
+	private	void ExecuteBreakUIChange(ShotData data) {
+		ExecuteDefault (data, () => {
+			observer.uiCtr.Change (data.parameter);
+		});
+		Pause ();
+	}
+
+	private	void ExecuteBreakUIClear(ShotData data) {
+		ExecuteDefault (data, () => {
+			observer.uiCtr.RemoveAll ();
+		});
+		Pause ();
 	}
 
 	private	void ExecuteSceneChange(ShotData data) {

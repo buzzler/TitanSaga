@@ -71,5 +71,9 @@ public	enum ShotCommand {
 	NONE = 0,
 	ACTOR_CLEAR,
 	SCENE_CHANGE,
+	UI_SHOW,
+	UI_HIDE,
+	UI_CHANGE,
+	UI_CLEAR,
 	BREAK
 }

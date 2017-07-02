@@ -2,8 +2,17 @@
 using System.Collections;
 
 public class SearchView : MonoBehaviour {
+
+	public	void Start() {
+		var ob = GameObject.FindObjectOfType<Observer> ();
+		ob.actorCtr.Hide ();
+		ob.backgroundCtr.SetInteractivity (true);
+	}
+
 	public	void OnClickBack() {
 		var ob = GameObject.FindObjectOfType<Observer> ();
+		ob.actorCtr.Show ();
+		ob.backgroundCtr.SetInteractivity (false);
 		ob.uiCtr.Change ("Detective");
 	}
 
@@ -24,4 +33,6 @@ public class SearchView : MonoBehaviour {
 		var uv = ob.uiCtr.Change ("Utility").GetComponent<UtilityView>();
 		uv.SetSuspicions ();
 	}
+
 }
+
