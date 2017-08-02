@@ -3,16 +3,10 @@ using System.Collections.Generic;
 
 public class DialogController : Controller {
 	private	DialogView		_view;
-	private Queue<string>	_speakers;
-	private Queue<string>	_comments;
-	private Queue<float>	_speeds;
 	private	Action			_callback;
 
 	public	DialogController(Observer observer) : base (observer) {
 		_view		= null;
-		_speakers	= new Queue<string> ();
-		_comments	= new Queue<string> ();
-		_speeds		= new Queue<float> ();
 		_callback	= null;
 	}
 
@@ -27,9 +21,7 @@ public class DialogController : Controller {
 			_view.SetCallback (OnClick);
 			_view.Dialog (speaker, comment, speed);
 		} else {
-			_speakers.Enqueue (speaker);
-			_comments.Enqueue (comment);
-			_speeds.Enqueue (speed);
+			_view.Dialog (speaker, comment, speed);
 		}
 	}
 
@@ -37,9 +29,6 @@ public class DialogController : Controller {
 		if (_view != null) {
 			_view.SetCallback (null);
 			_view = null;
-			_speakers.Clear ();
-			_comments.Clear ();
-			_speeds.Clear ();
 			observer.uiCtr.Remove ("Dialog");
 		}
 	}
@@ -53,17 +42,11 @@ public class DialogController : Controller {
 			return;
 		}
 
-		if (_comments.Count > 0) {
-			_view.Dialog (_speakers.Dequeue (), _comments.Dequeue (), _speeds.Dequeue ());
-		} else if (_callback != null) {
+		if (_callback != null) {
 			_callback.Invoke ();
-			if (_comments.Count > 0) {
-				_view.Dialog (_speakers.Dequeue (), _comments.Dequeue (), _speeds.Dequeue ());
-			} else {
-				Hide ();
-			}
-		} else {
-			Hide ();
+//			Hide ();
+//		} else {
+//			Hide ();
 		}
 	}
 }

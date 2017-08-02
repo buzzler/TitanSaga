@@ -16,6 +16,7 @@ public class Observer : MonoBehaviour {
 	public	NetworkController		networkCtr;
 	public	ScenarioController		scenarioCtr;
 	public	MansionController		mansionCtr;
+	public	GlobalDBController		globalCtr;
 	public	UIController			uiCtr;
 
 	public	EventDelegate OnInited;
@@ -33,6 +34,7 @@ public class Observer : MonoBehaviour {
 		networkCtr		= new NetworkController (this);
 		scenarioCtr		= new ScenarioController (this);
 		mansionCtr		= new MansionController (this);
+		globalCtr		= new GlobalDBController (this);
 		uiCtr			= new UIController (this);
 	}
 

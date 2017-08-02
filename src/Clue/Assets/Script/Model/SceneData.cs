@@ -71,6 +71,7 @@ public	enum ShotCommand {
 	NONE = 0,
 	ACTOR_CLEAR,
 	SCENE_CHANGE,
+	MANSION_RANDOM,
 	UI_SHOW,
 	UI_HIDE,
 	UI_CHANGE,

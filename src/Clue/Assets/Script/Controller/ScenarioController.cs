@@ -19,6 +19,7 @@ public class ScenarioController : Controller {
 
 		_index = 0;
 		_current = newScene;
+		_paused = false;
 		observer.faderCtr.FadeOut (OnFadeOut);
 	}
 
@@ -64,43 +65,37 @@ public class ScenarioController : Controller {
 			observer.dialogCtr.Hide ();
 			return;
 		}
-
-		ShotData sd = null;
-		do {
-			sd = _current.shots [_index++];
-
-			switch (sd.command) {
-			case ShotCommand.ACTOR_CLEAR:
-				ExecuteActorClear(sd);
-				break;
-			case ShotCommand.BREAK:
-				ExecuteBreak(sd);
-				break;
-			case ShotCommand.UI_CHANGE:
-				ExecuteBreakUIChange(sd);
-				break;
-			case ShotCommand.UI_CLEAR:
-				ExecuteBreakUIClear(sd);
-				break;
-			case ShotCommand.UI_HIDE:
-				ExecuteBreakUIHide(sd);
-				break;
-			case ShotCommand.UI_SHOW:
-				ExecuteBreakUIShow(sd);
-				break;
-			case ShotCommand.NONE:
-				ExecuteDefault(sd, Next);
-				break;
-			case ShotCommand.SCENE_CHANGE:
-				ExecuteSceneChange(sd);
-				break;
-			}
-		} while (
-			(!_paused) &&
-			(_index < _current.shots.Length) &&
-			(_current.shots [_index].actor == sd.actor) &&
-			(_current.shots [_index].position == sd.position)
-		);
+			
+		ShotData sd = _current.shots [_index++];
+		switch (sd.command) {
+		case ShotCommand.ACTOR_CLEAR:
+			ExecuteActorClear(sd);
+			break;
+		case ShotCommand.BREAK:
+			ExecuteBreak(sd);
+			break;
+		case ShotCommand.UI_CHANGE:
+			ExecuteUIChange(sd);
+			break;
+		case ShotCommand.UI_CLEAR:
+			ExecuteUIClear(sd);
+			break;
+		case ShotCommand.UI_HIDE:
+			ExecuteUIHide(sd);
+			break;
+		case ShotCommand.UI_SHOW:
+			ExecuteUIShow(sd);
+			break;
+		case ShotCommand.NONE:
+			ExecuteDefault(sd, Next);
+			break;
+		case ShotCommand.SCENE_CHANGE:
+			ExecuteSceneChange(sd);
+			break;
+		case ShotCommand.MANSION_RANDOM:
+			ExecuteMansionRandom(sd);
+			break;
+		}
 	}
 
 	private	void ExecuteDefault(ShotData data, Action callback = null) {
@@ -125,37 +120,39 @@ public class ScenarioController : Controller {
 		Pause ();
 	}
 
-	private	void ExecuteBreakUIShow(ShotData data) {
+	private	void ExecuteUIShow(ShotData data) {
 		ExecuteDefault (data, () => {
 			observer.uiCtr.Show (data.parameter);
 		});
-		Pause ();
 	}
 
-	private	void ExecuteBreakUIHide(ShotData data) {
+	private	void ExecuteUIHide(ShotData data) {
 		ExecuteDefault (data, () => {
 			observer.uiCtr.Hide (data.parameter);
 		});
-		Pause ();
 	}
 
-	private	void ExecuteBreakUIChange(ShotData data) {
+	private	void ExecuteUIChange(ShotData data) {
 		ExecuteDefault (data, () => {
 			observer.uiCtr.Change (data.parameter);
 		});
-		Pause ();
 	}
 
-	private	void ExecuteBreakUIClear(ShotData data) {
+	private	void ExecuteUIClear(ShotData data) {
 		ExecuteDefault (data, () => {
 			observer.uiCtr.RemoveAll ();
 		});
-		Pause ();
 	}
 
 	private	void ExecuteSceneChange(ShotData data) {
 		ExecuteDefault (data, () => {
 			observer.mansionCtr.ShowScenario(data.parameter);
+		});
+	}
+
+	private	void ExecuteMansionRandom(ShotData data) {
+		ExecuteDefault (data, () => {
+			observer.mansionCtr.VisitRandom();
 		});
 	}
 }

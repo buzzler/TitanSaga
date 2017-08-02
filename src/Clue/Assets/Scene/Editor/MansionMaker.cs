@@ -19,9 +19,12 @@ public class MansionMaker : EditorWindow {
 	private	Dictionary<string, string>	_roomsDic;
 	private	string[]					_evidencesAry;
 	private	Dictionary<string, string>	_evidencesDic;
+	private	string[]					_suspectsAry;
+	private	Dictionary<string, string>	_suspectsDic;
 
 	private bool _showRoom;
 	private	bool _showEvidence;
+	private	bool _showSuspect;
 	private	Vector2 _scroll;
 
 	public	MansionMaker() {
@@ -33,13 +36,16 @@ public class MansionMaker : EditorWindow {
 		_roomsDic = new Dictionary<string, string> ();
 		_evidencesAry = new string[0];
 		_evidencesDic = new Dictionary<string, string> ();
+		_suspectsAry = new string[0];
+		_suspectsDic = new Dictionary<string, string> ();
 		_showRoom = true;
 		_showEvidence = true;
+		_showSuspect = true;
 		_scroll = Vector2.zero;
 	}
 
 	void OnGUI() {
-		try {
+//		try {
 			Verify();
 			DrawToolbar ();
 			GUILayout.Space (2);
@@ -47,10 +53,12 @@ public class MansionMaker : EditorWindow {
 			GUILayout.Space (2);
 			DrawRoomData ();
 			GUILayout.Space (2);
+			DrawSuspectData();
+			GUILayout.Space (2);
 			DrawEvidenceData ();
-		} catch (System.Exception e) {
-			Debug.LogWarning (e.Message);
-		}
+//		} catch (System.Exception e) {
+//			Debug.LogWarning (e.Message);
+//		}
 	}
 
 	private	void Verify() {
@@ -220,6 +228,68 @@ public class MansionMaker : EditorWindow {
 		GUILayout.EndHorizontal ();
 	}
 
+	public	void DrawSuspectData() {
+		if (_global == null || _data == null)
+			return;
+
+		GUILayout.BeginHorizontal ();
+		GUILayout.BeginHorizontal (GUILayout.Width (90));
+		_showSuspect = GUILayout.Toggle (_showSuspect, "suspect");
+		if (GUILayout.Button ("+", EditorStyles.miniButton, GUILayout.Width (20)))
+			OnClickAddSuspect ();
+		GUILayout.EndHorizontal ();
+		GUILayout.Space (4);
+		GUILayout.BeginVertical ();
+		if (_showSuspect) {
+			GUILayout.BeginHorizontal ();
+			if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
+				OnClickRemoveSuspect (-1);
+			GUILayout.Button ("name", EditorStyles.miniButton, GUILayout.Width (90));
+			GUILayout.Button ("scenario", EditorStyles.miniButton);
+			GUILayout.Button ("room", EditorStyles.miniButton, GUILayout.Width (90));
+			GUILayout.Toggle (false, string.Empty, GUILayout.Width (20));
+			GUILayout.EndHorizontal ();
+
+			int oldIndex;
+			int newIndex;
+			for (int i = 0; i < _data.suspects.Length; i++) {
+				var suspect = _data.suspects [i];
+				GUILayout.BeginHorizontal ();
+				if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
+					OnClickRemoveSuspect (i);
+				oldIndex = ArrayUtility.IndexOf<string> (_suspectsAry, _suspectsDic.ContainsKey (suspect.id) ? _suspectsDic [suspect.id] : string.Empty);
+				newIndex = EditorGUILayout.Popup (oldIndex, _suspectsAry, GUILayout.Width (90));
+				if (oldIndex != newIndex) {
+					foreach (var key in _suspectsDic.Keys) {
+						if (_suspectsDic [key] == _suspectsAry [newIndex]) {
+							suspect.id = key;
+							break;
+						}
+					}
+				}
+
+				oldIndex = ArrayUtility.IndexOf<string> (_scenes, suspect.scenario);
+				newIndex = EditorGUILayout.Popup (oldIndex, _scenes);
+				if (oldIndex != newIndex)
+					suspect.scenario = _scenes [newIndex];
+
+				oldIndex = _roomsDic.ContainsKey(suspect.room) ? ArrayUtility.IndexOf<string> (_roomsAry, _roomsDic[suspect.room]) : -1;
+				newIndex = EditorGUILayout.Popup (oldIndex, _roomsAry, GUILayout.Width (90));
+				if (oldIndex != newIndex) {
+					var itr = _roomsDic.GetEnumerator ();
+					while (itr.MoveNext ()) {
+						if (itr.Current.Value == _roomsAry [newIndex])
+							suspect.room = itr.Current.Key;
+					}
+				}
+				suspect.available = GUILayout.Toggle (suspect.available, "", GUILayout.Width (20));
+				GUILayout.EndHorizontal ();
+			}
+		}
+		GUILayout.EndVertical ();
+		GUILayout.EndHorizontal ();
+	}
+
 	public	void OnClickNew() {
 		bool clear = _data == null;
 		if (!clear)
@@ -380,6 +450,39 @@ public class MansionMaker : EditorWindow {
 		}
 	}
 
+	public	void OnClickAddSuspect() {
+		List<SuspectData> list = null;
+		if (_data.rooms == null)
+			list = new List<SuspectData> ();
+		else
+			list = new List<SuspectData> (_data.suspects);
+
+		if (_global == null) {
+			list.Add (new SuspectData ());
+		} else {
+			foreach (var info in _global.suspects) {
+				int index = list.FindIndex ((SuspectData suspect) => {
+					return suspect.id == info.id;
+				});
+				if (index < 0) {
+					var newSuspect = new SuspectData ();
+					newSuspect.id = info.id;
+					list.Add (newSuspect);
+				}
+			}
+		}
+		_data.suspects = list.ToArray ();
+	}
+
+	public	void OnClickRemoveSuspect(int index) {
+		if (index < 0) {
+			if (EditorUtility.DisplayDialog ("Remove all Suspect", "This will remove all suspect. Is it alright?", "Ok", "Cancel"))
+				_data.suspects = new SuspectData[0];
+		} else if (EditorUtility.DisplayDialog ("Remove a Suspect", "This will remove a selected suspect. Is it alright?", "Ok", "Cancel")) {
+			ArrayUtility.RemoveAt<SuspectData> (ref _data.suspects, index);
+		}
+	}
+
 	private	void UpdateRoom() {
 		if (_global == null)
 			return;
@@ -410,6 +513,21 @@ public class MansionMaker : EditorWindow {
 		_evidencesAry = list.ToArray ();
 	}
 
+	private	void UpdateSuspect() {
+		if (_global == null)
+			return;
+
+		_suspectsAry = null;
+		_suspectsDic = new Dictionary<string, string> ();
+		var list = new List<string> ();
+		for (var i = _global.suspects.Length - 1; i >= 0; i--) {
+			var suspect = _global.suspects [i];
+			list.Add (suspect.name);
+			_suspectsDic.Add (suspect.id, suspect.name);
+		}
+		_suspectsAry = list.ToArray ();
+	}
+
 	private	void UpdateScenario() {
 		var path = Path.Combine (Application.dataPath, "Scene/Resources");
 		var files = Directory.GetFiles (path, "*.json", SearchOption.AllDirectories);
@@ -425,5 +543,6 @@ public class MansionMaker : EditorWindow {
 		UpdateRoom ();
 		UpdateEvidence ();
 		UpdateScenario ();
+		UpdateSuspect ();
 	}
 }

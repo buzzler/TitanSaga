@@ -9,6 +9,7 @@ public	class MansionData {
 	public	string			gameoverScenario;
 	public	RoomData[]		rooms;
 	public	EvidenceData[]	evidences;
+	public	SuspectData[]	suspects;
 
 	public	MansionData() {
 		name = string.Empty;
@@ -16,6 +17,7 @@ public	class MansionData {
 		epilogueScenario = string.Empty;
 		rooms = new RoomData[0];
 		evidences = new EvidenceData[0];
+		suspects = new SuspectData[0];
 	}
 
 	#if UNITY_EDITOR
@@ -28,6 +30,12 @@ public	class MansionData {
 	public	EvidenceData GetEvidenceById(string id) {
 		return UnityEditor.ArrayUtility.Find<EvidenceData> (evidences, (EvidenceData evidence) => {
 			return evidence.id == id;
+		});
+	}
+
+	public	SuspectData GetSuspectById(string id) {
+		return UnityEditor.ArrayUtility.Find<SuspectData> (suspects, (SuspectData suspect) => {
+			return suspect.id == id;
 		});
 	}
 	#endif
@@ -54,6 +62,21 @@ public	class EvidenceData {
 
 	public	EvidenceData() {
 		id = string.Empty;
+		scenario = string.Empty;
+		available = false;
+	}
+}
+
+[Serializable]
+public	class SuspectData {
+	public	string	id;
+	public	string	room;
+	public	string	scenario;
+	public	bool	available;
+
+	public	SuspectData() {
+		id = string.Empty;
+		room = string.Empty;
 		scenario = string.Empty;
 		available = false;
 	}

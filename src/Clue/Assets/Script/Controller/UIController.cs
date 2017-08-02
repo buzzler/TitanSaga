@@ -93,10 +93,10 @@ public class UIController : Controller {
 			return null;
 		}
 
-		if (Contains (name))
-			return _current[name];
-
 		RemoveAll ();
+		if (Contains (name)) {
+			return Show (name);
+		}
 		return Add (name);
 	}
 
