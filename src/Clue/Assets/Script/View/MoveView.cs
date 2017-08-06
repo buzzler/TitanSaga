@@ -66,7 +66,7 @@ public class MoveView : MonoBehaviour {
 	}
 
 	public	void OnClickRoom(int index) {
-		if (selected == index && index != current && index > 0) {
+		if (selected == index && index != current && index >= 0) {
 			_observer.mansionCtr.Visit (roomInfos [index].id);
 			return;
 		}
