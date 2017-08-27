@@ -1,1 +1,1 @@
-﻿{"title":"MainMenu","ui":"MainMenu","background":"","actors":[{"name":"scarlet","asset":"actor_black","label":"Scarlet"}],"shots":[{"command":8,"actor":"scarlet","position":"right","emotion":"shy","comment":"","parameter":"MainMenu"}]}
+﻿{"title":"MainMenu","ui":"MainMenu","background":"","actors":[{"id":"suspect_scarlet","asset":"actor_black","label":"Scarlet"}],"shots":[{"command":8,"actor":"suspect_scarlet","position":"right","emotion":"shy","comment":"","parameter":"MainMenu"}]}

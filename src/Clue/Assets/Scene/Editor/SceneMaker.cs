@@ -10,6 +10,7 @@ public class SceneMaker : EditorWindow {
 		window.Show ();
 	}
 
+	private	GlobalInfo	_global;
 	private	string		_path;
 	private	SceneData	_data;
 	private	string[]	_scenes;
@@ -25,6 +26,7 @@ public class SceneMaker : EditorWindow {
 	private	bool _showDialog;
 
 	public	SceneMaker() {
+		_global		= null;
 		_path		= null;
 		_data		= null;
 		_scenes		= new string[0];
@@ -40,7 +42,7 @@ public class SceneMaker : EditorWindow {
 	}
 
 	void OnGUI() {
-		try {
+//		try {
 			DrawToolbar ();
 			GUILayout.Space (2);
 			DrawSceneData ();
@@ -50,9 +52,9 @@ public class SceneMaker : EditorWindow {
 			DrawDialogData ();
 			GUILayout.FlexibleSpace ();
 			DrawStatusBar ();
-		} catch (System.Exception e) {
-			Debug.LogWarning (e.Message);
-		}
+//		} catch (System.Exception e) {
+//			Debug.LogWarning (e.Message);
+//		}
 	}
 
 	private	void DrawToolbar() {
@@ -145,20 +147,17 @@ public class SceneMaker : EditorWindow {
 				GUILayout.BeginHorizontal ();
 				if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
 					OnClickRemoveActor (index);
-				var oldLabel = actor.label;
-				var newLabel = GUILayout.TextField (oldLabel, GUILayout.Width (90));
-				if (oldLabel != newLabel) {
-					actor.label = newLabel;
-					UpdateActor ();
-				}
+				
+				var oldLabel = _global.GetSuspectById (actor.id).name;
+				GUILayout.TextField (oldLabel, GUILayout.Width (90));
 				int indexActor = ArrayUtility.IndexOf<string> (_prefabs, actor.asset);
 				int newActor = EditorGUILayout.Popup (indexActor, _prefabs);
 				if (indexActor != newActor)
 					actor.asset = _prefabs [newActor];
-				var oldName = actor.name;
+				var oldName = actor.id;
 				var newName = GUILayout.TextField (oldName, GUILayout.Width (90));
 				if (oldName != newName) {
-					actor.name = newName;
+					actor.id = newName;
 					UpdateActor ();
 				}
 				GUILayout.EndHorizontal ();
@@ -203,7 +202,7 @@ public class SceneMaker : EditorWindow {
 				int oldLabel = _actorsDic.ContainsKey (dialog.actor) ? ArrayUtility.IndexOf<string> (_actorsAry, _actorsDic [dialog.actor]) : -1;
 				int newLabel = EditorGUILayout.Popup (oldLabel, _actorsAry, GUILayout.Width (90));
 				if (oldLabel != newLabel)
-					dialog.actor = _data.GetActorByLabel (_actorsAry[newLabel]).name;
+					dialog.actor = _global.GetSuspectByName (_actorsAry [newLabel]).id;
 				dialog.comment = GUILayout.TextArea (dialog.comment);
 				int oldIndex = ArrayUtility.IndexOf<string> (_positions, dialog.position);
 				int newIndex = EditorGUILayout.Popup (oldIndex, _positions, GUILayout.Width (90));
@@ -436,13 +435,15 @@ public class SceneMaker : EditorWindow {
 		var list = new List<string> ();
 		for (var i = _data.actors.Length - 1; i >= 0; i--) {
 			var actor = _data.actors [i];
-			list.Add (actor.label);
-			_actorsDic.Add (actor.name, actor.label);
+			var name = _global.GetSuspectById (actor.id).name;
+			list.Add (name);
+			_actorsDic.Add (actor.id, name);
 		}
 		_actorsAry = list.ToArray ();
 	}
 
 	private	void UpdateData() {
+		_global = GlobalInfo.LoadFromJson (Path.Combine (Application.dataPath, "Scene/Resources/Global.json"));
 		UpdateActor ();
 	}
 }

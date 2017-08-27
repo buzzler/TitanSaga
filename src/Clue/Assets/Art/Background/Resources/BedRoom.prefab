@@ -264,6 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130c8567da07c4110bf1fa43e6c494ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alias: evidence_br_cat
 --- !u!114 &114000010845087432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -275,6 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130c8567da07c4110bf1fa43e6c494ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alias: evidence_br_bed
 --- !u!114 &114000014047154670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -286,6 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130c8567da07c4110bf1fa43e6c494ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alias: evidence_br_tv
 --- !u!114 &114000014076496570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -297,6 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130c8567da07c4110bf1fa43e6c494ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alias: evidence_br_book
 --- !u!212 &212000012648403230
 SpriteRenderer:
   m_ObjectHideFlags: 1

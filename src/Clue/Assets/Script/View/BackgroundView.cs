@@ -10,8 +10,8 @@ public class BackgroundView : MonoBehaviour {
 
 	public	void OnSelectEvidence(EvidenceView selected) {
 		if (interact) {
-			Debug.Log (selected.gameObject.name);
+			var ob = GameObject.FindObjectOfType<Observer> ();
+			ob.mansionCtr.CheckEvidence (selected.alias);
 		}
 	}
 }
-

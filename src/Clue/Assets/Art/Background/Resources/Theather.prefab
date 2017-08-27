@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130c8567da07c4110bf1fa43e6c494ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alias: evidence_th_sofa
 --- !u!114 &114000013765569758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -229,6 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130c8567da07c4110bf1fa43e6c494ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alias: evidence_th_popcorn
 --- !u!114 &114000013852271412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -240,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130c8567da07c4110bf1fa43e6c494ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alias: evidence_th_tv
 --- !u!212 &212000012264347616
 SpriteRenderer:
   m_ObjectHideFlags: 1

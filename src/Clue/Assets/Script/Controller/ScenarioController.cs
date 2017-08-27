@@ -18,9 +18,34 @@ public class ScenarioController : Controller {
 			return;
 
 		_index = 0;
-		_current = newScene;
 		_paused = false;
-		observer.faderCtr.FadeOut (OnFadeOut);
+
+		bool fading = false;
+
+		if (_current == null) {
+			fading = true;
+		} else if (_current.background != newScene.background) {
+			if (string.IsNullOrEmpty (newScene.background))
+				fading = false;
+			else
+				fading = true;
+		} else {
+			if (_current.ui == newScene.ui)
+				fading = false;
+			else
+				fading = true;
+		}
+
+		if (fading) {
+			_current = newScene;
+			observer.faderCtr.FadeOut (OnFadeOut);
+		} else {
+			_current = newScene;
+			observer.uiCtr.Change (_current.ui);
+			observer.actorCtr.RemoveAll ();
+			observer.dialogCtr.Hide ();
+			Next ();
+		}
 	}
 
 	public	void Resume() {
@@ -104,7 +129,10 @@ public class ScenarioController : Controller {
 		}
 		if (!string.IsNullOrEmpty (data.comment)) {
 			observer.dialogCtr.SetCallback (callback);
-			observer.dialogCtr.Show (_current.GetActorByName (data.actor).label, data.comment);
+			if (string.IsNullOrEmpty(data.actor))
+				observer.dialogCtr.Show ("", data.comment);
+			else
+				observer.dialogCtr.Show (observer.globalCtr.GetSuspect(data.actor).name, data.comment);
 		} else if (callback != null) {
 			callback.Invoke ();
 		}

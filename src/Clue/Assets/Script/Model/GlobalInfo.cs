@@ -23,6 +23,18 @@ public class GlobalInfo {
 		return JsonUtility.FromJson<GlobalInfo> (System.IO.File.ReadAllText (path));
 	}
 
+	public	SuspectInfo GetSuspectById(string id) {
+		return UnityEditor.ArrayUtility.Find<SuspectInfo> (suspects, (SuspectInfo suspect) => {
+			return suspect.id == id;
+		});
+	}
+
+	public	SuspectInfo GetSuspectByName(string name) {
+		return UnityEditor.ArrayUtility.Find<SuspectInfo> (suspects, (SuspectInfo suspect) => {
+			return suspect.name == name;
+		});
+	}
+
 	public	RoomInfo GetRoomByName(string name) {
 		return UnityEditor.ArrayUtility.Find<RoomInfo> (rooms, (RoomInfo room) => {
 			return room.name == name;

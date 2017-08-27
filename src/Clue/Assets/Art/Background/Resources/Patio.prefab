@@ -109,7 +109,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000010986335038}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!4 &4000010544030408
 Transform:
   m_ObjectHideFlags: 1
@@ -136,8 +136,8 @@ Transform:
   m_Children:
   - {fileID: 4000013047343826}
   - {fileID: 4000010544030408}
-  - {fileID: 4000010423511896}
   - {fileID: 4000011383852304}
+  - {fileID: 4000010423511896}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &4000011383852304
@@ -152,7 +152,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000010986335038}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!4 &4000013047343826
 Transform:
   m_ObjectHideFlags: 1
@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130c8567da07c4110bf1fa43e6c494ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alias: evidence_pt_inst
 --- !u!114 &114000013131503820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,6 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130c8567da07c4110bf1fa43e6c494ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alias: evidence_pt_aqua
 --- !u!114 &114000013796187030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130c8567da07c4110bf1fa43e6c494ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alias: evidence_pt_plant
 --- !u!212 &212000010611014210
 SpriteRenderer:
   m_ObjectHideFlags: 1

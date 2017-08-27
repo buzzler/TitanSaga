@@ -91,12 +91,20 @@ public	class MansionController : Controller {
 			return null;
 	}
 
+	public	void CheckEvidence(string evidence) {
+		if (!_dicEvidence.ContainsKey (evidence))
+			return;
+
+		var selected = _dicEvidence [evidence];
+		ShowScenario (selected.scenario);
+	}
+
 	public	void ShowScenario(string filename) {
 		if (string.IsNullOrEmpty (_id))
 			return;
 		if (string.IsNullOrEmpty (filename))
 			return;
-		
+
 		observer.scenarioCtr.Play (string.Format("{0}/{1}", _id, filename));
 	}
 

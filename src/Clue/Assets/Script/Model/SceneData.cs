@@ -20,15 +20,7 @@ public	class SceneData {
 
 	public	ActorData GetActorByName(string name) {
 		for (int i = actors.Length - 1; i >= 0; i--) {
-			if (actors [i].name == name)
-				return actors [i];
-		}
-		return null;
-	}
-
-	public	ActorData GetActorByLabel(string label) {
-		for (int i = actors.Length - 1; i >= 0; i--) {
-			if (actors [i].label == label)
+			if (actors [i].id == name)
 				return actors [i];
 		}
 		return null;
@@ -56,14 +48,12 @@ public	class ShotData {
 
 [Serializable]
 public	class ActorData {
-	public	string name;
+	public	string id;
 	public	string asset;
-	public	string label;
 
 	public	ActorData() {
-		name = string.Empty;
+		id = string.Empty;
 		asset = string.Empty;
-		label = string.Empty;
 	}
 }
 
