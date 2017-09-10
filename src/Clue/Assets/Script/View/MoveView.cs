@@ -51,16 +51,19 @@ public class MoveView : MonoBehaviour {
 	}
 
 	public	void OnClickCrimemap() {
+		_observer.stateCtr.Backup ();
 		var uv = _observer.uiCtr.Change ("Utility").GetComponent<UtilityView>();
 		uv.SetCrimeMap ();
 	}
 
 	public	void OnClickNotes() {
+		_observer.stateCtr.Backup ();
 		var uv = _observer.uiCtr.Change ("Utility").GetComponent<UtilityView>();
 		uv.SetNotes ();
 	}
 
 	public	void OnClickSuspicions() {
+		_observer.stateCtr.Backup ();
 		var uv = _observer.uiCtr.Change ("Utility").GetComponent<UtilityView>();
 		uv.SetSuspicions ();
 	}

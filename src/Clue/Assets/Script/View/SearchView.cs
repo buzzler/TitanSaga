@@ -22,18 +22,21 @@ public class SearchView : MonoBehaviour {
 
 	public	void OnClickCrimemap() {
 		var ob = GameObject.FindObjectOfType<Observer> ();
+		ob.stateCtr.Backup ();
 		var uv = ob.uiCtr.Change ("Utility").GetComponent<UtilityView>();
 		uv.SetCrimeMap ();
 	}
 
 	public	void OnClickNotes() {
 		var ob = GameObject.FindObjectOfType<Observer> ();
+		ob.stateCtr.Backup ();
 		var uv = ob.uiCtr.Change ("Utility").GetComponent<UtilityView>();
 		uv.SetNotes ();
 	}
 
 	public	void OnClickSuspicions() {
 		var ob = GameObject.FindObjectOfType<Observer> ();
+		ob.stateCtr.Backup ();
 		var uv = ob.uiCtr.Change ("Utility").GetComponent<UtilityView>();
 		uv.SetSuspicions ();
 	}

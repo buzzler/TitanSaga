@@ -125,10 +125,7 @@ public	class MansionController : Controller {
 		if (!_dicEvidence.ContainsKey (evidence))
 			return;
 
-		observer.actorCtr.Backup ();
-		observer.backgroundCtr.Backup ();
-		observer.uiCtr.Backup ();
-		observer.backgroundCtr.SetInteractivity (false);
+		observer.stateCtr.Backup ();
 
 		var selected = _dicEvidence [evidence];
 		ShowScenario (selected.scenario);

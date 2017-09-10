@@ -18,6 +18,7 @@ public class Observer : MonoBehaviour {
 	public	MansionController		mansionCtr;
 	public	GlobalDBController		globalCtr;
 	public	UIController			uiCtr;
+	public	StateController			stateCtr;
 
 	public	EventDelegate OnInited;
 	public	EventDelegate OnLoop;
@@ -36,6 +37,7 @@ public class Observer : MonoBehaviour {
 		mansionCtr		= new MansionController (this);
 		globalCtr		= new GlobalDBController (this);
 		uiCtr			= new UIController (this);
+		stateCtr		= new StateController (this);
 	}
 
 	void Start() {

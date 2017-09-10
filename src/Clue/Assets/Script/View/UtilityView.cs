@@ -7,7 +7,7 @@ public class UtilityView : MonoBehaviour {
 
 	public	void OnClickBack() {
 		var ob = GameObject.FindObjectOfType<Observer> ();
-		ob.uiCtr.Change ("Detective");
+		ob.stateCtr.Restore ();
 	}
 
 	public	void SetCrimeMap() {
