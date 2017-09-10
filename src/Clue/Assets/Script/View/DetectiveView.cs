@@ -21,6 +21,7 @@ public	class DetectiveView : MonoBehaviour {
 		ob.actorCtr.Backup ();
 		ob.backgroundCtr.Backup ();
 		ob.uiCtr.Backup ();
+		ob.backgroundCtr.SetInteractivity (false);
 		ob.uiCtr.Change ("Search");
 	}
 
@@ -29,6 +30,7 @@ public	class DetectiveView : MonoBehaviour {
 		ob.actorCtr.Backup ();
 		ob.backgroundCtr.Backup ();
 		ob.uiCtr.Backup ();
+		ob.backgroundCtr.SetInteractivity (false);
 		ob.mansionCtr.TalkSuspect (ob.mansionCtr.GetCurrentSuspect ());
 	}
 

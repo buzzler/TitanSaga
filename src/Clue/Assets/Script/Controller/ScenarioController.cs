@@ -202,9 +202,10 @@ public class ScenarioController : Controller {
 
 	private	void ExecuteStatePush(ShotData data) {
 		ExecuteDefault (data, () => {
-			observer.backgroundCtr.Backup();
-			observer.actorCtr.Backup();
-			observer.uiCtr.Backup();
+			observer.backgroundCtr.Backup ();
+			observer.actorCtr.Backup ();
+			observer.uiCtr.Backup ();
+			observer.backgroundCtr.SetInteractivity (false);
 		});
 	}
 

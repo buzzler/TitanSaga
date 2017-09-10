@@ -128,6 +128,7 @@ public	class MansionController : Controller {
 		observer.actorCtr.Backup ();
 		observer.backgroundCtr.Backup ();
 		observer.uiCtr.Backup ();
+		observer.backgroundCtr.SetInteractivity (false);
 
 		var selected = _dicEvidence [evidence];
 		ShowScenario (selected.scenario);
