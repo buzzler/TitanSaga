@@ -2,14 +2,18 @@
 using System.Collections;
 
 public class BackgroundView : MonoBehaviour {
-	private	bool interact;
+	private	bool _interact;
 
 	public	void SetIntectivity(bool value) {
-		interact = value;
+		_interact = value;
+	}
+
+	public	bool GetIntectivity() {
+		return _interact;
 	}
 
 	public	void OnSelectEvidence(EvidenceView selected) {
-		if (interact) {
+		if (_interact) {
 			var ob = GameObject.FindObjectOfType<Observer> ();
 			ob.mansionCtr.CheckEvidence (selected.alias);
 		}

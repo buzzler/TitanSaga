@@ -7,6 +7,7 @@ public class UIController : Controller {
 	private	Transform						_canvas;
 	private	Dictionary<string, Transform>	_current;
 	private	Dictionary<string, Transform>	_lock;
+	private	BackupState[]					_backup;
 
 	public	UIController(Observer observer) : base (observer) {
 		_canvas = GameObject.FindObjectOfType<Canvas> ().transform;
@@ -123,5 +124,40 @@ public class UIController : Controller {
 		for (int i = list.Count - 1; i >= 0; i--) {
 			Remove (list [i], force);
 		}
+	}
+
+	public	void Backup() {
+		var list = new List<BackupState> ();
+		var itr = _current.GetEnumerator ();
+		while (itr.MoveNext ()) {
+			var tr = itr.Current.Value;
+			var key = itr.Current.Key;
+			var state = new BackupState ();
+			state.visible = tr.gameObject.activeSelf;
+			state.name = key;
+			state.locked = _lock.ContainsKey (key);
+			list.Add (state);
+		}
+		_backup = list.ToArray ();
+	}
+
+	public	void Restore() {
+		if (_backup == null)
+			return;
+
+		RemoveAll ();
+		for (int i = 0 ; i < _backup.Length ; i++) {
+			var state = _backup [i];
+			Add (state.name, state.locked);
+			if (!state.visible)
+				Hide (state.name);
+		}
+		_backup = null;
+	}
+
+	class BackupState {
+		public	bool	visible;
+		public	string	name;
+		public	bool	locked;
 	}
 }

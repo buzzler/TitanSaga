@@ -23,7 +23,8 @@ public	class DetectiveView : MonoBehaviour {
 
 	public	void OnClickTalk() {
 		var ob = GameObject.FindObjectOfType<Observer> ();
-		ob.scenarioCtr.Resume ();
+		ob.mansionCtr.TalkSuspect (ob.mansionCtr.GetCurrentSuspect ());
+//		ob.scenarioCtr.Resume ();
 	}
 
 	public	void OnClickCrimemap() {

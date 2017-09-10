@@ -5,6 +5,7 @@ public class ActorController : Controller {
 	private	const int _CAPACITY = 5;
 	private	Transform _group;
 	private	Dictionary<string, ActorView> _views;
+	private BackupState[] _backup;
 
 	public	ActorController(Observer observer) : base (observer) {
 		_group = null;
@@ -69,6 +70,44 @@ public class ActorController : Controller {
 			var actor = itr.Current.Value;
 			actor.gameObject.SetActive (value);
 		}
+	}
+
+	public	void Backup() {
+		var states = new List<BackupState> ();
+		var itr = _views.GetEnumerator ();
+		while (itr.MoveNext ()) {
+			var actor = itr.Current.Key;
+			var view = itr.Current.Value;
+			if (!view.gameObject.activeSelf)
+				continue;
+
+			var state = new BackupState ();
+			state.visible = view.gameObject.activeSelf;
+			state.actor = actor;
+			state.emotion = view.GetEmotion();
+			state.position = view.GetPosition ();
+			states.Add (state);
+		}
+		_backup = states.ToArray ();
+	}
+
+	public	void Restore() {
+		if (_backup == null)
+			return;
+		
+		RemoveAll ();
+		for (int i = 0 ; i < _backup.Length ; i++) {
+			var state = _backup [i];
+			Add (state.actor, state.position, state.emotion);
+		}
+		_backup = null;
+	}
+
+	class BackupState {
+		public	bool visible;
+		public	string actor;
+		public	string emotion;
+		public	string position;
 	}
 }
 

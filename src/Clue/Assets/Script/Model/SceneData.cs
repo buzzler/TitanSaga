@@ -66,5 +66,7 @@ public	enum ShotCommand {
 	UI_HIDE,
 	UI_CHANGE,
 	UI_CLEAR,
+	STATE_PUSH,
+	STATE_POP,
 	BREAK
 }

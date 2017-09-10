@@ -77,6 +77,14 @@ public class ScenarioController : Controller {
 		observer.dialogCtr.Hide ();
 		observer.backgroundCtr.Change (_current.background);
 		observer.faderCtr.FadeIn (OnFadeIn);
+
+		var suspect = observer.mansionCtr.GetCurrentSuspect ();
+		for (int i = 0 ; i < _current.actors.Length ; i++) {
+			if (suspect == _current.actors [i].id) {
+				observer.actorCtr.Add (_current.actors [i].asset, ActorPosition.RIGHT, ActorEmotion.IDLE);
+				break;
+			}
+		}
 	}
 
 	private	void OnFadeIn() {
@@ -119,6 +127,10 @@ public class ScenarioController : Controller {
 			break;
 		case ShotCommand.MANSION_RANDOM:
 			ExecuteMansionRandom(sd);
+			break;
+		case ShotCommand.STATE_PUSH:
+			break;
+		case ShotCommand.STATE_POP:
 			break;
 		}
 	}
@@ -181,6 +193,20 @@ public class ScenarioController : Controller {
 	private	void ExecuteMansionRandom(ShotData data) {
 		ExecuteDefault (data, () => {
 			observer.mansionCtr.VisitRandom();
+		});
+	}
+
+	private	void ExecuteStatePush(ShotData data) {
+		ExecuteDefault (data, () => {
+			observer.backgroundCtr.Backup();
+			observer.actorCtr.Backup();
+		});
+	}
+
+	private	void ExecuteStatePop(ShotData data) {
+		ExecuteDefault (data, () => {
+			observer.backgroundCtr.Restore();
+			observer.actorCtr.Restore();
 		});
 	}
 }

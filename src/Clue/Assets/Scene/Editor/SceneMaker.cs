@@ -144,11 +144,17 @@ public class SceneMaker : EditorWindow {
 			int index = 0;
 			for (int i = 0; i < _data.actors.Length; i++) {
 				var actor = _data.actors [i];
+				if (actor == null)
+					continue;
+				var info = _global.GetSuspectById (actor.id);
+				if (info == null)
+					continue;
+
 				GUILayout.BeginHorizontal ();
 				if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
 					OnClickRemoveActor (index);
-				
-				var oldLabel = _global.GetSuspectById (actor.id).name;
+
+				var oldLabel = info.name;
 				GUILayout.TextField (oldLabel, GUILayout.Width (90));
 				int indexActor = ArrayUtility.IndexOf<string> (_prefabs, actor.asset);
 				int newActor = EditorGUILayout.Popup (indexActor, _prefabs);
@@ -392,7 +398,11 @@ public class SceneMaker : EditorWindow {
 			list = new List<ActorData> ();
 		else
 			list = new List<ActorData>(_data.actors);
-		list.Add (new ActorData ());
+
+		var newactor = new ActorData ();
+		newactor.id = _global.suspects [0].id;
+
+		list.Add (newactor);
 		_data.actors = list.ToArray ();
 		UpdateActor ();
 	}
@@ -435,7 +445,12 @@ public class SceneMaker : EditorWindow {
 		var list = new List<string> ();
 		for (var i = _data.actors.Length - 1; i >= 0; i--) {
 			var actor = _data.actors [i];
-			var name = _global.GetSuspectById (actor.id).name;
+			if (actor == null)
+				continue;
+			var info = _global.GetSuspectById (actor.id);
+			if (info == null)
+				continue;
+			var name = info.name;
 			list.Add (name);
 			_actorsDic.Add (actor.id, name);
 		}

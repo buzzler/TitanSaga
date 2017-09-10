@@ -8,6 +8,7 @@ public	class MansionController : Controller {
 	private	Dictionary<string, RoomData>	_dicRoom;
 	private	List<string>					_listRoom;
 	private	Dictionary<string, EvidenceData>_dicEvidence;
+	private	Dictionary<string, SuspectData>	_dicSuspect;
 
 	public	MansionController(Observer observer) : base (observer) {
 	}
@@ -19,6 +20,7 @@ public	class MansionController : Controller {
 		_dicRoom = null;
 		_listRoom = null;
 		_dicEvidence = null;
+		_dicSuspect = null;
 	}
 
 	public	bool Load(string id) {
@@ -38,6 +40,7 @@ public	class MansionController : Controller {
 			_dicEvidence = new Dictionary<string, EvidenceData>();
 			_listRoom = new List<string>();
 			_dicRoom = new Dictionary<string, RoomData>();
+			_dicSuspect = new Dictionary<string, SuspectData>();
 			for (int i = 0 ; i < _masion.evidences.Length ; i++) {
 				var evidence = _masion.evidences[i];
 				_dicEvidence.Add(evidence.id, evidence);
@@ -46,6 +49,10 @@ public	class MansionController : Controller {
 				var room = _masion.rooms[i];
 				_dicRoom.Add(room.id, room);
 				_listRoom.Add(room.id);
+			}
+			for (int i = 0 ; i < _masion.suspects.Length ; i++) {
+				var suspect = _masion.suspects[i];
+				_dicSuspect.Add(suspect.id, suspect);
 			}
 			return true;
 		} catch (System.Exception e) {
@@ -91,9 +98,40 @@ public	class MansionController : Controller {
 			return null;
 	}
 
+	public	string GetCurrentSuspect() {
+		if (_room == null)
+			return null;
+
+		var itr = _dicSuspect.GetEnumerator ();
+		while (itr.MoveNext ()) {
+			var suspect = itr.Current.Value;
+			if (string.IsNullOrEmpty (suspect.room))
+				continue;
+			if (suspect.room == _room.id)
+				return suspect.id;
+		}
+		return null;
+	}
+
+	public	void TalkSuspect(string suspect) {
+		if (!_dicSuspect.ContainsKey (suspect))
+			return;
+
+		observer.actorCtr.Backup ();
+		observer.backgroundCtr.Backup ();
+		observer.uiCtr.Backup ();
+
+		var selected = _dicSuspect [suspect];
+		ShowScenario (selected.scenario);
+	}
+
 	public	void CheckEvidence(string evidence) {
 		if (!_dicEvidence.ContainsKey (evidence))
 			return;
+
+		observer.actorCtr.Backup ();
+		observer.backgroundCtr.Backup ();
+		observer.uiCtr.Backup ();
 
 		var selected = _dicEvidence [evidence];
 		ShowScenario (selected.scenario);

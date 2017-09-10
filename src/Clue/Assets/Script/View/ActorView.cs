@@ -41,6 +41,10 @@ public class ActorView : MonoBehaviour {
 		}
 	}
 
+	public	string GetEmotion() {
+		return _emotion;
+	}
+
 	public	void SetPosition(string position) {
 		if (position == _position) {
 			return;
@@ -95,6 +99,10 @@ public class ActorView : MonoBehaviour {
 			LeanTween.cancelAll ();
 		LeanTween.moveLocal (gameObject, localNext, 0.2f).setEaseInOutCirc();
 		_position = position;
+	}
+
+	public	string GetPosition() {
+		return _position;
 	}
 
 	public	void Remove() {
