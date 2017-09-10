@@ -5,11 +5,12 @@ public class ActorController : Controller {
 	private	const int _CAPACITY = 5;
 	private	Transform _group;
 	private	Dictionary<string, ActorView> _views;
-	private BackupState[] _backup;
+	private	Stack<BackupState[]> _backups;
 
 	public	ActorController(Observer observer) : base (observer) {
 		_group = null;
 		_views = new Dictionary<string, ActorView> (_CAPACITY);
+		_backups = new Stack<BackupState[]> ();
 		observer.OnInited += OnInited;
 	}
 
@@ -39,6 +40,7 @@ public class ActorController : Controller {
 	}
 
 	public	void Remove(string name) {
+		Debug.Log ("Remove");
 		if (_views.ContainsKey (name)) {
 			var view = _views [name];
 			_views.Remove (name);
@@ -87,20 +89,28 @@ public class ActorController : Controller {
 			state.emotion = view.GetEmotion();
 			state.position = view.GetPosition ();
 			states.Add (state);
+
+			Debug.LogFormat ("actor {0} backup", state.actor);
 		}
-		_backup = states.ToArray ();
+		_backups.Push (states.ToArray ());
 	}
 
 	public	void Restore() {
-		if (_backup == null)
+		if (_backups == null)
+			return;
+		if (_backups.Count == 0)
+			return;
+		var backup = _backups.Pop ();
+		if (backup == null)
 			return;
 		
 		RemoveAll ();
-		for (int i = 0 ; i < _backup.Length ; i++) {
-			var state = _backup [i];
+		for (int i = 0 ; i < backup.Length ; i++) {
+			var state = backup [i];
 			Add (state.actor, state.position, state.emotion);
+
+			Debug.LogFormat ("actor {0} restore", state.actor);
 		}
-		_backup = null;
 	}
 
 	class BackupState {

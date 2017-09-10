@@ -7,12 +7,13 @@ public class UIController : Controller {
 	private	Transform						_canvas;
 	private	Dictionary<string, Transform>	_current;
 	private	Dictionary<string, Transform>	_lock;
-	private	BackupState[]					_backup;
+	private	Stack<BackupState[]>			_backups;
 
 	public	UIController(Observer observer) : base (observer) {
 		_canvas = GameObject.FindObjectOfType<Canvas> ().transform;
 		_current = new Dictionary<string, Transform> ();
 		_lock = new Dictionary<string, Transform> ();
+		_backups = new Stack<BackupState[]> ();
 	}
 
 	public	bool Contains(string name) {
@@ -137,22 +138,30 @@ public class UIController : Controller {
 			state.name = key;
 			state.locked = _lock.ContainsKey (key);
 			list.Add (state);
+
+			Debug.LogFormat ("ui {0} backup", key);
 		}
-		_backup = list.ToArray ();
+		_backups.Push (list.ToArray ());
 	}
 
 	public	void Restore() {
-		if (_backup == null)
+		if (_backups == null)
+			return;
+		if (_backups.Count == 0)
+			return;
+		var backup = _backups.Pop ();
+		if (backup == null)
 			return;
 
 		RemoveAll ();
-		for (int i = 0 ; i < _backup.Length ; i++) {
-			var state = _backup [i];
+		for (int i = 0; i < backup.Length; i++) {
+			var state = backup [i];
 			Add (state.name, state.locked);
 			if (!state.visible)
 				Hide (state.name);
+
+			Debug.LogFormat ("ui {0} restore", state.name);
 		}
-		_backup = null;
 	}
 
 	class BackupState {

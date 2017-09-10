@@ -18,13 +18,18 @@ public	class DetectiveView : MonoBehaviour {
 
 	public	void OnClickSearch() {
 		var ob = GameObject.FindObjectOfType<Observer> ();
+		ob.actorCtr.Backup ();
+		ob.backgroundCtr.Backup ();
+		ob.uiCtr.Backup ();
 		ob.uiCtr.Change ("Search");
 	}
 
 	public	void OnClickTalk() {
 		var ob = GameObject.FindObjectOfType<Observer> ();
+		ob.actorCtr.Backup ();
+		ob.backgroundCtr.Backup ();
+		ob.uiCtr.Backup ();
 		ob.mansionCtr.TalkSuspect (ob.mansionCtr.GetCurrentSuspect ());
-//		ob.scenarioCtr.Resume ();
 	}
 
 	public	void OnClickCrimemap() {

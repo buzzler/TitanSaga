@@ -5,11 +5,12 @@ public class BackgroundController : Controller {
 	private	const int _CAPACITY = 5;
 	private	Transform _group;
 	private	Dictionary<string, BackgroundView> _views;
-	private	BackupState[] _backup;
+	private	Stack<BackupState[]> _backups;
 
 	public BackgroundController (Observer observer) : base (observer) {
 		_group = null;
 		_views = new Dictionary<string, BackgroundView> (_CAPACITY);
+		_backups = new Stack<BackupState[]> ();
 		observer.OnInited += OnInited;
 	}
 
@@ -76,17 +77,21 @@ public class BackgroundController : Controller {
 			state.interact = view.GetIntectivity ();
 			states.Add (state);
 		}
-		_backup = states.ToArray ();
+		_backups.Push (states.ToArray ());
 	}
 
 	public	void Restore() {
-		if (_backup == null)
+		if (_backups == null)
+			return;
+		if (_backups.Count == 0)
+			return;
+		var backup = _backups.Pop ();
+		if (backup == null)
 			return;
 
 		RemoveAll ();
-		for (int i = 0 ; i < _backup.Length ; i++) {
-			var state = _backup [i];
-			Add (state.background);
+		for (int i = 0; i < backup.Length; i++) {
+			Add (backup [i].background);
 		}
 		SetInteractivity (false);
 	}

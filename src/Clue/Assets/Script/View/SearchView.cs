@@ -5,15 +5,19 @@ public class SearchView : MonoBehaviour {
 
 	public	void Start() {
 		var ob = GameObject.FindObjectOfType<Observer> ();
-		ob.actorCtr.Hide ();
+//		ob.actorCtr.Hide ();
+		ob.actorCtr.RemoveAll ();
 		ob.backgroundCtr.SetInteractivity (true);
 	}
 
 	public	void OnClickBack() {
 		var ob = GameObject.FindObjectOfType<Observer> ();
-		ob.actorCtr.Show ();
 		ob.backgroundCtr.SetInteractivity (false);
-		ob.uiCtr.Change ("Detective");
+		ob.actorCtr.Restore ();
+		ob.backgroundCtr.Restore ();
+		ob.uiCtr.Restore ();
+//		ob.actorCtr.Show ();
+//		ob.uiCtr.Change ("Detective");
 	}
 
 	public	void OnClickCrimemap() {
@@ -33,6 +37,4 @@ public class SearchView : MonoBehaviour {
 		var uv = ob.uiCtr.Change ("Utility").GetComponent<UtilityView>();
 		uv.SetSuspicions ();
 	}
-
 }
-

@@ -15,6 +15,9 @@ public class BackgroundView : MonoBehaviour {
 	public	void OnSelectEvidence(EvidenceView selected) {
 		if (_interact) {
 			var ob = GameObject.FindObjectOfType<Observer> ();
+//			ob.actorCtr.Backup ();
+//			ob.backgroundCtr.Backup ();
+//			ob.uiCtr.Backup ();
 			ob.mansionCtr.CheckEvidence (selected.alias);
 		}
 	}
