@@ -18,7 +18,7 @@ public class MoveView : MonoBehaviour {
 
 	void Start() {
 		_observer = GameObject.FindObjectOfType<Observer> ();
-		var now = _observer.mansionCtr.GetCurrentRoom ();
+		var now = _observer.mansionCtr.GetLastRoom ();
 
 		roomInfos = _observer.globalCtr.GetAllRoom ();
 		if (roomInfos.Length != buttons.Length) {

@@ -5,7 +5,6 @@ public class SearchView : MonoBehaviour {
 
 	public	void Start() {
 		var ob = GameObject.FindObjectOfType<Observer> ();
-//		ob.actorCtr.Hide ();
 		ob.actorCtr.RemoveAll ();
 		ob.backgroundCtr.SetInteractivity (true);
 	}
@@ -16,8 +15,6 @@ public class SearchView : MonoBehaviour {
 		ob.actorCtr.Restore ();
 		ob.backgroundCtr.Restore ();
 		ob.uiCtr.Restore ();
-//		ob.actorCtr.Show ();
-//		ob.uiCtr.Change ("Detective");
 	}
 
 	public	void OnClickCrimemap() {

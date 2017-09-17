@@ -4,11 +4,13 @@ using System.Collections.Generic;
 public	class MansionController : Controller {
 	private	string							_id;
 	private	MansionData						_masion;
-	private	RoomData						_room;
 	private	Dictionary<string, RoomData>	_dicRoom;
 	private	List<string>					_listRoom;
 	private	Dictionary<string, EvidenceData>_dicEvidence;
 	private	Dictionary<string, SuspectData>	_dicSuspect;
+	private	RoomData						_lastRoom;
+	private	EvidenceData					_lastEvidence;
+	private SuspectData						_lastSuspect;
 
 	public	MansionController(Observer observer) : base (observer) {
 	}
@@ -16,11 +18,13 @@ public	class MansionController : Controller {
 	public	void Clear() {
 		_id = null;
 		_masion = null;
-		_room = null;
 		_dicRoom = null;
 		_listRoom = null;
 		_dicEvidence = null;
 		_dicSuspect = null;
+		_lastRoom = null;
+		_lastEvidence = null;
+		_lastSuspect = null;
 	}
 
 	public	bool Load(string id) {
@@ -84,22 +88,38 @@ public	class MansionController : Controller {
 			return;
 
 		var selected = _dicRoom [room];
-		if (_room == selected)
+		if (_lastRoom == selected)
 			return;
 
-		_room = selected;
-		ShowScenario (_room.scenario);
+		_lastRoom = selected;
+		ShowScenario (_lastRoom.scenario);
 	}
 
-	public	string GetCurrentRoom() {
-		if (_room != null)
-			return _room.id;
+	public	string GetLastRoom() {
+		if (_lastRoom != null)
+			return _lastRoom.id;
 		else
 			return null;
 	}
 
-	public	string GetCurrentSuspect() {
-		if (_room == null)
+	public	void SetEvidenceDataScenario(string evidence, string scenario) {
+		if (_dicEvidence.ContainsKey (evidence)) {
+			_dicEvidence [evidence].scenario = scenario;
+			if (Debug.isDebugBuild)
+				Debug.LogFormat ("evidence({0}) was re-defined to {1}", evidence, scenario);
+		}
+	}
+
+	public	void SetSuspectDataScenario(string suspect, string scenario) {
+		if (_dicSuspect.ContainsKey (suspect)) {
+			_dicSuspect [suspect].scenario = scenario;
+			if (Debug.isDebugBuild)
+				Debug.LogFormat ("suspect({0}) was re-defined to {1}", suspect, scenario);
+		}
+	}
+
+	public	string GetMainSuspect() {
+		if (_lastRoom == null)
 			return null;
 
 		var itr = _dicSuspect.GetEnumerator ();
@@ -107,7 +127,7 @@ public	class MansionController : Controller {
 			var suspect = itr.Current.Value;
 			if (string.IsNullOrEmpty (suspect.room))
 				continue;
-			if (suspect.room == _room.id)
+			if (suspect.room == _lastRoom.id)
 				return suspect.id;
 		}
 		return null;
@@ -118,7 +138,15 @@ public	class MansionController : Controller {
 			return;
 
 		var selected = _dicSuspect [suspect];
+		_lastSuspect = selected;
 		ShowScenario (selected.scenario);
+	}
+
+	public	string GetLastSuspect() {
+		if (_lastSuspect != null)
+			return _lastSuspect.id;
+		else
+			return null;
 	}
 
 	public	void CheckEvidence(string evidence) {
@@ -128,7 +156,15 @@ public	class MansionController : Controller {
 		observer.stateCtr.Backup ();
 
 		var selected = _dicEvidence [evidence];
+		_lastEvidence = selected;
 		ShowScenario (selected.scenario);
+	}
+
+	public	string GetLastEvidence() {
+		if (_lastEvidence != null)
+			return _lastEvidence.id;
+		else
+			return null;
 	}
 
 	public	void ShowScenario(string filename) {

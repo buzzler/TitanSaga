@@ -24,6 +24,8 @@ public class SceneMaker : EditorWindow {
 	private	Dictionary<string, string>	_actorsDic;
 	private bool _showActor;
 	private	bool _showDialog;
+	private	Vector2		_scroll;
+
 
 	public	SceneMaker() {
 		_global		= null;
@@ -39,6 +41,7 @@ public class SceneMaker : EditorWindow {
 		_actorsDic	= new Dictionary<string, string> ();
 		_showActor	= true;
 		_showDialog	= true;
+		_scroll		= Vector2.zero;
 	}
 
 	void OnGUI() {
@@ -185,7 +188,7 @@ public class SceneMaker : EditorWindow {
 			OnClickAddDialog ();
 		GUILayout.EndHorizontal ();
 
-		EditorGUILayout.BeginScrollView (Vector2.zero);
+		_scroll = EditorGUILayout.BeginScrollView (_scroll);
 		GUILayout.BeginVertical ();
 
 		if (_showDialog) {
@@ -231,6 +234,11 @@ public class SceneMaker : EditorWindow {
 					newIndex = EditorGUILayout.Popup (oldIndex, _uis, GUILayout.Width (90));
 					if (oldIndex != newIndex)
 						dialog.parameter = _uis [newIndex];
+				} else if (dialog.command == ShotCommand.SCENARIO_CHANGE_SUSPECT) {
+					oldIndex = _actorsDic.ContainsKey (dialog.parameter) ? ArrayUtility.IndexOf<string> (_actorsAry, _actorsDic [dialog.parameter]) : -1;
+					newIndex = EditorGUILayout.Popup (oldIndex, _actorsAry, GUILayout.Width (90));
+					if (oldIndex != newIndex)
+						dialog.parameter = _global.GetSuspectByName (_actorsAry [newIndex]).id;
 				}
 				GUILayout.EndHorizontal ();
 				index++;

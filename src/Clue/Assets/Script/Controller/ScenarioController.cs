@@ -78,7 +78,7 @@ public class ScenarioController : Controller {
 		observer.backgroundCtr.Change (_current.background);
 		observer.faderCtr.FadeIn (OnFadeIn);
 
-		var suspect = observer.mansionCtr.GetCurrentSuspect ();
+		var suspect = observer.mansionCtr.GetMainSuspect ();
 		if (suspect != null) {
 			for (int i = 0; i < _current.actors.Length; i++) {
 				if (suspect == _current.actors [i].id) {
@@ -135,6 +135,12 @@ public class ScenarioController : Controller {
 			break;
 		case ShotCommand.STATE_POP:
 			ExecuteStatePop (sd);
+			break;
+		case ShotCommand.SCENARIO_CHANGE_SUSPECT:
+			ExecuteScenatioChangeSuspect (sd);
+			break;
+		case ShotCommand.SCENARIO_CHANGE_EVIDENCE:
+			ExecuteScenatioChangeEvidence (sd);
 			break;
 		}
 	}
@@ -210,5 +216,15 @@ public class ScenarioController : Controller {
 		ExecuteDefault (data, () => {
 			observer.stateCtr.Restore();
 		});
+	}
+
+	private	void ExecuteScenatioChangeSuspect(ShotData data) {
+		observer.mansionCtr.SetSuspectDataScenario (data.parameter, "No_Evidence");
+		ExecuteDefault (data, Next);
+	}
+
+	private	void ExecuteScenatioChangeEvidence(ShotData data) {
+		observer.mansionCtr.SetEvidenceDataScenario (observer.mansionCtr.GetLastEvidence (), "No_Evidence");
+		ExecuteDefault (data, Next);
 	}
 }
