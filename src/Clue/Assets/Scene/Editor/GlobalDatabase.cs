@@ -20,6 +20,8 @@ public class GlobalDatabase : EditorWindow {
 	private	bool _showEvidence;
 	private string[]					_roomsAry;
 	private Dictionary<string, string>	_roomsDic;
+	private	string[]					_prefabs;
+	private	string[]					_roles;
 
 	public	GlobalDatabase() {
 		_path = null;
@@ -30,6 +32,8 @@ public class GlobalDatabase : EditorWindow {
 		_showEvidence = true;
 		_roomsAry = new string[0];
 		_roomsDic = new Dictionary<string, string> ();
+		_prefabs = new string[0];
+		_roles = new string[0];
 	}
 
 	void OnGUI() {
@@ -83,6 +87,10 @@ public class GlobalDatabase : EditorWindow {
 			if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
 				OnClickRemoveSuspect (-1);
 			GUILayout.Button ("name", EditorStyles.miniButton);
+			GUILayout.Button ("role", EditorStyles.miniButton, GUILayout.Width (120));
+			GUILayout.Button ("asset", EditorStyles.miniButton, GUILayout.Width (120));
+			GUILayout.Button ("male", EditorStyles.miniButton, GUILayout.Width (40));
+			GUILayout.Button ("female", EditorStyles.miniButton, GUILayout.Width (40));
 			GUILayout.Button ("alias", EditorStyles.miniButton, GUILayout.Width (90));
 			GUILayout.EndHorizontal ();
 
@@ -92,6 +100,33 @@ public class GlobalDatabase : EditorWindow {
 				if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
 					OnClickRemoveSuspect (i);
 				suspect.name = GUILayout.TextField (suspect.name);
+
+				int indexRole = ArrayUtility.IndexOf<string> (_roles, suspect.role);
+				int newRole = EditorGUILayout.Popup (indexRole, _roles, GUILayout.Width (120));
+				if (indexRole != newRole)
+					suspect.role = _roles [newRole];
+
+				int indexActor = ArrayUtility.IndexOf<string> (_prefabs, suspect.asset);
+				int newActor = EditorGUILayout.Popup (indexActor, _prefabs, GUILayout.Width (120));
+				if (indexActor != newActor)
+					suspect.asset = _prefabs [newActor];
+
+				bool gender = suspect.gender == ActorGender.MALE;
+				bool newGender = GUILayout.Toggle (gender, "", GUILayout.Width (40));
+				if (gender != newGender) {
+					if (newGender)
+						suspect.gender = ActorGender.MALE;
+					else
+						suspect.gender = ActorGender.NONE;
+				}
+				gender = suspect.gender == ActorGender.FEMALE;
+				newGender = GUILayout.Toggle (gender, "", GUILayout.Width(40));
+				if (gender != newGender) {
+					if (newGender)
+						suspect.gender = ActorGender.FEMALE;
+					else
+						suspect.gender = ActorGender.NONE;
+				}
 				suspect.id = GUILayout.TextField (suspect.id, GUILayout.Width (90));
 				GUILayout.EndHorizontal ();
 			}
@@ -272,6 +307,7 @@ public class GlobalDatabase : EditorWindow {
 
 	public	void OnClickRescan() {
 		UpdateRoom ();
+		UpdateAsset ();
 	}
 
 	public	void OnClickAddSuspect() {
@@ -366,7 +402,28 @@ public class GlobalDatabase : EditorWindow {
 		_roomsAry = list.ToArray ();
 	}
 
+	private	void UpdateAsset() {
+		var path = Path.Combine (Application.dataPath, "Art/Actor/Resources");
+		var files = Directory.GetFiles (path, "*.prefab", SearchOption.AllDirectories);
+		var list = new List<string> ();
+		for (int i = 0; i < files.Length; i++) {
+			list.Add (Path.GetFileNameWithoutExtension (files [i]));
+		}
+		_prefabs = list.ToArray ();
+	}
+
+	private	void UpdateRole() {
+		var list = new List<string> ();
+		var fields = typeof(Role).GetFields ();
+		foreach(var field in fields) {
+			list.Add (field.GetValue (null) as string);
+		}
+		_roles = list.ToArray ();
+	}
+
 	private	void UpdateData() {
 		UpdateRoom ();
+		UpdateAsset ();
+		UpdateRole ();
 	}
 }

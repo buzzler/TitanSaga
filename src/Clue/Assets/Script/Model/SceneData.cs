@@ -7,23 +7,13 @@ public	class SceneData {
 	public	string		title;
 	public	string		ui;
 	public	string		background;
-	public	ActorData[]	actors;
 	public	ShotData[]	shots;
 
 	public	SceneData() {
 		title = string.Empty;
 		ui = string.Empty;
 		background = string.Empty;
-		actors = new ActorData[0];
 		shots = new ShotData[0];
-	}
-
-	public	ActorData GetActorByName(string name) {
-		for (int i = actors.Length - 1; i >= 0; i--) {
-			if (actors [i].id == name)
-				return actors [i];
-		}
-		return null;
 	}
 }
 
@@ -43,17 +33,6 @@ public	class ShotData {
 		emotion = string.Empty;
 		comment = string.Empty;
 		parameter = string.Empty;
-	}
-}
-
-[Serializable]
-public	class ActorData {
-	public	string id;
-	public	string asset;
-
-	public	ActorData() {
-		id = string.Empty;
-		asset = string.Empty;
 	}
 }
 

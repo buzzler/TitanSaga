@@ -57,12 +57,18 @@ public class GlobalInfo {
 
 [Serializable]
 public	class SuspectInfo {
-	public	string id;
-	public	string name;
+	public	string	id;
+	public	string	name;
+	public	string	asset;
+	public	string	gender;
+	public	string	role;
 
 	public	SuspectInfo() {
 		id = string.Empty;
 		name = string.Empty;
+		asset = string.Empty;
+		gender = ActorGender.NONE;
+		role = Role.NONE;
 	}
 }
 

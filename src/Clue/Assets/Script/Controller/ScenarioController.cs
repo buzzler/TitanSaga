@@ -80,12 +80,8 @@ public class ScenarioController : Controller {
 
 		var suspect = observer.mansionCtr.GetMainSuspect ();
 		if (suspect != null) {
-			for (int i = 0; i < _current.actors.Length; i++) {
-				if (suspect == _current.actors [i].id) {
-					observer.actorCtr.Add (_current.actors [i].asset, ActorPosition.RIGHT, ActorEmotion.IDLE);
-					break;
-				}
-			}
+			var info = observer.globalCtr.GetSuspect (suspect);
+			observer.actorCtr.Add (info.asset, ActorPosition.RIGHT, ActorEmotion.IDLE);
 		}
 	}
 
@@ -147,7 +143,7 @@ public class ScenarioController : Controller {
 
 	private	void ExecuteDefault(ShotData data, Action callback = null) {
 		if (!string.IsNullOrEmpty (data.actor)) {
-			observer.actorCtr.Add (_current.GetActorByName (data.actor).asset, data.position, data.emotion);
+			observer.actorCtr.Add (observer.globalCtr.GetSuspect (data.actor).asset, data.position, data.emotion);
 		}
 		if (!string.IsNullOrEmpty (data.comment)) {
 			observer.dialogCtr.SetCallback (callback);
