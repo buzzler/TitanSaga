@@ -20,7 +20,7 @@ public	class SceneData {
 [Serializable]
 public	class ShotData {
 	public	ShotCommand command;
-	public	string actor;
+	public	string role;
 	public	string position;
 	public	string emotion;
 	public	string comment;
@@ -28,7 +28,7 @@ public	class ShotData {
 
 	public	ShotData() {
 		command = ShotCommand.NONE;
-		actor = string.Empty;
+		role = string.Empty;
 		position = string.Empty;
 		emotion = string.Empty;
 		comment = string.Empty;

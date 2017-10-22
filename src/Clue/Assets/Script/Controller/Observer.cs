@@ -19,6 +19,7 @@ public class Observer : MonoBehaviour {
 	public	GlobalDBController		globalCtr;
 	public	UIController			uiCtr;
 	public	StateController			stateCtr;
+	public	RoleController			roleCtr;
 
 	public	EventDelegate OnInited;
 	public	EventDelegate OnLoop;
@@ -38,6 +39,7 @@ public class Observer : MonoBehaviour {
 		globalCtr		= new GlobalDBController (this);
 		uiCtr			= new UIController (this);
 		stateCtr		= new StateController (this);
+		roleCtr			= new RoleController (this);
 	}
 
 	void Start() {

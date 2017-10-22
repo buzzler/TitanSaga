@@ -76,7 +76,7 @@ public class MoveView : MonoBehaviour {
 		selected = index;
 
 		var roomInfo = roomInfos [index];
-		var roomData = roomDatas [index];
+//		var roomData = roomDatas [index];
 		var evidenceDatas = _observer.mansionCtr.GetEvidenceDataByRoom (roomInfo.id);
 		var suspectDatas = _observer.mansionCtr.GetSuspectDataByRoom (roomInfo.id);
 

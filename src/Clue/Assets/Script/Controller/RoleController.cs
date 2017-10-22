@@ -6,13 +6,21 @@ public class RoleController : Controller {
 
 	public RoleController (Observer observer) : base (observer) {
 		_dic = new Dictionary<string, SuspectInfo> ();
+		var suspects = observer.globalCtr.GetAllSuspects ();
+		for (int i = 0; i < suspects.Length; i++) {
+			var s = suspects [i];
+			if (s.role != Role.NONE)
+				_dic.Add (s.role, s);
+		}
 	}
 
 	public	SuspectInfo GetSuspectInfo(string role) {
+		Debug.LogFormat ("Role : {0}", role);
 		if (_dic.ContainsKey (role)) {
 			return _dic [role];
 		} else {
 			var id = observer.mansionCtr.GetMainSuspect ();
+			Debug.LogFormat ("MainSuspect : {0}", id);
 			var info = observer.globalCtr.GetSuspect (id);
 
 			if (Debug.isDebugBuild)

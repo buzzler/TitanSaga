@@ -19,7 +19,7 @@ public class SceneMaker : EditorWindow {
 	private	string[]	_positions;
 	private	string[]	_emotions;
 
-	private	string[]					_actorsAry;
+	private	string[]					_rolesAry;
 //	private	Dictionary<string, string>	_actorsDic;
 //	private bool _showActor;
 	private	bool _showDialog;
@@ -35,7 +35,7 @@ public class SceneMaker : EditorWindow {
 		_backgrounds= new string[0];
 		_positions	= new string[]{ ActorPosition.NONE, ActorPosition.CENTER, ActorPosition.LEFT, ActorPosition.LEFTMOST, ActorPosition.RIGHT, ActorPosition.RIGHTMOST};
 		_emotions	= new string[]{ ActorEmotion.NONE, ActorEmotion.ANGRY, ActorEmotion.IDLE, ActorEmotion.SAD, ActorEmotion.SHY, ActorEmotion.SMILE };
-		_actorsAry	= new string[0];
+		_rolesAry	= new string[0];
 //		_actorsDic	= new Dictionary<string, string> ();
 //		_showActor	= true;
 		_showDialog	= true;
@@ -202,10 +202,10 @@ public class SceneMaker : EditorWindow {
 				if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
 					OnClickRemoveDialog (index);
 
-				int oldLabel = ArrayUtility.IndexOf<string> (_actorsAry, dialog.actor);
-				int newLabel = EditorGUILayout.Popup (oldLabel, _actorsAry, GUILayout.Width (90));
+				int oldLabel = ArrayUtility.IndexOf<string> (_rolesAry, dialog.role);
+				int newLabel = EditorGUILayout.Popup (oldLabel, _rolesAry, GUILayout.Width (90));
 				if (oldLabel != newLabel)
-					dialog.actor = _actorsAry [newLabel];
+					dialog.role = _rolesAry [newLabel];
 
 //				int oldLabel = _actorsDic.ContainsKey (dialog.actor) ? ArrayUtility.IndexOf<string> (_actorsAry, _actorsDic [dialog.actor]) : -1;
 //				int newLabel = EditorGUILayout.Popup (oldLabel, _actorsAry, GUILayout.Width (90));
@@ -236,10 +236,10 @@ public class SceneMaker : EditorWindow {
 					if (oldIndex != newIndex)
 						dialog.parameter = _uis [newIndex];
 				} else if (dialog.command == ShotCommand.SCENARIO_CHANGE_SUSPECT) {
-					oldIndex = ArrayUtility.IndexOf<string> (_actorsAry, dialog.parameter);
-					newIndex = EditorGUILayout.Popup (oldIndex, _actorsAry, GUILayout.Width (90));
+					oldIndex = ArrayUtility.IndexOf<string> (_rolesAry, dialog.parameter);
+					newIndex = EditorGUILayout.Popup (oldIndex, _rolesAry, GUILayout.Width (90));
 					if (oldIndex != newIndex)
-						dialog.parameter = _actorsAry [newIndex];
+						dialog.parameter = _rolesAry [newIndex];
 
 //					oldIndex = _actorsDic.ContainsKey (dialog.parameter) ? ArrayUtility.IndexOf<string> (_actorsAry, _actorsDic [dialog.parameter]) : -1;
 //					newIndex = EditorGUILayout.Popup (oldIndex, _actorsAry, GUILayout.Width (90));
@@ -447,7 +447,7 @@ public class SceneMaker : EditorWindow {
 		foreach(var field in fields) {
 			list.Add (field.GetValue (null) as string);
 		}
-		_actorsAry = list.ToArray ();
+		_rolesAry = list.ToArray ();
 	}
 /*
 	private void UpdateActor() {
