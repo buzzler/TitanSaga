@@ -21,10 +21,12 @@ public class MansionMaker : EditorWindow {
 	private	Dictionary<string, string>	_evidencesDic;
 	private	string[]					_suspectsAry;
 	private	Dictionary<string, string>	_suspectsDic;
+	private	string[]					_rolesAry;
 
 	private bool _showRoom;
 	private	bool _showEvidence;
 	private	bool _showSuspect;
+	private	bool _showRole;
 	private	Vector2 _scroll;
 
 	public	MansionMaker() {
@@ -38,9 +40,11 @@ public class MansionMaker : EditorWindow {
 		_evidencesDic = new Dictionary<string, string> ();
 		_suspectsAry = new string[0];
 		_suspectsDic = new Dictionary<string, string> ();
+		_rolesAry = new string[0];
 		_showRoom = true;
 		_showEvidence = true;
 		_showSuspect = true;
+		_showRole = true;
 		_scroll = Vector2.zero;
 	}
 
@@ -52,6 +56,8 @@ public class MansionMaker : EditorWindow {
 			DrawMansionData ();
 			GUILayout.Space (2);
 			DrawRoomData ();
+			GUILayout.Space (2);
+			DrawRoleData ();
 			GUILayout.Space (2);
 			DrawSuspectData();
 			GUILayout.Space (2);
@@ -244,8 +250,7 @@ public class MansionMaker : EditorWindow {
 			GUILayout.BeginHorizontal ();
 			if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
 				OnClickRemoveSuspect (-1);
-			GUILayout.Button ("name", EditorStyles.miniButton, GUILayout.Width (90));
-			GUILayout.Button ("scenario", EditorStyles.miniButton);
+			GUILayout.Button ("name", EditorStyles.miniButton);
 			GUILayout.Button ("room", EditorStyles.miniButton, GUILayout.Width (90));
 			GUILayout.Toggle (false, string.Empty, GUILayout.Width (20));
 			GUILayout.EndHorizontal ();
@@ -258,7 +263,7 @@ public class MansionMaker : EditorWindow {
 				if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
 					OnClickRemoveSuspect (i);
 				oldIndex = ArrayUtility.IndexOf<string> (_suspectsAry, _suspectsDic.ContainsKey (suspect.id) ? _suspectsDic [suspect.id] : string.Empty);
-				newIndex = EditorGUILayout.Popup (oldIndex, _suspectsAry, GUILayout.Width (90));
+				newIndex = EditorGUILayout.Popup (oldIndex, _suspectsAry);
 				if (oldIndex != newIndex) {
 					foreach (var key in _suspectsDic.Keys) {
 						if (_suspectsDic [key] == _suspectsAry [newIndex]) {
@@ -267,11 +272,6 @@ public class MansionMaker : EditorWindow {
 						}
 					}
 				}
-
-				oldIndex = ArrayUtility.IndexOf<string> (_scenes, suspect.scenario);
-				newIndex = EditorGUILayout.Popup (oldIndex, _scenes);
-				if (oldIndex != newIndex)
-					suspect.scenario = _scenes [newIndex];
 
 				oldIndex = _roomsDic.ContainsKey(suspect.room) ? ArrayUtility.IndexOf<string> (_roomsAry, _roomsDic[suspect.room]) : -1;
 				newIndex = EditorGUILayout.Popup (oldIndex, _roomsAry, GUILayout.Width (90));
@@ -283,6 +283,51 @@ public class MansionMaker : EditorWindow {
 					}
 				}
 				suspect.available = GUILayout.Toggle (suspect.available, "", GUILayout.Width (20));
+				GUILayout.EndHorizontal ();
+			}
+		}
+		GUILayout.EndVertical ();
+		GUILayout.EndHorizontal ();
+	}
+
+	public	void DrawRoleData() {
+		if (_global == null || _data == null)
+			return;
+
+		GUILayout.BeginHorizontal ();
+		GUILayout.BeginHorizontal (GUILayout.Width (90));
+		_showRole = GUILayout.Toggle (_showRole, "role");
+		if (GUILayout.Button ("+", EditorStyles.miniButton, GUILayout.Width (20)))
+			OnClickAddRole ();
+		GUILayout.EndHorizontal ();
+		GUILayout.Space (4);
+		GUILayout.BeginVertical ();
+		if (_showRole) {
+			GUILayout.BeginHorizontal ();
+			if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
+				OnClickRemoveRole (-1);
+			GUILayout.Button ("role", EditorStyles.miniButton, GUILayout.Width (90));
+			GUILayout.Button ("scenario", EditorStyles.miniButton);
+			GUILayout.EndHorizontal ();
+
+			int oldIndex = 0;
+			int newIndex = 0;
+			for (int i = 0; i < _data.roles.Length; i++) {
+				var role = _data.roles [i];
+				GUILayout.BeginHorizontal ();
+				if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
+					OnClickRemoveSuspect (i);
+
+				oldIndex = ArrayUtility.IndexOf<string> (_rolesAry, role.role);
+				newIndex = EditorGUILayout.Popup (oldIndex, _rolesAry, GUILayout.Width (90));
+				if (oldIndex != newIndex)
+					role.role = _rolesAry [newIndex];
+
+				oldIndex = ArrayUtility.IndexOf<string> (_scenes, role.scenario);
+				newIndex = EditorGUILayout.Popup (oldIndex, _scenes);
+				if (oldIndex != newIndex)
+					role.scenario = _scenes [newIndex];
+
 				GUILayout.EndHorizontal ();
 			}
 		}
@@ -482,6 +527,27 @@ public class MansionMaker : EditorWindow {
 			ArrayUtility.RemoveAt<SuspectData> (ref _data.suspects, index);
 		}
 	}
+	
+	public	void OnClickAddRole () {
+		List<RoleData> list = null;
+		if (_data.roles == null)
+			list = new List<RoleData> ();
+		else
+			list = new List<RoleData> (_data.roles);
+
+		// hmm
+		list.Add (new RoleData ());
+
+		_data.roles = list.ToArray ();
+	}
+	public	void OnClickRemoveRole(int index) {
+		if (index < 0) {
+			if (EditorUtility.DisplayDialog ("Remove all role", "This will remove all role. Is it alright?", "Ok", "Cancel"))
+				_data.roles = new RoleData[0];
+		} else if (EditorUtility.DisplayDialog ("Remove a role", "This will remove a selected role. Is it alright?", "Ok", "Cancel")) {
+			ArrayUtility.RemoveAt<RoleData> (ref _data.roles, index);
+		}
+	}
 
 	private	void UpdateRoom() {
 		if (_global == null)
@@ -538,11 +604,23 @@ public class MansionMaker : EditorWindow {
 		_scenes = list.ToArray ();
 	}
 
+	private	void UpdateRole() {
+		_rolesAry = new string[] {
+			Role.FEMALE_1,
+			Role.FEMALE_2,
+			Role.FEMALE_3,
+			Role.MALE_1,
+			Role.MALE_2,
+			Role.MALE_3
+		};
+	}
+
 	private	void UpdateData() {
 		_global = GlobalInfo.LoadFromJson (Path.Combine (Application.dataPath, "Scene/Resources/Global.json"));
 		UpdateRoom ();
 		UpdateEvidence ();
 		UpdateScenario ();
 		UpdateSuspect ();
+		UpdateRole ();
 	}
 }

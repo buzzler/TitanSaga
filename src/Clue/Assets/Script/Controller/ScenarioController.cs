@@ -133,7 +133,7 @@ public class ScenarioController : Controller {
 			ExecuteStatePop (sd);
 			break;
 		case ShotCommand.SCENARIO_CHANGE_SUSPECT:
-			ExecuteScenatioChangeSuspect (sd);
+			ExecuteScenatioChangeRole (sd);
 			break;
 		case ShotCommand.SCENARIO_CHANGE_EVIDENCE:
 			ExecuteScenatioChangeEvidence (sd);
@@ -214,8 +214,8 @@ public class ScenarioController : Controller {
 		});
 	}
 
-	private	void ExecuteScenatioChangeSuspect(ShotData data) {
-		observer.mansionCtr.SetSuspectDataScenario (data.parameter, "No_Evidence");
+	private	void ExecuteScenatioChangeRole(ShotData data) {
+		observer.mansionCtr.SetRoleDataScenario (data.parameter, "No_Evidence");
 		ExecuteDefault (data, Next);
 	}
 

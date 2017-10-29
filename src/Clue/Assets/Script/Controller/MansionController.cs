@@ -8,6 +8,7 @@ public	class MansionController : Controller {
 	private	List<string>					_listRoom;
 	private	Dictionary<string, EvidenceData>_dicEvidence;
 	private	Dictionary<string, SuspectData>	_dicSuspect;
+	private Dictionary<string, RoleData>	_dicRole;
 	private	RoomData						_lastRoom;
 	private	EvidenceData					_lastEvidence;
 	private SuspectData						_lastSuspect;
@@ -22,6 +23,7 @@ public	class MansionController : Controller {
 		_listRoom = null;
 		_dicEvidence = null;
 		_dicSuspect = null;
+		_dicRole = null;
 		_lastRoom = null;
 		_lastEvidence = null;
 		_lastSuspect = null;
@@ -45,6 +47,7 @@ public	class MansionController : Controller {
 			_listRoom = new List<string>();
 			_dicRoom = new Dictionary<string, RoomData>();
 			_dicSuspect = new Dictionary<string, SuspectData>();
+			_dicRole = new Dictionary<string, RoleData>();
 			for (int i = 0 ; i < _masion.evidences.Length ; i++) {
 				var evidence = _masion.evidences[i];
 				_dicEvidence.Add(evidence.id, evidence);
@@ -57,6 +60,10 @@ public	class MansionController : Controller {
 			for (int i = 0 ; i < _masion.suspects.Length ; i++) {
 				var suspect = _masion.suspects[i];
 				_dicSuspect.Add(suspect.id, suspect);
+			}
+			for (int i = 0 ; i< _masion.roles.Length ; i++) {
+				var role = _masion.roles[i];
+				_dicRole.Add(role.role, role);
 			}
 			return true;
 		} catch (System.Exception e) {
@@ -110,11 +117,11 @@ public	class MansionController : Controller {
 		}
 	}
 
-	public	void SetSuspectDataScenario(string suspect, string scenario) {
-		if (_dicSuspect.ContainsKey (suspect)) {
-			_dicSuspect [suspect].scenario = scenario;
+	public	void SetRoleDataScenario(string role, string scenario) {
+		if (_dicRole.ContainsKey (role)) {
+			_dicRole [role].scenario = scenario;
 			if (Debug.isDebugBuild)
-				Debug.LogFormat ("suspect({0}) was re-defined to {1}", suspect, scenario);
+				Debug.LogFormat ("role({0}) was re-defined to {1}", role, scenario);
 		}
 	}
 
@@ -137,9 +144,13 @@ public	class MansionController : Controller {
 		if (!_dicSuspect.ContainsKey (suspect))
 			return;
 
-		var selected = _dicSuspect [suspect];
-		_lastSuspect = selected;
-		ShowScenario (selected.scenario);
+		var suspectData = _dicSuspect [suspect];
+		_lastSuspect = suspectData;
+
+		var suspectInfo = observer.globalCtr.GetSuspect (suspectData.id);
+		observer.roleCtr.SetRole(suspectInfo);
+		// TODO: ScenarioController.Play with suspectInfo.role
+		ShowScenario(GetRoleData(suspectInfo.role).scenario);
 	}
 
 	public	string GetLastSuspect() {
@@ -211,5 +222,11 @@ public	class MansionController : Controller {
 				result.Add (suspect);
 		}
 		return result.ToArray ();
+	}
+
+	public	RoleData GetRoleData(string role) {
+		if (_dicRole.ContainsKey (role))
+			return _dicRole [role];
+		return null;
 	}
 }
