@@ -1,4 +1,6 @@
-﻿/*
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+/*
 *
 * OLDTVFilter_Tube.shader
 * Use this file to create a awesome old tv effect.
@@ -72,7 +74,7 @@ Shader "Vortex Game Studios/Filters/OLD TV Screen Effect" {
 
 			v2f vert(appdata_img v) {
 				v2f o;
-				o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.pos = UnityObjectToClipPos(v.vertex);
 				o.uv = v.texcoord;
 
 				o.uvNoise = TRANSFORM_TEX(v.texcoord, _NoiseTex);
