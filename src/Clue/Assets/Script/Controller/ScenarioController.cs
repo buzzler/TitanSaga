@@ -142,15 +142,12 @@ public class ScenarioController : Controller {
 	}
 
 	private	void ExecuteDefault(ShotData data, Action callback = null) {
-		if (!string.IsNullOrEmpty (data.role) && (data.role != Role.NONE)) {
-			observer.actorCtr.Add (observer.roleCtr.GetSuspectInfo(data.role).asset, data.position, data.emotion);
-		}
+		var suspect = observer.roleCtr.GetSuspectInfo (data.role);
+		if (suspect != null)
+			observer.actorCtr.Add (suspect.asset, data.position, data.emotion);
 		if (!string.IsNullOrEmpty (data.comment)) {
 			observer.dialogCtr.SetCallback (callback);
-			if (string.IsNullOrEmpty(data.role))
-				observer.dialogCtr.Show ("", data.comment);
-			else
-				observer.dialogCtr.Show (observer.roleCtr.GetSuspectInfo(data.role).name, data.comment);
+			observer.dialogCtr.Show ((suspect == null) ? "":suspect.name, data.comment);
 		} else if (callback != null) {
 			callback.Invoke ();
 		}

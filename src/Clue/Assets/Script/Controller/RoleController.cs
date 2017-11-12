@@ -31,16 +31,7 @@ public class RoleController : Controller {
 		if (_dic.ContainsKey (role)) {
 			return _dic [role];
 		} else {
-			var id = observer.mansionCtr.GetMainSuspect ();
-			var info = observer.globalCtr.GetSuspect (id);
-
-			if (Debug.isDebugBuild)
-				Debug.LogFormat ("{0}({1})'s role assigned from {2} to {3}", info.name, info.id, info.role, role);
-			if (info.role != Role.NONE && info.role != role)
-				Debug.LogWarningFormat ("wrong assigned!");
-			info.role = role;
-			_dic.Add (role, info);
-			return info;
+			return null;
 		}
 	}
 
@@ -55,13 +46,13 @@ public class RoleController : Controller {
 			if (info.gender == ActorGender.MALE) {
 				_males.Add (info);
 				info.role = _roleMales [_males.Count - 1];
-
-
 			} else if (info.gender == ActorGender.FEMALE) {
 				_females.Add (info);
 				info.role = _roleFemales [_females.Count - 1];
 			} else
 				return;
+			if (!_dic.ContainsKey (info.role))
+				_dic.Add (info.role, info);
 			Debug.LogFormat ("{0}'s role assigned to {1}", info.name, info.role);
 		}
 	}

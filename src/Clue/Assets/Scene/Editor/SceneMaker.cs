@@ -9,8 +9,7 @@ public class SceneMaker : EditorWindow {
 		var window = CreateInstance<SceneMaker> ();
 		window.Show ();
 	}
-
-//	private	GlobalInfo	_global;
+		
 	private	string		_path;
 	private	SceneData	_data;
 	private	string[]	_scenes;
@@ -19,15 +18,12 @@ public class SceneMaker : EditorWindow {
 	private	string[]	_positions;
 	private	string[]	_emotions;
 
-	private	string[]					_rolesAry;
-//	private	Dictionary<string, string>	_actorsDic;
-//	private bool _showActor;
-	private	bool _showDialog;
+	private	string[]	_rolesAry;
+	private	bool		_showDialog;
 	private	Vector2		_scroll;
 
 
 	public	SceneMaker() {
-//		_global		= null;
 		_path		= null;
 		_data		= null;
 		_scenes		= new string[0];
@@ -36,8 +32,6 @@ public class SceneMaker : EditorWindow {
 		_positions	= new string[]{ ActorPosition.NONE, ActorPosition.CENTER, ActorPosition.LEFT, ActorPosition.LEFTMOST, ActorPosition.RIGHT, ActorPosition.RIGHTMOST};
 		_emotions	= new string[]{ ActorEmotion.NONE, ActorEmotion.ANGRY, ActorEmotion.IDLE, ActorEmotion.SAD, ActorEmotion.SHY, ActorEmotion.SMILE };
 		_rolesAry	= new string[0];
-//		_actorsDic	= new Dictionary<string, string> ();
-//		_showActor	= true;
 		_showDialog	= true;
 		_scroll		= Vector2.zero;
 	}
@@ -117,59 +111,7 @@ public class SceneMaker : EditorWindow {
 		GUILayout.EndHorizontal ();
 		GUILayout.EndVertical ();
 	}
-/*
-	private	void DrawActorData() {
-		if (_data == null)
-			return;
-		if (_actorsAry.Length != _actorsDic.Count)
-			UpdateActor();
 
-		GUILayout.BeginHorizontal ();
-		GUILayout.BeginHorizontal (GUILayout.Width (90));
-		_showActor = GUILayout.Toggle (_showActor, "actors");
-		if (_showActor)
-		if (GUILayout.Button ("+", EditorStyles.miniButton, GUILayout.Width (20)))
-			OnClickAddActor ();
-		GUILayout.EndHorizontal ();
-		GUILayout.Space (4);
-		GUILayout.BeginVertical ();
-		if (_showActor) {
-			GUILayout.BeginHorizontal ();
-			if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
-				OnClickRemoveActor (-1);
-			GUILayout.Button ("name", EditorStyles.miniButton, GUILayout.Width (90));
-			GUILayout.Button ("alias", EditorStyles.miniButton, GUILayout.Width (90));
-			GUILayout.EndHorizontal ();
-
-			int index = 0;
-			for (int i = 0; i < _data.actors.Length; i++) {
-				var actor = _data.actors [i];
-				if (actor == null)
-					continue;
-				var info = _global.GetSuspectById (actor.id);
-				if (info == null)
-					continue;
-
-				GUILayout.BeginHorizontal ();
-				if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
-					OnClickRemoveActor (index);
-
-				var oldLabel = info.name;
-				GUILayout.TextField (oldLabel, GUILayout.Width (90));
-				var oldName = actor.id;
-				var newName = GUILayout.TextField (oldName, GUILayout.Width (90));
-				if (oldName != newName) {
-					actor.id = newName;
-					UpdateActor ();
-				}
-				GUILayout.EndHorizontal ();
-				index++;
-			}
-		}
-		GUILayout.EndVertical ();
-		GUILayout.EndHorizontal ();
-	}
-*/
 	private	 void DrawDialogData() {
 		if (_data == null)
 			return;
@@ -186,8 +128,6 @@ public class SceneMaker : EditorWindow {
 
 		if (_showDialog) {
 			GUILayout.BeginHorizontal ();
-//			if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
-//				OnClickRemoveActor (-1);
 			GUILayout.Button ("name", EditorStyles.miniButton, GUILayout.Width (90));
 			GUILayout.Button ("comment", EditorStyles.miniButton);
 			GUILayout.Button ("position", EditorStyles.miniButton, GUILayout.Width (90));
@@ -206,12 +146,6 @@ public class SceneMaker : EditorWindow {
 				int newLabel = EditorGUILayout.Popup (oldLabel, _rolesAry, GUILayout.Width (90));
 				if (oldLabel != newLabel)
 					dialog.role = _rolesAry [newLabel];
-
-//				int oldLabel = _actorsDic.ContainsKey (dialog.actor) ? ArrayUtility.IndexOf<string> (_actorsAry, _actorsDic [dialog.actor]) : -1;
-//				int newLabel = EditorGUILayout.Popup (oldLabel, _actorsAry, GUILayout.Width (90));
-//				if (oldLabel != newLabel)
-//					dialog.actor = _global.GetSuspectByName (_actorsAry [newLabel]).id;
-
 
 				dialog.comment = GUILayout.TextArea (dialog.comment);
 				int oldIndex = ArrayUtility.IndexOf<string> (_positions, dialog.position);
@@ -240,11 +174,6 @@ public class SceneMaker : EditorWindow {
 					newIndex = EditorGUILayout.Popup (oldIndex, _rolesAry, GUILayout.Width (90));
 					if (oldIndex != newIndex)
 						dialog.parameter = _rolesAry [newIndex];
-
-//					oldIndex = _actorsDic.ContainsKey (dialog.parameter) ? ArrayUtility.IndexOf<string> (_actorsAry, _actorsDic [dialog.parameter]) : -1;
-//					newIndex = EditorGUILayout.Popup (oldIndex, _actorsAry, GUILayout.Width (90));
-//					if (oldIndex != newIndex)
-//						dialog.parameter = _global.GetSuspectByName (_actorsAry [newIndex]).id;
 				}
 				GUILayout.EndHorizontal ();
 				index++;
@@ -293,8 +222,6 @@ public class SceneMaker : EditorWindow {
 		if (clear) {
 			_path = path;
 			_data = JsonUtility.FromJson<SceneData> (File.ReadAllText (path));
-//			if (_data != null && _data.title != null)
-//				this.titleContent = new GUIContent(_data.title);
 			UpdateData ();
 		}
 	}
@@ -320,8 +247,6 @@ public class SceneMaker : EditorWindow {
 	}
 		
 	private	void OnClickRescan() {
-//		UpdateActor ();
-
 		// scene
 		var path = Path.Combine (Application.dataPath, "Scene/Resources");
 		var files = Directory.GetFiles (path, "*.json", SearchOption.AllDirectories);
@@ -396,32 +321,7 @@ public class SceneMaker : EditorWindow {
 			return;
 		_data.background = string.Empty;
 	}
-/*
-	private	void OnClickAddActor() {
-		List<ActorData> list = null;
-		if (_data.actors == null)
-			list = new List<ActorData> ();
-		else
-			list = new List<ActorData>(_data.actors);
 
-		var newactor = new ActorData ();
-		newactor.id = _global.suspects [0].id;
-
-		list.Add (newactor);
-		_data.actors = list.ToArray ();
-		UpdateActor ();
-	}
-
-	private	void OnClickRemoveActor(int index) {
-		if (index < 0) {
-			if (EditorUtility.DisplayDialog ("Remove all Actors", "This will remove all actors. Is it alright?", "Ok", "Cancel"))
-				_data.actors = new ActorData[0];
-		} else if (EditorUtility.DisplayDialog ("Remove a Actor", "This will remove a selected actor. Is it alright?", "Ok", "Cancel")) {
-			ArrayUtility.RemoveAt<ActorData> (ref _data.actors, index);
-		}
-		UpdateActor ();
-	}
-*/
 	private	void OnClickAddDialog() {
 		List<ShotData> list = null;
 		if (_data.shots == null)
@@ -449,31 +349,8 @@ public class SceneMaker : EditorWindow {
 		}
 		_rolesAry = list.ToArray ();
 	}
-/*
-	private void UpdateActor() {
-		if (_data == null)
-			return;
 
-		_actorsAry = null;
-		_actorsDic = new Dictionary<string, string> ();
-		var list = new List<string> ();
-		for (var i = _data.actors.Length - 1; i >= 0; i--) {
-			var actor = _data.actors [i];
-			if (actor == null)
-				continue;
-			var info = _global.GetSuspectById (actor.id);
-			if (info == null)
-				continue;
-			var name = info.name;
-			list.Add (name);
-			_actorsDic.Add (actor.id, name);
-		}
-		_actorsAry = list.ToArray ();
-	}
-*/
 	private	void UpdateData() {
-//		_global = GlobalInfo.LoadFromJson (Path.Combine (Application.dataPath, "Scene/Resources/Global.json"));
-//		UpdateActor ();
 		UpdateRole ();
 	}
 }
