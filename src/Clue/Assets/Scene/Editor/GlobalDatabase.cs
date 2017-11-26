@@ -20,7 +20,8 @@ public class GlobalDatabase : EditorWindow {
 	private	bool _showEvidence;
 	private string[]					_roomsAry;
 	private Dictionary<string, string>	_roomsDic;
-	private	string[]					_prefabs;
+	private	string[]					_prefabActor;
+	private	string[]					_prefabBackground;
 	private	string[]					_roles;
 
 	public	GlobalDatabase() {
@@ -32,7 +33,7 @@ public class GlobalDatabase : EditorWindow {
 		_showEvidence = true;
 		_roomsAry = new string[0];
 		_roomsDic = new Dictionary<string, string> ();
-		_prefabs = new string[0];
+		_prefabActor = new string[0];
 		_roles = new string[0];
 	}
 
@@ -106,10 +107,10 @@ public class GlobalDatabase : EditorWindow {
 				if (indexRole != newRole)
 					suspect.role = _roles [newRole];
 
-				int indexActor = ArrayUtility.IndexOf<string> (_prefabs, suspect.asset);
-				int newActor = EditorGUILayout.Popup (indexActor, _prefabs, GUILayout.Width (120));
+				int indexActor = ArrayUtility.IndexOf<string> (_prefabActor, suspect.asset);
+				int newActor = EditorGUILayout.Popup (indexActor, _prefabActor, GUILayout.Width (120));
 				if (indexActor != newActor)
-					suspect.asset = _prefabs [newActor];
+					suspect.asset = _prefabActor [newActor];
 
 				bool gender = suspect.gender == ActorGender.MALE;
 				bool newGender = GUILayout.Toggle (gender, "", GUILayout.Width (40));
@@ -185,6 +186,7 @@ public class GlobalDatabase : EditorWindow {
 				OnClickRemoveRoom (-1);
 			GUILayout.Button ("name", EditorStyles.miniButton);
 			GUILayout.Button ("alias", EditorStyles.miniButton, GUILayout.Width (90));
+			GUILayout.Button ("asset", EditorStyles.miniButton, GUILayout.Width (120));
 			GUILayout.EndHorizontal ();
 			for (int i = 0 ; i < _data.rooms.Length ; i++) {
 				var room = _data.rooms [i];
@@ -198,12 +200,19 @@ public class GlobalDatabase : EditorWindow {
 					room.name = newName;
 					UpdateData ();
 				}
+
 				oldName = room.id;
 				newName = GUILayout.TextField (oldName, GUILayout.Width (90));
 				if (oldName != newName) {
 					room.id = newName;
 					UpdateData ();
 				}
+
+				int indexBG = ArrayUtility.IndexOf<string> (_prefabBackground, room.asset);
+				int newBG = EditorGUILayout.Popup (indexBG, _prefabBackground, GUILayout.Width (120));
+				if (indexBG != newBG)
+					room.asset = _prefabBackground [newBG];
+
 				GUILayout.EndHorizontal ();
 			}
 		}
@@ -409,7 +418,15 @@ public class GlobalDatabase : EditorWindow {
 		for (int i = 0; i < files.Length; i++) {
 			list.Add (Path.GetFileNameWithoutExtension (files [i]));
 		}
-		_prefabs = list.ToArray ();
+		_prefabActor = list.ToArray ();
+
+		path = Path.Combine (Application.dataPath, "Art/Background/Resources");
+		files = Directory.GetFiles (path, "*.prefab", SearchOption.AllDirectories);
+		list.Clear ();
+		for (int i = 0; i < files.Length; i++) {
+			list.Add (Path.GetFileNameWithoutExtension (files [i]));
+		}
+		_prefabBackground = list.ToArray ();
 	}
 
 	private	void UpdateRole() {

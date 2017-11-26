@@ -12,6 +12,7 @@ public class SceneMaker : EditorWindow {
 		
 	private	string		_path;
 	private	SceneData	_data;
+	private GlobalInfo	_global;
 	private	string[]	_scenes;
 	private	string[]	_uis;
 	private	string[]	_backgrounds;
@@ -22,6 +23,8 @@ public class SceneMaker : EditorWindow {
 	private	bool		_showDialog;
 	private	Vector2		_scroll;
 
+	private	string[] _bgNames;
+	private	Dictionary<string, string> _bgNameId;
 
 	public	SceneMaker() {
 		_path		= null;
@@ -34,6 +37,8 @@ public class SceneMaker : EditorWindow {
 		_rolesAry	= new string[0];
 		_showDialog	= true;
 		_scroll		= Vector2.zero;
+		_bgNames	= new string[0];
+		_bgNameId	= new Dictionary<string, string> ();
 	}
 
 	void OnGUI() {
@@ -104,10 +109,18 @@ public class SceneMaker : EditorWindow {
 			OnClickBackground ();
 		if (GUILayout.Button ("-", EditorStyles.miniButton, GUILayout.Width (20)))
 			OnClickBackgroundClear ();
-		int indexBackground = ArrayUtility.IndexOf<string> (_backgrounds, _data.background);
-		int newBackground = EditorGUILayout.Popup (indexBackground, _backgrounds);
+		
+//		int indexBackground = ArrayUtility.IndexOf<string> (_backgrounds, _data.background);
+//		int newBackground = EditorGUILayout.Popup (indexBackground, _backgrounds);
+//		if (indexBackground != newBackground)
+//			_data.background = _backgrounds [newBackground];
+		RoomInfo rInfo = _global.GetRoomById(_data.background);
+		int indexBackground = (rInfo != null) ? ArrayUtility.IndexOf<string> (_bgNames, rInfo.name) : -1;
+		int newBackground = EditorGUILayout.Popup (indexBackground, _bgNames);
 		if (indexBackground != newBackground)
-			_data.background = _backgrounds [newBackground];
+			_data.background = _bgNameId [_bgNames [newBackground]];
+
+
 		GUILayout.EndHorizontal ();
 		GUILayout.EndVertical ();
 	}
@@ -205,6 +218,7 @@ public class SceneMaker : EditorWindow {
 		if (clear) {
 			_path = null;
 			_data = new SceneData ();
+			_global = GlobalInfo.LoadFromJson (Path.Combine (Application.dataPath, "Scene/Resources/Global.json"));
 			UpdateData ();
 		}
 	}
@@ -222,6 +236,7 @@ public class SceneMaker : EditorWindow {
 		if (clear) {
 			_path = path;
 			_data = JsonUtility.FromJson<SceneData> (File.ReadAllText (path));
+			_global = GlobalInfo.LoadFromJson (Path.Combine (Application.dataPath, "Scene/Resources/Global.json"));
 			UpdateData ();
 		}
 	}
@@ -273,6 +288,14 @@ public class SceneMaker : EditorWindow {
 			list.Add (Path.GetFileNameWithoutExtension (files [i]));
 		}
 		_backgrounds = list.ToArray ();
+
+		_bgNameId.Clear ();
+		var names = new List<string> ();
+		foreach (var info in _global.rooms) {
+			_bgNameId.Add (info.name, info.id);
+			names.Add (info.name);
+		}
+		_bgNames = names.ToArray ();
 	}
 
 	private	void OnClickPlay() {

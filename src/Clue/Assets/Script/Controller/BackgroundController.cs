@@ -27,7 +27,8 @@ public class BackgroundController : Controller {
 			return;
 
 		if (!Contains (name)) {
-			var model = observer.bundleCtr.Instantiate<GameObject> ((name));
+			var info = observer.globalCtr.GetRoom (name);
+			var model = observer.bundleCtr.Instantiate<GameObject> ((info.asset));
 			model.transform.SetParent (_group);
 			var view = model.AddComponent<BackgroundView> ();
 			_views.Add (name, view);

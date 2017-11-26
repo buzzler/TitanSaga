@@ -35,6 +35,12 @@ public class GlobalInfo {
 		});
 	}
 
+	public	RoomInfo GetRoomById(string id) {
+		return UnityEditor.ArrayUtility.Find<RoomInfo> (rooms, (RoomInfo room) => {
+			return room.id == id;
+		});
+	}
+
 	public	RoomInfo GetRoomByName(string name) {
 		return UnityEditor.ArrayUtility.Find<RoomInfo> (rooms, (RoomInfo room) => {
 			return room.name == name;
@@ -87,10 +93,12 @@ public	class WeaponInfo {
 public class RoomInfo {
 	public	string		id;
 	public	string		name;
+	public	string		asset;
 
 	public	RoomInfo() {
 		id = string.Empty;
 		name = string.Empty;
+		asset = string.Empty;
 	}
 }
 
