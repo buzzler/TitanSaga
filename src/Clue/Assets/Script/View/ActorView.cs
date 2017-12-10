@@ -13,12 +13,12 @@ public class ActorView : MonoBehaviour {
 		_emotion = ActorEmotion.NONE;
 		_position = ActorPosition.NONE;
 
-		_hash.Add (ActorEmotion.NONE,	_tr.Find ("none").gameObject);
+		_hash.Add (ActorEmotion.NONE,	_tr.Find ("idle").gameObject);
 		_hash.Add (ActorEmotion.ANGRY,	_tr.Find ("angry").gameObject);
 		_hash.Add (ActorEmotion.IDLE,	_tr.Find ("idle").gameObject);
-		_hash.Add (ActorEmotion.SAD,	_tr.Find ("sad").gameObject);
-		_hash.Add (ActorEmotion.SHY,	_tr.Find ("shy").gameObject);
-		_hash.Add (ActorEmotion.SMILE,	_tr.Find ("smile").gameObject);
+		_hash.Add (ActorEmotion.SAD,	_tr.Find ("angry").gameObject);
+		_hash.Add (ActorEmotion.SHY,	_tr.Find ("idle").gameObject);
+		_hash.Add (ActorEmotion.SMILE,	_tr.Find ("idle").gameObject);
 		var total = _tr.childCount;
 		for (int i = total-1 ; i >= 0 ; i--) {
 			_tr.GetChild (i).gameObject.SetActive (false);

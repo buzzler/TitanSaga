@@ -5,6 +5,9 @@ public class BackgroundView : MonoBehaviour {
 	private	bool _interact;
 	private	Material _material;
 	private	int _tweenId;
+	private	bool _moving;
+	private	float _center;
+	private	float _origin;
 
 	void Start() {
 		_material = GetComponentInChildren<MeshRenderer> ().material;
@@ -43,6 +46,27 @@ public class BackgroundView : MonoBehaviour {
 		if (_interact) {
 			var ob = GameObject.FindObjectOfType<Observer> ();
 			ob.mansionCtr.CheckEvidence (selected.alias);
+		}
+	}
+
+	void Update()
+	{
+		if (!_interact)
+			return;
+		
+		if (Input.GetMouseButtonDown (0)) {
+			_moving = true;
+			_origin = Input.mousePosition.x;
+			_center = Screen.width / 2f;
+			return;
+		} else if (Input.GetMouseButtonUp (0)) {
+			_moving = false;
+			return;
+		}
+
+		if (_moving) {
+			var x = (Input.mousePosition.x - _center) / _center;
+			Debug.Log (x);
 		}
 	}
 }

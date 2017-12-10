@@ -6,6 +6,10 @@ public class CameraController : Controller {
 	private	Transform _actorGroup;
 	private Transform _backgroundGroup;
 
+	public	Camera actor { get { return _actor; } }
+
+	public	Camera background { get { return _background; } }
+
 	public	CameraController(Observer observer) : base (observer) {
 		_actor = GameObject.Find ("ActorCamera").GetComponent<Camera> ();
 		_background = GameObject.Find ("BackgroundCamera").GetComponent<Camera> ();
