@@ -30,7 +30,11 @@ public class BackgroundController : Controller {
 			var info = observer.globalCtr.GetRoom (name);
 			var model = observer.bundleCtr.Instantiate<GameObject> ((info.asset));
 			model.transform.SetParent (_group);
-			var view = model.AddComponent<BackgroundView> ();
+			var view = model.GetComponent<BackgroundView> ();
+			if (view == null) {
+				view = model.AddComponent<BackgroundView> ();
+			}
+//			var view = model.AddComponent<BackgroundView> ();
 			_views.Add (name, view);
 		}
 	}

@@ -36,6 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000012256194128}
+  - component: {fileID: 114946091727197108}
   m_Layer: 0
   m_Name: BG_ClassRoom
   m_TagString: Untagged
@@ -422,6 +423,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alias: evidence_br_bed
+--- !u!114 &114946091727197108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010080766910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcdeac77772e5498a86869b80ef13051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minRotationY: 175.5
+  maxRotationY: 183.7
 --- !u!114 &114947462019438230
 MonoBehaviour:
   m_ObjectHideFlags: 1

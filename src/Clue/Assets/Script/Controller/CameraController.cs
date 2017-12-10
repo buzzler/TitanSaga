@@ -40,6 +40,10 @@ public class CameraController : Controller {
 		_background.enabled = false;
 	}
 
+	public	void ResetBackgroundCamera() {
+		_background.transform.eulerAngles = new Vector3 (0f, 180f, 0f);
+	}
+
 	public	Transform CreateBackgroundGroup() {
 		if (_backgroundGroup != null)
 			return _backgroundGroup;

@@ -52,6 +52,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000013681753616}
+  - component: {fileID: 114081520209724818}
   m_Layer: 0
   m_Name: BG_ClubRoom
   m_TagString: Untagged
@@ -386,6 +387,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114081520209724818
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011529143636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcdeac77772e5498a86869b80ef13051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minRotationY: 168
+  maxRotationY: 184.5
 --- !u!114 &114499281585777592
 MonoBehaviour:
   m_ObjectHideFlags: 1

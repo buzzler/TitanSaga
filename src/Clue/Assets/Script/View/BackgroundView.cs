@@ -2,15 +2,30 @@
 using System.Collections;
 
 public class BackgroundView : MonoBehaviour {
+	public	float minRotationY;
+	public	float maxRotationY;
+
+	private Observer _observer;
+	private	Transform _camera;
+	private	Vector3 _defaultRotation;
 	private	bool _interact;
 	private	Material _material;
 	private	int _tweenId;
 	private	bool _moving;
 	private	float _center;
-	private	float _origin;
+	private	float _originM;
+	private	Vector3 _originC;
+	private	float _fov;
 
 	void Start() {
+		_observer = GameObject.FindObjectOfType<Observer> ();
+		_camera = _observer.cameraCtr.background.transform;
+		_defaultRotation = _camera.eulerAngles;
+		_fov = maxRotationY - minRotationY;
+		_interact = false;
 		_material = GetComponentInChildren<MeshRenderer> ().material;
+
+		_observer.cameraCtr.ResetBackgroundCamera ();
 		OnShowFirst ();
 	}
 
@@ -44,8 +59,7 @@ public class BackgroundView : MonoBehaviour {
 
 	public	void OnSelectEvidence(EvidenceView selected) {
 		if (_interact) {
-			var ob = GameObject.FindObjectOfType<Observer> ();
-			ob.mansionCtr.CheckEvidence (selected.alias);
+			_observer.mansionCtr.CheckEvidence (selected.alias);
 		}
 	}
 
@@ -56,7 +70,8 @@ public class BackgroundView : MonoBehaviour {
 		
 		if (Input.GetMouseButtonDown (0)) {
 			_moving = true;
-			_origin = Input.mousePosition.x;
+			_originM = Input.mousePosition.x;
+			_originC = _camera.eulerAngles;
 			_center = Screen.width / 2f;
 			return;
 		} else if (Input.GetMouseButtonUp (0)) {
@@ -65,8 +80,9 @@ public class BackgroundView : MonoBehaviour {
 		}
 
 		if (_moving) {
-			var x = (Input.mousePosition.x - _center) / _center;
-			Debug.Log (x);
+			var x = (Input.mousePosition.x - _originM) / _center;
+			var rotY = Mathf.Clamp (_originC.y - (_fov * x) / 2f, minRotationY, maxRotationY);
+			_camera.eulerAngles = new Vector3 (_originC.x, rotY, _originC.z);
 		}
 	}
 }

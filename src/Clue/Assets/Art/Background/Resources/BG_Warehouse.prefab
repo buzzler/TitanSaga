@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000011365852528}
+  - component: {fileID: 114766169215817704}
   m_Layer: 0
   m_Name: BG_Warehouse
   m_TagString: Untagged
@@ -353,6 +354,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alias: evidence_pt_plant
+--- !u!114 &114766169215817704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012209871660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcdeac77772e5498a86869b80ef13051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minRotationY: 174.7
+  maxRotationY: 187.4
 --- !u!114 &114916058050176334
 MonoBehaviour:
   m_ObjectHideFlags: 1
