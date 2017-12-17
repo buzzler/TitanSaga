@@ -212,7 +212,7 @@ public class ScenarioController : Controller {
 	}
 
 	private	void ExecuteScenatioChangeRole(ShotData data) {
-		observer.mansionCtr.SetRoleDataScenario (data.parameter, "No_Evidence");
+		observer.mansionCtr.SetRoleDataScenario (data.role, data.parameter);
 		ExecuteDefault (data, Next);
 	}
 
