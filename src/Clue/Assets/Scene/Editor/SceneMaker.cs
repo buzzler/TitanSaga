@@ -182,12 +182,6 @@ public class SceneMaker : EditorWindow {
 					newIndex = EditorGUILayout.Popup (oldIndex, _uis, GUILayout.Width (90));
 					if (oldIndex != newIndex)
 						dialog.parameter = _uis [newIndex];
-//				} else if (dialog.command == ShotCommand.SCENARIO_CHANGE_SUSPECT) {
-//					oldIndex = ArrayUtility.IndexOf<string> (_rolesAry, dialog.parameter);
-//					newIndex = EditorGUILayout.Popup (oldIndex, _rolesAry, GUILayout.Width (90));
-//					if (oldIndex != newIndex)
-//						dialog.parameter = _rolesAry [newIndex];
-//				}
 				} else if (dialog.command == ShotCommand.SCENARIO_CHANGE_SUSPECT) {
 					oldIndex = ArrayUtility.IndexOf<string> (_scenes, dialog.parameter);
 					newIndex = EditorGUILayout.Popup (oldIndex, _scenes, GUILayout.Width (90));
