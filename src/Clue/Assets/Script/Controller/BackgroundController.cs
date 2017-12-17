@@ -34,7 +34,6 @@ public class BackgroundController : Controller {
 			if (view == null) {
 				view = model.AddComponent<BackgroundView> ();
 			}
-//			var view = model.AddComponent<BackgroundView> ();
 			_views.Add (name, view);
 		}
 	}
@@ -94,10 +93,20 @@ public class BackgroundController : Controller {
 		if (backup == null)
 			return;
 
-		RemoveAll ();
-		for (int i = 0; i < backup.Length; i++) {
-			Add (backup [i].background);
+		var bgs = new List<string> ();
+		for (int i = 0; i < backup.Length; i++)
+			bgs.Add (backup [i].background);
+
+		foreach (var name in _views.Keys) {
+			if (!bgs.Contains (name))
+				Remove (name);
 		}
+
+		foreach (var name in bgs) {
+			if (!_views.ContainsKey (name))
+				Add (name);
+		}
+
 		SetInteractivity (false);
 	}
 
